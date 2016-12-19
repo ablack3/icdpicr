@@ -7,5 +7,3 @@ Maintainer: Adam Black
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes
 License: MIT
 LazyData: TRUE
-URL: http://github.com/ablack3/icdpicr
-BugReports: http://github.com/ablack3/icdpicr/issues
