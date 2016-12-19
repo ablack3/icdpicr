@@ -3,7 +3,7 @@ Type: Package
 Title: ICDPIC In R
 Version: 0.1.0
 Author: Adam Black
-Maintainer: Adam Black
+Maintainer: Adam Black <ablack3@gmail.com>
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes
 License: MIT
 LazyData: TRUE
