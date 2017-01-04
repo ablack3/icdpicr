@@ -16,8 +16,8 @@
 #'
 #'
 #' @section Description
-#' ICDPICR is an R package that currently consists of a single function that performs the same task that
-#' the trauma program does in ICDPIC.
+#' ICDPICR is an R package that currently consists of a single function that performs
+#' the same task that the trauma program does in ICDPIC.
 #' The intention of ICDPIC described here
 #' is to provide inexpensive methods for translating International
 #' Classification of Diseases (ICD) diagnosis codes into standard injury
@@ -28,13 +28,32 @@
 #' Plan.  The translation of ICDPIC to R was supported by funding from ...
 #' The authors are grateful for this support and would also appreciate
 #' suggestions or corrections from any user of the software. Bug reports or feature requests
-#' may be submitted at \url{}  Publications of
+#' may be submitted at \url{http://github.com/ablack3/icdpicr/issues}.
+#' Publications of
 #' studies in which these programs or tables are used should cite the authors.
 #' We hope ICDPIC will make ICD-9-CM codes easier to use for injury research,
-#' and facilitate comparison of categorization methods.  Modification of
-#' lookup tables could allow easy conversion to ICD-10-CM, and
-#' empirically-derived scores (like ICISS) can be updated using newer
-#' reference databases.
+#' and facilitate comparison of categorization methods.
+#'
+#' ICDPICR handles ICD-10-CM codes as well as ICD 9. This was accomplished by
+#' first mapping ICD 10 codes to ICD 9 using the 2016 general equivalence mapping (GEM)
+#' developed by CMS. Next the corresponding ICD 9 codes were mapped to anatomical
+#' injury severity scores (ais) and body regions using the same mapping used in the
+#' the original ICDPIC. In some cases an ICD 10 code was mapped to more than one
+#' ICD 9 code. In these cases diambiguation is necessary to get a map from ICD 10
+#' to AIS and body region.
+#'
+#' When an ICD 10 code was mapped to more than one body region a simple rule was
+#' used based on keywords in the descriptions. Ambiguity involving ais scores
+#' was handled by allowing the user to select the max ais or min ais associated with
+#' the ICD 10 code.
+#'
+#' It is possible to tell the function to ignore ICD 10 codes if desired by the user.
+#'
+#' @section functions
+#' \strong{trauma} provides various classifications and characterizations of trauma
+#' based on ICD-9-CM diagnosis codes, specifically codes for Nature of Injury
+#' (N-Codes) and External Cause of Injury (E-Codes).
+
 
 #'
 #' @docType package
