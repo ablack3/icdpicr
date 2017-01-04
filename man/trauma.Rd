@@ -2,19 +2,33 @@
 % Please edit documentation in R/trauma.R
 \name{trauma}
 \alias{trauma}
-\title{Trauma function}
+\title{Add AIS and ISS to a dataframe.}
 \usage{
-trauma(df, dx_pre, calc_method = 1, icd10 = T,
+trauma(df, dx_pre, calc_method = 1, icd10 = TRUE,
   conflict_resolution = "max")
 }
 \arguments{
-\item{df}{dataframe containing ICD9 codes with common prefix}
+\item{df}{dataframe containing ICD-9 or ICD-10 diagnosis codes with a common prefix}
 
 \item{dx_pre}{prefix for diagnosis codes (example: dx1, dx2, ect)}
 
-\item{calc_method}{ISS calculation method}
+\item{calc_method}{ISS calculation method: method 1 will assign an ISS of 75 if any AIS is 6 (implying the person is dead?)
+method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
+
+\item{icd10}{A logical value indicating whether ICD 10 codes should be mapped to ICD 9 using CMS's general equivalence mapping and then included in the calcuation of the ISS or not. Must be TRUE or FALSE.}
+
+\item{conflict_resolution}{Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9 codes. Must be either "max" or "min".}
+}
+\value{
+A dataframe identical to the dataframe passed to the function with the additional variables added.
+These variables are severity scores and body regions for each diagnosis code. XISS, NISS...
 }
 \description{
-For each observation, program to assign severity and ISS body region values to each valid ICD-9-CM trauma code, assign Barell and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity score (ISS) and new injury severity score (NISS), assign major mechanism, minor mechanism and intent for up to 4 E-Codes (excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism  of the first E-Code found.
+For each observationthis function will assign a severity and ISS body region values to each valid ICD-9-CM
+or ICD 10 trauma code,
+and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity score (ISS) and new
+injury severity score (NISS), assign major mechanism, minor mechanism and intent for up to 4 E-Codes
+(excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism  of the first
+E-Code found.
 }
 
