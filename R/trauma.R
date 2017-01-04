@@ -21,10 +21,6 @@
 
 
 
-# Revised 2016 #
-# Version 3.0 #
-
-
 #-----------------------------------------------------------------------------------------------------------------#
 #  For each observation, program to assign severity and ISS body region values to each valid ICD-9-CM trauma      #
 #  code, assign Barell and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity  #
