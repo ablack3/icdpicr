@@ -9,8 +9,9 @@
 #'
 #' @param df dataframe containing ICD-9 or ICD-10 diagnosis codes with a common prefix
 #' @param dx_pre prefix for diagnosis codes (example: dx1, dx2, ect)
-#' @param calc_method ISS calculation method: method 1 will assign an ISS of 75 if any AIS is 6 (implying the person is dead?)
-#'        method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
+#' @param calc_method ISS calculation method: method 1 will assign an ISS of 75 if any AIS is 6
+#'          (implying the person is dead?)
+#'          method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #' @param conflict_resolution Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9 codes. Must be either "max" or "min".
 #' @param icd10 A logical value indicating whether ICD 10 codes should be mapped to ICD 9 using CMS's general equivalence mapping and then included in the calcuation of the ISS or not. Must be TRUE or FALSE.
 #'
@@ -28,7 +29,9 @@
 #  to 4 E-Codes (excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism   #
 #  of the first E-Code found.                                                                                     #
 #-----------------------------------------------------------------------------------------------------------------#
-
+dx_pre = "DX"
+df = tst
+ntab_s1 = read.csv("./lookup tables/ntab_s1.csv", stringsAsFactors = F)
 trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolution="max"){
 
       # Verify input #
@@ -46,7 +49,7 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       dx_colnames <- grep(regex_dx, names(df), value = T)
       dx_nums <- as.numeric(sub(regex_dx,"\\1",dx_colnames ))
       num_dx <- length(dx_nums)
-      if(num_dx == 0) stop("No variables with prefix found")
+      if(num_dx == 0) stop("No variables with prefix found in data")
 
 
       # add i10 codes to map
@@ -62,8 +65,8 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
 
 
       # Create temporary variable to count the number of diagnosis codes with both an
-      # unknown severity and an unknown  ISS body region. not sure how this is used.                                                                                             #
-      # df$unk_unk <- 0
+      # unknown severity and an unknown  ISS body region.
+      df$unk_unk <- 0
 
       #---------------------------------------------------------------------------------#
       #  Merge diagnosis code variables with N-Code reference table to obtain severity  #
@@ -72,17 +75,17 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
 
       for(i in dx_nums){
           # create column name
-          dx_name <- paste(dx_pre,i,sep="")
+          dx_name <- paste(dx_pre, i, sep="")
 
           # pull just the diagnosis code column of interest
-          df_ss <- df[,dx_name, drop=F]
+          df_ss <- df[ , dx_name, drop=F]
 
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
 
           # strip out decimal
           #df_ss[,dx_name] <- sub("\\.","", as.data.frame(df_ss[,dx_name]))
-          df_ss[ ,dx_name] <- apply(df_ss[,dx_name,drop=F], 1, function(x) sub("\\.", "", x))
+          df_ss[ , dx_name] <- apply(df_ss[ , dx_name, drop=F], 1, function(x) sub("\\.", "", x))
 
           # merge iss variables
           temp <- merge(df_ss, ntab_s1, by.x=dx_name, by.y="dx", all.x=T, all.y=F, sort=F)
@@ -91,41 +94,55 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
           temp <- temp[order(temp$n), ]
 
           # reorder columns and drop dx and n
-          temp <- temp[,c("severity","issbr")]
+          temp <- temp[ , c("severity","issbr")]
 
           if(calc_method == 2){
               # replace severity=6 with severity=5
-              temp[which(temp$severity==6),"severity"] <- 5
+              temp[which(temp$severity==6), "severity"] <- 5
           }
 
-          # Increment value in the temporary variable unk_unk if severity equals 9
-          # and ISS body region equals 9.??? #
-            #  replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
+
 
           #rename columns
-          names(temp) <- paste(c("sev_","issbr_"),i,sep="")
+          names(temp) <- paste0(c("sev_","issbr_"), i)
 
           # add temp columns to dataframe
-          df <- .insert_columns(df,dx_name,temp)
+          df <- .insert_columns(df, dx_name, temp)
 
+      }
+
+      # Increment value in the temporary variable unk_unk if severity equals 9
+      # and ISS body region equals 9.??? #
+      #  replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
+      for(i in dx_nums){
+            df$unk_unk <- df$unk_unk + (df[ , paste0("sev_", i)] == 9 & df[ , paste0("issbr_", i)] == 9)
       }
 
       #----------------------------------------------------#
       # Create variables for maximum AIS/ISS body region.  #
       #----------------------------------------------------#
-
+# i=1
       # for each body region 1-6 loop through dx codes and get max ais for that body region
       for(i in 1:6){
             # Get severity columns and multiply by 1 if they are for body region i and 0 otherwise
             # This uses element-wise multiplication of matricies
-            temp <- df[ ,grepl("sev_",names(df)), drop=F] * (1*(df[ , grepl("issbr_", names(df))] == i))
+            temp <- df[ , grepl("sev_", names(df)), drop=F] * (1*(df[ , grepl("issbr_", names(df))] == i))
 
-            # row <- temp[1,]
+            class(temp)
+            # convert all zeros to NA. zeros represent severity values not associated with body region i
+            # temp <- data.frame(t(apply(temp, 1, function(x) ifelse(x==0, NA, x))))
+
             # take max (excluding 9) and assign to mxaisbr_i
             # severity score of 9 implies unknown severity.
             # Thus we want to exclude these as long as there is at least one known severity for the body region
             # However if all severity scores for the body region are 9 then we will assign maxaisbr a value of 9
-            df[ ,paste0("mxaisbr", i)] <- apply(temp, 1, function(row){
+            # (row=temp[1,,drop=F])
+            # class(row)
+            df[ , paste0("mxaisbr", i)] <- apply(temp, 1, function(row){
+
+                  # convert all zeros to NA. zeros represent severity values not associated with body region i
+                  row <- ifelse(row==0, NA, row)
+
                   if(all(is.na(row))){
                         maxaisbr <- 0
                   } else if(all(row == 9, na.rm = T)){
@@ -137,11 +154,38 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
             })
       }
 
-      #---------------------------------------------------------#
-      #  Calculate maximum severity over all ISS body regions.  #
-      #---------------------------------------------------------#
+      #----------------------------------------------------------------------#
+      #  Calculate maximum severity over all ISS body regions. excluding 9s  #
+      #----------------------------------------------------------------------#
 
-      df$maxais <- pmax(df$mxaisbr1, df$mxaisbr2, df$mxaisbr3, df$mxaisbr4, df$mxaisbr5, df$mxaisbr6)
+      # define function to convert 9 to 0
+      c9to0 <- function(x) ifelse(x==9, 0, x)
+
+      # df$maxais_ex9 <- pmax(c9to0(df$mxaisbr1),
+      #                   c9to0(df$mxaisbr2),
+      #                   c9to0(df$mxaisbr3),
+      #                   c9to0(df$mxaisbr4),
+      #                   c9to0(df$mxaisbr5),
+      #                   c9to0(df$mxaisbr6))
+
+      # assign maxais
+      # this is a bit complicated
+      # if all maxbr_i are in (9,0,NA) then the max should be 9
+      # if there is at least one positive maxbr_i that is not 9 then we need to exclude the 9s
+      df$maxais <- apply(df, 1, function(row){
+            row <- row[grepl("mxaisbr", names(row))]
+            # print(row)
+            # if the max excluding 9 is zero then include 9 so that if there is a 9 the max will be 9
+            if(all(is.na(row))){
+                  maxais <- as.numeric(NA)
+            } else if(max(c9to0(row), na.rm = T) == 0){
+                  maxais <- max(row, na.rm = T)
+            } else {
+                 maxais <- max(c9to0(row), na.rm = T)
+            }
+            return(maxais)
+      })
+      df$maxais <- as.numeric(df$maxais)
 
       # there is more to do here for differences based on known/unknown severity ect... not sure yet
       # time to figure this out
@@ -152,15 +196,20 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       #------------------------#
 
       # ISS is calculated as the sum of the squared three highest maxaisbr varaiables for a given person
+      # need to exclude 9s
       df$xiss <- apply(df, 1, function(row){
-            # select the max ais variables for a given row
+
+            #recode 9s as 0
+            row <- c9to0(row)
+
+             # select the max ais variables for a given row
             temp <- row[grepl("^mxaisbr[0-9]+$", names(row))]
 
             # for some reason apply is converting these to char. We will convert them back to numeric
             temp <- as.numeric(temp)
 
             # Take the three highest, square them, and sum the result
-            sum(temp[order(-temp)[1:3]]^2) # what if there are only two
+            sum(temp[order(-temp)[1:3]]^2) # what if there are only two?
       })
 
       # Replace ISS value with 75 if maximum severity is 6. Why?
@@ -207,10 +256,10 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       ecode_colnames <- paste0("ecode_", 1:4)
 
       #create e code columns
-      df[,ecode_colnames] <- NA
+      df[ , ecode_colnames] <- NA
 
       # for each row extract the first 4 ecodes and add them to the ecode columns
-      df[,ecode_colnames] <- t(apply(df, 1, function(row){
+      df[ , ecode_colnames] <- t(apply(df, 1, function(row){
           # get all e codes
           (E_codes <- grep("^E", row[dx_colnames], value = T))
           # take first 4 e codes that are not place e codes (start with E849)
@@ -257,7 +306,7 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       df[which(df$mechmaj1 %in% c(2, 5, 6, 7, 8, 9, 13)), "bluntpen"] <- "B"
       df[which(df$mechmaj1 %in% c(0, 4)), "bluntpen"] <- "P"
 
-      # #why are we only considering the first ecode mechmaj here?
+      # #why are we only considering the first ecode mechmaj here? convenience. arbitrary decision.
       # - orignal code below
       # replace bluntpen = "B" if mechmaj1 == 2 | mechmaj1 == 5 | mechmaj1 == 6 | mechmaj1 == 7 | mechmaj1 == 8 |#
       # # mechmaj1 == 9 | mechmaj1 == 13
