@@ -116,10 +116,17 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
             df$unk_unk <- df$unk_unk + (df[ , paste0("sev_", i)] == 9 & df[ , paste0("issbr_", i)] == 9)
       }
 
+      # Increment value in the temporary variable unk_unk if severity equals 9
+      # and ISS body region equals 9.??? #
+      #  replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
+      for(i in dx_nums){
+            df$unk_unk <- df$unk_unk + (df[ , paste0("sev_", i)] == 9 & df[ , paste0("issbr_", i)] == 9)
+      }
+
       #----------------------------------------------------#
       # Create variables for maximum AIS/ISS body region.  #
       #----------------------------------------------------#
-
+# i=1
       # for each body region 1-6 loop through dx codes and get max ais for that body region
       for(i in 1:6){
             # Get severity columns and multiply by 1 if they are for body region i and 0 otherwise
