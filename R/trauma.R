@@ -53,16 +53,11 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       # add i10 codes to map
       # The i10 mappings were created by using CMS general equivalence mappings to first map to icd9
       if(icd10){
-            ntab_s1 <- ntab_s1[ , c("dx", "severity", "issbr")]
-
             if(conflict_resolution == "max"){
-                  names(i10_map_max) <- c("dx", "severity", "issbr")
                   ntab_s1 <- rbind(ntab_s1, i10_map_max)
             }
             else{
-                  names(i10_map_min) <- c("dx", "severity", "issbr")
                   ntab_s1 <- rbind(ntab_s1, i10_map_min)
-
             }
       }
 
