@@ -1,12 +1,12 @@
-#' ICDPICR: International Classification of Diseases Programs for Injury Categorization
+#' ICDPICR
 #'
+#' International Classification of Diseases Programs for Injury Categorization
 #' The ICDPICR package is an implementation of the STATA program ICDPIC version 3
 #' in R. ICDPIC is a collection of Stata programs for injury categorization
 #' and is available online at \url{https://ideas.repec.org/c/boc/bocode/s457028.html}
 #'
-#' @section Version
+#' @section Version:
 #' Version 0.1.0
-#'
 #' ICDPICR is adapted from the ICDPIC version 3.0 Stata code. However the
 #' functionality has been decreased considerably in the interest of providing
 #' only the most used elements of the original ICDPIC program. ICDPICR is open
@@ -15,7 +15,7 @@
 #'
 #'
 #'
-#' @section Description
+#' @section Description:
 #' ICDPICR is an R package that currently consists of a single function that performs
 #' the same task that the trauma program does in ICDPIC.
 #' The intention of ICDPIC described here
@@ -49,7 +49,7 @@
 #'
 #' It is possible to tell the function to ignore ICD 10 codes if desired by the user.
 #'
-#' @section functions
+#' @section Functions:
 #' \strong{trauma} provides various classifications and characterizations of trauma
 #' based on ICD-9-CM diagnosis codes, specifically codes for Nature of Injury
 #' (N-Codes) and External Cause of Injury (E-Codes).
@@ -57,5 +57,5 @@
 
 #'
 #' @docType package
-#' @name foo
+#' @name icdpicr
 NULL

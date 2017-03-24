@@ -24,7 +24,7 @@ A dataframe identical to the dataframe passed to the function with the additiona
 These variables are severity scores and body regions for each diagnosis code. XISS, NISS...
 }
 \description{
-For each observationthis function will assign a severity and ISS body region values to each valid ICD-9-CM
+For each observation this function will assign a severity and ISS body region values to each valid ICD-9-CM
 or ICD 10 trauma code,
 and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity score (ISS) and new
 injury severity score (NISS), assign major mechanism, minor mechanism and intent for up to 4 E-Codes
