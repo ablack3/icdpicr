@@ -2,33 +2,141 @@
 % Please edit documentation in R/trauma.R
 \name{trauma}
 \alias{trauma}
-\title{Add AIS and ISS to a dataframe.}
+\title{Add AIS and ISS to a dataframe}
 \usage{
 trauma(df, dx_pre, calc_method = 1, icd10 = TRUE,
   conflict_resolution = "max")
 }
 \arguments{
-\item{df}{dataframe containing ICD-9 or ICD-10 diagnosis codes with a common prefix}
+\item{df}{A dataframe in wide format containing ICD-9 or ICD-10 diagnosis codes with a common column name prefix.
+Diagnosis codes should be character strings and may have a decimal or not.}
 
-\item{dx_pre}{prefix for diagnosis codes (example: dx1, dx2, ect)}
+\item{dx_pre}{Prefix for diagnosis code column names (example: dx1, dx2, ect)}
 
-\item{calc_method}{ISS calculation method: method 1 will assign an ISS of 75 if any AIS is 6 (implying the person is dead?)
-method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
+\item{calc_method}{ISS calculation method:
+Method 1 will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
+Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
 
-\item{icd10}{A logical value indicating whether ICD 10 codes should be mapped to ICD 9 using CMS's general equivalence mapping and then included in the calcuation of the ISS or not. Must be TRUE or FALSE.}
+\item{icd10}{A logical value indicating whether ICD 10 codes should be considered or ignored.
+If FALSE then ICD10 codes are ignored.
+If TRUE then mapped to ICD 9 using CMS's general equivalence mapping (GEM) and then
+included in the calcuation of the ISS and ICD10 mechanism codes will be included in E-code calculation.}
 
-\item{conflict_resolution}{Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9 codes. Must be either "max" or "min".}
+\item{conflict_resolution}{Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9
+codes to AIS.
+Must be either "max" or "min". Few ICD10 codes result in a conflict.}
 }
 \value{
-A dataframe identical to the dataframe passed to the function with the additional variables added.
-These variables are severity scores and body regions for each diagnosis code. XISS, NISS...
+A dataframe identical to the dataframe passed to the function with the following additional variables
+         added:
+         \itemize{
+         \item sev_1-sev_n: AIS severity for diagnosis codes 1..n
+         \item issbr_1-issbr_n: ISS body region for diagnosis codes 1..n
+         \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
+         \item maxais: maximum AIS severity over all ISS body regions
+         \item xiss: computed injury severity score
+         \item niss: computed new injury severity score
+         \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
+         \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
+         \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
+         \item intent1-intent4: intent for each E-Code captured
+         \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+         \item bluntpen: type of trauma, blunt (B) or penetrating (P), based on value of variable mechmaj1
+         }
 }
 \description{
-For each observation this function will assign a severity and ISS body region values to each valid ICD-9-CM
-or ICD 10 trauma code,
-and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity score (ISS) and new
-injury severity score (NISS), assign major mechanism, minor mechanism and intent for up to 4 E-Codes
-(excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism  of the first
-E-Code found.
+For each observation this function will
+\enumerate{
+   \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD 10 trauma code,
+   \item add variables for maximum severity of each body region,
+   \item calculate ISS and new ISS,
+   \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
+   \item summarize mechanism with lowest major mechanism and assign trauma type (blunt or penetrating) the first E-Code found.
+}
+}
+\details{
+Data should be in wide format:
+\tabular{rrrr}{
+ID  \tab  dx1 \tab  dx2 \tab dx3 \cr
+31416 \tab   800.1 \tab   959.9 \tab   E910.9 \cr
+31417  \tab 800.24  \tab 410.0 \tab
+}
+
+Codes for AIS severity:
+\itemize{
+      \item 1 = Minor
+      \item 2 = Moderate
+      \item 3 = Serious
+      \item 4 = Severe
+      \item 5 = Critical
+      \item 6 = Unsurvivable
+      \item  9 = Unknown
+}
+
+Codes for ISS body region:
+\itemize{
+\item 1 = Head/neck
+\item 2 = Face
+\item 3 = Chest
+\item 4 = Abdomen and pelvic contents
+\item 5 = Extremities or pelvic girdle
+\item 6 = External
+\item 9 = Unknown
+}
+ Codes for CDC external cause of injury major/minor mechanism categories:
+\itemize{
+\item 0 = Cut/pierce
+\item 1 = Drowning/submersion
+\item 2 = Fall
+\item 3 = Fire/burn
+\itemize{
+   \item Fire/flame = 0
+   \item Hot object/substance = 1
+}
+\item 4 = Firearm
+\item 5 = Machinery
+\item 6 = Motor vehicle traffic
+     \itemize{
+     \item Occupant = 0
+     \item Motorcyclist = 1
+     \item Pedal cyclist = 2
+     \item Pedestrian = 3
+     \item Unspecified = 4
+     }
+\item 7 = Pedal cyclist, other
+\item 8 = Pedestrian, other
+\item 9 = Transport, other
+\item 10 = Natural/environmental
+     \itemize{ \item Bites and stings = 0}
+\item 11 = Overexertion
+\item 12 = Poisoning
+\item 13 = Struck by, against
+\item 14 = Suffocation
+\item 15 = Other specified, classifiable
+\item 16 = Other specified, not elsewhere classifiable
+\item 17 = Unspecified
+\item 18 = Adverse effects
+     \itemize{
+     Medical care = 0
+     Drugs = 1
+     }
+}
+Codes for CDC external cause of injury intent category:
+\itemize{
+\item 0 = Unintentional
+\item 1 = Self-inflicted
+\item 2 = Assault
+\item 3 = Undetermined
+\item 4 = Other
+}
+}
+\examples{
+df_in <- read.table(header = T, text = "
+ident    dx1     dx2     dx3
+31416   800.1   959.9   E910.9
+31417   800.24  410.0   NA
+")
+df_out <- trauma(df_in, "dx")
+
 }
 

@@ -1,22 +1,128 @@
-#' Add AIS and ISS to a dataframe.
+#' Add AIS and ISS to a dataframe
 #'
-#' For each observation this function will assign a severity and ISS body region values to each valid ICD-9-CM
-#' or ICD 10 trauma code,
-#' and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity score (ISS) and new
-#' injury severity score (NISS), assign major mechanism, minor mechanism and intent for up to 4 E-Codes
-#' (excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism  of the first
-#' E-Code found.
+#' For each observation this function will
+#' \enumerate{
+#'    \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD 10 trauma code,
+#'    \item add variables for maximum severity of each body region,
+#'    \item calculate ISS and new ISS,
+#'    \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
+#'    \item summarize mechanism with lowest major mechanism and assign trauma type (blunt or penetrating) the first E-Code found.
+#'}
 #'
-#' @param df dataframe containing ICD-9 or ICD-10 diagnosis codes with a common prefix
-#' @param dx_pre prefix for diagnosis codes (example: dx1, dx2, ect)
-#' @param calc_method ISS calculation method: method 1 will assign an ISS of 75 if any AIS is 6
-#'          (implying the person is dead?)
-#'          method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
-#' @param conflict_resolution Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9 codes. Must be either "max" or "min".
-#' @param icd10 A logical value indicating whether ICD 10 codes should be mapped to ICD 9 using CMS's general equivalence mapping and then included in the calcuation of the ISS or not. Must be TRUE or FALSE.
 #'
-#' @return A dataframe identical to the dataframe passed to the function with the additional variables added.
-#' These variables are severity scores and body regions for each diagnosis code. XISS, NISS...
+#'
+#'
+#' @param df A dataframe in wide format containing ICD-9 or ICD-10 diagnosis codes with a common column name prefix.
+#'          Diagnosis codes should be character strings and may have a decimal or not.
+#' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, ect)
+#' @param calc_method ISS calculation method:
+#'          Method 1 will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
+#'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
+#' @param conflict_resolution Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9
+#'          codes to AIS.
+#'          Must be either "max" or "min". Few ICD10 codes result in a conflict.
+#' @param icd10 A logical value indicating whether ICD 10 codes should be considered or ignored.
+#'          If FALSE then ICD10 codes are ignored.
+#'          If TRUE then mapped to ICD 9 using CMS's general equivalence mapping (GEM) and then
+#'          included in the calcuation of the ISS and ICD10 mechanism codes will be included in E-code calculation.
+#' @return A dataframe identical to the dataframe passed to the function with the following additional variables
+#'          added:
+#'          \itemize{
+#'          \item sev_1-sev_n: AIS severity for diagnosis codes 1..n
+#'          \item issbr_1-issbr_n: ISS body region for diagnosis codes 1..n
+#'          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
+#'          \item maxais: maximum AIS severity over all ISS body regions
+#'          \item xiss: computed injury severity score
+#'          \item niss: computed new injury severity score
+#'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
+#'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
+#'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
+#'          \item intent1-intent4: intent for each E-Code captured
+#'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+#'          \item bluntpen: type of trauma, blunt (B) or penetrating (P), based on value of variable mechmaj1
+#'          }
+#'
+#' @details  Data should be in wide format:
+#' \tabular{rrrr}{
+#' ID  \tab  dx1 \tab  dx2 \tab dx3 \cr
+#' 31416 \tab   800.1 \tab   959.9 \tab   E910.9 \cr
+#' 31417  \tab 800.24  \tab 410.0 \tab
+#' }
+#'
+#' Codes for AIS severity:
+#' \itemize{
+#'       \item 1 = Minor
+#'       \item 2 = Moderate
+#'       \item 3 = Serious
+#'       \item 4 = Severe
+#'       \item 5 = Critical
+#'       \item 6 = Unsurvivable
+#'       \item  9 = Unknown
+#'}
+#'
+#' Codes for ISS body region:
+#' \itemize{
+#' \item 1 = Head/neck
+#' \item 2 = Face
+#' \item 3 = Chest
+#' \item 4 = Abdomen and pelvic contents
+#' \item 5 = Extremities or pelvic girdle
+#' \item 6 = External
+#' \item 9 = Unknown
+#'}
+#'  Codes for CDC external cause of injury major/minor mechanism categories:
+#' \itemize{
+#' \item 0 = Cut/pierce
+#' \item 1 = Drowning/submersion
+#' \item 2 = Fall
+#' \item 3 = Fire/burn
+#' \itemize{
+#'    \item Fire/flame = 0
+#'    \item Hot object/substance = 1
+#' }
+#' \item 4 = Firearm
+#' \item 5 = Machinery
+#' \item 6 = Motor vehicle traffic
+#'      \itemize{
+#'      \item Occupant = 0
+#'      \item Motorcyclist = 1
+#'      \item Pedal cyclist = 2
+#'      \item Pedestrian = 3
+#'      \item Unspecified = 4
+#'      }
+#' \item 7 = Pedal cyclist, other
+#' \item 8 = Pedestrian, other
+#' \item 9 = Transport, other
+#' \item 10 = Natural/environmental
+#'      \itemize{ \item Bites and stings = 0}
+#' \item 11 = Overexertion
+#' \item 12 = Poisoning
+#' \item 13 = Struck by, against
+#' \item 14 = Suffocation
+#' \item 15 = Other specified, classifiable
+#' \item 16 = Other specified, not elsewhere classifiable
+#' \item 17 = Unspecified
+#' \item 18 = Adverse effects
+#'      \itemize{
+#'      Medical care = 0
+#'      Drugs = 1
+#'      }
+#'}
+#' Codes for CDC external cause of injury intent category:
+#' \itemize{
+#' \item 0 = Unintentional
+#' \item 1 = Self-inflicted
+#' \item 2 = Assault
+#' \item 3 = Undetermined
+#' \item 4 = Other
+#' }
+#'
+#' @examples df_in <- read.table(header = T, text = "
+#' ident    dx1     dx2     dx3
+#' 31416   800.1   959.9   E910.9
+#' 31417   800.24  410.0   NA
+#' ")
+#' df_out <- trauma(df_in, "dx")
 #'
 #' @export
 
@@ -29,6 +135,8 @@
 #  to 4 E-Codes (excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism   #
 #  of the first E-Code found.                                                                                     #
 #-----------------------------------------------------------------------------------------------------------------#
+# dx_pre="DX"
+# calc_method = 1
 
 trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolution="max"){
 
@@ -50,9 +158,13 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       if(num_dx == 0) stop("No variables with prefix found in data")
 
 
-      # add i10 codes to map
-      # The i10 mappings were created by using CMS general equivalence mappings to first map to icd9
+      # add i10 codes to lookup tables
+      # The i10 mappings  for n codes were created by using CMS general equivalence mappings
+      # The i10 maapings for e codes were created using CDC infury mechanism grid
+      # See documentation and prelim directory for details
       if(icd10){
+            etab_s1 <- rbind(etab_s1, i10_ecode)
+
             if(conflict_resolution == "max"){
                   ntab_s1 <- rbind(ntab_s1, i10_map_max)
             }
@@ -73,7 +185,7 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
 
       for(i in dx_nums){
           # create column name
-          dx_name <- paste(dx_pre, i, sep="")
+          dx_name <- paste0(dx_pre, i)
 
           # pull just the diagnosis code column of interest
           df_ss <- df[ , dx_name, drop=F]
@@ -82,7 +194,6 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
           df_ss$n <- 1:NROW(df_ss)
 
           # strip out decimal
-          #df_ss[,dx_name] <- sub("\\.","", as.data.frame(df_ss[,dx_name]))
           df_ss[ , dx_name] <- apply(df_ss[ , dx_name, drop=F], 1, function(x) sub("\\.", "", x))
 
           # merge iss variables
@@ -99,8 +210,6 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
               temp[which(temp$severity==6), "severity"] <- 5
           }
 
-
-
           #rename columns
           names(temp) <- paste0(c("sev_","issbr_"), i)
 
@@ -110,18 +219,13 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       }
 
       # Increment value in the temporary variable unk_unk if severity equals 9
-      # and ISS body region equals 9.??? #
-      #  replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
+      # and ISS body region equals 9. (9 indicates unknown. This is not a great coding choice. Might change it to NA?)
+      # STATA code: replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
       for(i in dx_nums){
             df$unk_unk <- df$unk_unk + (df[ , paste0("sev_", i)] == 9 & df[ , paste0("issbr_", i)] == 9)
       }
+      # why do we care about unk_unk
 
-      # Increment value in the temporary variable unk_unk if severity equals 9
-      # and ISS body region equals 9.??? #
-      #  replace unk_unk = unk_unk + 1 if `sev' == 9 & `issbr' == 9
-      for(i in dx_nums){
-            df$unk_unk <- df$unk_unk + (df[ , paste0("sev_", i)] == 9 & df[ , paste0("issbr_", i)] == 9)
-      }
 
       #----------------------------------------------------#
       # Create variables for maximum AIS/ISS body region.  #
@@ -131,9 +235,11 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       for(i in 1:6){
             # Get severity columns and multiply by 1 if they are for body region i and 0 otherwise
             # This uses element-wise multiplication of matricies
+            #        all severity columns as a matrix      *    Indicator matrix of body region columns (entries 1 or 0)
+            # df[ , grepl("sev_|issbr_", names(df)), drop=F]
             temp <- df[ , grepl("sev_", names(df)), drop=F] * (1*(df[ , grepl("issbr_", names(df))] == i))
 
-            class(temp)
+            # class(temp) # data.frame
             # convert all zeros to NA. zeros represent severity values not associated with body region i
             # temp <- data.frame(t(apply(temp, 1, function(x) ifelse(x==0, NA, x))))
 
@@ -179,7 +285,6 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       # if there is at least one positive maxbr_i that is not 9 then we need to exclude the 9s
       df$maxais <- apply(df, 1, function(row){
             row <- row[grepl("mxaisbr", names(row))]
-            # print(row)
             # if the max excluding 9 is zero then include 9 so that if there is a 9 the max will be 9
             if(all(is.na(row))){
                   maxais <- as.numeric(NA)
@@ -263,17 +368,23 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       #create e code columns
       df[ , ecode_colnames] <- NA
 
-      # for each row extract the first 4 ecodes and add them to the ecode columns
+      # for each row extract the first 4 ecodes and add them to the e-code columns
+      # icd10 e-codes do not start with E. We need to get a list of all ecodes
+      ecodes <- etab_s1$dx
       df[ , ecode_colnames] <- t(apply(df, 1, function(row){
-          # get all e codes
-          (E_codes <- grep("^E", row[dx_colnames], value = T))
-          # take first 4 e codes that are not place e codes (start with E849)
-          E_codes[!grepl("^E849", E_codes)][1:4]
-      }))
+          # get all e codes, need to strip decimal
+            ecode_indicators <- as.character(unlist(row)) %in% ecodes
+            row_ecodes <- row[ecode_indicators]
 
+          # (E_codes <- grep("^E", row[dx_colnames], value = T))
+          # take first 4 e codes that are not place e codes (start with E849)
+            row_ecodes[1:4]
+            # E_codes[!grepl("^E849", E_codes)][1:4]
+      }))
+# i=2
       # loop through e codes and add associated variables from e code table
       for(i in 1:4){
-          col_name <- paste("ecode_",i,sep="")
+          col_name <- paste("ecode_", i, sep="")
 
           # subset dataframe: pull just the diagnosis code column of interest
           df_ss <- df[,col_name, drop=F]
@@ -311,14 +422,18 @@ trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolutio
       df[which(df$mechmaj1 %in% c(2, 5, 6, 7, 8, 9, 13)), "bluntpen"] <- "B"
       df[which(df$mechmaj1 %in% c(0, 4)), "bluntpen"] <- "P"
 
-      # #why are we only considering the first ecode mechmaj here? convenience. arbitrary decision.
-      # - orignal code below
+      # Why are we only considering the first ecode mechmaj here? convenience.
+      # It is a somewhat arbitrary decision. However it is unlikely that there would be more than 1 mechanism of injury
+      # - orignal STATA code below
       # replace bluntpen = "B" if mechmaj1 == 2 | mechmaj1 == 5 | mechmaj1 == 6 | mechmaj1 == 7 | mechmaj1 == 8 |#
       # # mechmaj1 == 9 | mechmaj1 == 13
       # replace bluntpen = "P" if mechmaj1 == 0 | mechmaj1 == 4
 
       # set rownames
       rownames(df) <- 1:nrow(df)
+
+      # drop unk_unk . no sure why we need this variable. can we ditch it?
+      df <- subset(df, select = -unk_unk)
 
       #return dataframe
       df
