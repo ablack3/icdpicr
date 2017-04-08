@@ -1,0 +1,1088 @@
+"dx","mechmaj","mechmin","intent","mech_min"
+"U010","Other specified, classifiable",NA,"Assault",NA
+"U011","Transport, other",NA,"Assault",NA
+"U012","Other specified, classifiable",NA,"Assault",NA
+"U013","Fire/burn",NA,"Assault",NA
+"U014","Firearm",NA,"Assault",NA
+"U015","Other specified, classifiable",NA,"Assault",NA
+"U016","Poisoning",NA,"Assault",NA
+"U017","Poisoning",NA,"Assault",NA
+"U018","Other specified, not elsewhere classifiable",NA,"Assault",NA
+"U019","Unspecified",NA,"Assault",NA
+"U02","Other specified, not elsewhere classifiable",NA,"Assault",NA
+"U030","Other specified, classifiable",NA,"Self-inflicted",NA
+"U039","Unspecified",NA,"Self-inflicted",NA
+"V01","Pedestrian, other",NA,"Unintentional",NA
+"V020","Pedestrian, other",NA,"Unintentional",NA
+"V021","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V029","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V030","Pedestrian, other",NA,"Unintentional",NA
+"V031","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V039","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V040","Pedestrian, other",NA,"Unintentional",NA
+"V041","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V049","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V05","Pedestrian, other",NA,"Unintentional",NA
+"V06","Pedestrian, other",NA,"Unintentional",NA
+"V090","Pedestrian, other",NA,"Unintentional",NA
+"V091","Pedestrian, other",NA,"Unintentional",NA
+"V092","Motor vehicle traffic",3,"Unintentional","Pedestrian"
+"V093","Pedestrian, other",NA,"Unintentional",NA
+"V099","Pedestrian, other",NA,"Unintentional",NA
+"V10","Pedal cyclist, other",NA,"Unintentional",NA
+"V11","Pedal cyclist, other",NA,"Unintentional",NA
+"V120","Pedal cyclist, other",NA,"Unintentional",NA
+"V121","Pedal cyclist, other",NA,"Unintentional",NA
+"V122","Pedal cyclist, other",NA,"Unintentional",NA
+"V123","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V124","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V125","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V126","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V127","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V128","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V129","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V130","Pedal cyclist, other",NA,"Unintentional",NA
+"V131","Pedal cyclist, other",NA,"Unintentional",NA
+"V132","Pedal cyclist, other",NA,"Unintentional",NA
+"V133","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V134","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V135","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V136","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V137","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V138","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V139","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V140","Pedal cyclist, other",NA,"Unintentional",NA
+"V141","Pedal cyclist, other",NA,"Unintentional",NA
+"V142","Pedal cyclist, other",NA,"Unintentional",NA
+"V143","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V144","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V145","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V146","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V147","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V148","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V149","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V15","Pedal cyclist, other",NA,"Unintentional",NA
+"V16","Pedal cyclist, other",NA,"Unintentional",NA
+"V17","Pedal cyclist, other",NA,"Unintentional",NA
+"V18","Pedal cyclist, other",NA,"Unintentional",NA
+"V190","Pedal cyclist, other",NA,"Unintentional",NA
+"V191","Pedal cyclist, other",NA,"Unintentional",NA
+"V192","Pedal cyclist, other",NA,"Unintentional",NA
+"V193","Pedal cyclist, other",NA,"Unintentional",NA
+"V194","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V195","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V196","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
+"V198","Pedal cyclist, other",NA,"Unintentional",NA
+"V199","Pedal cyclist, other",NA,"Unintentional",NA
+"V200","Transport, other",NA,"Unintentional",NA
+"V201","Transport, other",NA,"Unintentional",NA
+"V202","Transport, other",NA,"Unintentional",NA
+"V203","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V204","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V205","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V206","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V207","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V208","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V209","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V210","Transport, other",NA,"Unintentional",NA
+"V211","Transport, other",NA,"Unintentional",NA
+"V212","Transport, other",NA,"Unintentional",NA
+"V213","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V214","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V215","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V216","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V217","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V218","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V219","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V220","Transport, other",NA,"Unintentional",NA
+"V221","Transport, other",NA,"Unintentional",NA
+"V222","Transport, other",NA,"Unintentional",NA
+"V223","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V224","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V225","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V226","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V227","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V228","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V229","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V230","Transport, other",NA,"Unintentional",NA
+"V231","Transport, other",NA,"Unintentional",NA
+"V232","Transport, other",NA,"Unintentional",NA
+"V233","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V234","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V235","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V236","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V237","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V238","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V239","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V240","Transport, other",NA,"Unintentional",NA
+"V241","Transport, other",NA,"Unintentional",NA
+"V242","Transport, other",NA,"Unintentional",NA
+"V243","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V244","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V245","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V246","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V247","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V248","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V249","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V250","Transport, other",NA,"Unintentional",NA
+"V251","Transport, other",NA,"Unintentional",NA
+"V252","Transport, other",NA,"Unintentional",NA
+"V253","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V254","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V255","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V256","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V257","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V258","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V259","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V260","Transport, other",NA,"Unintentional",NA
+"V261","Transport, other",NA,"Unintentional",NA
+"V262","Transport, other",NA,"Unintentional",NA
+"V263","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V264","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V265","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V266","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V267","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V268","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V269","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V270","Transport, other",NA,"Unintentional",NA
+"V271","Transport, other",NA,"Unintentional",NA
+"V272","Transport, other",NA,"Unintentional",NA
+"V273","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V274","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V275","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V276","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V277","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V278","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V279","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V280","Transport, other",NA,"Unintentional",NA
+"V281","Transport, other",NA,"Unintentional",NA
+"V282","Transport, other",NA,"Unintentional",NA
+"V283","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V284","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V285","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V286","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V287","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V288","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V289","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V290","Transport, other",NA,"Unintentional",NA
+"V291","Transport, other",NA,"Unintentional",NA
+"V292","Transport, other",NA,"Unintentional",NA
+"V293","Transport, other",NA,"Unintentional",NA
+"V294","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V295","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V296","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V297","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V298","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V299","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
+"V300","Transport, other",NA,"Unintentional",NA
+"V301","Transport, other",NA,"Unintentional",NA
+"V302","Transport, other",NA,"Unintentional",NA
+"V303","Transport, other",NA,"Unintentional",NA
+"V304","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V305","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V306","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V307","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V308","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V309","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V310","Transport, other",NA,"Unintentional",NA
+"V311","Transport, other",NA,"Unintentional",NA
+"V312","Transport, other",NA,"Unintentional",NA
+"V313","Transport, other",NA,"Unintentional",NA
+"V314","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V315","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V316","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V317","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V318","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V319","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V320","Transport, other",NA,"Unintentional",NA
+"V321","Transport, other",NA,"Unintentional",NA
+"V322","Transport, other",NA,"Unintentional",NA
+"V323","Transport, other",NA,"Unintentional",NA
+"V324","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V325","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V326","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V327","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V328","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V329","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V330","Transport, other",NA,"Unintentional",NA
+"V331","Transport, other",NA,"Unintentional",NA
+"V332","Transport, other",NA,"Unintentional",NA
+"V333","Transport, other",NA,"Unintentional",NA
+"V334","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V335","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V336","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V337","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V338","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V339","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V340","Transport, other",NA,"Unintentional",NA
+"V341","Transport, other",NA,"Unintentional",NA
+"V342","Transport, other",NA,"Unintentional",NA
+"V343","Transport, other",NA,"Unintentional",NA
+"V344","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V345","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V346","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V347","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V348","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V349","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V350","Transport, other",NA,"Unintentional",NA
+"V351","Transport, other",NA,"Unintentional",NA
+"V352","Transport, other",NA,"Unintentional",NA
+"V353","Transport, other",NA,"Unintentional",NA
+"V354","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V355","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V356","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V357","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V358","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V359","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V360","Transport, other",NA,"Unintentional",NA
+"V361","Transport, other",NA,"Unintentional",NA
+"V362","Transport, other",NA,"Unintentional",NA
+"V363","Transport, other",NA,"Unintentional",NA
+"V364","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V365","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V366","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V367","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V368","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V369","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V370","Transport, other",NA,"Unintentional",NA
+"V371","Transport, other",NA,"Unintentional",NA
+"V372","Transport, other",NA,"Unintentional",NA
+"V373","Transport, other",NA,"Unintentional",NA
+"V374","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V375","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V376","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V377","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V378","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V379","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V380","Transport, other",NA,"Unintentional",NA
+"V381","Transport, other",NA,"Unintentional",NA
+"V382","Transport, other",NA,"Unintentional",NA
+"V383","Transport, other",NA,"Unintentional",NA
+"V384","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V385","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V386","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V387","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V388","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V389","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V390","Transport, other",NA,"Unintentional",NA
+"V391","Transport, other",NA,"Unintentional",NA
+"V392","Transport, other",NA,"Unintentional",NA
+"V393","Transport, other",NA,"Unintentional",NA
+"V394","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V395","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V396","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V397","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V398","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V399","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V400","Transport, other",NA,"Unintentional",NA
+"V401","Transport, other",NA,"Unintentional",NA
+"V402","Transport, other",NA,"Unintentional",NA
+"V403","Transport, other",NA,"Unintentional",NA
+"V404","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V405","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V406","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V407","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V408","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V409","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V410","Transport, other",NA,"Unintentional",NA
+"V411","Transport, other",NA,"Unintentional",NA
+"V412","Transport, other",NA,"Unintentional",NA
+"V413","Transport, other",NA,"Unintentional",NA
+"V414","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V415","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V416","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V417","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V418","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V419","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V420","Transport, other",NA,"Unintentional",NA
+"V421","Transport, other",NA,"Unintentional",NA
+"V422","Transport, other",NA,"Unintentional",NA
+"V423","Transport, other",NA,"Unintentional",NA
+"V424","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V425","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V426","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V427","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V428","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V429","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V430","Transport, other",NA,"Unintentional",NA
+"V431","Transport, other",NA,"Unintentional",NA
+"V432","Transport, other",NA,"Unintentional",NA
+"V433","Transport, other",NA,"Unintentional",NA
+"V434","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V435","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V436","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V437","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V438","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V439","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V440","Transport, other",NA,"Unintentional",NA
+"V441","Transport, other",NA,"Unintentional",NA
+"V442","Transport, other",NA,"Unintentional",NA
+"V443","Transport, other",NA,"Unintentional",NA
+"V444","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V445","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V446","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V447","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V448","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V449","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V450","Transport, other",NA,"Unintentional",NA
+"V451","Transport, other",NA,"Unintentional",NA
+"V452","Transport, other",NA,"Unintentional",NA
+"V453","Transport, other",NA,"Unintentional",NA
+"V454","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V455","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V456","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V457","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V458","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V459","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V460","Transport, other",NA,"Unintentional",NA
+"V461","Transport, other",NA,"Unintentional",NA
+"V462","Transport, other",NA,"Unintentional",NA
+"V463","Transport, other",NA,"Unintentional",NA
+"V464","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V465","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V466","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V467","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V468","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V469","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V470","Transport, other",NA,"Unintentional",NA
+"V471","Transport, other",NA,"Unintentional",NA
+"V472","Transport, other",NA,"Unintentional",NA
+"V473","Transport, other",NA,"Unintentional",NA
+"V474","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V475","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V476","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V477","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V478","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V479","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V480","Transport, other",NA,"Unintentional",NA
+"V481","Transport, other",NA,"Unintentional",NA
+"V482","Transport, other",NA,"Unintentional",NA
+"V483","Transport, other",NA,"Unintentional",NA
+"V484","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V485","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V486","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V487","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V488","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V489","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V490","Transport, other",NA,"Unintentional",NA
+"V491","Transport, other",NA,"Unintentional",NA
+"V492","Transport, other",NA,"Unintentional",NA
+"V493","Transport, other",NA,"Unintentional",NA
+"V494","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V495","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V496","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V497","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V498","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V499","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V500","Transport, other",NA,"Unintentional",NA
+"V501","Transport, other",NA,"Unintentional",NA
+"V502","Transport, other",NA,"Unintentional",NA
+"V503","Transport, other",NA,"Unintentional",NA
+"V504","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V505","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V506","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V507","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V508","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V509","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V510","Transport, other",NA,"Unintentional",NA
+"V511","Transport, other",NA,"Unintentional",NA
+"V512","Transport, other",NA,"Unintentional",NA
+"V513","Transport, other",NA,"Unintentional",NA
+"V514","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V515","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V516","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V517","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V518","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V519","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V520","Transport, other",NA,"Unintentional",NA
+"V521","Transport, other",NA,"Unintentional",NA
+"V522","Transport, other",NA,"Unintentional",NA
+"V523","Transport, other",NA,"Unintentional",NA
+"V524","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V525","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V526","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V527","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V528","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V529","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V530","Transport, other",NA,"Unintentional",NA
+"V531","Transport, other",NA,"Unintentional",NA
+"V532","Transport, other",NA,"Unintentional",NA
+"V533","Transport, other",NA,"Unintentional",NA
+"V534","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V535","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V536","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V537","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V538","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V539","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V540","Transport, other",NA,"Unintentional",NA
+"V541","Transport, other",NA,"Unintentional",NA
+"V542","Transport, other",NA,"Unintentional",NA
+"V543","Transport, other",NA,"Unintentional",NA
+"V544","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V545","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V546","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V547","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V548","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V549","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V550","Transport, other",NA,"Unintentional",NA
+"V551","Transport, other",NA,"Unintentional",NA
+"V552","Transport, other",NA,"Unintentional",NA
+"V553","Transport, other",NA,"Unintentional",NA
+"V554","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V555","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V556","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V557","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V558","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V559","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V560","Transport, other",NA,"Unintentional",NA
+"V561","Transport, other",NA,"Unintentional",NA
+"V562","Transport, other",NA,"Unintentional",NA
+"V563","Transport, other",NA,"Unintentional",NA
+"V564","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V565","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V566","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V567","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V568","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V569","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V570","Transport, other",NA,"Unintentional",NA
+"V571","Transport, other",NA,"Unintentional",NA
+"V572","Transport, other",NA,"Unintentional",NA
+"V573","Transport, other",NA,"Unintentional",NA
+"V574","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V575","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V576","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V577","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V578","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V579","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V580","Transport, other",NA,"Unintentional",NA
+"V581","Transport, other",NA,"Unintentional",NA
+"V582","Transport, other",NA,"Unintentional",NA
+"V583","Transport, other",NA,"Unintentional",NA
+"V584","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V585","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V586","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V587","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V588","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V589","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V590","Transport, other",NA,"Unintentional",NA
+"V591","Transport, other",NA,"Unintentional",NA
+"V592","Transport, other",NA,"Unintentional",NA
+"V593","Transport, other",NA,"Unintentional",NA
+"V594","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V595","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V596","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V597","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V598","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V599","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V600","Transport, other",NA,"Unintentional",NA
+"V601","Transport, other",NA,"Unintentional",NA
+"V602","Transport, other",NA,"Unintentional",NA
+"V603","Transport, other",NA,"Unintentional",NA
+"V604","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V605","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V606","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V607","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V608","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V609","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V610","Transport, other",NA,"Unintentional",NA
+"V611","Transport, other",NA,"Unintentional",NA
+"V612","Transport, other",NA,"Unintentional",NA
+"V613","Transport, other",NA,"Unintentional",NA
+"V614","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V615","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V616","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V617","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V618","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V619","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V620","Transport, other",NA,"Unintentional",NA
+"V621","Transport, other",NA,"Unintentional",NA
+"V622","Transport, other",NA,"Unintentional",NA
+"V623","Transport, other",NA,"Unintentional",NA
+"V624","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V625","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V626","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V627","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V628","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V629","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V630","Transport, other",NA,"Unintentional",NA
+"V631","Transport, other",NA,"Unintentional",NA
+"V632","Transport, other",NA,"Unintentional",NA
+"V633","Transport, other",NA,"Unintentional",NA
+"V634","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V635","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V636","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V637","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V638","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V639","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V640","Transport, other",NA,"Unintentional",NA
+"V641","Transport, other",NA,"Unintentional",NA
+"V642","Transport, other",NA,"Unintentional",NA
+"V643","Transport, other",NA,"Unintentional",NA
+"V644","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V645","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V646","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V647","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V648","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V649","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V650","Transport, other",NA,"Unintentional",NA
+"V651","Transport, other",NA,"Unintentional",NA
+"V652","Transport, other",NA,"Unintentional",NA
+"V653","Transport, other",NA,"Unintentional",NA
+"V654","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V655","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V656","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V657","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V658","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V659","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V660","Transport, other",NA,"Unintentional",NA
+"V661","Transport, other",NA,"Unintentional",NA
+"V662","Transport, other",NA,"Unintentional",NA
+"V663","Transport, other",NA,"Unintentional",NA
+"V664","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V665","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V666","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V667","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V668","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V669","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V670","Transport, other",NA,"Unintentional",NA
+"V671","Transport, other",NA,"Unintentional",NA
+"V672","Transport, other",NA,"Unintentional",NA
+"V673","Transport, other",NA,"Unintentional",NA
+"V674","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V675","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V676","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V677","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V678","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V679","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V680","Transport, other",NA,"Unintentional",NA
+"V681","Transport, other",NA,"Unintentional",NA
+"V682","Transport, other",NA,"Unintentional",NA
+"V683","Transport, other",NA,"Unintentional",NA
+"V684","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V685","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V686","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V687","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V688","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V689","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V690","Transport, other",NA,"Unintentional",NA
+"V691","Transport, other",NA,"Unintentional",NA
+"V692","Transport, other",NA,"Unintentional",NA
+"V693","Transport, other",NA,"Unintentional",NA
+"V694","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V695","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V696","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V697","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V698","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V699","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V700","Transport, other",NA,"Unintentional",NA
+"V701","Transport, other",NA,"Unintentional",NA
+"V702","Transport, other",NA,"Unintentional",NA
+"V703","Transport, other",NA,"Unintentional",NA
+"V704","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V705","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V706","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V707","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V708","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V709","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V710","Transport, other",NA,"Unintentional",NA
+"V711","Transport, other",NA,"Unintentional",NA
+"V712","Transport, other",NA,"Unintentional",NA
+"V713","Transport, other",NA,"Unintentional",NA
+"V714","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V715","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V716","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V717","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V718","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V719","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V720","Transport, other",NA,"Unintentional",NA
+"V721","Transport, other",NA,"Unintentional",NA
+"V722","Transport, other",NA,"Unintentional",NA
+"V723","Transport, other",NA,"Unintentional",NA
+"V724","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V725","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V726","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V727","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V728","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V729","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V730","Transport, other",NA,"Unintentional",NA
+"V731","Transport, other",NA,"Unintentional",NA
+"V732","Transport, other",NA,"Unintentional",NA
+"V733","Transport, other",NA,"Unintentional",NA
+"V734","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V735","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V736","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V737","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V738","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V739","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V740","Transport, other",NA,"Unintentional",NA
+"V741","Transport, other",NA,"Unintentional",NA
+"V742","Transport, other",NA,"Unintentional",NA
+"V743","Transport, other",NA,"Unintentional",NA
+"V744","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V745","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V746","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V747","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V748","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V749","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V750","Transport, other",NA,"Unintentional",NA
+"V751","Transport, other",NA,"Unintentional",NA
+"V752","Transport, other",NA,"Unintentional",NA
+"V753","Transport, other",NA,"Unintentional",NA
+"V754","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V755","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V756","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V757","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V758","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V759","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V760","Transport, other",NA,"Unintentional",NA
+"V761","Transport, other",NA,"Unintentional",NA
+"V762","Transport, other",NA,"Unintentional",NA
+"V763","Transport, other",NA,"Unintentional",NA
+"V764","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V765","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V766","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V767","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V768","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V769","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V770","Transport, other",NA,"Unintentional",NA
+"V771","Transport, other",NA,"Unintentional",NA
+"V772","Transport, other",NA,"Unintentional",NA
+"V773","Transport, other",NA,"Unintentional",NA
+"V774","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V775","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V776","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V777","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V778","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V779","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V780","Transport, other",NA,"Unintentional",NA
+"V781","Transport, other",NA,"Unintentional",NA
+"V782","Transport, other",NA,"Unintentional",NA
+"V783","Transport, other",NA,"Unintentional",NA
+"V784","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V785","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V786","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V787","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V788","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V789","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V790","Transport, other",NA,"Unintentional",NA
+"V791","Transport, other",NA,"Unintentional",NA
+"V792","Transport, other",NA,"Unintentional",NA
+"V793","Transport, other",NA,"Unintentional",NA
+"V794","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V795","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V796","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V797","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V798","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V799","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V800","Transport, other",NA,"Unintentional",NA
+"V801","Transport, other",NA,"Unintentional",NA
+"V802","Transport, other",NA,"Unintentional",NA
+"V803","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V804","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V805","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V806","Transport, other",NA,"Unintentional",NA
+"V807","Transport, other",NA,"Unintentional",NA
+"V808","Transport, other",NA,"Unintentional",NA
+"V809","Transport, other",NA,"Unintentional",NA
+"V810","Transport, other",NA,"Unintentional",NA
+"V811","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V812","Transport, other",NA,"Unintentional",NA
+"V813","Transport, other",NA,"Unintentional",NA
+"V814","Transport, other",NA,"Unintentional",NA
+"V815","Transport, other",NA,"Unintentional",NA
+"V816","Transport, other",NA,"Unintentional",NA
+"V817","Transport, other",NA,"Unintentional",NA
+"V818","Transport, other",NA,"Unintentional",NA
+"V819","Transport, other",NA,"Unintentional",NA
+"V820","Transport, other",NA,"Unintentional",NA
+"V821","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V822","Transport, other",NA,"Unintentional",NA
+"V823","Transport, other",NA,"Unintentional",NA
+"V824","Transport, other",NA,"Unintentional",NA
+"V825","Transport, other",NA,"Unintentional",NA
+"V826","Transport, other",NA,"Unintentional",NA
+"V827","Transport, other",NA,"Unintentional",NA
+"V828","Transport, other",NA,"Unintentional",NA
+"V829","Transport, other",NA,"Unintentional",NA
+"V830","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V831","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V832","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V833","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V834","Transport, other",NA,"Unintentional",NA
+"V835","Transport, other",NA,"Unintentional",NA
+"V836","Transport, other",NA,"Unintentional",NA
+"V837","Transport, other",NA,"Unintentional",NA
+"V838","Transport, other",NA,"Unintentional",NA
+"V839","Transport, other",NA,"Unintentional",NA
+"V840","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V841","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V842","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V843","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V844","Transport, other",NA,"Unintentional",NA
+"V845","Transport, other",NA,"Unintentional",NA
+"V846","Transport, other",NA,"Unintentional",NA
+"V847","Transport, other",NA,"Unintentional",NA
+"V848","Transport, other",NA,"Unintentional",NA
+"V849","Transport, other",NA,"Unintentional",NA
+"V850","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V851","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V852","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V853","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V854","Transport, other",NA,"Unintentional",NA
+"V855","Transport, other",NA,"Unintentional",NA
+"V856","Transport, other",NA,"Unintentional",NA
+"V857","Transport, other",NA,"Unintentional",NA
+"V858","Transport, other",NA,"Unintentional",NA
+"V859","Transport, other",NA,"Unintentional",NA
+"V860","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V861","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V862","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V863","Motor vehicle traffic",0,"Unintentional","Occupant"
+"V864","Transport, other",NA,"Unintentional",NA
+"V865","Transport, other",NA,"Unintentional",NA
+"V866","Transport, other",NA,"Unintentional",NA
+"V867","Transport, other",NA,"Unintentional",NA
+"V868","Transport, other",NA,"Unintentional",NA
+"V869","Transport, other",NA,"Unintentional",NA
+"V870","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V871","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V872","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V873","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V874","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V875","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V876","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V877","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V878","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V879","Transport, other",NA,"Unintentional",NA
+"V880","Transport, other",NA,"Unintentional",NA
+"V881","Transport, other",NA,"Unintentional",NA
+"V882","Transport, other",NA,"Unintentional",NA
+"V883","Transport, other",NA,"Unintentional",NA
+"V884","Transport, other",NA,"Unintentional",NA
+"V885","Transport, other",NA,"Unintentional",NA
+"V886","Transport, other",NA,"Unintentional",NA
+"V887","Transport, other",NA,"Unintentional",NA
+"V888","Transport, other",NA,"Unintentional",NA
+"V889","Transport, other",NA,"Unintentional",NA
+"V890","Transport, other",NA,"Unintentional",NA
+"V891","Transport, other",NA,"Unintentional",NA
+"V892","Motor vehicle traffic",4,"Unintentional","Unspecified"
+"V893","Transport, other",NA,"Unintentional",NA
+"V899","Transport, other",NA,"Unintentional",NA
+"V90","Transport, other",NA,"Unintentional",NA
+"V91","Transport, other",NA,"Unintentional",NA
+"V92","Transport, other",NA,"Unintentional",NA
+"V93","Transport, other",NA,"Unintentional",NA
+"V94","Transport, other",NA,"Unintentional",NA
+"V95","Transport, other",NA,"Unintentional",NA
+"V96","Transport, other",NA,"Unintentional",NA
+"V97","Transport, other",NA,"Unintentional",NA
+"V98","Transport, other",NA,"Unintentional",NA
+"V99","Transport, other",NA,"Unintentional",NA
+"W00","Fall",NA,"Unintentional",NA
+"W01","Fall",NA,"Unintentional",NA
+"W02","Fall",NA,"Unintentional",NA
+"W03","Fall",NA,"Unintentional",NA
+"W04","Fall",NA,"Unintentional",NA
+"W05","Fall",NA,"Unintentional",NA
+"W06","Fall",NA,"Unintentional",NA
+"W07","Fall",NA,"Unintentional",NA
+"W08","Fall",NA,"Unintentional",NA
+"W09","Fall",NA,"Unintentional",NA
+"W10","Fall",NA,"Unintentional",NA
+"W11","Fall",NA,"Unintentional",NA
+"W12","Fall",NA,"Unintentional",NA
+"W13","Fall",NA,"Unintentional",NA
+"W14","Fall",NA,"Unintentional",NA
+"W15","Fall",NA,"Unintentional",NA
+"W16","Fall",NA,"Unintentional",NA
+"W17","Fall",NA,"Unintentional",NA
+"W18","Fall",NA,"Unintentional",NA
+"W19","Fall",NA,"Unintentional",NA
+"W20","Struck by, against",NA,"Unintentional",NA
+"W21","Struck by, against",NA,"Unintentional",NA
+"W22","Struck by, against",NA,"Unintentional",NA
+"W23","Other specified, classifiable",NA,"Unintentional",NA
+"W24","Machinery",NA,"Unintentional",NA
+"W25","Cut/pierce",NA,"Unintentional",NA
+"W26","Cut/pierce",NA,"Unintentional",NA
+"W27","Cut/pierce",NA,"Unintentional",NA
+"W28","Cut/pierce",NA,"Unintentional",NA
+"W29","Cut/pierce",NA,"Unintentional",NA
+"W30","Machinery",NA,"Unintentional",NA
+"W31","Machinery",NA,"Unintentional",NA
+"W32","Firearm",NA,"Unintentional",NA
+"W33","Firearm",NA,"Unintentional",NA
+"W34","Firearm",NA,"Unintentional",NA
+"W35","Other specified, classifiable",NA,"Unintentional",NA
+"W36","Other specified, classifiable",NA,"Unintentional",NA
+"W37","Other specified, classifiable",NA,"Unintentional",NA
+"W38","Other specified, classifiable",NA,"Unintentional",NA
+"W39","Other specified, classifiable",NA,"Unintentional",NA
+"W40","Other specified, classifiable",NA,"Unintentional",NA
+"W41","Other specified, classifiable",NA,"Unintentional",NA
+"W42","Natural/environmental",NA,"Unintentional",NA
+"W43","Natural/environmental",NA,"Unintentional",NA
+"W44","Other specified, classifiable",NA,"Unintentional",NA
+"W45","Cut/pierce",NA,"Unintentional",NA
+"W49","Other specified, classifiable",NA,"Unintentional",NA
+"W50","Struck by, against",NA,"Unintentional",NA
+"W51","Struck by, against",NA,"Unintentional",NA
+"W52","Struck by, against",NA,"Unintentional",NA
+"W53","Natural/environmental",NA,"Unintentional",NA
+"W54","Natural/environmental",NA,"Unintentional",NA
+"W55","Natural/environmental",NA,"Unintentional",NA
+"W56","Natural/environmental",NA,"Unintentional",NA
+"W57","Natural/environmental",NA,"Unintentional",NA
+"W58","Natural/environmental",NA,"Unintentional",NA
+"W59","Natural/environmental",NA,"Unintentional",NA
+"W60","Natural/environmental",NA,"Unintentional",NA
+"W61","Natural/environmental",NA,"Unintentional",NA
+"W62","Natural/environmental",NA,"Unintentional",NA
+"W63","Natural/environmental",NA,"Unintentional",NA
+"W64","Natural/environmental",NA,"Unintentional",NA
+"W65","Drowning/submersion",NA,"Unintentional",NA
+"W66","Drowning/submersion",NA,"Unintentional",NA
+"W67","Drowning/submersion",NA,"Unintentional",NA
+"W68","Drowning/submersion",NA,"Unintentional",NA
+"W69","Drowning/submersion",NA,"Unintentional",NA
+"W70","Drowning/submersion",NA,"Unintentional",NA
+"W71","Drowning/submersion",NA,"Unintentional",NA
+"W72","Drowning/submersion",NA,"Unintentional",NA
+"W73","Drowning/submersion",NA,"Unintentional",NA
+"W74","Drowning/submersion",NA,"Unintentional",NA
+"W75","Suffocation",NA,"Unintentional",NA
+"W76","Suffocation",NA,"Unintentional",NA
+"W77","Suffocation",NA,"Unintentional",NA
+"W78","Suffocation",NA,"Unintentional",NA
+"W79","Suffocation",NA,"Unintentional",NA
+"W80","Suffocation",NA,"Unintentional",NA
+"W81","Suffocation",NA,"Unintentional",NA
+"W82","Suffocation",NA,"Unintentional",NA
+"W83","Suffocation",NA,"Unintentional",NA
+"W84","Suffocation",NA,"Unintentional",NA
+"W85","Other specified, classifiable",NA,"Unintentional",NA
+"W86","Other specified, classifiable",NA,"Unintentional",NA
+"W87","Other specified, classifiable",NA,"Unintentional",NA
+"W88","Other specified, classifiable",NA,"Unintentional",NA
+"W89","Other specified, classifiable",NA,"Unintentional",NA
+"W90","Other specified, classifiable",NA,"Unintentional",NA
+"W91","Other specified, classifiable",NA,"Unintentional",NA
+"W92","Natural/environmental",NA,"Unintentional",NA
+"W93","Natural/environmental",NA,"Unintentional",NA
+"W94","Natural/environmental",NA,"Unintentional",NA
+"W95","Natural/environmental",NA,"Unintentional",NA
+"W96","Natural/environmental",NA,"Unintentional",NA
+"W97","Natural/environmental",NA,"Unintentional",NA
+"W98","Natural/environmental",NA,"Unintentional",NA
+"W99","Natural/environmental",NA,"Unintentional",NA
+"X00","Fire/burn",0,"Unintentional","Fire/flame"
+"X01","Fire/burn",0,"Unintentional","Fire/flame"
+"X02","Fire/burn",0,"Unintentional","Fire/flame"
+"X03","Fire/burn",0,"Unintentional","Fire/flame"
+"X04","Fire/burn",0,"Unintentional","Fire/flame"
+"X05","Fire/burn",0,"Unintentional","Fire/flame"
+"X06","Fire/burn",0,"Unintentional","Fire/flame"
+"X07","Fire/burn",0,"Unintentional","Fire/flame"
+"X08","Fire/burn",0,"Unintentional","Fire/flame"
+"X09","Fire/burn",0,"Unintentional","Fire/flame"
+"X10","Fire/burn",1,"Unintentional","Hot object/substance"
+"X11","Fire/burn",1,"Unintentional","Hot object/substance"
+"X12","Fire/burn",1,"Unintentional","Hot object/substance"
+"X13","Fire/burn",1,"Unintentional","Hot object/substance"
+"X14","Fire/burn",1,"Unintentional","Hot object/substance"
+"X15","Fire/burn",1,"Unintentional","Hot object/substance"
+"X16","Fire/burn",1,"Unintentional","Hot object/substance"
+"X17","Fire/burn",1,"Unintentional","Hot object/substance"
+"X18","Fire/burn",1,"Unintentional","Hot object/substance"
+"X19","Fire/burn",1,"Unintentional","Hot object/substance"
+"X20","Natural/environmental",NA,"Unintentional",NA
+"X21","Natural/environmental",NA,"Unintentional",NA
+"X22","Natural/environmental",NA,"Unintentional",NA
+"X23","Natural/environmental",NA,"Unintentional",NA
+"X24","Natural/environmental",NA,"Unintentional",NA
+"X25","Natural/environmental",NA,"Unintentional",NA
+"X26","Natural/environmental",NA,"Unintentional",NA
+"X27","Natural/environmental",NA,"Unintentional",NA
+"X28","Natural/environmental",NA,"Unintentional",NA
+"X29","Natural/environmental",NA,"Unintentional",NA
+"X30","Natural/environmental",NA,"Unintentional",NA
+"X31","Natural/environmental",NA,"Unintentional",NA
+"X32","Natural/environmental",NA,"Unintentional",NA
+"X33","Natural/environmental",NA,"Unintentional",NA
+"X34","Natural/environmental",NA,"Unintentional",NA
+"X35","Natural/environmental",NA,"Unintentional",NA
+"X36","Natural/environmental",NA,"Unintentional",NA
+"X37","Natural/environmental",NA,"Unintentional",NA
+"X38","Natural/environmental",NA,"Unintentional",NA
+"X39","Natural/environmental",NA,"Unintentional",NA
+"X40","Poisoning",NA,"Unintentional",NA
+"X41","Poisoning",NA,"Unintentional",NA
+"X42","Poisoning",NA,"Unintentional",NA
+"X43","Poisoning",NA,"Unintentional",NA
+"X44","Poisoning",NA,"Unintentional",NA
+"X45","Poisoning",NA,"Unintentional",NA
+"X46","Poisoning",NA,"Unintentional",NA
+"X47","Poisoning",NA,"Unintentional",NA
+"X48","Poisoning",NA,"Unintentional",NA
+"X49","Poisoning",NA,"Unintentional",NA
+"X50","Overexertion",NA,"Unintentional",NA
+"X51","Natural/environmental",NA,"Unintentional",NA
+"X52","Natural/environmental",NA,"Unintentional",NA
+"X53","Natural/environmental",NA,"Unintentional",NA
+"X54","Natural/environmental",NA,"Unintentional",NA
+"X55","Natural/environmental",NA,"Unintentional",NA
+"X56","Natural/environmental",NA,"Unintentional",NA
+"X57","Natural/environmental",NA,"Unintentional",NA
+"X58","Other specified, not elsewhere classifiable",NA,"Unintentional",NA
+"X59","Unspecified",NA,"Unintentional",NA
+"X60","Poisoning",NA,"Self-inflicted",NA
+"X61","Poisoning",NA,"Self-inflicted",NA
+"X62","Poisoning",NA,"Self-inflicted",NA
+"X63","Poisoning",NA,"Self-inflicted",NA
+"X64","Poisoning",NA,"Self-inflicted",NA
+"X65","Poisoning",NA,"Self-inflicted",NA
+"X66","Poisoning",NA,"Self-inflicted",NA
+"X67","Poisoning",NA,"Self-inflicted",NA
+"X68","Poisoning",NA,"Self-inflicted",NA
+"X69","Poisoning",NA,"Self-inflicted",NA
+"X70","Suffocation",NA,"Self-inflicted",NA
+"X71","Drowning/submersion",NA,"Self-inflicted",NA
+"X72","Firearm",NA,"Self-inflicted",NA
+"X73","Firearm",NA,"Self-inflicted",NA
+"X74","Firearm",NA,"Self-inflicted",NA
+"X75","Other specified, classifiable",NA,"Self-inflicted",NA
+"X76","Fire/burn",0,"Self-inflicted","Fire/flame"
+"X77","Fire/burn",1,"Self-inflicted","Hot object/substance"
+"X78","Cut/pierce",NA,"Self-inflicted",NA
+"X79","Struck by, against",NA,"Self-inflicted",NA
+"X80","Fall",NA,"Self-inflicted",NA
+"X81","Other specified, classifiable",NA,"Self-inflicted",NA
+"X82","Transport, other",NA,"Self-inflicted",NA
+"X83","Other specified, not elsewhere classifiable",NA,"Self-inflicted",NA
+"X84","Unspecified",NA,"Self-inflicted",NA
+"X85","Poisoning",NA,"Assault",NA
+"X86","Poisoning",NA,"Assault",NA
+"X87","Poisoning",NA,"Assault",NA
+"X88","Poisoning",NA,"Assault",NA
+"X89","Poisoning",NA,"Assault",NA
+"X90","Poisoning",NA,"Assault",NA
+"X91","Suffocation",NA,"Assault",NA
+"X92","Drowning/submersion",NA,"Assault",NA
+"X93","Firearm",NA,"Assault",NA
+"X94","Firearm",NA,"Assault",NA
+"X95","Firearm",NA,"Assault",NA
+"X96","Other specified, classifiable",NA,"Assault",NA
+"X97","Fire/burn",0,"Assault","Fire/flame"
+"X98","Fire/burn",1,"Assault","Hot object/substance"
+"X99","Cut/pierce",NA,"Assault",NA
+"Y00","Struck by, against",NA,"Assault",NA
+"Y01","Fall",NA,"Assault",NA
+"Y02","Other specified, classifiable",NA,"Assault",NA
+"Y03","Transport, other",NA,"Assault",NA
+"Y04","Struck by, against",NA,"Assault",NA
+"Y05","Other specified, classifiable",NA,"Assault",NA
+"Y06","Other specified, classifiable",NA,"Assault",NA
+"Y07","Other specified, classifiable",NA,"Assault",NA
+"Y08","Other specified, not elsewhere classifiable",NA,"Assault",NA
+"Y09","Unspecified",NA,"Assault",NA
+"Y10","Poisoning",NA,"Undetermined",NA
+"Y11","Poisoning",NA,"Undetermined",NA
+"Y12","Poisoning",NA,"Undetermined",NA
+"Y13","Poisoning",NA,"Undetermined",NA
+"Y14","Poisoning",NA,"Undetermined",NA
+"Y15","Poisoning",NA,"Undetermined",NA
+"Y16","Poisoning",NA,"Undetermined",NA
+"Y17","Poisoning",NA,"Undetermined",NA
+"Y18","Poisoning",NA,"Undetermined",NA
+"Y19","Poisoning",NA,"Undetermined",NA
+"Y20","Suffocation",NA,"Undetermined",NA
+"Y21","Drowning/submersion",NA,"Undetermined",NA
+"Y22","Firearm",NA,"Undetermined",NA
+"Y23","Firearm",NA,"Undetermined",NA
+"Y24","Firearm",NA,"Undetermined",NA
+"Y25","Other specified, classifiable",NA,"Undetermined",NA
+"Y26","Fire/burn",0,"Undetermined","Fire/flame"
+"Y27","Fire/burn",1,"Undetermined","Hot object/substance"
+"Y28","Cut/pierce",NA,"Undetermined",NA
+"Y29","Struck by, against",NA,"Undetermined",NA
+"Y30","Fall",NA,"Undetermined",NA
+"Y31","Other specified, classifiable",NA,"Undetermined",NA
+"Y32","Transport, other",NA,"Undetermined",NA
+"Y33","Other specified, not elsewhere classifiable",NA,"Undetermined",NA
+"Y34","Unspecified",NA,"Undetermined",NA
+"Y350","Firearm",NA,"Other",NA
+"Y351","Other specified, classifiable",NA,"Other",NA
+"Y352","Poisoning",NA,"Other",NA
+"Y353","Struck by, against",NA,"Other",NA
+"Y354","Cut/pierce",NA,"Other",NA
+"Y355","Other specified, classifiable",NA,"Other",NA
+"Y356","Other specified, not elsewhere classifiable",NA,"Other",NA
+"Y357","Unspecified",NA,"Other",NA
+"Y360","Other specified, classifiable",NA,"Other",NA
+"Y361","Transport, other",NA,"Other",NA
+"Y362","Other specified, classifiable",NA,"Other",NA
+"Y363","Fire/burn",NA,"Other",NA
+"Y364","Other specified, classifiable",NA,"Other",NA
+"Y365","Other specified, classifiable",NA,"Other",NA
+"Y366","Other specified, classifiable",NA,"Other",NA
+"Y367","Other specified, classifiable",NA,"Other",NA
+"Y368","Other specified, classifiable",NA,"Other",NA
+"Y369","Unspecified",NA,"Other",NA
+"Y40","Adverse effects",1,"Unintentional","Drugs"
+"Y41","Adverse effects",1,"Unintentional","Drugs"
+"Y42","Adverse effects",1,"Unintentional","Drugs"
+"Y43","Adverse effects",1,"Unintentional","Drugs"
+"Y44","Adverse effects",1,"Unintentional","Drugs"
+"Y45","Adverse effects",1,"Unintentional","Drugs"
+"Y46","Adverse effects",1,"Unintentional","Drugs"
+"Y47","Adverse effects",1,"Unintentional","Drugs"
+"Y48","Adverse effects",1,"Unintentional","Drugs"
+"Y49","Adverse effects",1,"Unintentional","Drugs"
+"Y50","Adverse effects",1,"Unintentional","Drugs"
+"Y51","Adverse effects",1,"Unintentional","Drugs"
+"Y52","Adverse effects",1,"Unintentional","Drugs"
+"Y53","Adverse effects",1,"Unintentional","Drugs"
+"Y54","Adverse effects",1,"Unintentional","Drugs"
+"Y55","Adverse effects",1,"Unintentional","Drugs"
+"Y56","Adverse effects",1,"Unintentional","Drugs"
+"Y57","Adverse effects",1,"Unintentional","Drugs"
+"Y58","Adverse effects",1,"Unintentional","Drugs"
+"Y59","Adverse effects",1,"Unintentional","Drugs"
+"Y60","Adverse effects",0,"Unintentional","Medical care"
+"Y61","Adverse effects",0,"Unintentional","Medical care"
+"Y62","Adverse effects",0,"Unintentional","Medical care"
+"Y63","Adverse effects",0,"Unintentional","Medical care"
+"Y64","Adverse effects",0,"Unintentional","Medical care"
+"Y65","Adverse effects",0,"Unintentional","Medical care"
+"Y66","Adverse effects",0,"Unintentional","Medical care"
+"Y67","Adverse effects",0,"Unintentional","Medical care"
+"Y68","Adverse effects",0,"Unintentional","Medical care"
+"Y69","Adverse effects",0,"Unintentional","Medical care"
+"Y70","Adverse effects",0,"Unintentional","Medical care"
+"Y71","Adverse effects",0,"Unintentional","Medical care"
+"Y72","Adverse effects",0,"Unintentional","Medical care"
+"Y73","Adverse effects",0,"Unintentional","Medical care"
+"Y74","Adverse effects",0,"Unintentional","Medical care"
+"Y75","Adverse effects",0,"Unintentional","Medical care"
+"Y76","Adverse effects",0,"Unintentional","Medical care"
+"Y77","Adverse effects",0,"Unintentional","Medical care"
+"Y78","Adverse effects",0,"Unintentional","Medical care"
+"Y79","Adverse effects",0,"Unintentional","Medical care"
+"Y80","Adverse effects",0,"Unintentional","Medical care"
+"Y81","Adverse effects",0,"Unintentional","Medical care"
+"Y82","Adverse effects",0,"Unintentional","Medical care"
+"Y83","Adverse effects",0,"Unintentional","Medical care"
+"Y84","Adverse effects",0,"Unintentional","Medical care"
+"Y85","Other specified, classifiable",NA,"Unintentional",NA
+"Y86","Other specified, not elsewhere classifiable",NA,"Unintentional",NA
+"Y870","Other specified, not elsewhere classifiable",NA,"Self-inflicted",NA
+"Y871","Other specified, not elsewhere classifiable",NA,"Assault",NA
+"Y872","Other specified, not elsewhere classifiable",NA,"Undetermined",NA
+"Y880","Adverse effects",1,"Unintentional","Drugs"
+"Y881","Adverse effects",0,"Unintentional","Medical care"
+"Y882","Adverse effects",0,"Unintentional","Medical care"
+"Y883","Adverse effects",0,"Unintentional","Medical care"
+"Y890","Other specified, not elsewhere classifiable",NA,"Other",NA
+"Y891","Other specified, not elsewhere classifiable",NA,"Other",NA
+"Y899","Unspecified",NA,"Undetermined",NA

@@ -1,4 +1,4 @@
-#' Add AIS and ISS to a dataframe
+#' Categorize trauma by adding AIS and ISS to a dataframe
 #'
 #' For each observation this function will
 #' \enumerate{
@@ -81,7 +81,7 @@
 # dx_pre="DX"
 # calc_method = 1
 
-trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolution="max"){
+cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resolution = "max", i10_sev_method = "empirical"){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")

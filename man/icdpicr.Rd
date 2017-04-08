@@ -59,7 +59,7 @@ It is possible to tell the function to ignore ICD 10 codes if desired by the use
 
 \section{Functions}{
 
-\strong{trauma} provides various classifications and characterizations of trauma
+\strong{cat_trauma} provides various classifications and characterizations of trauma
 based on ICD-9-CM diagnosis codes, specifically codes for Nature of Injury
 (N-Codes) and External Cause of Injury (E-Codes).
 }
