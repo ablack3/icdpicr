@@ -35,8 +35,8 @@ Run the trauma module on your data by first saving your data in CSV format.
 Then run the lines
 ```R
 df <- read.csv("C:/path/to/file.csv", stringsAsFactors = FALSE)
-df_out <- trauma(df, "DX")
-```
+df_out <- cat_trauma(df, "DX")
+```                           
 Save your output data with
 ```R
 write.csv(df_out, "C:/path/to/output.csv", row.names = FALSE)
