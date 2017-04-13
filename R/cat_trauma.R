@@ -32,7 +32,7 @@
 #'          \item issbr_1-issbr_n: ISS body region for diagnosis codes 1..n
 #'          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
 #'          \item maxais: maximum AIS severity over all ISS body regions
-#'          \item xiss: computed injury severity score
+#'          \item riss: computed injury severity score
 #'          \item niss: computed new injury severity score
 #'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
 #'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
@@ -57,7 +57,7 @@
 #'       \item 4 = Severe
 #'       \item 5 = Critical
 #'       \item 6 = Unsurvivable
-#'       \item  9 = Unknown
+#'       \item 9 = Unknown
 #'}
 #'
 #' @examples df_in <- read.table(header = T, text = "
@@ -250,7 +250,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resol
 
       # ISS is calculated as the sum of the squared three highest maxaisbr varaiables for a given person
       # need to exclude 9s
-      df$xiss <- apply(df, 1, function(row){
+      df$riss <- apply(df, 1, function(row){
 
             #recode 9s as 0
             row <- c9to0(row)
@@ -266,37 +266,11 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resol
       })
 
       # Replace ISS value with 75 if maximum severity is 6. Why?
-      df[df$maxais == 6,"xiss"] <- 75
+      df[df$maxais == 6,"riss"] <- 75
 
       # Replace ISS value with 99 if maximum severity is 9. Why?
-      df[df$maxais == 9, "xiss"] <- 99
+      df[df$maxais == 9, "riss"] <- 99
 
-
-      #-------------------------------------------#
-      #  Calculate NISS value.  #
-      #-------------------------------------------#
-
-      # NISS is calculated as the sum of the squared three highest severity varaiables for a given person
-      # We need to exclude severity values of 9 in this calculation since 9 represents unknown.
-      df$niss <- apply(df, 1, function(row){
-            # select severity variables for each row
-            temp <- row[grepl("^sev_[0-9]+$", names(row))]
-
-            # for some reason apply is converting these to char. We will convert them back to numeric.
-            temp <- as.numeric(temp)
-
-            # exclude severity values of 9 (unknown)
-            temp <- temp[temp != 9]
-
-            # Take the three highest, square them, and sum the result
-            sum(temp[order(-temp)[1:3]]^2, na.rm = T) # what if there are only two. will probably cause error.
-      })
-
-      # Replace NISS value with 75 if maximum severity is 6.
-      df[df$maxais == 6, "niss"] <- 75
-
-      # Replace ISS value with 99 if maximum severity is 9.
-      df[df$maxais == 9, "niss"] <- 99
 
       #---------------------------------------------------------------------#
       #  Merge diagnosis codes with E-Code reference table to obtain major  #
