@@ -7,16 +7,16 @@
 \title{ICDPICR}
 \description{
 International Classification of Diseases Programs for Injury Categorization
-The ICDPICR package is an implementation of the STATA program ICDPIC version 3
-in R. ICDPIC is a collection of Stata programs for injury categorization
+The ICDPICR package is an extention of the ICDPIC package orignally written for STATA.
+ICDPIC is a collection of Stata programs for injury categorization
 and is available online at \url{https://ideas.repec.org/c/boc/bocode/s457028.html}
 }
 \section{Version}{
 
 Version 0.1.0
-ICDPICR is adapted from the ICDPIC version 3.0 Stata code. However the
+ICDPICR is adapted from the ICDPIC Version 3.0 Stata code. However the
 functionality has been decreased considerably in the interest of providing
-only the most used elements of the original ICDPIC program. ICDPICR is open
+only the most useful elements of the original ICDPIC program. ICDPICR is open
 source and all code and documentation can be found at
 \url{http://github.com/ablack3/icdpicr}.
 }
@@ -32,7 +32,8 @@ categories and/or scores.  Initial development of the ICDPIC Stata programs occu
 as part of research projects funded by the National Center for Injury
 Prevention and Control through the Harvard Injury Control Research Center
 (CDC R49/CCR 115279) and by the Maine Medical Center Research Strategic
-Plan.  The translation of ICDPIC to R was supported by funding from ...
+Plan.  The translation of ICDPIC to R was supported by funding from the Maine Medical Center
+Division of Trauma and Surgical Critical Care and Center for Outcomes Research and Evaluation.
 The authors are grateful for this support and would also appreciate
 suggestions or corrections from any user of the software. Bug reports or feature requests
 may be submitted at \url{http://github.com/ablack3/icdpicr/issues}.
@@ -41,10 +42,9 @@ studies in which these programs or tables are used should cite the authors.
 We hope ICDPIC will make ICD-9-CM codes easier to use for injury research,
 and facilitate comparison of categorization methods.
 
-ICDPICR handles ICD-10-CM codes as well as ICD 9. This was accomplished by
+ICDPICR handles ICD-10-CM codes as well as ICD 9-CM codes. This was accomplished by
 first mapping ICD 10 codes to ICD 9 using the 2016 general equivalence mapping (GEM)
-developed by CMS. Next the corresponding ICD 9 codes were mapped to anatomical
-injury severity scores (ais) and body regions using the same mapping used in the
+developed by CMS. Next the corresponding ICD 9 codes were mapped to the Abbreviated Injury Scale (AIS) and body regions using the same mapping used in the
 the original ICDPIC. In some cases an ICD 10 code was mapped to more than one
 ICD 9 code. In these cases diambiguation is necessary to get a map from ICD 10
 to AIS and body region.

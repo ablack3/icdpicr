@@ -34,8 +34,7 @@ A dataframe identical to the dataframe passed to the function with the following
          \item issbr_1-issbr_n: ISS body region for diagnosis codes 1..n
          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
          \item maxais: maximum AIS severity over all ISS body regions
-         \item xiss: computed injury severity score
-         \item niss: computed new injury severity score
+         \item riss: computed injury severity score
          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
@@ -70,7 +69,7 @@ Codes for AIS severity:
       \item 4 = Severe
       \item 5 = Critical
       \item 6 = Unsurvivable
-      \item  9 = Unknown
+      \item 9 = Unknown
 }
 }
 \examples{

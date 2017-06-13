@@ -33,7 +33,6 @@
 #'          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
 #'          \item maxais: maximum AIS severity over all ISS body regions
 #'          \item riss: computed injury severity score
-#'          \item niss: computed new injury severity score
 #'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
 #'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
@@ -103,7 +102,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resol
 
       # add i10 codes to lookup tables
       # The i10 mappings  for n codes were created by using CMS general equivalence mappings
-      # The i10 maapings for e codes were created using CDC infury mechanism grid
+      # The i10 maapings for e codes (mechanism) were created using CDC injury mechanism grid
       # See documentation and prelim directory for details
       if(icd10){
             etab_s1 <- rbind(etab_s1, i10_ecode)
@@ -289,8 +288,14 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resol
       # icd10 e-codes do not start with E. We need to get a list of all ecodes
       ecodes <- etab_s1$dx
       df[ , ecode_colnames] <- t(apply(df, 1, function(row){
-          # get all e codes, need to strip decimal
-            ecode_indicators <- as.character(unlist(row)) %in% ecodes
+            # remove trailing letters
+            row <- sub("[A-Za-z]+$", "", row)
+
+            # remove trailing decimal
+            row <- sub("\\.$", "", row)
+
+            # get all e codes, need to strip decimal
+            ecode_indicators <- as.character(unlist(sub("\\.","", row))) %in% ecodes
             row_ecodes <- row[ecode_indicators]
 
           # (E_codes <- grep("^E", row[dx_colnames], value = T))
@@ -316,16 +321,16 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, conflict_resol
           temp <- merge(df_ss, etab_s1, by.x=col_name, by.y="dx", all.x=T, all.y=F, sort=F)
 
           # reorder rows after merge
-          temp <- temp[order(temp$n),]
+          temp <- temp[order(temp$n), ]
 
           #  drop dx and n
-          temp <- temp[,c("mechmaj","mechmin","intent")]
+          temp <- temp[,c("mechmaj", "mechmin", "intent")]
 
           #rename columns
-          names(temp) <- paste(c("mechmaj","mechmin","intent"),i,sep="")
+          names(temp) <- paste(c("mechmaj", "mechmin", "intent"), i, sep="")
 
           # add columns to dataframe
-          df <- .insert_columns(df,col_name,temp)
+          df <- .insert_columns(df, col_name, temp)
 
       }
 

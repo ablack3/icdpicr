@@ -9,12 +9,12 @@ set.seed(1)
 size <- c(6,5)
 dx_codes <- sample(rbind(etab_s1, i10_ecode)$dx, size[1]*size[2])
 df <- matrix(dx_codes, nrow = size[1], ncol = size[2]) %>% as.data.frame()
-names(df) <- paste0("DX",1:size[2])
+names(df) <- paste0("DX", 1:size[2])
 
 df <- rbind(df, rep(NA, size[2]))
 df
 
-res <- trauma(df,"DX")
+res <- cat_trauma(df,"DX")
 res %>% select(matches("DX|ecode|mech|intent"))
 names(res)
 
