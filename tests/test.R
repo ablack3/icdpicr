@@ -50,8 +50,5 @@ ident    dx1     dx2     dx3
 df_out <- trauma(df_in, "dx")
 
 
-df <- read.csv("/Users/adamblack/Desktop/nhds/nhds_ss.csv", stringsAsFactors = F)
-write.csv(df[1:1000,], "/Users/adamblack/Desktop/nhds/nhds_ss_small.csv", row.names = F)
-df2 <- icdpicr::cat_trauma(df[1:1000,], "DX")
 
 

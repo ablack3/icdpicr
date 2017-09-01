@@ -222,7 +222,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
               }
 
               # process the codes
-              df_ss[ , dx_name] <- sapply(df_ss[ , dx_name], process_10)
+              df_ss[ , dx_name] <- sapply(df_ss[ , dx_name], process_i10)
 
               # tst$dx12 <- sapply(tst$dx1, process_i10)
               # process_i10("S80.812A")
