@@ -1,0 +1,40 @@
+Duplicate ICD-10-CM Codes
+E030	Unspecified activity	E030	Congenital hypothyroidism with diffuse goiter
+E8020	Railway accident involving derailment without antecedent collision injuring railway employee	E8020	Unspecified porphyria
+E8021	Railway accident involving derailment without antecedent collision injuring passenger on railway	E8021	Acute intermittent (hepatic) porphyria
+E8029	Railway accident involving derailment without antecedent collision injuring unspecified person	E8029	Other porphyria
+E8300	"Accident to watercraft causing submersion injuring occupant of small boat, unpowered"	E8300	"Disorder of copper metabolism, unspecified"
+E8301	"Accident to watercraft causing submersion injuring occupant of small boat, powered"	E8301	Wilson's disease
+E8309	Accident to watercraft causing submersion injuring unspecified person	E8309	Other disorders of copper metabolism
+E8310	"Accident to watercraft causing other injury to occupant of small boat, unpowered"	E8310	"Disorder of iron metabolism, unspecified"
+E8319	Accident to watercraft causing other injury to unspecified person	E8319	Other disorders of iron metabolism
+E8330	"Fall on stairs or ladders in water transport injuring occupant of small boat, unpowered"	E8330	"Disorder of phosphorus metabolism, unspecified"
+E8331	"Fall on stairs or ladders in water transport injuring occupant of small boat, powered"	E8331	Familial hypophosphatemia
+E8332	Fall on stairs or ladders in water transport injuring occupant of other watercraft -- crew	E8332	Hereditary vitamin D-dependent rickets (type 1) (type 2)
+E8339	Fall on stairs or ladders in water transport injuring unspecified person	E8339	Other disorders of phosphorus metabolism
+E8340	"Other fall from one level to another in water transport injuring occupant of small boat, unpowered"	E8340	"Disorders of magnesium metabolism, unspecified"
+E8341	"Other fall from one level to another in water transport injuring occupant of small boat, powered"	E8341	Hypermagnesemia
+E8342	Other fall from one level to another in water transport injuring occupant of other watercraft -- crew	E8342	Hypomagnesemia
+E8349	Other fall from one level to another in water transport injuring unspecified person	E8349	Other disorders of magnesium metabolism
+E8350	"Other and unspecified fall in water transport injuring occupant of small boat, unpowered"	E8350	Unspecified disorder of calcium metabolism
+E8351	"Other and unspecified fall in water transport injuring occupant of small boat, powered"	E8351	Hypocalcemia
+E8352	Other and unspecified fall in water transport injuring occupant of other watercraft -- crew	E8352	Hypercalcemia
+E8359	Other and unspecified fall in water transport injuring unspecified person	E8359	Other disorders of calcium metabolism
+E8381	"Other and unspecified water transport accident injuring occupant of small boat, powered"	E8381	Hungry bone syndrome
+E8389	Other and unspecified water transport accident injuring unspecified person	E8389	Other disorders of mineral metabolism
+E8411	"Accident to powered aircraft, other and unspecified, injuring occupant of military aircraft, any"	E8411	Meconium ileus in cystic fibrosis
+E8419	"Accident to powered aircraft, other and unspecified, injuring other person"	E8419	Cystic fibrosis with other intestinal manifestations
+E848	"Accidents involving other vehicles, not elsewhere classifiable"	E848	Cystic fibrosis with other manifestations
+E851	Accidental poisoning by barbiturates	E851	Neuropathic heredofamilial amyloidosis
+E8801	Accidental fall on or from sidewalk curb	E8801	Alpha-1-antitrypsin deficiency
+E8809	Accidental fall on or from other stairs or steps	E8809	"Other disorders of plasma-protein metabolism, not elsewhere classified"
+E882	Accidental fall from or out of building or other structure	E882	"Lipomatosis, not elsewhere classified"
+E8840	Accidental fall from playground equipment	E8840	"Mitochondrial metabolism disorder, unspecified"
+E8841	Accidental fall from cliff	E8841	MELAS syndrome
+E8842	Accidental fall from chair	E8842	MERRF syndrome
+E8849	Other accidental fall from one level to another	E8849	Other mitochondrial metabolism disorders
+E8881	Fall resulting in striking against other object	E8881	Metabolic syndrome
+E8889	Unspecified fall	E8889	Other specified metabolic disorders
+E892	Conflagration not in building or structure	E892	Postprocedural hypoparathyroidism
+E895	Accident caused by controlled fire in private dwelling	E895	Postprocedural testicular hypofunction
+E896	Accident caused by controlled fire in other and unspecified building or structure	E896	Postprocedural adrenocortical (-medullary) hypofunction

@@ -1,0 +1,8 @@
+GEM flags
+source -> target
+first flag: approximate match
+2nd flag: No match in target
+3rd flag: signifies combination entry. source code requires more than one target code to be represented in that system
+4th flag: combination scenario. ie  combination number ex. (1 OR 2)
+5th flag: combination scenario element ex.  (11 or 11 or 11 AND 12 or 12) OR (21 or 21 and 22)
+
