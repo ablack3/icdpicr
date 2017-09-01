@@ -5,26 +5,30 @@
 \title{Categorize trauma by adding AIS and ISS to a dataframe}
 \usage{
 cat_trauma(df, dx_pre, calc_method = 1, icd10 = TRUE,
-  conflict_resolution = "max", i10_sev_method = "empirical")
+  i10_iss_method = "empirical")
 }
 \arguments{
-\item{df}{A dataframe in wide format containing ICD-9 or ICD-10 diagnosis codes with a common column name prefix.
+\item{df}{A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
 Diagnosis codes should be character strings and may have a decimal or not.}
 
 \item{dx_pre}{Prefix for diagnosis code column names (example: dx1, dx2, ect)}
 
 \item{calc_method}{ISS calculation method:
-Method 1 will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
+Method 1 (default) will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
 Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
 
-\item{icd10}{A logical value indicating whether ICD 10 codes should be considered or ignored.
-If FALSE then ICD10 codes are ignored.
-If TRUE then mapped to ICD 9 using CMS's general equivalence mapping (GEM) and then
-included in the calcuation of the ISS and ICD10 mechanism codes will be included in E-code calculation.}
+\item{icd10}{A logical value indicating whether ICD-10 codes should be considered or ignored.
+If TRUE (default) then ICD-10 codes are handled based on the i10_iss_method argument
+and ICD-10 mechanism codes will be included in E-code calculation.
+If FALSE then ICD-10 codes are ignored.}
 
-\item{conflict_resolution}{Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9
-codes to AIS.
-Must be either "max" or "min". Few ICD10 codes result in a conflict.}
+\item{i10_iss_method}{Method for calculating ISS from ICD10-CM codes. Must be one of:
+\itemize{
+\item "empirical" (default) Table derived empirically from National Trauma Database. Details are included in ICDPIC-R package help documentation.
+\item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
+       using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
+\item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
+}}
 }
 \value{
 A dataframe identical to the dataframe passed to the function with the following additional variables
@@ -40,17 +44,15 @@ A dataframe identical to the dataframe passed to the function with the following
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
          \item intent1-intent4: intent for each E-Code captured
          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-         \item bluntpen: type of trauma, blunt (B) or penetrating (P), based on value of variable mechmaj1
          }
 }
 \description{
 For each observation this function will
 \enumerate{
-   \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD 10 trauma code,
+   \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,
    \item add variables for maximum severity of each body region,
-   \item calculate ISS and new ISS,
+   \item calculate ISS
    \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
-   \item summarize mechanism with lowest major mechanism and assign trauma type (blunt or penetrating) the first E-Code found.
 }
 }
 \details{
@@ -78,7 +80,7 @@ ident    dx1     dx2     dx3
 31416   800.1   959.9   E910.9
 31417   800.24  410.0   NA
 ")
-df_out <- trauma(df_in, "dx")
+df_out <- cat_trauma(df_in, "dx")
 
 }
 

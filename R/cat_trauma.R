@@ -2,32 +2,32 @@
 #'
 #' For each observation this function will
 #' \enumerate{
-#'    \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD 10 trauma code,
+#'    \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,
 #'    \item add variables for maximum severity of each body region,
-#'    \item calculate ISS and new ISS
+#'    \item calculate ISS
 #'    \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
-#'    \item summarize mechanism with lowest major mechanism and assign trauma type (blunt or penetrating) the first E-Code found.
 #'}
 #'
 #'
 #'
 #'
-#' @param df A dataframe in wide format containing ICD-9 or ICD-10 diagnosis codes with a common column name prefix.
+#' @param df A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
 #'          Diagnosis codes should be character strings and may have a decimal or not.
+#'
 #' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, ect)
+#'
 #' @param calc_method ISS calculation method:
-#'          Method 1 will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
+#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
 #'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
-#' @param conflict_resolution Method for resolving ISS score conflicts when mapping ICD-10 codes to ICD 9
-#'          codes to AIS.
-#'          Must be either "max" or "min". Few ICD-10 codes result in a conflict.
+#'
 #' @param icd10 A logical value indicating whether ICD-10 codes should be considered or ignored.
+#'          If TRUE (default) then ICD-10 codes are handled based on the i10_iss_method argument
+#'          and ICD-10 mechanism codes will be included in E-code calculation.
 #'          If FALSE then ICD-10 codes are ignored.
-#'          If TRUE then ICD-10 codes are handled based on the i10_iss_method argument
-#'          and ICD10 mechanism codes will be included in E-code calculation.
+#'
 #' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
 #'          \itemize{
-#'          \item "empirical" Table derived empirically from _____ described in detail in ____ (default)
+#'          \item "empirical" (default) Table derived empirically from National Trauma Database. Details are included in ICDPIC-R package help documentation.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
@@ -46,7 +46,6 @@
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
 #'          \item intent1-intent4: intent for each E-Code captured
 #'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-#'          \item bluntpen: type of trauma, blunt (B) or penetrating (P), based on value of variable mechmaj1
 #'          }
 #'
 #' @details  Data should be in wide format:
@@ -72,21 +71,14 @@
 #' 31416   800.1   959.9   E910.9
 #' 31417   800.24  410.0   NA
 #' ")
-#' df_out <- trauma(df_in, "dx")
+#' df_out <- cat_trauma(df_in, "dx")
 #'
 #' @export
 
 
 
-#-----------------------------------------------------------------------------------------------------------------#
-#  For each observation, program to assign severity and ISS body region values to each valid ICD-9-CM trauma      #
-#  code, assign Barell and AP component categories to each valid ICD-9-CM trauma code, calculate injury severity  #
-#  score (ISS), assign major mechanism, minor mechanism and intent for up                                         #
-#  to 4 E-Codes (excluding E-Code place) and assign trauma type (blunt or penetrating) based on major mechanism   #
-#  of the first E-Code found.                                                                                     #
-#-----------------------------------------------------------------------------------------------------------------#
 
-# testing
+# for debuging...
 # set.seed(1)
 # codes <- c()
 # n <- 5
@@ -125,11 +117,12 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       num_dx <- length(dx_nums)
       if(num_dx == 0) stop("No variables with prefix found in data")
 
-      # make sure df is not a tibble and if it is convert back to dataframe
+      # make sure df is not a tibble and if it is convert back to regular dataframe
       df <- data.frame(df)
 
       # add i10 codes to lookup tables
-      # The i10 mappings  for n codes were created by using CMS general equivalence mappings
+      # The i10 mappings  for n codes were created by using both CMS general equivalence mappings
+      # and Dave's empirical method
       # The i10 maapings for e codes (mechanism) were created using CDC injury mechanism grid
       # See documentation and prelim directory for details
       if(icd10){
@@ -151,7 +144,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       #  Merge diagnosis code variables with N-Code reference table to obtain severity  #
       #  and ISS body region variables for each diagnosis code and add them to the data #
       #---------------------------------------------------------------------------------#
-      print("inserting sev and br columns")
+      print("inserting severity and body_region columns")
       for(i in dx_nums){
           # create column name
           dx_name <- paste0(dx_pre, i)
@@ -162,10 +155,82 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
 
-          # strip out decimal and take only one or zero letters followed by numbers
-          df_ss[ , dx_name] <- stringr::str_extract(sub("\\.", "", df_ss[ , dx_name]), "^[A-Z]?[0-9]+")
+          # strip out decimal in all codes
+          df_ss[ , dx_name] <- sub("\\.", "", df_ss[ , dx_name])
 
-          # merge iss variables
+          # For ICD 9 codes we do not neet to check the format since only valid codes will be matched
+          # when we merge in the ISS from the lookup tables
+          # Note that this assumes that no ICD 10 codes will inadvertently be matched to ICD 9 codes
+          # I think this is true but am not 100% sure yet.
+          # OK... V codes are a problem. V12 is both a valid I9 and I10 code for example
+          # E codes are also a problem if we strip the decimal. E800 after decimal stripping
+          # is in both I9 and I10 (E80.0).
+
+          # Luckily we are only dealing with a subset of I9 and I10
+          # for the N-codes
+          # The I9 subset only include codes that start with 8 or 9
+          # The I10 subset only includes codes that start with S or T
+
+          # for the E codes (nature of injury codes)
+          # I10 start with "U" "V" "W" "X" "Y"
+          # I9 start with "E"
+
+          # is it possible that an I9 V code gets classified as I10?
+          # Yep seems so. V20 will be matched with I10 even though it could be an I9 code.
+
+          # The same is not true of the ICD 10 codes since there are placeholder "X" characters
+          # allowed. If the user requests ICD 10 then we need to validate ICD 10 codes and
+          # the process them according to what Dave did when he created the empirical table.
+
+          # The National Trauma Data Standard used by NTDB considers valid ICD-10-CM injury
+          # codes to be those in the ranges S00-S99, T07, T14, T20-T28, and T30-32.
+          # ICDPIC-R recognizes only these codes in the calculation of injury severity from ICD-10,
+          # and also requires that the codes have a decimal point in the fourth position and the
+          # letter “A” in the eighth position (indicating an initial encounter).
+
+          # we only need to do this processing for the empirical method
+          # if using the Gem then the code validation is automatically handled through the merge just like in
+          # the icd9 case
+          if(icd10 == TRUE & i10_iss_method == "empirical"){
+
+              i9_valid <- c("8","9","E")
+              i10_valid <- c("S","T","U","V","W","X","Y")
+
+              # get rid of codes that do not start with a valid character
+              df_ss[ , dx_name] <- ifelse(substr(df_ss[,dx_name],1,1) %in% c(i9_valid, i10_valid), df_ss[,dx_name], NA)
+
+              # any codes starting with V are assumed to be ICD 10
+              # if the code is I9 (starts with 8, 9, or E) then leave it alone
+              # otherwise
+
+              # if the code starts with "S","T","U","V","W","X","Y" then process by
+
+                  # checking that 7th (last) character is an A and then stripping it off
+                  # stripping the first X found and any characters after it
+
+              process_i10 <- function(s){
+                  stopifnot(is.character(s) | is.na(s))
+                  ret_val <- NA
+                  s <- sub("\\.", "", s)
+                  if(!substr(s,1,1) %in% c("S","T","U","V","W","X","Y")) ret_val <- s
+                  else if(nchar(s) != 7) ret_val <- ""
+                  else if(substr(s,7,7) != "A") ret_val <- ""
+                  else if(substr(s,5,5) == "X") ret_val <- substr(s,1,4)
+                  else if(substr(s,6,6) == "X") ret_val <- substr(s,1,5)
+                  else ret_val <- substr(s,1,6)
+                  return(ret_val)
+              }
+
+              # process the codes
+              df_ss[ , dx_name] <- sapply(df_ss[ , dx_name], process_10)
+
+              # tst$dx12 <- sapply(tst$dx1, process_i10)
+              # process_i10("S80.812A")
+              # unique(substr(i10_map_emp$dx,1,3))
+              # unique(substr(i10_map_max$dx,1,3))
+          }
+
+
           temp <- merge(df_ss, ntab, by.x=dx_name, by.y="dx", all.x=T, all.y=F, sort=F)
 
           # reorder rows after merge
@@ -183,7 +248,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           names(temp) <- paste0(c("sev_","issbr_"), i)
 
           # add temp columns to dataframe
-          print(paste('inserting columns for ', dx_name))
+          print(paste0('inserting columns for ', dx_name))
           df <- .insert_columns(df, dx_name, temp)
 
       }
@@ -360,17 +425,6 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           df <- .insert_columns(df, col_name, temp)
 
       }
-
-      # Create bluntpen variable to hold type of trauma: blunt or penetrating. #
-      df$bluntpen = NA
-
-      # Determine blunt or penetrating trauma. #
-      df[which(df$mechmaj1 %in% c(2, 5, 6, 7, 8, 9, 13)), "bluntpen"] <- "B"
-      df[which(df$mechmaj1 %in% c(0, 4)), "bluntpen"] <- "P"
-
-      # Why are we only considering the first ecode mechmaj here? convenience.
-      # It is an arbitrary decision.
-      # However it is unlikely that there would be more than 1 mechanism of injury
 
       # set rownames
       rownames(df) <- 1:nrow(df)

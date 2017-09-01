@@ -1,1117 +1,1117 @@
-"dx","mechmaj","mechmin","intent","mech_min"
-"E8000","Transport, other",NA,"Unintentional",NA
-"E8001","Transport, other",NA,"Unintentional",NA
-"E8002","Pedestrian, other",NA,"Unintentional",NA
-"E8003","Pedal cyclist, other",NA,"Unintentional",NA
-"E8008","Transport, other",NA,"Unintentional",NA
-"E8009","Transport, other",NA,"Unintentional",NA
-"E8010","Transport, other",NA,"Unintentional",NA
-"E8011","Transport, other",NA,"Unintentional",NA
-"E8012","Pedestrian, other",NA,"Unintentional",NA
-"E8013","Pedal cyclist, other",NA,"Unintentional",NA
-"E8018","Transport, other",NA,"Unintentional",NA
-"E8019","Transport, other",NA,"Unintentional",NA
-"E8020","Transport, other",NA,"Unintentional",NA
-"E8021","Transport, other",NA,"Unintentional",NA
-"E8022","Pedestrian, other",NA,"Unintentional",NA
-"E8023","Pedal cyclist, other",NA,"Unintentional",NA
-"E8028","Transport, other",NA,"Unintentional",NA
-"E8029","Transport, other",NA,"Unintentional",NA
-"E8030","Transport, other",NA,"Unintentional",NA
-"E8031","Transport, other",NA,"Unintentional",NA
-"E8032","Pedestrian, other",NA,"Unintentional",NA
-"E8033","Pedal cyclist, other",NA,"Unintentional",NA
-"E8038","Transport, other",NA,"Unintentional",NA
-"E8039","Transport, other",NA,"Unintentional",NA
-"E8040","Transport, other",NA,"Unintentional",NA
-"E8041","Transport, other",NA,"Unintentional",NA
-"E8042","Pedestrian, other",NA,"Unintentional",NA
-"E8043","Pedal cyclist, other",NA,"Unintentional",NA
-"E8048","Transport, other",NA,"Unintentional",NA
-"E8049","Transport, other",NA,"Unintentional",NA
-"E8050","Transport, other",NA,"Unintentional",NA
-"E8051","Transport, other",NA,"Unintentional",NA
-"E8052","Pedestrian, other",NA,"Unintentional",NA
-"E8053","Pedal cyclist, other",NA,"Unintentional",NA
-"E8058","Transport, other",NA,"Unintentional",NA
-"E8059","Transport, other",NA,"Unintentional",NA
-"E8060","Transport, other",NA,"Unintentional",NA
-"E8061","Transport, other",NA,"Unintentional",NA
-"E8062","Pedestrian, other",NA,"Unintentional",NA
-"E8063","Pedal cyclist, other",NA,"Unintentional",NA
-"E8068","Transport, other",NA,"Unintentional",NA
-"E8069","Transport, other",NA,"Unintentional",NA
-"E8070","Transport, other",NA,"Unintentional",NA
-"E8071","Transport, other",NA,"Unintentional",NA
-"E8072","Pedestrian, other",NA,"Unintentional",NA
-"E8073","Pedal cyclist, other",NA,"Unintentional",NA
-"E8078","Transport, other",NA,"Unintentional",NA
-"E8079","Transport, other",NA,"Unintentional",NA
-"E8100","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8101","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8102","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8103","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8104","Motor vehicle traffic",NA,"Unintentional",NA
-"E8105","Motor vehicle traffic",NA,"Unintentional",NA
-"E8106","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8107","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8108","Motor vehicle traffic",NA,"Unintentional",NA
-"E8109","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8110","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8111","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8112","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8113","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8114","Motor vehicle traffic",NA,"Unintentional",NA
-"E8115","Motor vehicle traffic",NA,"Unintentional",NA
-"E8116","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8117","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8118","Motor vehicle traffic",NA,"Unintentional",NA
-"E8119","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8120","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8121","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8122","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8123","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8124","Motor vehicle traffic",NA,"Unintentional",NA
-"E8125","Motor vehicle traffic",NA,"Unintentional",NA
-"E8126","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8127","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8128","Motor vehicle traffic",NA,"Unintentional",NA
-"E8129","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8130","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8131","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8132","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8133","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8134","Motor vehicle traffic",NA,"Unintentional",NA
-"E8135","Motor vehicle traffic",NA,"Unintentional",NA
-"E8136","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8137","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8138","Motor vehicle traffic",NA,"Unintentional",NA
-"E8139","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8140","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8141","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8142","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8143","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8144","Motor vehicle traffic",NA,"Unintentional",NA
-"E8145","Motor vehicle traffic",NA,"Unintentional",NA
-"E8146","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8147","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8148","Motor vehicle traffic",NA,"Unintentional",NA
-"E8149","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8150","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8151","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8152","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8153","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8154","Motor vehicle traffic",NA,"Unintentional",NA
-"E8155","Motor vehicle traffic",NA,"Unintentional",NA
-"E8156","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8157","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8158","Motor vehicle traffic",NA,"Unintentional",NA
-"E8159","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8160","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8161","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8162","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8163","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8164","Motor vehicle traffic",NA,"Unintentional",NA
-"E8165","Motor vehicle traffic",NA,"Unintentional",NA
-"E8166","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8167","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8168","Motor vehicle traffic",NA,"Unintentional",NA
-"E8169","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8170","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8171","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8172","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8173","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8174","Motor vehicle traffic",NA,"Unintentional",NA
-"E8175","Motor vehicle traffic",NA,"Unintentional",NA
-"E8176","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8177","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8178","Motor vehicle traffic",NA,"Unintentional",NA
-"E8179","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8180","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8181","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8182","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8183","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8184","Motor vehicle traffic",NA,"Unintentional",NA
-"E8185","Motor vehicle traffic",NA,"Unintentional",NA
-"E8186","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8187","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8188","Motor vehicle traffic",NA,"Unintentional",NA
-"E8189","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8190","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8191","Motor vehicle traffic",0,"Unintentional","Occupant"
-"E8192","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8193","Motor vehicle traffic",1,"Unintentional","Motorcyclist"
-"E8194","Motor vehicle traffic",NA,"Unintentional",NA
-"E8195","Motor vehicle traffic",NA,"Unintentional",NA
-"E8196","Motor vehicle traffic",2,"Unintentional","Pedal cyclist"
-"E8197","Motor vehicle traffic",3,"Unintentional","Pedestrian"
-"E8198","Motor vehicle traffic",NA,"Unintentional",NA
-"E8199","Motor vehicle traffic",4,"Unintentional","Unspecified"
-"E8200","Transport, other",NA,"Unintentional",NA
-"E8201","Transport, other",NA,"Unintentional",NA
-"E8202","Transport, other",NA,"Unintentional",NA
-"E8203","Transport, other",NA,"Unintentional",NA
-"E8204","Transport, other",NA,"Unintentional",NA
-"E8205","Transport, other",NA,"Unintentional",NA
-"E8206","Pedal cyclist, other",NA,"Unintentional",NA
-"E8207","Pedestrian, other",NA,"Unintentional",NA
-"E8208","Transport, other",NA,"Unintentional",NA
-"E8209","Transport, other",NA,"Unintentional",NA
-"E8210","Transport, other",NA,"Unintentional",NA
-"E8211","Transport, other",NA,"Unintentional",NA
-"E8212","Transport, other",NA,"Unintentional",NA
-"E8213","Transport, other",NA,"Unintentional",NA
-"E8214","Transport, other",NA,"Unintentional",NA
-"E8215","Transport, other",NA,"Unintentional",NA
-"E8216","Pedal cyclist, other",NA,"Unintentional",NA
-"E8217","Pedestrian, other",NA,"Unintentional",NA
-"E8218","Transport, other",NA,"Unintentional",NA
-"E8219","Transport, other",NA,"Unintentional",NA
-"E8220","Transport, other",NA,"Unintentional",NA
-"E8221","Transport, other",NA,"Unintentional",NA
-"E8222","Transport, other",NA,"Unintentional",NA
-"E8223","Transport, other",NA,"Unintentional",NA
-"E8224","Transport, other",NA,"Unintentional",NA
-"E8225","Transport, other",NA,"Unintentional",NA
-"E8226","Pedal cyclist, other",NA,"Unintentional",NA
-"E8227","Pedestrian, other",NA,"Unintentional",NA
-"E8228","Transport, other",NA,"Unintentional",NA
-"E8229","Transport, other",NA,"Unintentional",NA
-"E8230","Transport, other",NA,"Unintentional",NA
-"E8231","Transport, other",NA,"Unintentional",NA
-"E8232","Transport, other",NA,"Unintentional",NA
-"E8233","Transport, other",NA,"Unintentional",NA
-"E8234","Transport, other",NA,"Unintentional",NA
-"E8235","Transport, other",NA,"Unintentional",NA
-"E8236","Pedal cyclist, other",NA,"Unintentional",NA
-"E8237","Pedestrian, other",NA,"Unintentional",NA
-"E8238","Transport, other",NA,"Unintentional",NA
-"E8239","Transport, other",NA,"Unintentional",NA
-"E8240","Transport, other",NA,"Unintentional",NA
-"E8241","Transport, other",NA,"Unintentional",NA
-"E8242","Transport, other",NA,"Unintentional",NA
-"E8243","Transport, other",NA,"Unintentional",NA
-"E8244","Transport, other",NA,"Unintentional",NA
-"E8245","Transport, other",NA,"Unintentional",NA
-"E8246","Pedal cyclist, other",NA,"Unintentional",NA
-"E8247","Pedestrian, other",NA,"Unintentional",NA
-"E8248","Transport, other",NA,"Unintentional",NA
-"E8249","Transport, other",NA,"Unintentional",NA
-"E8250","Transport, other",NA,"Unintentional",NA
-"E8251","Transport, other",NA,"Unintentional",NA
-"E8252","Transport, other",NA,"Unintentional",NA
-"E8253","Transport, other",NA,"Unintentional",NA
-"E8254","Transport, other",NA,"Unintentional",NA
-"E8255","Transport, other",NA,"Unintentional",NA
-"E8256","Pedal cyclist, other",NA,"Unintentional",NA
-"E8257","Pedestrian, other",NA,"Unintentional",NA
-"E8258","Transport, other",NA,"Unintentional",NA
-"E8259","Transport, other",NA,"Unintentional",NA
-"E8260","Pedestrian, other",NA,"Unintentional",NA
-"E8261","Pedal cyclist, other",NA,"Unintentional",NA
-"E8262","Transport, other",NA,"Unintentional",NA
-"E8263","Transport, other",NA,"Unintentional",NA
-"E8264","Transport, other",NA,"Unintentional",NA
-"E8268","Transport, other",NA,"Unintentional",NA
-"E8269","Pedal cyclist, other",NA,"Unintentional",NA
-"E8270","Pedestrian, other",NA,"Unintentional",NA
-"E8272","Transport, other",NA,"Unintentional",NA
-"E8273","Transport, other",NA,"Unintentional",NA
-"E8274","Transport, other",NA,"Unintentional",NA
-"E8278","Transport, other",NA,"Unintentional",NA
-"E8279","Transport, other",NA,"Unintentional",NA
-"E8280","Pedestrian, other",NA,"Unintentional",NA
-"E8282","Transport, other",NA,"Unintentional",NA
-"E8284","Transport, other",NA,"Unintentional",NA
-"E8288","Transport, other",NA,"Unintentional",NA
-"E8289","Transport, other",NA,"Unintentional",NA
-"E8290","Pedestrian, other",NA,"Unintentional",NA
-"E8294","Transport, other",NA,"Unintentional",NA
-"E8298","Transport, other",NA,"Unintentional",NA
-"E8299","Transport, other",NA,"Unintentional",NA
-"E8300","Drowning/submersion",NA,"Unintentional",NA
-"E8301","Drowning/submersion",NA,"Unintentional",NA
-"E8302","Drowning/submersion",NA,"Unintentional",NA
-"E8303","Drowning/submersion",NA,"Unintentional",NA
-"E8304","Drowning/submersion",NA,"Unintentional",NA
-"E8305","Drowning/submersion",NA,"Unintentional",NA
-"E8306","Drowning/submersion",NA,"Unintentional",NA
-"E8308","Drowning/submersion",NA,"Unintentional",NA
-"E8309","Drowning/submersion",NA,"Unintentional",NA
-"E8310","Transport, other",NA,"Unintentional",NA
-"E8311","Transport, other",NA,"Unintentional",NA
-"E8312","Transport, other",NA,"Unintentional",NA
-"E8313","Transport, other",NA,"Unintentional",NA
-"E8314","Transport, other",NA,"Unintentional",NA
-"E8315","Transport, other",NA,"Unintentional",NA
-"E8316","Transport, other",NA,"Unintentional",NA
-"E8318","Transport, other",NA,"Unintentional",NA
-"E8319","Transport, other",NA,"Unintentional",NA
-"E8320","Drowning/submersion",NA,"Unintentional",NA
-"E8321","Drowning/submersion",NA,"Unintentional",NA
-"E8322","Drowning/submersion",NA,"Unintentional",NA
-"E8323","Drowning/submersion",NA,"Unintentional",NA
-"E8324","Drowning/submersion",NA,"Unintentional",NA
-"E8325","Drowning/submersion",NA,"Unintentional",NA
-"E8326","Drowning/submersion",NA,"Unintentional",NA
-"E8328","Drowning/submersion",NA,"Unintentional",NA
-"E8329","Drowning/submersion",NA,"Unintentional",NA
-"E8330","Transport, other",NA,"Unintentional",NA
-"E8331","Transport, other",NA,"Unintentional",NA
-"E8332","Transport, other",NA,"Unintentional",NA
-"E8333","Transport, other",NA,"Unintentional",NA
-"E8334","Transport, other",NA,"Unintentional",NA
-"E8335","Transport, other",NA,"Unintentional",NA
-"E8336","Transport, other",NA,"Unintentional",NA
-"E8338","Transport, other",NA,"Unintentional",NA
-"E8339","Transport, other",NA,"Unintentional",NA
-"E8340","Transport, other",NA,"Unintentional",NA
-"E8341","Transport, other",NA,"Unintentional",NA
-"E8342","Transport, other",NA,"Unintentional",NA
-"E8343","Transport, other",NA,"Unintentional",NA
-"E8344","Transport, other",NA,"Unintentional",NA
-"E8345","Transport, other",NA,"Unintentional",NA
-"E8346","Transport, other",NA,"Unintentional",NA
-"E8348","Transport, other",NA,"Unintentional",NA
-"E8349","Transport, other",NA,"Unintentional",NA
-"E8350","Transport, other",NA,"Unintentional",NA
-"E8351","Transport, other",NA,"Unintentional",NA
-"E8352","Transport, other",NA,"Unintentional",NA
-"E8353","Transport, other",NA,"Unintentional",NA
-"E8354","Transport, other",NA,"Unintentional",NA
-"E8355","Transport, other",NA,"Unintentional",NA
-"E8356","Transport, other",NA,"Unintentional",NA
-"E8358","Transport, other",NA,"Unintentional",NA
-"E8359","Transport, other",NA,"Unintentional",NA
-"E8360","Transport, other",NA,"Unintentional",NA
-"E8361","Transport, other",NA,"Unintentional",NA
-"E8362","Transport, other",NA,"Unintentional",NA
-"E8363","Transport, other",NA,"Unintentional",NA
-"E8364","Transport, other",NA,"Unintentional",NA
-"E8365","Transport, other",NA,"Unintentional",NA
-"E8366","Transport, other",NA,"Unintentional",NA
-"E8368","Transport, other",NA,"Unintentional",NA
-"E8369","Transport, other",NA,"Unintentional",NA
-"E8370","Transport, other",NA,"Unintentional",NA
-"E8371","Transport, other",NA,"Unintentional",NA
-"E8372","Transport, other",NA,"Unintentional",NA
-"E8373","Transport, other",NA,"Unintentional",NA
-"E8374","Transport, other",NA,"Unintentional",NA
-"E8375","Transport, other",NA,"Unintentional",NA
-"E8376","Transport, other",NA,"Unintentional",NA
-"E8378","Transport, other",NA,"Unintentional",NA
-"E8379","Transport, other",NA,"Unintentional",NA
-"E8380","Transport, other",NA,"Unintentional",NA
-"E8381","Transport, other",NA,"Unintentional",NA
-"E8382","Transport, other",NA,"Unintentional",NA
-"E8383","Transport, other",NA,"Unintentional",NA
-"E8384","Transport, other",NA,"Unintentional",NA
-"E8385","Transport, other",NA,"Unintentional",NA
-"E8386","Transport, other",NA,"Unintentional",NA
-"E8388","Transport, other",NA,"Unintentional",NA
-"E8389","Transport, other",NA,"Unintentional",NA
-"E8400","Transport, other",NA,"Unintentional",NA
-"E8401","Transport, other",NA,"Unintentional",NA
-"E8402","Transport, other",NA,"Unintentional",NA
-"E8403","Transport, other",NA,"Unintentional",NA
-"E8404","Transport, other",NA,"Unintentional",NA
-"E8405","Transport, other",NA,"Unintentional",NA
-"E8406","Transport, other",NA,"Unintentional",NA
-"E8407","Transport, other",NA,"Unintentional",NA
-"E8408","Transport, other",NA,"Unintentional",NA
-"E8409","Transport, other",NA,"Unintentional",NA
-"E8410","Transport, other",NA,"Unintentional",NA
-"E8411","Transport, other",NA,"Unintentional",NA
-"E8412","Transport, other",NA,"Unintentional",NA
-"E8413","Transport, other",NA,"Unintentional",NA
-"E8414","Transport, other",NA,"Unintentional",NA
-"E8415","Transport, other",NA,"Unintentional",NA
-"E8416","Transport, other",NA,"Unintentional",NA
-"E8417","Transport, other",NA,"Unintentional",NA
-"E8418","Transport, other",NA,"Unintentional",NA
-"E8419","Transport, other",NA,"Unintentional",NA
-"E8426","Transport, other",NA,"Unintentional",NA
-"E8427","Transport, other",NA,"Unintentional",NA
-"E8428","Transport, other",NA,"Unintentional",NA
-"E8429","Transport, other",NA,"Unintentional",NA
-"E8430","Transport, other",NA,"Unintentional",NA
-"E8431","Transport, other",NA,"Unintentional",NA
-"E8432","Transport, other",NA,"Unintentional",NA
-"E8433","Transport, other",NA,"Unintentional",NA
-"E8434","Transport, other",NA,"Unintentional",NA
-"E8435","Transport, other",NA,"Unintentional",NA
-"E8436","Transport, other",NA,"Unintentional",NA
-"E8437","Transport, other",NA,"Unintentional",NA
-"E8438","Transport, other",NA,"Unintentional",NA
-"E8439","Transport, other",NA,"Unintentional",NA
-"E8440","Transport, other",NA,"Unintentional",NA
-"E8441","Transport, other",NA,"Unintentional",NA
-"E8442","Transport, other",NA,"Unintentional",NA
-"E8443","Transport, other",NA,"Unintentional",NA
-"E8444","Transport, other",NA,"Unintentional",NA
-"E8445","Transport, other",NA,"Unintentional",NA
-"E8446","Transport, other",NA,"Unintentional",NA
-"E8447","Transport, other",NA,"Unintentional",NA
-"E8448","Transport, other",NA,"Unintentional",NA
-"E8449","Transport, other",NA,"Unintentional",NA
-"E8450","Transport, other",NA,"Unintentional",NA
-"E8458","Transport, other",NA,"Unintentional",NA
-"E8459","Transport, other",NA,"Unintentional",NA
-"E846","Other specified, classifiable",NA,"Unintentional",NA
-"E847","Other specified, classifiable",NA,"Unintentional",NA
-"E848","Other specified, classifiable",NA,"Unintentional",NA
-"E8500","Poisoning",NA,"Unintentional",NA
-"E8501","Poisoning",NA,"Unintentional",NA
-"E8502","Poisoning",NA,"Unintentional",NA
-"E8503","Poisoning",NA,"Unintentional",NA
-"E8504","Poisoning",NA,"Unintentional",NA
-"E8505","Poisoning",NA,"Unintentional",NA
-"E8506","Poisoning",NA,"Unintentional",NA
-"E8507","Poisoning",NA,"Unintentional",NA
-"E8508","Poisoning",NA,"Unintentional",NA
-"E8509","Poisoning",NA,"Unintentional",NA
-"E851","Poisoning",NA,"Unintentional",NA
-"E8520","Poisoning",NA,"Unintentional",NA
-"E8521","Poisoning",NA,"Unintentional",NA
-"E8522","Poisoning",NA,"Unintentional",NA
-"E8523","Poisoning",NA,"Unintentional",NA
-"E8524","Poisoning",NA,"Unintentional",NA
-"E8525","Poisoning",NA,"Unintentional",NA
-"E8528","Poisoning",NA,"Unintentional",NA
-"E8529","Poisoning",NA,"Unintentional",NA
-"E8530","Poisoning",NA,"Unintentional",NA
-"E8531","Poisoning",NA,"Unintentional",NA
-"E8532","Poisoning",NA,"Unintentional",NA
-"E8538","Poisoning",NA,"Unintentional",NA
-"E8539","Poisoning",NA,"Unintentional",NA
-"E8540","Poisoning",NA,"Unintentional",NA
-"E8541","Poisoning",NA,"Unintentional",NA
-"E8542","Poisoning",NA,"Unintentional",NA
-"E8543","Poisoning",NA,"Unintentional",NA
-"E8548","Poisoning",NA,"Unintentional",NA
-"E8550","Poisoning",NA,"Unintentional",NA
-"E8551","Poisoning",NA,"Unintentional",NA
-"E8552","Poisoning",NA,"Unintentional",NA
-"E8553","Poisoning",NA,"Unintentional",NA
-"E8554","Poisoning",NA,"Unintentional",NA
-"E8555","Poisoning",NA,"Unintentional",NA
-"E8556","Poisoning",NA,"Unintentional",NA
-"E8558","Poisoning",NA,"Unintentional",NA
-"E8559","Poisoning",NA,"Unintentional",NA
-"E856","Poisoning",NA,"Unintentional",NA
-"E857","Poisoning",NA,"Unintentional",NA
-"E8580","Poisoning",NA,"Unintentional",NA
-"E8581","Poisoning",NA,"Unintentional",NA
-"E8582","Poisoning",NA,"Unintentional",NA
-"E8583","Poisoning",NA,"Unintentional",NA
-"E8584","Poisoning",NA,"Unintentional",NA
-"E8585","Poisoning",NA,"Unintentional",NA
-"E8586","Poisoning",NA,"Unintentional",NA
-"E8587","Poisoning",NA,"Unintentional",NA
-"E8588","Poisoning",NA,"Unintentional",NA
-"E8589","Poisoning",NA,"Unintentional",NA
-"E8600","Poisoning",NA,"Unintentional",NA
-"E8601","Poisoning",NA,"Unintentional",NA
-"E8602","Poisoning",NA,"Unintentional",NA
-"E8603","Poisoning",NA,"Unintentional",NA
-"E8604","Poisoning",NA,"Unintentional",NA
-"E8608","Poisoning",NA,"Unintentional",NA
-"E8609","Poisoning",NA,"Unintentional",NA
-"E8610","Poisoning",NA,"Unintentional",NA
-"E8611","Poisoning",NA,"Unintentional",NA
-"E8612","Poisoning",NA,"Unintentional",NA
-"E8613","Poisoning",NA,"Unintentional",NA
-"E8614","Poisoning",NA,"Unintentional",NA
-"E8615","Poisoning",NA,"Unintentional",NA
-"E8616","Poisoning",NA,"Unintentional",NA
-"E8619","Poisoning",NA,"Unintentional",NA
-"E8620","Poisoning",NA,"Unintentional",NA
-"E8621","Poisoning",NA,"Unintentional",NA
-"E8622","Poisoning",NA,"Unintentional",NA
-"E8623","Poisoning",NA,"Unintentional",NA
-"E8624","Poisoning",NA,"Unintentional",NA
-"E8629","Poisoning",NA,"Unintentional",NA
-"E8630","Poisoning",NA,"Unintentional",NA
-"E8631","Poisoning",NA,"Unintentional",NA
-"E8632","Poisoning",NA,"Unintentional",NA
-"E8633","Poisoning",NA,"Unintentional",NA
-"E8634","Poisoning",NA,"Unintentional",NA
-"E8635","Poisoning",NA,"Unintentional",NA
-"E8636","Poisoning",NA,"Unintentional",NA
-"E8637","Poisoning",NA,"Unintentional",NA
-"E8638","Poisoning",NA,"Unintentional",NA
-"E8639","Poisoning",NA,"Unintentional",NA
-"E8640","Poisoning",NA,"Unintentional",NA
-"E8641","Poisoning",NA,"Unintentional",NA
-"E8642","Poisoning",NA,"Unintentional",NA
-"E8643","Poisoning",NA,"Unintentional",NA
-"E8644","Poisoning",NA,"Unintentional",NA
-"E8650","Poisoning",NA,"Unintentional",NA
-"E8651","Poisoning",NA,"Unintentional",NA
-"E8652","Poisoning",NA,"Unintentional",NA
-"E8653","Poisoning",NA,"Unintentional",NA
-"E8654","Poisoning",NA,"Unintentional",NA
-"E8655","Poisoning",NA,"Unintentional",NA
-"E8658","Poisoning",NA,"Unintentional",NA
-"E8659","Poisoning",NA,"Unintentional",NA
-"E8660","Poisoning",NA,"Unintentional",NA
-"E8661","Poisoning",NA,"Unintentional",NA
-"E8662","Poisoning",NA,"Unintentional",NA
-"E8663","Poisoning",NA,"Unintentional",NA
-"E8664","Poisoning",NA,"Unintentional",NA
-"E8665","Poisoning",NA,"Unintentional",NA
-"E8666","Poisoning",NA,"Unintentional",NA
-"E8667","Poisoning",NA,"Unintentional",NA
-"E8668","Poisoning",NA,"Unintentional",NA
-"E8669","Poisoning",NA,"Unintentional",NA
-"E867","Poisoning",NA,"Unintentional",NA
-"E8680","Poisoning",NA,"Unintentional",NA
-"E8681","Poisoning",NA,"Unintentional",NA
-"E8682","Poisoning",NA,"Unintentional",NA
-"E8683","Poisoning",NA,"Unintentional",NA
-"E8688","Poisoning",NA,"Unintentional",NA
-"E8689","Poisoning",NA,"Unintentional",NA
-"E8690","Poisoning",NA,"Unintentional",NA
-"E8691","Poisoning",NA,"Unintentional",NA
-"E8692","Poisoning",NA,"Unintentional",NA
-"E8693","Poisoning",NA,"Unintentional",NA
-"E8694","Poisoning",NA,"Unintentional",NA
-"E8698","Poisoning",NA,"Unintentional",NA
-"E8699","Poisoning",NA,"Unintentional",NA
-"E8700","Adverse effects",0,"Other","Medical care"
-"E8701","Adverse effects",0,"Other","Medical care"
-"E8702","Adverse effects",0,"Other","Medical care"
-"E8703","Adverse effects",0,"Other","Medical care"
-"E8704","Adverse effects",0,"Other","Medical care"
-"E8705","Adverse effects",0,"Other","Medical care"
-"E8706","Adverse effects",0,"Other","Medical care"
-"E8707","Adverse effects",0,"Other","Medical care"
-"E8708","Adverse effects",0,"Other","Medical care"
-"E8709","Adverse effects",0,"Other","Medical care"
-"E8710","Adverse effects",0,"Other","Medical care"
-"E8711","Adverse effects",0,"Other","Medical care"
-"E8712","Adverse effects",0,"Other","Medical care"
-"E8713","Adverse effects",0,"Other","Medical care"
-"E8714","Adverse effects",0,"Other","Medical care"
-"E8715","Adverse effects",0,"Other","Medical care"
-"E8716","Adverse effects",0,"Other","Medical care"
-"E8717","Adverse effects",0,"Other","Medical care"
-"E8718","Adverse effects",0,"Other","Medical care"
-"E8719","Adverse effects",0,"Other","Medical care"
-"E8720","Adverse effects",0,"Other","Medical care"
-"E8721","Adverse effects",0,"Other","Medical care"
-"E8722","Adverse effects",0,"Other","Medical care"
-"E8723","Adverse effects",0,"Other","Medical care"
-"E8724","Adverse effects",0,"Other","Medical care"
-"E8725","Adverse effects",0,"Other","Medical care"
-"E8726","Adverse effects",0,"Other","Medical care"
-"E8728","Adverse effects",0,"Other","Medical care"
-"E8729","Adverse effects",0,"Other","Medical care"
-"E8730","Adverse effects",0,"Other","Medical care"
-"E8731","Adverse effects",0,"Other","Medical care"
-"E8732","Adverse effects",0,"Other","Medical care"
-"E8733","Adverse effects",0,"Other","Medical care"
-"E8734","Adverse effects",0,"Other","Medical care"
-"E8735","Adverse effects",0,"Other","Medical care"
-"E8736","Adverse effects",0,"Other","Medical care"
-"E8738","Adverse effects",0,"Other","Medical care"
-"E8739","Adverse effects",0,"Other","Medical care"
-"E8740","Adverse effects",0,"Other","Medical care"
-"E8741","Adverse effects",0,"Other","Medical care"
-"E8742","Adverse effects",0,"Other","Medical care"
-"E8743","Adverse effects",0,"Other","Medical care"
-"E8744","Adverse effects",0,"Other","Medical care"
-"E8745","Adverse effects",0,"Other","Medical care"
-"E8748","Adverse effects",0,"Other","Medical care"
-"E8749","Adverse effects",0,"Other","Medical care"
-"E8750","Adverse effects",0,"Other","Medical care"
-"E8751","Adverse effects",0,"Other","Medical care"
-"E8752","Adverse effects",0,"Other","Medical care"
-"E8758","Adverse effects",0,"Other","Medical care"
-"E8759","Adverse effects",0,"Other","Medical care"
-"E8760","Adverse effects",0,"Other","Medical care"
-"E8761","Adverse effects",0,"Other","Medical care"
-"E8762","Adverse effects",0,"Other","Medical care"
-"E8763","Adverse effects",0,"Other","Medical care"
-"E8764","Adverse effects",0,"Other","Medical care"
-"E8765","Adverse effects",0,"Other","Medical care"
-"E8768","Adverse effects",0,"Other","Medical care"
-"E8769","Adverse effects",0,"Other","Medical care"
-"E8780","Adverse effects",0,"Other","Medical care"
-"E8781","Adverse effects",0,"Other","Medical care"
-"E8782","Adverse effects",0,"Other","Medical care"
-"E8783","Adverse effects",0,"Other","Medical care"
-"E8784","Adverse effects",0,"Other","Medical care"
-"E8785","Adverse effects",0,"Other","Medical care"
-"E8786","Adverse effects",0,"Other","Medical care"
-"E8788","Adverse effects",0,"Other","Medical care"
-"E8789","Adverse effects",0,"Other","Medical care"
-"E8790","Adverse effects",0,"Other","Medical care"
-"E8791","Adverse effects",0,"Other","Medical care"
-"E8792","Adverse effects",0,"Other","Medical care"
-"E8793","Adverse effects",0,"Other","Medical care"
-"E8794","Adverse effects",0,"Other","Medical care"
-"E8795","Adverse effects",0,"Other","Medical care"
-"E8796","Adverse effects",0,"Other","Medical care"
-"E8797","Adverse effects",0,"Other","Medical care"
-"E8798","Adverse effects",0,"Other","Medical care"
-"E8799","Adverse effects",0,"Other","Medical care"
-"E8800","Fall",NA,"Unintentional",NA
-"E8801","Fall",NA,"Unintentional",NA
-"E8809","Fall",NA,"Unintentional",NA
-"E8810","Fall",NA,"Unintentional",NA
-"E8811","Fall",NA,"Unintentional",NA
-"E882","Fall",NA,"Unintentional",NA
-"E8830","Fall",NA,"Unintentional",NA
-"E8831","Fall",NA,"Unintentional",NA
-"E8832","Fall",NA,"Unintentional",NA
-"E8839","Fall",NA,"Unintentional",NA
-"E8840","Fall",NA,"Unintentional",NA
-"E8841","Fall",NA,"Unintentional",NA
-"E8842","Fall",NA,"Unintentional",NA
-"E8843","Fall",NA,"Unintentional",NA
-"E8844","Fall",NA,"Unintentional",NA
-"E8845","Fall",NA,"Unintentional",NA
-"E8846","Fall",NA,"Unintentional",NA
-"E8849","Fall",NA,"Unintentional",NA
-"E885","Fall",NA,"Unintentional",NA
-"E8850","Fall",NA,"Unintentional",NA
-"E8851","Fall",NA,"Unintentional",NA
-"E8852","Fall",NA,"Unintentional",NA
-"E8853","Fall",NA,"Unintentional",NA
-"E8854","Fall",NA,"Unintentional",NA
-"E8859","Fall",NA,"Unintentional",NA
-"E8860","Fall",NA,"Unintentional",NA
-"E8869","Fall",NA,"Unintentional",NA
-"E887","Unspecified",NA,"Unintentional",NA
-"E888","Fall",NA,"Unintentional",NA
-"E8880","Fall",NA,"Unintentional",NA
-"E8881","Fall",NA,"Unintentional",NA
-"E8888","Fall",NA,"Unintentional",NA
-"E8889","Fall",NA,"Unintentional",NA
-"E8900","Fire/burn",0,"Unintentional","Fire/flame"
-"E8901","Fire/burn",0,"Unintentional","Fire/flame"
-"E8902","Fire/burn",0,"Unintentional","Fire/flame"
-"E8903","Fire/burn",0,"Unintentional","Fire/flame"
-"E8908","Fire/burn",0,"Unintentional","Fire/flame"
-"E8909","Fire/burn",0,"Unintentional","Fire/flame"
-"E8910","Fire/burn",0,"Unintentional","Fire/flame"
-"E8911","Fire/burn",0,"Unintentional","Fire/flame"
-"E8912","Fire/burn",0,"Unintentional","Fire/flame"
-"E8913","Fire/burn",0,"Unintentional","Fire/flame"
-"E8918","Fire/burn",0,"Unintentional","Fire/flame"
-"E8919","Fire/burn",0,"Unintentional","Fire/flame"
-"E892","Fire/burn",0,"Unintentional","Fire/flame"
-"E8930","Fire/burn",0,"Unintentional","Fire/flame"
-"E8931","Fire/burn",0,"Unintentional","Fire/flame"
-"E8932","Fire/burn",0,"Unintentional","Fire/flame"
-"E8938","Fire/burn",0,"Unintentional","Fire/flame"
-"E8939","Fire/burn",0,"Unintentional","Fire/flame"
-"E894","Fire/burn",0,"Unintentional","Fire/flame"
-"E895","Fire/burn",0,"Unintentional","Fire/flame"
-"E896","Fire/burn",0,"Unintentional","Fire/flame"
-"E897","Fire/burn",0,"Unintentional","Fire/flame"
-"E8980","Fire/burn",0,"Unintentional","Fire/flame"
-"E8981","Fire/burn",0,"Unintentional","Fire/flame"
-"E899","Fire/burn",0,"Unintentional","Fire/flame"
-"E9000","Natural/environmental",NA,"Unintentional",NA
-"E9001","Natural/environmental",NA,"Unintentional",NA
-"E9009","Natural/environmental",NA,"Unintentional",NA
-"E9010","Natural/environmental",NA,"Unintentional",NA
-"E9011","Natural/environmental",NA,"Unintentional",NA
-"E9018","Natural/environmental",NA,"Unintentional",NA
-"E9019","Natural/environmental",NA,"Unintentional",NA
-"E9020","Natural/environmental",NA,"Unintentional",NA
-"E9021","Natural/environmental",NA,"Unintentional",NA
-"E9022","Natural/environmental",NA,"Unintentional",NA
-"E9028","Natural/environmental",NA,"Unintentional",NA
-"E9029","Natural/environmental",NA,"Unintentional",NA
-"E903","Natural/environmental",NA,"Unintentional",NA
-"E9040","Natural/environmental",NA,"Unintentional",NA
-"E9041","Natural/environmental",NA,"Unintentional",NA
-"E9042","Natural/environmental",NA,"Unintentional",NA
-"E9043","Natural/environmental",NA,"Unintentional",NA
-"E9049","Natural/environmental",NA,"Unintentional",NA
-"E9050","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9051","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9052","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9053","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9054","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9055","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9056","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9057","Natural/environmental",NA,"Unintentional",NA
-"E9058","Natural/environmental",NA,"Unintentional",NA
-"E9059","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9060","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9061","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9062","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9063","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9064","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9065","Natural/environmental",0,"Unintentional","Bites and stings"
-"E9068","Natural/environmental",NA,"Unintentional",NA
-"E9069","Natural/environmental",0,"Unintentional","Bites and stings"
-"E907","Natural/environmental",NA,"Unintentional",NA
-"E908","Natural/environmental",NA,"Unintentional",NA
-"E9080","Natural/environmental",NA,"Unintentional",NA
-"E9081","Natural/environmental",NA,"Unintentional",NA
-"E9082","Natural/environmental",NA,"Unintentional",NA
-"E9083","Natural/environmental",NA,"Unintentional",NA
-"E9084","Natural/environmental",NA,"Unintentional",NA
-"E9088","Natural/environmental",NA,"Unintentional",NA
-"E9089","Natural/environmental",NA,"Unintentional",NA
-"E909","Natural/environmental",NA,"Unintentional",NA
-"E9090","Natural/environmental",NA,"Unintentional",NA
-"E9091","Natural/environmental",NA,"Unintentional",NA
-"E9092","Natural/environmental",NA,"Unintentional",NA
-"E9093","Natural/environmental",NA,"Unintentional",NA
-"E9094","Natural/environmental",NA,"Unintentional",NA
-"E9098","Natural/environmental",NA,"Unintentional",NA
-"E9099","Natural/environmental",NA,"Unintentional",NA
-"E9100","Drowning/submersion",NA,"Unintentional",NA
-"E9101","Drowning/submersion",NA,"Unintentional",NA
-"E9102","Drowning/submersion",NA,"Unintentional",NA
-"E9103","Drowning/submersion",NA,"Unintentional",NA
-"E9104","Drowning/submersion",NA,"Unintentional",NA
-"E9108","Drowning/submersion",NA,"Unintentional",NA
-"E9109","Drowning/submersion",NA,"Unintentional",NA
-"E911","Suffocation",NA,"Unintentional",NA
-"E912","Suffocation",NA,"Unintentional",NA
-"E9130","Suffocation",NA,"Unintentional",NA
-"E9131","Suffocation",NA,"Unintentional",NA
-"E9132","Suffocation",NA,"Unintentional",NA
-"E9133","Suffocation",NA,"Unintentional",NA
-"E9138","Suffocation",NA,"Unintentional",NA
-"E9139","Suffocation",NA,"Unintentional",NA
-"E914","Other specified, classifiable",NA,"Unintentional",NA
-"E915","Other specified, classifiable",NA,"Unintentional",NA
-"E916","Struck by, against",NA,"Unintentional",NA
-"E9170","Struck by, against",NA,"Unintentional",NA
-"E9171","Struck by, against",NA,"Unintentional",NA
-"E9172","Struck by, against",NA,"Unintentional",NA
-"E9173","Struck by, against",NA,"Unintentional",NA
-"E9174","Struck by, against",NA,"Unintentional",NA
-"E9175","Struck by, against",NA,"Unintentional",NA
-"E9176","Struck by, against",NA,"Unintentional",NA
-"E9177","Struck by, against",NA,"Unintentional",NA
-"E9178","Struck by, against",NA,"Unintentional",NA
-"E9179","Struck by, against",NA,"Unintentional",NA
-"E918","Other specified, classifiable",NA,"Unintentional",NA
-"E9190","Machinery",NA,"Unintentional",NA
-"E9191","Machinery",NA,"Unintentional",NA
-"E9192","Machinery",NA,"Unintentional",NA
-"E9193","Machinery",NA,"Unintentional",NA
-"E9194","Machinery",NA,"Unintentional",NA
-"E9195","Machinery",NA,"Unintentional",NA
-"E9196","Machinery",NA,"Unintentional",NA
-"E9197","Machinery",NA,"Unintentional",NA
-"E9198","Machinery",NA,"Unintentional",NA
-"E9199","Machinery",NA,"Unintentional",NA
-"E920","Cut/pierce",NA,"Unintentional",NA
-"E9200","Cut/pierce",NA,"Unintentional",NA
-"E9201","Cut/pierce",NA,"Unintentional",NA
-"E9202","Cut/pierce",NA,"Unintentional",NA
-"E9203","Cut/pierce",NA,"Unintentional",NA
-"E9204","Cut/pierce",NA,"Unintentional",NA
-"E9205","Cut/pierce",NA,"Unintentional",NA
-"E9208","Cut/pierce",NA,"Unintentional",NA
-"E9209","Cut/pierce",NA,"Unintentional",NA
-"E9210","Other specified, classifiable",NA,"Unintentional",NA
-"E9211","Other specified, classifiable",NA,"Unintentional",NA
-"E9218","Other specified, classifiable",NA,"Unintentional",NA
-"E9219","Other specified, classifiable",NA,"Unintentional",NA
-"E9220","Firearm",NA,"Unintentional",NA
-"E9221","Firearm",NA,"Unintentional",NA
-"E9222","Firearm",NA,"Unintentional",NA
-"E9223","Firearm",NA,"Unintentional",NA
-"E9224","Other specified, classifiable",NA,"Unintentional",NA
-"E9225","Other specified, classifiable",NA,"Unintentional",NA
-"E9228","Firearm",NA,"Unintentional",NA
-"E9229","Firearm",NA,"Unintentional",NA
-"E9230","Other specified, classifiable",NA,"Unintentional",NA
-"E9231","Other specified, classifiable",NA,"Unintentional",NA
-"E9232","Other specified, classifiable",NA,"Unintentional",NA
-"E9238","Other specified, classifiable",NA,"Unintentional",NA
-"E9239","Other specified, classifiable",NA,"Unintentional",NA
-"E9240","Fire/burn",1,"Unintentional","Hot object/substance"
-"E9241","Fire/burn",1,"Unintentional","Hot object/substance"
-"E9242","Fire/burn",1,"Unintentional","Hot object/substance"
-"E9248","Fire/burn",1,"Unintentional","Hot object/substance"
-"E9249","Fire/burn",1,"Unintentional","Hot object/substance"
-"E9250","Other specified, classifiable",NA,"Unintentional",NA
-"E9251","Other specified, classifiable",NA,"Unintentional",NA
-"E9252","Other specified, classifiable",NA,"Unintentional",NA
-"E9258","Other specified, classifiable",NA,"Unintentional",NA
-"E9259","Other specified, classifiable",NA,"Unintentional",NA
-"E9260","Other specified, classifiable",NA,"Unintentional",NA
-"E9261","Other specified, classifiable",NA,"Unintentional",NA
-"E9262","Other specified, classifiable",NA,"Unintentional",NA
-"E9263","Other specified, classifiable",NA,"Unintentional",NA
-"E9264","Other specified, classifiable",NA,"Unintentional",NA
-"E9265","Other specified, classifiable",NA,"Unintentional",NA
-"E9268","Other specified, classifiable",NA,"Unintentional",NA
-"E9269","Other specified, classifiable",NA,"Unintentional",NA
-"E927","Overexertion",NA,"Unintentional",NA
-"E9280","Natural/environmental",NA,"Unintentional",NA
-"E9281","Natural/environmental",NA,"Unintentional",NA
-"E9282","Natural/environmental",NA,"Unintentional",NA
-"E9283","Other specified, classifiable",NA,"Unintentional",NA
-"E9284","Other specified, classifiable",NA,"Unintentional",NA
-"E9285","Other specified, classifiable",NA,"Unintentional",NA
-"E9286","Other specified, classifiable",NA,"Unintentional",NA
-"E9288","Other specified, not elsewhere classifiable",NA,"Unintentional",NA
-"E9289","Unspecified",NA,"Unintentional",NA
-"E9290","Other specified, classifiable",NA,"Unintentional",NA
-"E9291","Other specified, classifiable",NA,"Unintentional",NA
-"E9292","Other specified, classifiable",NA,"Unintentional",NA
-"E9293","Other specified, classifiable",NA,"Unintentional",NA
-"E9294","Other specified, classifiable",NA,"Unintentional",NA
-"E9295","Other specified, classifiable",NA,"Unintentional",NA
-"E9298","Other specified, not elsewhere classifiable",NA,"Unintentional",NA
-"E9299","Unspecified",NA,"Unintentional",NA
-"E9300","Adverse effects",1,"Other","Drugs"
-"E9301","Adverse effects",1,"Other","Drugs"
-"E9302","Adverse effects",1,"Other","Drugs"
-"E9303","Adverse effects",1,"Other","Drugs"
-"E9304","Adverse effects",1,"Other","Drugs"
-"E9305","Adverse effects",1,"Other","Drugs"
-"E9306","Adverse effects",1,"Other","Drugs"
-"E9307","Adverse effects",1,"Other","Drugs"
-"E9308","Adverse effects",1,"Other","Drugs"
-"E9309","Adverse effects",1,"Other","Drugs"
-"E9310","Adverse effects",1,"Other","Drugs"
-"E9311","Adverse effects",1,"Other","Drugs"
-"E9312","Adverse effects",1,"Other","Drugs"
-"E9313","Adverse effects",1,"Other","Drugs"
-"E9314","Adverse effects",1,"Other","Drugs"
-"E9315","Adverse effects",1,"Other","Drugs"
-"E9316","Adverse effects",1,"Other","Drugs"
-"E9317","Adverse effects",1,"Other","Drugs"
-"E9318","Adverse effects",1,"Other","Drugs"
-"E9319","Adverse effects",1,"Other","Drugs"
-"E9320","Adverse effects",1,"Other","Drugs"
-"E9321","Adverse effects",1,"Other","Drugs"
-"E9322","Adverse effects",1,"Other","Drugs"
-"E9323","Adverse effects",1,"Other","Drugs"
-"E9324","Adverse effects",1,"Other","Drugs"
-"E9325","Adverse effects",1,"Other","Drugs"
-"E9326","Adverse effects",1,"Other","Drugs"
-"E9327","Adverse effects",1,"Other","Drugs"
-"E9328","Adverse effects",1,"Other","Drugs"
-"E9329","Adverse effects",1,"Other","Drugs"
-"E9330","Adverse effects",1,"Other","Drugs"
-"E9331","Adverse effects",1,"Other","Drugs"
-"E9332","Adverse effects",1,"Other","Drugs"
-"E9333","Adverse effects",1,"Other","Drugs"
-"E9334","Adverse effects",1,"Other","Drugs"
-"E9335","Adverse effects",1,"Other","Drugs"
-"E9336","Adverse effects",1,"Other","Drugs"
-"E9337","Adverse effects",1,"Other","Drugs"
-"E9338","Adverse effects",1,"Other","Drugs"
-"E9339","Adverse effects",1,"Other","Drugs"
-"E9340","Adverse effects",1,"Other","Drugs"
-"E9341","Adverse effects",1,"Other","Drugs"
-"E9342","Adverse effects",1,"Other","Drugs"
-"E9343","Adverse effects",1,"Other","Drugs"
-"E9344","Adverse effects",1,"Other","Drugs"
-"E9345","Adverse effects",1,"Other","Drugs"
-"E9346","Adverse effects",1,"Other","Drugs"
-"E9347","Adverse effects",1,"Other","Drugs"
-"E9348","Adverse effects",1,"Other","Drugs"
-"E9349","Adverse effects",1,"Other","Drugs"
-"E9350","Adverse effects",1,"Other","Drugs"
-"E9351","Adverse effects",1,"Other","Drugs"
-"E9352","Adverse effects",1,"Other","Drugs"
-"E9353","Adverse effects",1,"Other","Drugs"
-"E9354","Adverse effects",1,"Other","Drugs"
-"E9355","Adverse effects",1,"Other","Drugs"
-"E9356","Adverse effects",1,"Other","Drugs"
-"E9357","Adverse effects",1,"Other","Drugs"
-"E9358","Adverse effects",1,"Other","Drugs"
-"E9359","Adverse effects",1,"Other","Drugs"
-"E9360","Adverse effects",1,"Other","Drugs"
-"E9361","Adverse effects",1,"Other","Drugs"
-"E9362","Adverse effects",1,"Other","Drugs"
-"E9363","Adverse effects",1,"Other","Drugs"
-"E9364","Adverse effects",1,"Other","Drugs"
-"E9370","Adverse effects",1,"Other","Drugs"
-"E9371","Adverse effects",1,"Other","Drugs"
-"E9372","Adverse effects",1,"Other","Drugs"
-"E9373","Adverse effects",1,"Other","Drugs"
-"E9374","Adverse effects",1,"Other","Drugs"
-"E9375","Adverse effects",1,"Other","Drugs"
-"E9376","Adverse effects",1,"Other","Drugs"
-"E9378","Adverse effects",1,"Other","Drugs"
-"E9379","Adverse effects",1,"Other","Drugs"
-"E9380","Adverse effects",1,"Other","Drugs"
-"E9381","Adverse effects",1,"Other","Drugs"
-"E9382","Adverse effects",1,"Other","Drugs"
-"E9383","Adverse effects",1,"Other","Drugs"
-"E9384","Adverse effects",1,"Other","Drugs"
-"E9385","Adverse effects",1,"Other","Drugs"
-"E9386","Adverse effects",1,"Other","Drugs"
-"E9387","Adverse effects",1,"Other","Drugs"
-"E9389","Adverse effects",1,"Other","Drugs"
-"E9390","Adverse effects",1,"Other","Drugs"
-"E9391","Adverse effects",1,"Other","Drugs"
-"E9392","Adverse effects",1,"Other","Drugs"
-"E9393","Adverse effects",1,"Other","Drugs"
-"E9394","Adverse effects",1,"Other","Drugs"
-"E9395","Adverse effects",1,"Other","Drugs"
-"E9396","Adverse effects",1,"Other","Drugs"
-"E9397","Adverse effects",1,"Other","Drugs"
-"E9398","Adverse effects",1,"Other","Drugs"
-"E9399","Adverse effects",1,"Other","Drugs"
-"E9400","Adverse effects",1,"Other","Drugs"
-"E9401","Adverse effects",1,"Other","Drugs"
-"E9408","Adverse effects",1,"Other","Drugs"
-"E9409","Adverse effects",1,"Other","Drugs"
-"E9410","Adverse effects",1,"Other","Drugs"
-"E9411","Adverse effects",1,"Other","Drugs"
-"E9412","Adverse effects",1,"Other","Drugs"
-"E9413","Adverse effects",1,"Other","Drugs"
-"E9419","Adverse effects",1,"Other","Drugs"
-"E9420","Adverse effects",1,"Other","Drugs"
-"E9421","Adverse effects",1,"Other","Drugs"
-"E9422","Adverse effects",1,"Other","Drugs"
-"E9423","Adverse effects",1,"Other","Drugs"
-"E9424","Adverse effects",1,"Other","Drugs"
-"E9425","Adverse effects",1,"Other","Drugs"
-"E9426","Adverse effects",1,"Other","Drugs"
-"E9427","Adverse effects",1,"Other","Drugs"
-"E9428","Adverse effects",1,"Other","Drugs"
-"E9429","Adverse effects",1,"Other","Drugs"
-"E9430","Adverse effects",1,"Other","Drugs"
-"E9431","Adverse effects",1,"Other","Drugs"
-"E9432","Adverse effects",1,"Other","Drugs"
-"E9433","Adverse effects",1,"Other","Drugs"
-"E9434","Adverse effects",1,"Other","Drugs"
-"E9435","Adverse effects",1,"Other","Drugs"
-"E9436","Adverse effects",1,"Other","Drugs"
-"E9438","Adverse effects",1,"Other","Drugs"
-"E9439","Adverse effects",1,"Other","Drugs"
-"E9440","Adverse effects",1,"Other","Drugs"
-"E9441","Adverse effects",1,"Other","Drugs"
-"E9442","Adverse effects",1,"Other","Drugs"
-"E9443","Adverse effects",1,"Other","Drugs"
-"E9444","Adverse effects",1,"Other","Drugs"
-"E9445","Adverse effects",1,"Other","Drugs"
-"E9446","Adverse effects",1,"Other","Drugs"
-"E9447","Adverse effects",1,"Other","Drugs"
-"E9450","Adverse effects",1,"Other","Drugs"
-"E9451","Adverse effects",1,"Other","Drugs"
-"E9452","Adverse effects",1,"Other","Drugs"
-"E9453","Adverse effects",1,"Other","Drugs"
-"E9454","Adverse effects",1,"Other","Drugs"
-"E9455","Adverse effects",1,"Other","Drugs"
-"E9456","Adverse effects",1,"Other","Drugs"
-"E9457","Adverse effects",1,"Other","Drugs"
-"E9458","Adverse effects",1,"Other","Drugs"
-"E9460","Adverse effects",1,"Other","Drugs"
-"E9461","Adverse effects",1,"Other","Drugs"
-"E9462","Adverse effects",1,"Other","Drugs"
-"E9463","Adverse effects",1,"Other","Drugs"
-"E9464","Adverse effects",1,"Other","Drugs"
-"E9465","Adverse effects",1,"Other","Drugs"
-"E9466","Adverse effects",1,"Other","Drugs"
-"E9467","Adverse effects",1,"Other","Drugs"
-"E9468","Adverse effects",1,"Other","Drugs"
-"E9469","Adverse effects",1,"Other","Drugs"
-"E9470","Adverse effects",1,"Other","Drugs"
-"E9471","Adverse effects",1,"Other","Drugs"
-"E9472","Adverse effects",1,"Other","Drugs"
-"E9473","Adverse effects",1,"Other","Drugs"
-"E9474","Adverse effects",1,"Other","Drugs"
-"E9478","Adverse effects",1,"Other","Drugs"
-"E9479","Adverse effects",1,"Other","Drugs"
-"E9480","Adverse effects",1,"Other","Drugs"
-"E9481","Adverse effects",1,"Other","Drugs"
-"E9482","Adverse effects",1,"Other","Drugs"
-"E9483","Adverse effects",1,"Other","Drugs"
-"E9484","Adverse effects",1,"Other","Drugs"
-"E9485","Adverse effects",1,"Other","Drugs"
-"E9486","Adverse effects",1,"Other","Drugs"
-"E9488","Adverse effects",1,"Other","Drugs"
-"E9489","Adverse effects",1,"Other","Drugs"
-"E9490","Adverse effects",1,"Other","Drugs"
-"E9491","Adverse effects",1,"Other","Drugs"
-"E9492","Adverse effects",1,"Other","Drugs"
-"E9493","Adverse effects",1,"Other","Drugs"
-"E9494","Adverse effects",1,"Other","Drugs"
-"E9495","Adverse effects",1,"Other","Drugs"
-"E9496","Adverse effects",1,"Other","Drugs"
-"E9497","Adverse effects",1,"Other","Drugs"
-"E9499","Adverse effects",1,"Other","Drugs"
-"E9500","Poisoning",NA,"Self-inflicted",NA
-"E9501","Poisoning",NA,"Self-inflicted",NA
-"E9502","Poisoning",NA,"Self-inflicted",NA
-"E9503","Poisoning",NA,"Self-inflicted",NA
-"E9504","Poisoning",NA,"Self-inflicted",NA
-"E9505","Poisoning",NA,"Self-inflicted",NA
-"E9506","Poisoning",NA,"Self-inflicted",NA
-"E9507","Poisoning",NA,"Self-inflicted",NA
-"E9508","Poisoning",NA,"Self-inflicted",NA
-"E9509","Poisoning",NA,"Self-inflicted",NA
-"E9510","Poisoning",NA,"Self-inflicted",NA
-"E9511","Poisoning",NA,"Self-inflicted",NA
-"E9518","Poisoning",NA,"Self-inflicted",NA
-"E9520","Poisoning",NA,"Self-inflicted",NA
-"E9521","Poisoning",NA,"Self-inflicted",NA
-"E9528","Poisoning",NA,"Self-inflicted",NA
-"E9529","Poisoning",NA,"Self-inflicted",NA
-"E9530","Suffocation",NA,"Self-inflicted",NA
-"E9531","Suffocation",NA,"Self-inflicted",NA
-"E9538","Suffocation",NA,"Self-inflicted",NA
-"E9539","Suffocation",NA,"Self-inflicted",NA
-"E954","Drowning/submersion",NA,"Self-inflicted",NA
-"E9550","Firearm",NA,"Self-inflicted",NA
-"E9551","Firearm",NA,"Self-inflicted",NA
-"E9552","Firearm",NA,"Self-inflicted",NA
-"E9553","Firearm",NA,"Self-inflicted",NA
-"E9554","Firearm",NA,"Self-inflicted",NA
-"E9555","Other specified, classifiable",NA,"Self-inflicted",NA
-"E9556","Other specified, classifiable",NA,"Self-inflicted",NA
-"E9557","Other specified, classifiable",NA,"Self-inflicted",NA
-"E9559","Other specified, classifiable",NA,"Self-inflicted",NA
-"E956","Cut/pierce",NA,"Self-inflicted",NA
-"E9570","Fall",NA,"Self-inflicted",NA
-"E9571","Fall",NA,"Self-inflicted",NA
-"E9572","Fall",NA,"Self-inflicted",NA
-"E9579","Fall",NA,"Self-inflicted",NA
-"E9580","Other specified, classifiable",NA,"Self-inflicted",NA
-"E9581","Fire/burn",0,"Self-inflicted","Fire/flame"
-"E9582","Fire/burn",1,"Self-inflicted","Hot object/substance"
-"E9583","Natural/environmental",NA,"Self-inflicted",NA
-"E9584","Other specified, classifiable",NA,"Self-inflicted",NA
-"E9585","Motor vehicle traffic",NA,"Self-inflicted",NA
-"E9586","Transport, other",NA,"Self-inflicted",NA
-"E9587","Fire/burn",1,"Self-inflicted","Hot object/substance"
-"E9588","Other specified, not elsewhere classifiable",NA,"Self-inflicted",NA
-"E9589","Unspecified",NA,"Self-inflicted",NA
-"E959","Other specified, not elsewhere classifiable",NA,"Self-inflicted",NA
-"E9600","Struck by, against",NA,"Assault",NA
-"E9601","Other specified, classifiable",NA,"Assault",NA
-"E961","Fire/burn",1,"Self-inflicted","Hot object/substance"
-"E9620","Poisoning",NA,"Assault",NA
-"E9621","Poisoning",NA,"Assault",NA
-"E9622","Poisoning",NA,"Assault",NA
-"E9629","Poisoning",NA,"Assault",NA
-"E963","Suffocation",NA,"Assault",NA
-"E964","Drowning/submersion",NA,"Assault",NA
-"E9650","Firearm",NA,"Assault",NA
-"E9651","Firearm",NA,"Assault",NA
-"E9652","Firearm",NA,"Assault",NA
-"E9653","Firearm",NA,"Assault",NA
-"E9654","Firearm",NA,"Assault",NA
-"E9655","Other specified, classifiable",NA,"Assault",NA
-"E9656","Other specified, classifiable",NA,"Assault",NA
-"E9657","Other specified, classifiable",NA,"Assault",NA
-"E9658","Other specified, classifiable",NA,"Assault",NA
-"E9659","Other specified, classifiable",NA,"Assault",NA
-"E966","Cut/pierce",NA,"Assault",NA
-"E9670","Other specified, classifiable",NA,"Assault",NA
-"E9671","Other specified, classifiable",NA,"Assault",NA
-"E9672","Other specified, classifiable",NA,"Assault",NA
-"E9673","Other specified, classifiable",NA,"Assault",NA
-"E9674","Other specified, classifiable",NA,"Assault",NA
-"E9675","Other specified, classifiable",NA,"Assault",NA
-"E9676","Other specified, classifiable",NA,"Assault",NA
-"E9677","Other specified, classifiable",NA,"Assault",NA
-"E9678","Other specified, classifiable",NA,"Assault",NA
-"E9679","Other specified, classifiable",NA,"Assault",NA
-"E9680","Fire/burn",0,"Assault","Fire/flame"
-"E9681","Fall",NA,"Assault",NA
-"E9682","Struck by, against",NA,"Assault",NA
-"E9683","Fire/burn",1,"Assault","Hot object/substance"
-"E9684","Other specified, classifiable",NA,"Assault",NA
-"E9685","Motor vehicle traffic",NA,"Assault",NA
-"E9686","Other specified, classifiable",NA,"Assault",NA
-"E9687","Other specified, classifiable",NA,"Assault",NA
-"E9688","Other specified, not elsewhere classifiable",NA,"Assault",NA
-"E9689","Unspecified",NA,"Assault",NA
-"E969","Other specified, not elsewhere classifiable",NA,"Assault",NA
-"E970","Firearm",NA,"Other",NA
-"E971","Other specified, classifiable",NA,"Other",NA
-"E972","Poisoning",NA,"Other",NA
-"E973","Struck by, against",NA,"Other",NA
-"E974","Cut/pierce",NA,"Other",NA
-"E975","Struck by, against",NA,"Other",NA
-"E976","Unspecified",NA,"Other",NA
-"E977","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E978","Other specified, classifiable",NA,"Other",NA
-"E9790","Other specified, classifiable",NA,"Assault",NA
-"E9791","Other specified, classifiable",NA,"Assault",NA
-"E9792","Other specified, classifiable",NA,"Assault",NA
-"E9793","Other specified, classifiable",NA,"Assault",NA
-"E9794","Other specified, classifiable",NA,"Assault",NA
-"E9795","Other specified, classifiable",NA,"Assault",NA
-"E9796","Other specified, classifiable",NA,"Assault",NA
-"E9797","Other specified, classifiable",NA,"Assault",NA
-"E9798","Other specified, classifiable",NA,"Assault",NA
-"E9799","Other specified, classifiable",NA,"Assault",NA
-"E9800","Poisoning",NA,"Undetermined",NA
-"E9801","Poisoning",NA,"Undetermined",NA
-"E9802","Poisoning",NA,"Undetermined",NA
-"E9803","Poisoning",NA,"Undetermined",NA
-"E9804","Poisoning",NA,"Undetermined",NA
-"E9805","Poisoning",NA,"Undetermined",NA
-"E9806","Poisoning",NA,"Undetermined",NA
-"E9807","Poisoning",NA,"Undetermined",NA
-"E9808","Poisoning",NA,"Undetermined",NA
-"E9809","Poisoning",NA,"Undetermined",NA
-"E9810","Poisoning",NA,"Undetermined",NA
-"E9811","Poisoning",NA,"Undetermined",NA
-"E9818","Poisoning",NA,"Undetermined",NA
-"E9820","Poisoning",NA,"Undetermined",NA
-"E9821","Poisoning",NA,"Undetermined",NA
-"E9828","Poisoning",NA,"Undetermined",NA
-"E9829","Poisoning",NA,"Undetermined",NA
-"E9830","Suffocation",NA,"Undetermined",NA
-"E9831","Suffocation",NA,"Undetermined",NA
-"E9838","Suffocation",NA,"Undetermined",NA
-"E9839","Suffocation",NA,"Undetermined",NA
-"E984","Drowning/submersion",NA,"Undetermined",NA
-"E9850","Firearm",NA,"Undetermined",NA
-"E9851","Firearm",NA,"Undetermined",NA
-"E9852","Firearm",NA,"Undetermined",NA
-"E9853","Firearm",NA,"Undetermined",NA
-"E9854","Firearm",NA,"Undetermined",NA
-"E9855","Other specified, classifiable",NA,"Undetermined",NA
-"E9856","Firearm",NA,"Undetermined",NA
-"E9857","Other specified, classifiable",NA,"Undetermined",NA
-"E986","Cut/pierce",NA,"Undetermined",NA
-"E9870","Fall",NA,"Undetermined",NA
-"E9871","Fall",NA,"Undetermined",NA
-"E9872","Fall",NA,"Undetermined",NA
-"E9879","Fall",NA,"Undetermined",NA
-"E9880","Other specified, classifiable",NA,"Undetermined",NA
-"E9881","Fire/burn",0,"Undetermined","Fire/flame"
-"E9882","Fire/burn",1,"Undetermined","Hot object/substance"
-"E9883","Natural/environmental",NA,"Undetermined",NA
-"E9884","Other specified, classifiable",NA,"Undetermined",NA
-"E9885","Motor vehicle traffic",NA,"Undetermined",NA
-"E9886","Transport, other",NA,"Undetermined",NA
-"E9887","Fire/burn",1,"Undetermined","Hot object/substance"
-"E9888","Other specified, not elsewhere classifiable",NA,"Undetermined",NA
-"E9889","Unspecified",NA,"Undetermined",NA
-"E989","Other specified, not elsewhere classifiable",NA,"Undetermined",NA
-"E9900","Other specified, classifiable",NA,"Other",NA
-"E9909","Other specified, classifiable",NA,"Other",NA
-"E9910","Other specified, classifiable",NA,"Other",NA
-"E9911","Other specified, classifiable",NA,"Other",NA
-"E9912","Other specified, classifiable",NA,"Other",NA
-"E9913","Other specified, classifiable",NA,"Other",NA
-"E9919","Other specified, classifiable",NA,"Other",NA
-"E992","Other specified, classifiable",NA,"Other",NA
-"E993","Other specified, classifiable",NA,"Other",NA
-"E994","Other specified, classifiable",NA,"Other",NA
-"E995","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E996","Other specified, classifiable",NA,"Other",NA
-"E9970","Other specified, classifiable",NA,"Other",NA
-"E9971","Other specified, classifiable",NA,"Other",NA
-"E9972","Other specified, classifiable",NA,"Other",NA
-"E9978","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E9979","Unspecified",NA,"Other",NA
-"E998","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E999","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E9990","Other specified, not elsewhere classifiable",NA,"Other",NA
-"E9991","Other specified, not elsewhere classifiable",NA,"Other",NA
+"dx","mechmaj","mechmin","intent"
+"E8000","Transport, other",NA,"Unintentional"
+"E8001","Transport, other",NA,"Unintentional"
+"E8002","Pedestrian, other",NA,"Unintentional"
+"E8003","Pedal cyclist, other",NA,"Unintentional"
+"E8008","Transport, other",NA,"Unintentional"
+"E8009","Transport, other",NA,"Unintentional"
+"E8010","Transport, other",NA,"Unintentional"
+"E8011","Transport, other",NA,"Unintentional"
+"E8012","Pedestrian, other",NA,"Unintentional"
+"E8013","Pedal cyclist, other",NA,"Unintentional"
+"E8018","Transport, other",NA,"Unintentional"
+"E8019","Transport, other",NA,"Unintentional"
+"E8020","Transport, other",NA,"Unintentional"
+"E8021","Transport, other",NA,"Unintentional"
+"E8022","Pedestrian, other",NA,"Unintentional"
+"E8023","Pedal cyclist, other",NA,"Unintentional"
+"E8028","Transport, other",NA,"Unintentional"
+"E8029","Transport, other",NA,"Unintentional"
+"E8030","Transport, other",NA,"Unintentional"
+"E8031","Transport, other",NA,"Unintentional"
+"E8032","Pedestrian, other",NA,"Unintentional"
+"E8033","Pedal cyclist, other",NA,"Unintentional"
+"E8038","Transport, other",NA,"Unintentional"
+"E8039","Transport, other",NA,"Unintentional"
+"E8040","Transport, other",NA,"Unintentional"
+"E8041","Transport, other",NA,"Unintentional"
+"E8042","Pedestrian, other",NA,"Unintentional"
+"E8043","Pedal cyclist, other",NA,"Unintentional"
+"E8048","Transport, other",NA,"Unintentional"
+"E8049","Transport, other",NA,"Unintentional"
+"E8050","Transport, other",NA,"Unintentional"
+"E8051","Transport, other",NA,"Unintentional"
+"E8052","Pedestrian, other",NA,"Unintentional"
+"E8053","Pedal cyclist, other",NA,"Unintentional"
+"E8058","Transport, other",NA,"Unintentional"
+"E8059","Transport, other",NA,"Unintentional"
+"E8060","Transport, other",NA,"Unintentional"
+"E8061","Transport, other",NA,"Unintentional"
+"E8062","Pedestrian, other",NA,"Unintentional"
+"E8063","Pedal cyclist, other",NA,"Unintentional"
+"E8068","Transport, other",NA,"Unintentional"
+"E8069","Transport, other",NA,"Unintentional"
+"E8070","Transport, other",NA,"Unintentional"
+"E8071","Transport, other",NA,"Unintentional"
+"E8072","Pedestrian, other",NA,"Unintentional"
+"E8073","Pedal cyclist, other",NA,"Unintentional"
+"E8078","Transport, other",NA,"Unintentional"
+"E8079","Transport, other",NA,"Unintentional"
+"E8100","Motor vehicle traffic","Occupant","Unintentional"
+"E8101","Motor vehicle traffic","Occupant","Unintentional"
+"E8102","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8103","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8104","Motor vehicle traffic",NA,"Unintentional"
+"E8105","Motor vehicle traffic",NA,"Unintentional"
+"E8106","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8107","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8108","Motor vehicle traffic",NA,"Unintentional"
+"E8109","Motor vehicle traffic","Unspecified","Unintentional"
+"E8110","Motor vehicle traffic","Occupant","Unintentional"
+"E8111","Motor vehicle traffic","Occupant","Unintentional"
+"E8112","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8113","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8114","Motor vehicle traffic",NA,"Unintentional"
+"E8115","Motor vehicle traffic",NA,"Unintentional"
+"E8116","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8117","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8118","Motor vehicle traffic",NA,"Unintentional"
+"E8119","Motor vehicle traffic","Unspecified","Unintentional"
+"E8120","Motor vehicle traffic","Occupant","Unintentional"
+"E8121","Motor vehicle traffic","Occupant","Unintentional"
+"E8122","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8123","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8124","Motor vehicle traffic",NA,"Unintentional"
+"E8125","Motor vehicle traffic",NA,"Unintentional"
+"E8126","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8127","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8128","Motor vehicle traffic",NA,"Unintentional"
+"E8129","Motor vehicle traffic","Unspecified","Unintentional"
+"E8130","Motor vehicle traffic","Occupant","Unintentional"
+"E8131","Motor vehicle traffic","Occupant","Unintentional"
+"E8132","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8133","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8134","Motor vehicle traffic",NA,"Unintentional"
+"E8135","Motor vehicle traffic",NA,"Unintentional"
+"E8136","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8137","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8138","Motor vehicle traffic",NA,"Unintentional"
+"E8139","Motor vehicle traffic","Unspecified","Unintentional"
+"E8140","Motor vehicle traffic","Occupant","Unintentional"
+"E8141","Motor vehicle traffic","Occupant","Unintentional"
+"E8142","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8143","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8144","Motor vehicle traffic",NA,"Unintentional"
+"E8145","Motor vehicle traffic",NA,"Unintentional"
+"E8146","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8147","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8148","Motor vehicle traffic",NA,"Unintentional"
+"E8149","Motor vehicle traffic","Unspecified","Unintentional"
+"E8150","Motor vehicle traffic","Occupant","Unintentional"
+"E8151","Motor vehicle traffic","Occupant","Unintentional"
+"E8152","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8153","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8154","Motor vehicle traffic",NA,"Unintentional"
+"E8155","Motor vehicle traffic",NA,"Unintentional"
+"E8156","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8157","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8158","Motor vehicle traffic",NA,"Unintentional"
+"E8159","Motor vehicle traffic","Unspecified","Unintentional"
+"E8160","Motor vehicle traffic","Occupant","Unintentional"
+"E8161","Motor vehicle traffic","Occupant","Unintentional"
+"E8162","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8163","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8164","Motor vehicle traffic",NA,"Unintentional"
+"E8165","Motor vehicle traffic",NA,"Unintentional"
+"E8166","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8167","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8168","Motor vehicle traffic",NA,"Unintentional"
+"E8169","Motor vehicle traffic","Unspecified","Unintentional"
+"E8170","Motor vehicle traffic","Occupant","Unintentional"
+"E8171","Motor vehicle traffic","Occupant","Unintentional"
+"E8172","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8173","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8174","Motor vehicle traffic",NA,"Unintentional"
+"E8175","Motor vehicle traffic",NA,"Unintentional"
+"E8176","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8177","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8178","Motor vehicle traffic",NA,"Unintentional"
+"E8179","Motor vehicle traffic","Unspecified","Unintentional"
+"E8180","Motor vehicle traffic","Occupant","Unintentional"
+"E8181","Motor vehicle traffic","Occupant","Unintentional"
+"E8182","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8183","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8184","Motor vehicle traffic",NA,"Unintentional"
+"E8185","Motor vehicle traffic",NA,"Unintentional"
+"E8186","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8187","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8188","Motor vehicle traffic",NA,"Unintentional"
+"E8189","Motor vehicle traffic","Unspecified","Unintentional"
+"E8190","Motor vehicle traffic","Occupant","Unintentional"
+"E8191","Motor vehicle traffic","Occupant","Unintentional"
+"E8192","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8193","Motor vehicle traffic","Motorcyclist","Unintentional"
+"E8194","Motor vehicle traffic",NA,"Unintentional"
+"E8195","Motor vehicle traffic",NA,"Unintentional"
+"E8196","Motor vehicle traffic","Pedal cyclist","Unintentional"
+"E8197","Motor vehicle traffic","Pedestrian","Unintentional"
+"E8198","Motor vehicle traffic",NA,"Unintentional"
+"E8199","Motor vehicle traffic","Unspecified","Unintentional"
+"E8200","Transport, other",NA,"Unintentional"
+"E8201","Transport, other",NA,"Unintentional"
+"E8202","Transport, other",NA,"Unintentional"
+"E8203","Transport, other",NA,"Unintentional"
+"E8204","Transport, other",NA,"Unintentional"
+"E8205","Transport, other",NA,"Unintentional"
+"E8206","Pedal cyclist, other",NA,"Unintentional"
+"E8207","Pedestrian, other",NA,"Unintentional"
+"E8208","Transport, other",NA,"Unintentional"
+"E8209","Transport, other",NA,"Unintentional"
+"E8210","Transport, other",NA,"Unintentional"
+"E8211","Transport, other",NA,"Unintentional"
+"E8212","Transport, other",NA,"Unintentional"
+"E8213","Transport, other",NA,"Unintentional"
+"E8214","Transport, other",NA,"Unintentional"
+"E8215","Transport, other",NA,"Unintentional"
+"E8216","Pedal cyclist, other",NA,"Unintentional"
+"E8217","Pedestrian, other",NA,"Unintentional"
+"E8218","Transport, other",NA,"Unintentional"
+"E8219","Transport, other",NA,"Unintentional"
+"E8220","Transport, other",NA,"Unintentional"
+"E8221","Transport, other",NA,"Unintentional"
+"E8222","Transport, other",NA,"Unintentional"
+"E8223","Transport, other",NA,"Unintentional"
+"E8224","Transport, other",NA,"Unintentional"
+"E8225","Transport, other",NA,"Unintentional"
+"E8226","Pedal cyclist, other",NA,"Unintentional"
+"E8227","Pedestrian, other",NA,"Unintentional"
+"E8228","Transport, other",NA,"Unintentional"
+"E8229","Transport, other",NA,"Unintentional"
+"E8230","Transport, other",NA,"Unintentional"
+"E8231","Transport, other",NA,"Unintentional"
+"E8232","Transport, other",NA,"Unintentional"
+"E8233","Transport, other",NA,"Unintentional"
+"E8234","Transport, other",NA,"Unintentional"
+"E8235","Transport, other",NA,"Unintentional"
+"E8236","Pedal cyclist, other",NA,"Unintentional"
+"E8237","Pedestrian, other",NA,"Unintentional"
+"E8238","Transport, other",NA,"Unintentional"
+"E8239","Transport, other",NA,"Unintentional"
+"E8240","Transport, other",NA,"Unintentional"
+"E8241","Transport, other",NA,"Unintentional"
+"E8242","Transport, other",NA,"Unintentional"
+"E8243","Transport, other",NA,"Unintentional"
+"E8244","Transport, other",NA,"Unintentional"
+"E8245","Transport, other",NA,"Unintentional"
+"E8246","Pedal cyclist, other",NA,"Unintentional"
+"E8247","Pedestrian, other",NA,"Unintentional"
+"E8248","Transport, other",NA,"Unintentional"
+"E8249","Transport, other",NA,"Unintentional"
+"E8250","Transport, other",NA,"Unintentional"
+"E8251","Transport, other",NA,"Unintentional"
+"E8252","Transport, other",NA,"Unintentional"
+"E8253","Transport, other",NA,"Unintentional"
+"E8254","Transport, other",NA,"Unintentional"
+"E8255","Transport, other",NA,"Unintentional"
+"E8256","Pedal cyclist, other",NA,"Unintentional"
+"E8257","Pedestrian, other",NA,"Unintentional"
+"E8258","Transport, other",NA,"Unintentional"
+"E8259","Transport, other",NA,"Unintentional"
+"E8260","Pedestrian, other",NA,"Unintentional"
+"E8261","Pedal cyclist, other",NA,"Unintentional"
+"E8262","Transport, other",NA,"Unintentional"
+"E8263","Transport, other",NA,"Unintentional"
+"E8264","Transport, other",NA,"Unintentional"
+"E8268","Transport, other",NA,"Unintentional"
+"E8269","Pedal cyclist, other",NA,"Unintentional"
+"E8270","Pedestrian, other",NA,"Unintentional"
+"E8272","Transport, other",NA,"Unintentional"
+"E8273","Transport, other",NA,"Unintentional"
+"E8274","Transport, other",NA,"Unintentional"
+"E8278","Transport, other",NA,"Unintentional"
+"E8279","Transport, other",NA,"Unintentional"
+"E8280","Pedestrian, other",NA,"Unintentional"
+"E8282","Transport, other",NA,"Unintentional"
+"E8284","Transport, other",NA,"Unintentional"
+"E8288","Transport, other",NA,"Unintentional"
+"E8289","Transport, other",NA,"Unintentional"
+"E8290","Pedestrian, other",NA,"Unintentional"
+"E8294","Transport, other",NA,"Unintentional"
+"E8298","Transport, other",NA,"Unintentional"
+"E8299","Transport, other",NA,"Unintentional"
+"E8300","Drowning/submersion",NA,"Unintentional"
+"E8301","Drowning/submersion",NA,"Unintentional"
+"E8302","Drowning/submersion",NA,"Unintentional"
+"E8303","Drowning/submersion",NA,"Unintentional"
+"E8304","Drowning/submersion",NA,"Unintentional"
+"E8305","Drowning/submersion",NA,"Unintentional"
+"E8306","Drowning/submersion",NA,"Unintentional"
+"E8308","Drowning/submersion",NA,"Unintentional"
+"E8309","Drowning/submersion",NA,"Unintentional"
+"E8310","Transport, other",NA,"Unintentional"
+"E8311","Transport, other",NA,"Unintentional"
+"E8312","Transport, other",NA,"Unintentional"
+"E8313","Transport, other",NA,"Unintentional"
+"E8314","Transport, other",NA,"Unintentional"
+"E8315","Transport, other",NA,"Unintentional"
+"E8316","Transport, other",NA,"Unintentional"
+"E8318","Transport, other",NA,"Unintentional"
+"E8319","Transport, other",NA,"Unintentional"
+"E8320","Drowning/submersion",NA,"Unintentional"
+"E8321","Drowning/submersion",NA,"Unintentional"
+"E8322","Drowning/submersion",NA,"Unintentional"
+"E8323","Drowning/submersion",NA,"Unintentional"
+"E8324","Drowning/submersion",NA,"Unintentional"
+"E8325","Drowning/submersion",NA,"Unintentional"
+"E8326","Drowning/submersion",NA,"Unintentional"
+"E8328","Drowning/submersion",NA,"Unintentional"
+"E8329","Drowning/submersion",NA,"Unintentional"
+"E8330","Transport, other",NA,"Unintentional"
+"E8331","Transport, other",NA,"Unintentional"
+"E8332","Transport, other",NA,"Unintentional"
+"E8333","Transport, other",NA,"Unintentional"
+"E8334","Transport, other",NA,"Unintentional"
+"E8335","Transport, other",NA,"Unintentional"
+"E8336","Transport, other",NA,"Unintentional"
+"E8338","Transport, other",NA,"Unintentional"
+"E8339","Transport, other",NA,"Unintentional"
+"E8340","Transport, other",NA,"Unintentional"
+"E8341","Transport, other",NA,"Unintentional"
+"E8342","Transport, other",NA,"Unintentional"
+"E8343","Transport, other",NA,"Unintentional"
+"E8344","Transport, other",NA,"Unintentional"
+"E8345","Transport, other",NA,"Unintentional"
+"E8346","Transport, other",NA,"Unintentional"
+"E8348","Transport, other",NA,"Unintentional"
+"E8349","Transport, other",NA,"Unintentional"
+"E8350","Transport, other",NA,"Unintentional"
+"E8351","Transport, other",NA,"Unintentional"
+"E8352","Transport, other",NA,"Unintentional"
+"E8353","Transport, other",NA,"Unintentional"
+"E8354","Transport, other",NA,"Unintentional"
+"E8355","Transport, other",NA,"Unintentional"
+"E8356","Transport, other",NA,"Unintentional"
+"E8358","Transport, other",NA,"Unintentional"
+"E8359","Transport, other",NA,"Unintentional"
+"E8360","Transport, other",NA,"Unintentional"
+"E8361","Transport, other",NA,"Unintentional"
+"E8362","Transport, other",NA,"Unintentional"
+"E8363","Transport, other",NA,"Unintentional"
+"E8364","Transport, other",NA,"Unintentional"
+"E8365","Transport, other",NA,"Unintentional"
+"E8366","Transport, other",NA,"Unintentional"
+"E8368","Transport, other",NA,"Unintentional"
+"E8369","Transport, other",NA,"Unintentional"
+"E8370","Transport, other",NA,"Unintentional"
+"E8371","Transport, other",NA,"Unintentional"
+"E8372","Transport, other",NA,"Unintentional"
+"E8373","Transport, other",NA,"Unintentional"
+"E8374","Transport, other",NA,"Unintentional"
+"E8375","Transport, other",NA,"Unintentional"
+"E8376","Transport, other",NA,"Unintentional"
+"E8378","Transport, other",NA,"Unintentional"
+"E8379","Transport, other",NA,"Unintentional"
+"E8380","Transport, other",NA,"Unintentional"
+"E8381","Transport, other",NA,"Unintentional"
+"E8382","Transport, other",NA,"Unintentional"
+"E8383","Transport, other",NA,"Unintentional"
+"E8384","Transport, other",NA,"Unintentional"
+"E8385","Transport, other",NA,"Unintentional"
+"E8386","Transport, other",NA,"Unintentional"
+"E8388","Transport, other",NA,"Unintentional"
+"E8389","Transport, other",NA,"Unintentional"
+"E8400","Transport, other",NA,"Unintentional"
+"E8401","Transport, other",NA,"Unintentional"
+"E8402","Transport, other",NA,"Unintentional"
+"E8403","Transport, other",NA,"Unintentional"
+"E8404","Transport, other",NA,"Unintentional"
+"E8405","Transport, other",NA,"Unintentional"
+"E8406","Transport, other",NA,"Unintentional"
+"E8407","Transport, other",NA,"Unintentional"
+"E8408","Transport, other",NA,"Unintentional"
+"E8409","Transport, other",NA,"Unintentional"
+"E8410","Transport, other",NA,"Unintentional"
+"E8411","Transport, other",NA,"Unintentional"
+"E8412","Transport, other",NA,"Unintentional"
+"E8413","Transport, other",NA,"Unintentional"
+"E8414","Transport, other",NA,"Unintentional"
+"E8415","Transport, other",NA,"Unintentional"
+"E8416","Transport, other",NA,"Unintentional"
+"E8417","Transport, other",NA,"Unintentional"
+"E8418","Transport, other",NA,"Unintentional"
+"E8419","Transport, other",NA,"Unintentional"
+"E8426","Transport, other",NA,"Unintentional"
+"E8427","Transport, other",NA,"Unintentional"
+"E8428","Transport, other",NA,"Unintentional"
+"E8429","Transport, other",NA,"Unintentional"
+"E8430","Transport, other",NA,"Unintentional"
+"E8431","Transport, other",NA,"Unintentional"
+"E8432","Transport, other",NA,"Unintentional"
+"E8433","Transport, other",NA,"Unintentional"
+"E8434","Transport, other",NA,"Unintentional"
+"E8435","Transport, other",NA,"Unintentional"
+"E8436","Transport, other",NA,"Unintentional"
+"E8437","Transport, other",NA,"Unintentional"
+"E8438","Transport, other",NA,"Unintentional"
+"E8439","Transport, other",NA,"Unintentional"
+"E8440","Transport, other",NA,"Unintentional"
+"E8441","Transport, other",NA,"Unintentional"
+"E8442","Transport, other",NA,"Unintentional"
+"E8443","Transport, other",NA,"Unintentional"
+"E8444","Transport, other",NA,"Unintentional"
+"E8445","Transport, other",NA,"Unintentional"
+"E8446","Transport, other",NA,"Unintentional"
+"E8447","Transport, other",NA,"Unintentional"
+"E8448","Transport, other",NA,"Unintentional"
+"E8449","Transport, other",NA,"Unintentional"
+"E8450","Transport, other",NA,"Unintentional"
+"E8458","Transport, other",NA,"Unintentional"
+"E8459","Transport, other",NA,"Unintentional"
+"E846","Other specified, classifiable",NA,"Unintentional"
+"E847","Other specified, classifiable",NA,"Unintentional"
+"E848","Other specified, classifiable",NA,"Unintentional"
+"E8500","Poisoning",NA,"Unintentional"
+"E8501","Poisoning",NA,"Unintentional"
+"E8502","Poisoning",NA,"Unintentional"
+"E8503","Poisoning",NA,"Unintentional"
+"E8504","Poisoning",NA,"Unintentional"
+"E8505","Poisoning",NA,"Unintentional"
+"E8506","Poisoning",NA,"Unintentional"
+"E8507","Poisoning",NA,"Unintentional"
+"E8508","Poisoning",NA,"Unintentional"
+"E8509","Poisoning",NA,"Unintentional"
+"E851","Poisoning",NA,"Unintentional"
+"E8520","Poisoning",NA,"Unintentional"
+"E8521","Poisoning",NA,"Unintentional"
+"E8522","Poisoning",NA,"Unintentional"
+"E8523","Poisoning",NA,"Unintentional"
+"E8524","Poisoning",NA,"Unintentional"
+"E8525","Poisoning",NA,"Unintentional"
+"E8528","Poisoning",NA,"Unintentional"
+"E8529","Poisoning",NA,"Unintentional"
+"E8530","Poisoning",NA,"Unintentional"
+"E8531","Poisoning",NA,"Unintentional"
+"E8532","Poisoning",NA,"Unintentional"
+"E8538","Poisoning",NA,"Unintentional"
+"E8539","Poisoning",NA,"Unintentional"
+"E8540","Poisoning",NA,"Unintentional"
+"E8541","Poisoning",NA,"Unintentional"
+"E8542","Poisoning",NA,"Unintentional"
+"E8543","Poisoning",NA,"Unintentional"
+"E8548","Poisoning",NA,"Unintentional"
+"E8550","Poisoning",NA,"Unintentional"
+"E8551","Poisoning",NA,"Unintentional"
+"E8552","Poisoning",NA,"Unintentional"
+"E8553","Poisoning",NA,"Unintentional"
+"E8554","Poisoning",NA,"Unintentional"
+"E8555","Poisoning",NA,"Unintentional"
+"E8556","Poisoning",NA,"Unintentional"
+"E8558","Poisoning",NA,"Unintentional"
+"E8559","Poisoning",NA,"Unintentional"
+"E856","Poisoning",NA,"Unintentional"
+"E857","Poisoning",NA,"Unintentional"
+"E8580","Poisoning",NA,"Unintentional"
+"E8581","Poisoning",NA,"Unintentional"
+"E8582","Poisoning",NA,"Unintentional"
+"E8583","Poisoning",NA,"Unintentional"
+"E8584","Poisoning",NA,"Unintentional"
+"E8585","Poisoning",NA,"Unintentional"
+"E8586","Poisoning",NA,"Unintentional"
+"E8587","Poisoning",NA,"Unintentional"
+"E8588","Poisoning",NA,"Unintentional"
+"E8589","Poisoning",NA,"Unintentional"
+"E8600","Poisoning",NA,"Unintentional"
+"E8601","Poisoning",NA,"Unintentional"
+"E8602","Poisoning",NA,"Unintentional"
+"E8603","Poisoning",NA,"Unintentional"
+"E8604","Poisoning",NA,"Unintentional"
+"E8608","Poisoning",NA,"Unintentional"
+"E8609","Poisoning",NA,"Unintentional"
+"E8610","Poisoning",NA,"Unintentional"
+"E8611","Poisoning",NA,"Unintentional"
+"E8612","Poisoning",NA,"Unintentional"
+"E8613","Poisoning",NA,"Unintentional"
+"E8614","Poisoning",NA,"Unintentional"
+"E8615","Poisoning",NA,"Unintentional"
+"E8616","Poisoning",NA,"Unintentional"
+"E8619","Poisoning",NA,"Unintentional"
+"E8620","Poisoning",NA,"Unintentional"
+"E8621","Poisoning",NA,"Unintentional"
+"E8622","Poisoning",NA,"Unintentional"
+"E8623","Poisoning",NA,"Unintentional"
+"E8624","Poisoning",NA,"Unintentional"
+"E8629","Poisoning",NA,"Unintentional"
+"E8630","Poisoning",NA,"Unintentional"
+"E8631","Poisoning",NA,"Unintentional"
+"E8632","Poisoning",NA,"Unintentional"
+"E8633","Poisoning",NA,"Unintentional"
+"E8634","Poisoning",NA,"Unintentional"
+"E8635","Poisoning",NA,"Unintentional"
+"E8636","Poisoning",NA,"Unintentional"
+"E8637","Poisoning",NA,"Unintentional"
+"E8638","Poisoning",NA,"Unintentional"
+"E8639","Poisoning",NA,"Unintentional"
+"E8640","Poisoning",NA,"Unintentional"
+"E8641","Poisoning",NA,"Unintentional"
+"E8642","Poisoning",NA,"Unintentional"
+"E8643","Poisoning",NA,"Unintentional"
+"E8644","Poisoning",NA,"Unintentional"
+"E8650","Poisoning",NA,"Unintentional"
+"E8651","Poisoning",NA,"Unintentional"
+"E8652","Poisoning",NA,"Unintentional"
+"E8653","Poisoning",NA,"Unintentional"
+"E8654","Poisoning",NA,"Unintentional"
+"E8655","Poisoning",NA,"Unintentional"
+"E8658","Poisoning",NA,"Unintentional"
+"E8659","Poisoning",NA,"Unintentional"
+"E8660","Poisoning",NA,"Unintentional"
+"E8661","Poisoning",NA,"Unintentional"
+"E8662","Poisoning",NA,"Unintentional"
+"E8663","Poisoning",NA,"Unintentional"
+"E8664","Poisoning",NA,"Unintentional"
+"E8665","Poisoning",NA,"Unintentional"
+"E8666","Poisoning",NA,"Unintentional"
+"E8667","Poisoning",NA,"Unintentional"
+"E8668","Poisoning",NA,"Unintentional"
+"E8669","Poisoning",NA,"Unintentional"
+"E867","Poisoning",NA,"Unintentional"
+"E8680","Poisoning",NA,"Unintentional"
+"E8681","Poisoning",NA,"Unintentional"
+"E8682","Poisoning",NA,"Unintentional"
+"E8683","Poisoning",NA,"Unintentional"
+"E8688","Poisoning",NA,"Unintentional"
+"E8689","Poisoning",NA,"Unintentional"
+"E8690","Poisoning",NA,"Unintentional"
+"E8691","Poisoning",NA,"Unintentional"
+"E8692","Poisoning",NA,"Unintentional"
+"E8693","Poisoning",NA,"Unintentional"
+"E8694","Poisoning",NA,"Unintentional"
+"E8698","Poisoning",NA,"Unintentional"
+"E8699","Poisoning",NA,"Unintentional"
+"E8700","Adverse effects","Medical care","Other"
+"E8701","Adverse effects","Medical care","Other"
+"E8702","Adverse effects","Medical care","Other"
+"E8703","Adverse effects","Medical care","Other"
+"E8704","Adverse effects","Medical care","Other"
+"E8705","Adverse effects","Medical care","Other"
+"E8706","Adverse effects","Medical care","Other"
+"E8707","Adverse effects","Medical care","Other"
+"E8708","Adverse effects","Medical care","Other"
+"E8709","Adverse effects","Medical care","Other"
+"E8710","Adverse effects","Medical care","Other"
+"E8711","Adverse effects","Medical care","Other"
+"E8712","Adverse effects","Medical care","Other"
+"E8713","Adverse effects","Medical care","Other"
+"E8714","Adverse effects","Medical care","Other"
+"E8715","Adverse effects","Medical care","Other"
+"E8716","Adverse effects","Medical care","Other"
+"E8717","Adverse effects","Medical care","Other"
+"E8718","Adverse effects","Medical care","Other"
+"E8719","Adverse effects","Medical care","Other"
+"E8720","Adverse effects","Medical care","Other"
+"E8721","Adverse effects","Medical care","Other"
+"E8722","Adverse effects","Medical care","Other"
+"E8723","Adverse effects","Medical care","Other"
+"E8724","Adverse effects","Medical care","Other"
+"E8725","Adverse effects","Medical care","Other"
+"E8726","Adverse effects","Medical care","Other"
+"E8728","Adverse effects","Medical care","Other"
+"E8729","Adverse effects","Medical care","Other"
+"E8730","Adverse effects","Medical care","Other"
+"E8731","Adverse effects","Medical care","Other"
+"E8732","Adverse effects","Medical care","Other"
+"E8733","Adverse effects","Medical care","Other"
+"E8734","Adverse effects","Medical care","Other"
+"E8735","Adverse effects","Medical care","Other"
+"E8736","Adverse effects","Medical care","Other"
+"E8738","Adverse effects","Medical care","Other"
+"E8739","Adverse effects","Medical care","Other"
+"E8740","Adverse effects","Medical care","Other"
+"E8741","Adverse effects","Medical care","Other"
+"E8742","Adverse effects","Medical care","Other"
+"E8743","Adverse effects","Medical care","Other"
+"E8744","Adverse effects","Medical care","Other"
+"E8745","Adverse effects","Medical care","Other"
+"E8748","Adverse effects","Medical care","Other"
+"E8749","Adverse effects","Medical care","Other"
+"E8750","Adverse effects","Medical care","Other"
+"E8751","Adverse effects","Medical care","Other"
+"E8752","Adverse effects","Medical care","Other"
+"E8758","Adverse effects","Medical care","Other"
+"E8759","Adverse effects","Medical care","Other"
+"E8760","Adverse effects","Medical care","Other"
+"E8761","Adverse effects","Medical care","Other"
+"E8762","Adverse effects","Medical care","Other"
+"E8763","Adverse effects","Medical care","Other"
+"E8764","Adverse effects","Medical care","Other"
+"E8765","Adverse effects","Medical care","Other"
+"E8768","Adverse effects","Medical care","Other"
+"E8769","Adverse effects","Medical care","Other"
+"E8780","Adverse effects","Medical care","Other"
+"E8781","Adverse effects","Medical care","Other"
+"E8782","Adverse effects","Medical care","Other"
+"E8783","Adverse effects","Medical care","Other"
+"E8784","Adverse effects","Medical care","Other"
+"E8785","Adverse effects","Medical care","Other"
+"E8786","Adverse effects","Medical care","Other"
+"E8788","Adverse effects","Medical care","Other"
+"E8789","Adverse effects","Medical care","Other"
+"E8790","Adverse effects","Medical care","Other"
+"E8791","Adverse effects","Medical care","Other"
+"E8792","Adverse effects","Medical care","Other"
+"E8793","Adverse effects","Medical care","Other"
+"E8794","Adverse effects","Medical care","Other"
+"E8795","Adverse effects","Medical care","Other"
+"E8796","Adverse effects","Medical care","Other"
+"E8797","Adverse effects","Medical care","Other"
+"E8798","Adverse effects","Medical care","Other"
+"E8799","Adverse effects","Medical care","Other"
+"E8800","Fall",NA,"Unintentional"
+"E8801","Fall",NA,"Unintentional"
+"E8809","Fall",NA,"Unintentional"
+"E8810","Fall",NA,"Unintentional"
+"E8811","Fall",NA,"Unintentional"
+"E882","Fall",NA,"Unintentional"
+"E8830","Fall",NA,"Unintentional"
+"E8831","Fall",NA,"Unintentional"
+"E8832","Fall",NA,"Unintentional"
+"E8839","Fall",NA,"Unintentional"
+"E8840","Fall",NA,"Unintentional"
+"E8841","Fall",NA,"Unintentional"
+"E8842","Fall",NA,"Unintentional"
+"E8843","Fall",NA,"Unintentional"
+"E8844","Fall",NA,"Unintentional"
+"E8845","Fall",NA,"Unintentional"
+"E8846","Fall",NA,"Unintentional"
+"E8849","Fall",NA,"Unintentional"
+"E885","Fall",NA,"Unintentional"
+"E8850","Fall",NA,"Unintentional"
+"E8851","Fall",NA,"Unintentional"
+"E8852","Fall",NA,"Unintentional"
+"E8853","Fall",NA,"Unintentional"
+"E8854","Fall",NA,"Unintentional"
+"E8859","Fall",NA,"Unintentional"
+"E8860","Fall",NA,"Unintentional"
+"E8869","Fall",NA,"Unintentional"
+"E887","Unspecified",NA,"Unintentional"
+"E888","Fall",NA,"Unintentional"
+"E8880","Fall",NA,"Unintentional"
+"E8881","Fall",NA,"Unintentional"
+"E8888","Fall",NA,"Unintentional"
+"E8889","Fall",NA,"Unintentional"
+"E8900","Fire/burn","Fire/flame","Unintentional"
+"E8901","Fire/burn","Fire/flame","Unintentional"
+"E8902","Fire/burn","Fire/flame","Unintentional"
+"E8903","Fire/burn","Fire/flame","Unintentional"
+"E8908","Fire/burn","Fire/flame","Unintentional"
+"E8909","Fire/burn","Fire/flame","Unintentional"
+"E8910","Fire/burn","Fire/flame","Unintentional"
+"E8911","Fire/burn","Fire/flame","Unintentional"
+"E8912","Fire/burn","Fire/flame","Unintentional"
+"E8913","Fire/burn","Fire/flame","Unintentional"
+"E8918","Fire/burn","Fire/flame","Unintentional"
+"E8919","Fire/burn","Fire/flame","Unintentional"
+"E892","Fire/burn","Fire/flame","Unintentional"
+"E8930","Fire/burn","Fire/flame","Unintentional"
+"E8931","Fire/burn","Fire/flame","Unintentional"
+"E8932","Fire/burn","Fire/flame","Unintentional"
+"E8938","Fire/burn","Fire/flame","Unintentional"
+"E8939","Fire/burn","Fire/flame","Unintentional"
+"E894","Fire/burn","Fire/flame","Unintentional"
+"E895","Fire/burn","Fire/flame","Unintentional"
+"E896","Fire/burn","Fire/flame","Unintentional"
+"E897","Fire/burn","Fire/flame","Unintentional"
+"E8980","Fire/burn","Fire/flame","Unintentional"
+"E8981","Fire/burn","Fire/flame","Unintentional"
+"E899","Fire/burn","Fire/flame","Unintentional"
+"E9000","Natural/environmental",NA,"Unintentional"
+"E9001","Natural/environmental",NA,"Unintentional"
+"E9009","Natural/environmental",NA,"Unintentional"
+"E9010","Natural/environmental",NA,"Unintentional"
+"E9011","Natural/environmental",NA,"Unintentional"
+"E9018","Natural/environmental",NA,"Unintentional"
+"E9019","Natural/environmental",NA,"Unintentional"
+"E9020","Natural/environmental",NA,"Unintentional"
+"E9021","Natural/environmental",NA,"Unintentional"
+"E9022","Natural/environmental",NA,"Unintentional"
+"E9028","Natural/environmental",NA,"Unintentional"
+"E9029","Natural/environmental",NA,"Unintentional"
+"E903","Natural/environmental",NA,"Unintentional"
+"E9040","Natural/environmental",NA,"Unintentional"
+"E9041","Natural/environmental",NA,"Unintentional"
+"E9042","Natural/environmental",NA,"Unintentional"
+"E9043","Natural/environmental",NA,"Unintentional"
+"E9049","Natural/environmental",NA,"Unintentional"
+"E9050","Natural/environmental","Bites and stings","Unintentional"
+"E9051","Natural/environmental","Bites and stings","Unintentional"
+"E9052","Natural/environmental","Bites and stings","Unintentional"
+"E9053","Natural/environmental","Bites and stings","Unintentional"
+"E9054","Natural/environmental","Bites and stings","Unintentional"
+"E9055","Natural/environmental","Bites and stings","Unintentional"
+"E9056","Natural/environmental","Bites and stings","Unintentional"
+"E9057","Natural/environmental",NA,"Unintentional"
+"E9058","Natural/environmental",NA,"Unintentional"
+"E9059","Natural/environmental","Bites and stings","Unintentional"
+"E9060","Natural/environmental","Bites and stings","Unintentional"
+"E9061","Natural/environmental","Bites and stings","Unintentional"
+"E9062","Natural/environmental","Bites and stings","Unintentional"
+"E9063","Natural/environmental","Bites and stings","Unintentional"
+"E9064","Natural/environmental","Bites and stings","Unintentional"
+"E9065","Natural/environmental","Bites and stings","Unintentional"
+"E9068","Natural/environmental",NA,"Unintentional"
+"E9069","Natural/environmental","Bites and stings","Unintentional"
+"E907","Natural/environmental",NA,"Unintentional"
+"E908","Natural/environmental",NA,"Unintentional"
+"E9080","Natural/environmental",NA,"Unintentional"
+"E9081","Natural/environmental",NA,"Unintentional"
+"E9082","Natural/environmental",NA,"Unintentional"
+"E9083","Natural/environmental",NA,"Unintentional"
+"E9084","Natural/environmental",NA,"Unintentional"
+"E9088","Natural/environmental",NA,"Unintentional"
+"E9089","Natural/environmental",NA,"Unintentional"
+"E909","Natural/environmental",NA,"Unintentional"
+"E9090","Natural/environmental",NA,"Unintentional"
+"E9091","Natural/environmental",NA,"Unintentional"
+"E9092","Natural/environmental",NA,"Unintentional"
+"E9093","Natural/environmental",NA,"Unintentional"
+"E9094","Natural/environmental",NA,"Unintentional"
+"E9098","Natural/environmental",NA,"Unintentional"
+"E9099","Natural/environmental",NA,"Unintentional"
+"E9100","Drowning/submersion",NA,"Unintentional"
+"E9101","Drowning/submersion",NA,"Unintentional"
+"E9102","Drowning/submersion",NA,"Unintentional"
+"E9103","Drowning/submersion",NA,"Unintentional"
+"E9104","Drowning/submersion",NA,"Unintentional"
+"E9108","Drowning/submersion",NA,"Unintentional"
+"E9109","Drowning/submersion",NA,"Unintentional"
+"E911","Suffocation",NA,"Unintentional"
+"E912","Suffocation",NA,"Unintentional"
+"E9130","Suffocation",NA,"Unintentional"
+"E9131","Suffocation",NA,"Unintentional"
+"E9132","Suffocation",NA,"Unintentional"
+"E9133","Suffocation",NA,"Unintentional"
+"E9138","Suffocation",NA,"Unintentional"
+"E9139","Suffocation",NA,"Unintentional"
+"E914","Other specified, classifiable",NA,"Unintentional"
+"E915","Other specified, classifiable",NA,"Unintentional"
+"E916","Struck by, against",NA,"Unintentional"
+"E9170","Struck by, against",NA,"Unintentional"
+"E9171","Struck by, against",NA,"Unintentional"
+"E9172","Struck by, against",NA,"Unintentional"
+"E9173","Struck by, against",NA,"Unintentional"
+"E9174","Struck by, against",NA,"Unintentional"
+"E9175","Struck by, against",NA,"Unintentional"
+"E9176","Struck by, against",NA,"Unintentional"
+"E9177","Struck by, against",NA,"Unintentional"
+"E9178","Struck by, against",NA,"Unintentional"
+"E9179","Struck by, against",NA,"Unintentional"
+"E918","Other specified, classifiable",NA,"Unintentional"
+"E9190","Machinery",NA,"Unintentional"
+"E9191","Machinery",NA,"Unintentional"
+"E9192","Machinery",NA,"Unintentional"
+"E9193","Machinery",NA,"Unintentional"
+"E9194","Machinery",NA,"Unintentional"
+"E9195","Machinery",NA,"Unintentional"
+"E9196","Machinery",NA,"Unintentional"
+"E9197","Machinery",NA,"Unintentional"
+"E9198","Machinery",NA,"Unintentional"
+"E9199","Machinery",NA,"Unintentional"
+"E920","Cut/pierce",NA,"Unintentional"
+"E9200","Cut/pierce",NA,"Unintentional"
+"E9201","Cut/pierce",NA,"Unintentional"
+"E9202","Cut/pierce",NA,"Unintentional"
+"E9203","Cut/pierce",NA,"Unintentional"
+"E9204","Cut/pierce",NA,"Unintentional"
+"E9205","Cut/pierce",NA,"Unintentional"
+"E9208","Cut/pierce",NA,"Unintentional"
+"E9209","Cut/pierce",NA,"Unintentional"
+"E9210","Other specified, classifiable",NA,"Unintentional"
+"E9211","Other specified, classifiable",NA,"Unintentional"
+"E9218","Other specified, classifiable",NA,"Unintentional"
+"E9219","Other specified, classifiable",NA,"Unintentional"
+"E9220","Firearm",NA,"Unintentional"
+"E9221","Firearm",NA,"Unintentional"
+"E9222","Firearm",NA,"Unintentional"
+"E9223","Firearm",NA,"Unintentional"
+"E9224","Other specified, classifiable",NA,"Unintentional"
+"E9225","Other specified, classifiable",NA,"Unintentional"
+"E9228","Firearm",NA,"Unintentional"
+"E9229","Firearm",NA,"Unintentional"
+"E9230","Other specified, classifiable",NA,"Unintentional"
+"E9231","Other specified, classifiable",NA,"Unintentional"
+"E9232","Other specified, classifiable",NA,"Unintentional"
+"E9238","Other specified, classifiable",NA,"Unintentional"
+"E9239","Other specified, classifiable",NA,"Unintentional"
+"E9240","Fire/burn","Hot object/substance","Unintentional"
+"E9241","Fire/burn","Hot object/substance","Unintentional"
+"E9242","Fire/burn","Hot object/substance","Unintentional"
+"E9248","Fire/burn","Hot object/substance","Unintentional"
+"E9249","Fire/burn","Hot object/substance","Unintentional"
+"E9250","Other specified, classifiable",NA,"Unintentional"
+"E9251","Other specified, classifiable",NA,"Unintentional"
+"E9252","Other specified, classifiable",NA,"Unintentional"
+"E9258","Other specified, classifiable",NA,"Unintentional"
+"E9259","Other specified, classifiable",NA,"Unintentional"
+"E9260","Other specified, classifiable",NA,"Unintentional"
+"E9261","Other specified, classifiable",NA,"Unintentional"
+"E9262","Other specified, classifiable",NA,"Unintentional"
+"E9263","Other specified, classifiable",NA,"Unintentional"
+"E9264","Other specified, classifiable",NA,"Unintentional"
+"E9265","Other specified, classifiable",NA,"Unintentional"
+"E9268","Other specified, classifiable",NA,"Unintentional"
+"E9269","Other specified, classifiable",NA,"Unintentional"
+"E927","Overexertion",NA,"Unintentional"
+"E9280","Natural/environmental",NA,"Unintentional"
+"E9281","Natural/environmental",NA,"Unintentional"
+"E9282","Natural/environmental",NA,"Unintentional"
+"E9283","Other specified, classifiable",NA,"Unintentional"
+"E9284","Other specified, classifiable",NA,"Unintentional"
+"E9285","Other specified, classifiable",NA,"Unintentional"
+"E9286","Other specified, classifiable",NA,"Unintentional"
+"E9288","Other specified, not elsewhere classifiable",NA,"Unintentional"
+"E9289","Unspecified",NA,"Unintentional"
+"E9290","Other specified, classifiable",NA,"Unintentional"
+"E9291","Other specified, classifiable",NA,"Unintentional"
+"E9292","Other specified, classifiable",NA,"Unintentional"
+"E9293","Other specified, classifiable",NA,"Unintentional"
+"E9294","Other specified, classifiable",NA,"Unintentional"
+"E9295","Other specified, classifiable",NA,"Unintentional"
+"E9298","Other specified, not elsewhere classifiable",NA,"Unintentional"
+"E9299","Unspecified",NA,"Unintentional"
+"E9300","Adverse effects","Drugs","Other"
+"E9301","Adverse effects","Drugs","Other"
+"E9302","Adverse effects","Drugs","Other"
+"E9303","Adverse effects","Drugs","Other"
+"E9304","Adverse effects","Drugs","Other"
+"E9305","Adverse effects","Drugs","Other"
+"E9306","Adverse effects","Drugs","Other"
+"E9307","Adverse effects","Drugs","Other"
+"E9308","Adverse effects","Drugs","Other"
+"E9309","Adverse effects","Drugs","Other"
+"E9310","Adverse effects","Drugs","Other"
+"E9311","Adverse effects","Drugs","Other"
+"E9312","Adverse effects","Drugs","Other"
+"E9313","Adverse effects","Drugs","Other"
+"E9314","Adverse effects","Drugs","Other"
+"E9315","Adverse effects","Drugs","Other"
+"E9316","Adverse effects","Drugs","Other"
+"E9317","Adverse effects","Drugs","Other"
+"E9318","Adverse effects","Drugs","Other"
+"E9319","Adverse effects","Drugs","Other"
+"E9320","Adverse effects","Drugs","Other"
+"E9321","Adverse effects","Drugs","Other"
+"E9322","Adverse effects","Drugs","Other"
+"E9323","Adverse effects","Drugs","Other"
+"E9324","Adverse effects","Drugs","Other"
+"E9325","Adverse effects","Drugs","Other"
+"E9326","Adverse effects","Drugs","Other"
+"E9327","Adverse effects","Drugs","Other"
+"E9328","Adverse effects","Drugs","Other"
+"E9329","Adverse effects","Drugs","Other"
+"E9330","Adverse effects","Drugs","Other"
+"E9331","Adverse effects","Drugs","Other"
+"E9332","Adverse effects","Drugs","Other"
+"E9333","Adverse effects","Drugs","Other"
+"E9334","Adverse effects","Drugs","Other"
+"E9335","Adverse effects","Drugs","Other"
+"E9336","Adverse effects","Drugs","Other"
+"E9337","Adverse effects","Drugs","Other"
+"E9338","Adverse effects","Drugs","Other"
+"E9339","Adverse effects","Drugs","Other"
+"E9340","Adverse effects","Drugs","Other"
+"E9341","Adverse effects","Drugs","Other"
+"E9342","Adverse effects","Drugs","Other"
+"E9343","Adverse effects","Drugs","Other"
+"E9344","Adverse effects","Drugs","Other"
+"E9345","Adverse effects","Drugs","Other"
+"E9346","Adverse effects","Drugs","Other"
+"E9347","Adverse effects","Drugs","Other"
+"E9348","Adverse effects","Drugs","Other"
+"E9349","Adverse effects","Drugs","Other"
+"E9350","Adverse effects","Drugs","Other"
+"E9351","Adverse effects","Drugs","Other"
+"E9352","Adverse effects","Drugs","Other"
+"E9353","Adverse effects","Drugs","Other"
+"E9354","Adverse effects","Drugs","Other"
+"E9355","Adverse effects","Drugs","Other"
+"E9356","Adverse effects","Drugs","Other"
+"E9357","Adverse effects","Drugs","Other"
+"E9358","Adverse effects","Drugs","Other"
+"E9359","Adverse effects","Drugs","Other"
+"E9360","Adverse effects","Drugs","Other"
+"E9361","Adverse effects","Drugs","Other"
+"E9362","Adverse effects","Drugs","Other"
+"E9363","Adverse effects","Drugs","Other"
+"E9364","Adverse effects","Drugs","Other"
+"E9370","Adverse effects","Drugs","Other"
+"E9371","Adverse effects","Drugs","Other"
+"E9372","Adverse effects","Drugs","Other"
+"E9373","Adverse effects","Drugs","Other"
+"E9374","Adverse effects","Drugs","Other"
+"E9375","Adverse effects","Drugs","Other"
+"E9376","Adverse effects","Drugs","Other"
+"E9378","Adverse effects","Drugs","Other"
+"E9379","Adverse effects","Drugs","Other"
+"E9380","Adverse effects","Drugs","Other"
+"E9381","Adverse effects","Drugs","Other"
+"E9382","Adverse effects","Drugs","Other"
+"E9383","Adverse effects","Drugs","Other"
+"E9384","Adverse effects","Drugs","Other"
+"E9385","Adverse effects","Drugs","Other"
+"E9386","Adverse effects","Drugs","Other"
+"E9387","Adverse effects","Drugs","Other"
+"E9389","Adverse effects","Drugs","Other"
+"E9390","Adverse effects","Drugs","Other"
+"E9391","Adverse effects","Drugs","Other"
+"E9392","Adverse effects","Drugs","Other"
+"E9393","Adverse effects","Drugs","Other"
+"E9394","Adverse effects","Drugs","Other"
+"E9395","Adverse effects","Drugs","Other"
+"E9396","Adverse effects","Drugs","Other"
+"E9397","Adverse effects","Drugs","Other"
+"E9398","Adverse effects","Drugs","Other"
+"E9399","Adverse effects","Drugs","Other"
+"E9400","Adverse effects","Drugs","Other"
+"E9401","Adverse effects","Drugs","Other"
+"E9408","Adverse effects","Drugs","Other"
+"E9409","Adverse effects","Drugs","Other"
+"E9410","Adverse effects","Drugs","Other"
+"E9411","Adverse effects","Drugs","Other"
+"E9412","Adverse effects","Drugs","Other"
+"E9413","Adverse effects","Drugs","Other"
+"E9419","Adverse effects","Drugs","Other"
+"E9420","Adverse effects","Drugs","Other"
+"E9421","Adverse effects","Drugs","Other"
+"E9422","Adverse effects","Drugs","Other"
+"E9423","Adverse effects","Drugs","Other"
+"E9424","Adverse effects","Drugs","Other"
+"E9425","Adverse effects","Drugs","Other"
+"E9426","Adverse effects","Drugs","Other"
+"E9427","Adverse effects","Drugs","Other"
+"E9428","Adverse effects","Drugs","Other"
+"E9429","Adverse effects","Drugs","Other"
+"E9430","Adverse effects","Drugs","Other"
+"E9431","Adverse effects","Drugs","Other"
+"E9432","Adverse effects","Drugs","Other"
+"E9433","Adverse effects","Drugs","Other"
+"E9434","Adverse effects","Drugs","Other"
+"E9435","Adverse effects","Drugs","Other"
+"E9436","Adverse effects","Drugs","Other"
+"E9438","Adverse effects","Drugs","Other"
+"E9439","Adverse effects","Drugs","Other"
+"E9440","Adverse effects","Drugs","Other"
+"E9441","Adverse effects","Drugs","Other"
+"E9442","Adverse effects","Drugs","Other"
+"E9443","Adverse effects","Drugs","Other"
+"E9444","Adverse effects","Drugs","Other"
+"E9445","Adverse effects","Drugs","Other"
+"E9446","Adverse effects","Drugs","Other"
+"E9447","Adverse effects","Drugs","Other"
+"E9450","Adverse effects","Drugs","Other"
+"E9451","Adverse effects","Drugs","Other"
+"E9452","Adverse effects","Drugs","Other"
+"E9453","Adverse effects","Drugs","Other"
+"E9454","Adverse effects","Drugs","Other"
+"E9455","Adverse effects","Drugs","Other"
+"E9456","Adverse effects","Drugs","Other"
+"E9457","Adverse effects","Drugs","Other"
+"E9458","Adverse effects","Drugs","Other"
+"E9460","Adverse effects","Drugs","Other"
+"E9461","Adverse effects","Drugs","Other"
+"E9462","Adverse effects","Drugs","Other"
+"E9463","Adverse effects","Drugs","Other"
+"E9464","Adverse effects","Drugs","Other"
+"E9465","Adverse effects","Drugs","Other"
+"E9466","Adverse effects","Drugs","Other"
+"E9467","Adverse effects","Drugs","Other"
+"E9468","Adverse effects","Drugs","Other"
+"E9469","Adverse effects","Drugs","Other"
+"E9470","Adverse effects","Drugs","Other"
+"E9471","Adverse effects","Drugs","Other"
+"E9472","Adverse effects","Drugs","Other"
+"E9473","Adverse effects","Drugs","Other"
+"E9474","Adverse effects","Drugs","Other"
+"E9478","Adverse effects","Drugs","Other"
+"E9479","Adverse effects","Drugs","Other"
+"E9480","Adverse effects","Drugs","Other"
+"E9481","Adverse effects","Drugs","Other"
+"E9482","Adverse effects","Drugs","Other"
+"E9483","Adverse effects","Drugs","Other"
+"E9484","Adverse effects","Drugs","Other"
+"E9485","Adverse effects","Drugs","Other"
+"E9486","Adverse effects","Drugs","Other"
+"E9488","Adverse effects","Drugs","Other"
+"E9489","Adverse effects","Drugs","Other"
+"E9490","Adverse effects","Drugs","Other"
+"E9491","Adverse effects","Drugs","Other"
+"E9492","Adverse effects","Drugs","Other"
+"E9493","Adverse effects","Drugs","Other"
+"E9494","Adverse effects","Drugs","Other"
+"E9495","Adverse effects","Drugs","Other"
+"E9496","Adverse effects","Drugs","Other"
+"E9497","Adverse effects","Drugs","Other"
+"E9499","Adverse effects","Drugs","Other"
+"E9500","Poisoning",NA,"Self-inflicted"
+"E9501","Poisoning",NA,"Self-inflicted"
+"E9502","Poisoning",NA,"Self-inflicted"
+"E9503","Poisoning",NA,"Self-inflicted"
+"E9504","Poisoning",NA,"Self-inflicted"
+"E9505","Poisoning",NA,"Self-inflicted"
+"E9506","Poisoning",NA,"Self-inflicted"
+"E9507","Poisoning",NA,"Self-inflicted"
+"E9508","Poisoning",NA,"Self-inflicted"
+"E9509","Poisoning",NA,"Self-inflicted"
+"E9510","Poisoning",NA,"Self-inflicted"
+"E9511","Poisoning",NA,"Self-inflicted"
+"E9518","Poisoning",NA,"Self-inflicted"
+"E9520","Poisoning",NA,"Self-inflicted"
+"E9521","Poisoning",NA,"Self-inflicted"
+"E9528","Poisoning",NA,"Self-inflicted"
+"E9529","Poisoning",NA,"Self-inflicted"
+"E9530","Suffocation",NA,"Self-inflicted"
+"E9531","Suffocation",NA,"Self-inflicted"
+"E9538","Suffocation",NA,"Self-inflicted"
+"E9539","Suffocation",NA,"Self-inflicted"
+"E954","Drowning/submersion",NA,"Self-inflicted"
+"E9550","Firearm",NA,"Self-inflicted"
+"E9551","Firearm",NA,"Self-inflicted"
+"E9552","Firearm",NA,"Self-inflicted"
+"E9553","Firearm",NA,"Self-inflicted"
+"E9554","Firearm",NA,"Self-inflicted"
+"E9555","Other specified, classifiable",NA,"Self-inflicted"
+"E9556","Other specified, classifiable",NA,"Self-inflicted"
+"E9557","Other specified, classifiable",NA,"Self-inflicted"
+"E9559","Other specified, classifiable",NA,"Self-inflicted"
+"E956","Cut/pierce",NA,"Self-inflicted"
+"E9570","Fall",NA,"Self-inflicted"
+"E9571","Fall",NA,"Self-inflicted"
+"E9572","Fall",NA,"Self-inflicted"
+"E9579","Fall",NA,"Self-inflicted"
+"E9580","Other specified, classifiable",NA,"Self-inflicted"
+"E9581","Fire/burn","Fire/flame","Self-inflicted"
+"E9582","Fire/burn","Hot object/substance","Self-inflicted"
+"E9583","Natural/environmental",NA,"Self-inflicted"
+"E9584","Other specified, classifiable",NA,"Self-inflicted"
+"E9585","Motor vehicle traffic",NA,"Self-inflicted"
+"E9586","Transport, other",NA,"Self-inflicted"
+"E9587","Fire/burn","Hot object/substance","Self-inflicted"
+"E9588","Other specified, not elsewhere classifiable",NA,"Self-inflicted"
+"E9589","Unspecified",NA,"Self-inflicted"
+"E959","Other specified, not elsewhere classifiable",NA,"Self-inflicted"
+"E9600","Struck by, against",NA,"Assault"
+"E9601","Other specified, classifiable",NA,"Assault"
+"E961","Fire/burn","Hot object/substance","Self-inflicted"
+"E9620","Poisoning",NA,"Assault"
+"E9621","Poisoning",NA,"Assault"
+"E9622","Poisoning",NA,"Assault"
+"E9629","Poisoning",NA,"Assault"
+"E963","Suffocation",NA,"Assault"
+"E964","Drowning/submersion",NA,"Assault"
+"E9650","Firearm",NA,"Assault"
+"E9651","Firearm",NA,"Assault"
+"E9652","Firearm",NA,"Assault"
+"E9653","Firearm",NA,"Assault"
+"E9654","Firearm",NA,"Assault"
+"E9655","Other specified, classifiable",NA,"Assault"
+"E9656","Other specified, classifiable",NA,"Assault"
+"E9657","Other specified, classifiable",NA,"Assault"
+"E9658","Other specified, classifiable",NA,"Assault"
+"E9659","Other specified, classifiable",NA,"Assault"
+"E966","Cut/pierce",NA,"Assault"
+"E9670","Other specified, classifiable",NA,"Assault"
+"E9671","Other specified, classifiable",NA,"Assault"
+"E9672","Other specified, classifiable",NA,"Assault"
+"E9673","Other specified, classifiable",NA,"Assault"
+"E9674","Other specified, classifiable",NA,"Assault"
+"E9675","Other specified, classifiable",NA,"Assault"
+"E9676","Other specified, classifiable",NA,"Assault"
+"E9677","Other specified, classifiable",NA,"Assault"
+"E9678","Other specified, classifiable",NA,"Assault"
+"E9679","Other specified, classifiable",NA,"Assault"
+"E9680","Fire/burn","Fire/flame","Assault"
+"E9681","Fall",NA,"Assault"
+"E9682","Struck by, against",NA,"Assault"
+"E9683","Fire/burn","Hot object/substance","Assault"
+"E9684","Other specified, classifiable",NA,"Assault"
+"E9685","Motor vehicle traffic",NA,"Assault"
+"E9686","Other specified, classifiable",NA,"Assault"
+"E9687","Other specified, classifiable",NA,"Assault"
+"E9688","Other specified, not elsewhere classifiable",NA,"Assault"
+"E9689","Unspecified",NA,"Assault"
+"E969","Other specified, not elsewhere classifiable",NA,"Assault"
+"E970","Firearm",NA,"Other"
+"E971","Other specified, classifiable",NA,"Other"
+"E972","Poisoning",NA,"Other"
+"E973","Struck by, against",NA,"Other"
+"E974","Cut/pierce",NA,"Other"
+"E975","Struck by, against",NA,"Other"
+"E976","Unspecified",NA,"Other"
+"E977","Other specified, not elsewhere classifiable",NA,"Other"
+"E978","Other specified, classifiable",NA,"Other"
+"E9790","Other specified, classifiable",NA,"Assault"
+"E9791","Other specified, classifiable",NA,"Assault"
+"E9792","Other specified, classifiable",NA,"Assault"
+"E9793","Other specified, classifiable",NA,"Assault"
+"E9794","Other specified, classifiable",NA,"Assault"
+"E9795","Other specified, classifiable",NA,"Assault"
+"E9796","Other specified, classifiable",NA,"Assault"
+"E9797","Other specified, classifiable",NA,"Assault"
+"E9798","Other specified, classifiable",NA,"Assault"
+"E9799","Other specified, classifiable",NA,"Assault"
+"E9800","Poisoning",NA,"Undetermined"
+"E9801","Poisoning",NA,"Undetermined"
+"E9802","Poisoning",NA,"Undetermined"
+"E9803","Poisoning",NA,"Undetermined"
+"E9804","Poisoning",NA,"Undetermined"
+"E9805","Poisoning",NA,"Undetermined"
+"E9806","Poisoning",NA,"Undetermined"
+"E9807","Poisoning",NA,"Undetermined"
+"E9808","Poisoning",NA,"Undetermined"
+"E9809","Poisoning",NA,"Undetermined"
+"E9810","Poisoning",NA,"Undetermined"
+"E9811","Poisoning",NA,"Undetermined"
+"E9818","Poisoning",NA,"Undetermined"
+"E9820","Poisoning",NA,"Undetermined"
+"E9821","Poisoning",NA,"Undetermined"
+"E9828","Poisoning",NA,"Undetermined"
+"E9829","Poisoning",NA,"Undetermined"
+"E9830","Suffocation",NA,"Undetermined"
+"E9831","Suffocation",NA,"Undetermined"
+"E9838","Suffocation",NA,"Undetermined"
+"E9839","Suffocation",NA,"Undetermined"
+"E984","Drowning/submersion",NA,"Undetermined"
+"E9850","Firearm",NA,"Undetermined"
+"E9851","Firearm",NA,"Undetermined"
+"E9852","Firearm",NA,"Undetermined"
+"E9853","Firearm",NA,"Undetermined"
+"E9854","Firearm",NA,"Undetermined"
+"E9855","Other specified, classifiable",NA,"Undetermined"
+"E9856","Firearm",NA,"Undetermined"
+"E9857","Other specified, classifiable",NA,"Undetermined"
+"E986","Cut/pierce",NA,"Undetermined"
+"E9870","Fall",NA,"Undetermined"
+"E9871","Fall",NA,"Undetermined"
+"E9872","Fall",NA,"Undetermined"
+"E9879","Fall",NA,"Undetermined"
+"E9880","Other specified, classifiable",NA,"Undetermined"
+"E9881","Fire/burn","Fire/flame","Undetermined"
+"E9882","Fire/burn","Hot object/substance","Undetermined"
+"E9883","Natural/environmental",NA,"Undetermined"
+"E9884","Other specified, classifiable",NA,"Undetermined"
+"E9885","Motor vehicle traffic",NA,"Undetermined"
+"E9886","Transport, other",NA,"Undetermined"
+"E9887","Fire/burn","Hot object/substance","Undetermined"
+"E9888","Other specified, not elsewhere classifiable",NA,"Undetermined"
+"E9889","Unspecified",NA,"Undetermined"
+"E989","Other specified, not elsewhere classifiable",NA,"Undetermined"
+"E9900","Other specified, classifiable",NA,"Other"
+"E9909","Other specified, classifiable",NA,"Other"
+"E9910","Other specified, classifiable",NA,"Other"
+"E9911","Other specified, classifiable",NA,"Other"
+"E9912","Other specified, classifiable",NA,"Other"
+"E9913","Other specified, classifiable",NA,"Other"
+"E9919","Other specified, classifiable",NA,"Other"
+"E992","Other specified, classifiable",NA,"Other"
+"E993","Other specified, classifiable",NA,"Other"
+"E994","Other specified, classifiable",NA,"Other"
+"E995","Other specified, not elsewhere classifiable",NA,"Other"
+"E996","Other specified, classifiable",NA,"Other"
+"E9970","Other specified, classifiable",NA,"Other"
+"E9971","Other specified, classifiable",NA,"Other"
+"E9972","Other specified, classifiable",NA,"Other"
+"E9978","Other specified, not elsewhere classifiable",NA,"Other"
+"E9979","Unspecified",NA,"Other"
+"E998","Other specified, not elsewhere classifiable",NA,"Other"
+"E999","Other specified, not elsewhere classifiable",NA,"Other"
+"E9990","Other specified, not elsewhere classifiable",NA,"Other"
+"E9991","Other specified, not elsewhere classifiable",NA,"Other"

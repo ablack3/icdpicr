@@ -1,15 +1,16 @@
 #' ICDPICR
 #'
 #' International Classification of Diseases Programs for Injury Categorization
-#' The ICDPICR package is an extention of the ICDPIC package orignally written for STATA.
+#' The ICDPICR package is an adaptation of the ICDPIC package orignally written for STATA.
 #' ICDPIC is a collection of Stata programs for injury categorization
 #' and is available online at \url{https://ideas.repec.org/c/boc/bocode/s457028.html}
 #'
 #' @section Version:
 #' Version 0.1.0
-#' ICDPICR is adapted from the ICDPIC Version 3.0 Stata code. However the
-#' functionality has been decreased considerably in the interest of providing
-#' only the most useful elements of the original ICDPIC program. ICDPICR is open
+#' ICDPICR is adapted from the ICDPIC Version 3.0 Stata program. Some of the
+#' functionality of the original program has been reduced in the interest of providing updates for
+#' only the most useful elements of the original ICDPIC program. ICDPICR is
+#' designed to work with both ICD 9 and ICD 10 codes. ICDPICR is open
 #' source and all code and documentation can be found at
 #' \url{http://github.com/ablack3/icdpicr}.
 #'
@@ -17,7 +18,7 @@
 #'
 #' @section Description:
 #' ICDPICR is an R package that currently consists of a single function that performs
-#' the same task that the trauma program does in ICDPIC.
+#' the same task that the "trauma" program does in ICDPIC.
 #' The intention of ICDPIC described here
 #' is to provide inexpensive methods for translating International
 #' Classification of Diseases (ICD) diagnosis codes into standard injury
@@ -30,31 +31,86 @@
 #' The authors are grateful for this support and would also appreciate
 #' suggestions or corrections from any user of the software. Bug reports or feature requests
 #' may be submitted at \url{http://github.com/ablack3/icdpicr/issues}.
-#' Publications of
-#' studies in which these programs or tables are used should cite the authors.
-#' We hope ICDPIC will make ICD-9-CM codes easier to use for injury research,
+#' Publications of studies in which these programs or tables are used should cite the authors.
+#' We hope ICDPIC will make ICD codes easier to use for injury research,
 #' and facilitate comparison of categorization methods.
 #'
-#' ICDPICR handles ICD-10-CM codes as well as ICD 9-CM codes. This was accomplished by
-#' first mapping ICD 10 codes to ICD 9 using the 2016 general equivalence mapping (GEM)
-#' developed by CMS. Next the corresponding ICD 9 codes were mapped to the Abbreviated Injury Scale (AIS) and body regions using the same mapping used in the
-#' the original ICDPIC. In some cases an ICD 10 code was mapped to more than one
-#' ICD 9 code. In these cases diambiguation is necessary to get a map from ICD 10
-#' to AIS and body region.
+#' @section Methods:
+#' For each valid ICD-9-CM or ICD-10-CM injury diagnosis, ICDPIC-R is programmed to generate an approximate AIS
+#' and body region, using the original AIS anatomic classification (as modified by Baker and colleagues) into
+#' six body regions: Head and neck, face, chest, abdomen and pelvic contents, extremities and pelvic bones, and
+#' general.  In addition, each code referring to a mechanism of injury is categorized as recommended or
+#' proposed by the CDC. For each injured person, ICDPIC-R determines the maximal AIS in each body region
+#' and overall, an Injury Severity Score (RISS), and a CDC mechanism category.
+#' Mapping of ICD-9-CM codes to AIS severity and body region utilizes essentially the same table that was used
+#' for the Stata implementation of ICDPIC.  After initial testing, we reclassified code 850.11 to AIS=2 as
+#' recommended by Fleischman et al. and codes 806.1 and 862.8 to AIS=5 as recommended by DiBartolomeo et
+#' al.
 #'
-#' When an ICD 10 code was mapped to more than one body region a simple rule was
-#' used based on keywords in the descriptions. Ambiguity involving ais scores
-#' was handled by allowing the user to select the max ais or min ais associated with
-#' the ICD 10 code.
+#' Mapping of ICD-9-CM E-codes to CDC mechanism categories simply involved translation of the programming
+#' code from Stata into R, using the same table.  Mapping of ICD-10-CM codes to mechanism categories was
+#' based on a similar table published by the CDC.16
+#' The National Trauma Data Standard used by NTDB considers valid ICD-10-CM injury codes to be those in the
+#' ranges S00-S99, T07, T14, T20-T28, and T30-32.  ICDPIC-R recognizes only these codes in the calculation
+#' of injury severity from ICD-10, and also requires that the codes have a decimal point in the fourth position
+#' and the letter “A” in the eighth position (indicating an initial encounter).
+#' Mapping of ICD-10-CM codes to AIS severity is performed in two ways, as described below.
 #'
-#' It is possible to tell the function to ignore ICD 10 codes if desired by the user.
+#' “Empirical” mapping method for ICD-10-CM codes:
+#'       For NTDB data coded using ICD-10-CM, we eliminated the eighth digit (encounter type) and any other
+#'       trailing alphabetical characters to obtain the parent ICD-10 code.  We determined whether subjects
+#'       had died during hospitalization (as recorded either in the Emergency Department file or in the
+#'       Discharge file).  We then calculated hospital mortality for each ICD-10 code, both when it was the
+#'       principal diagnosis (HMP) and when it was any diagnosis recorded for a given subject (HMA).
+#'
+#' ICD-10 codes were assigned to an ISS body region using the proposed CDC classification.  We defined a
+#' weighted hospital mortality
+#' HMW = w*HMP + (1-w)*HMA,
+#' where w is between 0 and 1.  For various values of w, we investigated different cutpoints that would
+#' allocate HMW for a given ICD-10 code to an AIS severity.  We determined the combination of w and cutpoints
+#' that minimized the mean squared error between the ISS that had been calculated from AIS codes submitted to
+#' NTDB by hospital trauma registrars (ISSAIS) and the ISS calculated after assigning AIS severities as above.
+#' The “Empirical” mapping method may be preferable when injuries have been coded using ICD-10 and subjects are
+#' similar to those in NTDB.  It may be more generalizable to countries not using the U.S. version of ICD-10-CM.
+#' It is the default mapping method for ICD-10 data in ICDPIC-R.
+#'
+#' “Legacy” mapping method for ICD-10-CM codes:
+#'       ICD-10-CM codes are first mapped to ICD-9-CM codes using the General Equivalency Mapping (GEM) tables
+#'       provided by the Centers for Medicare and Medicaid Services (CMS), and then those ICD-9-CM codes are
+#'       mapped to AIS using the table inherited from the Stata version of ICDPIC.
+#'
+#' The user is given the option to ignore ICD-10-CM codes if desired.  Otherwise, if the GEM maps an ICD-10-CM
+#' code to two or more ICD-9-CM codes associated with different severities, the user is given the option whether
+#' to assign the greater or lesser of these severities.  When the GEM maps an ICD-10-CM code to two or more
+#' ICD-9-CM codes associated with different AIS body regions, the verbal description of the ICD-10-CM code
+#' in the GEM table is used to assign a body region.
+#' The “Legacy” mapping method is necessary when injuries have been coded with ICD-9-CM codes only, and may be
+#' preferable when they have been coded with a mix of ICD-9-CM and ICD-10-CM.
+#'
+#'
+#' For any of the ICD-9 or ICD-10 mapping methods in ICDPIC-R, the maximum AIS Severity for each AIS body region
+#' (MXAISBR1 … MXAISBR6 in the output) is 0 if there are no valid injury codes for that body region.  It is
+#' recorded as “missing” if there are valid codes for that body region, but their severity cannot be determined.
+#'  Otherwise, it is the maximum known severity (1 through 6) for that body region.  Maximum AIS Severity
+#'  (MAXAIS in the output data) is the maximum of (MXAISBR1 … MXAISBR6); MAXAIS will thus be 0 if there is no
+#'  diagnosis code associated with an AIS severity.
+#'
+#' Injury Severity Score (RISS) is calculated according to the classic description of Baker and colleagues,
+#' namely the sum of the squares of the three largest elements of (MXAISBR1 … MXAISBR6).  The user can choose
+#' whether to assign RISS=75 when any injury is assigned a severity of 6, or to reassign a severity of 5 to
+#' these injuries and calculate RISS as above.  The latter option is the default in ICDPIC-R, since by
+#' definition1 an AIS severity of 6 should denote an injury that is uniformly fatal and thus should rarely be
+#' found in hospital data.
+#'
+#'
+#'
+#'
 #'
 #' @section Functions:
 #' \strong{cat_trauma} provides various classifications and characterizations of trauma
 #' based on ICD-9-CM diagnosis codes, specifically codes for Nature of Injury
 #' (N-Codes) and External Cause of Injury (E-Codes).
-
-
+#'
 #'
 #' @docType package
 #' @name icdpicr
