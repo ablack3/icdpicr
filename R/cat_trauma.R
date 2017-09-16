@@ -28,6 +28,7 @@
 #' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
 #'          \itemize{
 #'          \item "empirical" (default) Table derived empirically from National Trauma Database. Details are included in ICDPIC-R package help documentation.
+#'          \item "roc_max" Table derived empirically from National Trauma Database using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
@@ -106,7 +107,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
       if(!(icd10 %in% c(T, F))) stop("icd10 must be TRUE or FALSE")
-      if(!(i10_iss_method %in% c("empirical","gem_max","gem_min"))) stop("i10_iss_menthod must be empirical, gem_max, or gem_min")
+      if(!(i10_iss_method %in% c("empirical","roc_max","gem_max","gem_min"))) stop("i10_iss_menthod must be empirical, roc_max, gem_max, or gem_min")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
@@ -130,6 +131,8 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
 
             if(i10_iss_method == "empirical"){
                   ntab <- rbind(ntab_s1, i10_map_emp)
+            } else if(i10_iss_method == "roc_max"){
+                  ntab <- rbind(ntab_s1, i10_map_roc)
             } else if(i10_iss_method == "gem_max"){
                   ntab <- rbind(ntab_s1, i10_map_max)
             } else if(i10_iss_method == "gem_min"){
@@ -333,10 +336,8 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
 
       # ISS is calculated as the sum of the squared three highest maxaisbr varaiables for a given person.
       # We need to exclude 9s in this calculation.
-
       df$riss <- apply(df, 1, function(row){
-
-             # select the max ais variables for a given row
+            # select the max ais variables for a given row
             temp <- row[grepl("^mxaisbr", names(row))]
 
             # for some reason apply is converting these to char. We will convert them back to numeric
@@ -347,8 +348,8 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
             # print(temp[order(-temp)[1:3]])
             sum(temp[order(-temp)[1:3]]^2)
             # what if there are only two?
-            # this code will sum the squares of the highest two
-            # is this what we want?
+            # In that case this code will sum the squares of the highest two
+            # Is this what we want?
       })
 
       # Replace ISS value with 75 if maximum severity is 6. This implies that the person is dead.
@@ -366,8 +367,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       #  E-Codes and add them to the data.                                  #
       #---------------------------------------------------------------------#
 
-      # get column names
-      dx_colnames <- paste0(dx_pre, 1:num_dx)
+      # get ecode column names
       ecode_colnames <- paste0("ecode_", 1:4)
 
       #create ecode columns
@@ -377,23 +377,17 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # icd10 e-codes do not start with E.
 
       # get a list of all ecodes (includes icd10 code if requested)
-      ecodes <- etab$dx
+      ecode_regex <- paste0("^", etab$dx, collapse = "|")
 
       df[ , ecode_colnames] <- t(apply(df, 1, function(row){
-            # remove trailing letters
-            row <- sub("[A-Za-z]+$", "", row)
-
-            # remove trailing decimal
-            row <- sub("\\.$", "", row)
-
-            # get all e codes, need to strip decimal
-            ecode_indicators <- as.character(unlist(sub("\\.","", row))) %in% ecodes
-            row_ecodes <- row[ecode_indicators]
-
-          # (E_codes <- grep("^E", row[dx_colnames], value = T))
-          # take first 4 e codes that are not place e codes (start with E849)
+            # remove decimal
+            row <- sub("\\.", "", row)
+            # get all e codes using pattern matching
+            row_ecodes <- stringr::str_extract(as.character(unlist(row)), ecode_regex)
+            # remove na values
+            row_ecodes <- na.omit(row_ecodes)
+            # save first 4 Ecodes
             row_ecodes[1:4]
-            # E_codes[!grepl("^E849", E_codes)][1:4]
       }))
 
       # loop through e codes and add associated variables from e code table
