@@ -8,8 +8,11 @@ list.files("./lookup_tables")
 sev_cc <- c("character", "integer", "character")
 
 
-# icd 10 mapping to iss using Dave's empirical method
+# icd 10 mapping to iss using Dave's first empirical method
 i10_map_emp <- read.csv("./lookup_tables/i10_map_emp.csv", stringsAsFactors = F, colClasses = sev_cc)
+
+# icd 10 mapping to iss using Dave's roc max  method
+i10_map_roc <- read.csv("./lookup_tables/i10_map_roc.csv", stringsAsFactors = F, colClasses = sev_cc)
 
 # read in ICD 10 mappings using the GEM - two deduplication methods
 i10_map_max <- read.csv("./lookup_tables/i10_map_max.csv", stringsAsFactors = F, colClasses = sev_cc)
@@ -36,7 +39,8 @@ rbind(
       sapply(ntab_s1, class),
       sapply(i10_map_max, class),
       sapply(i10_map_min, class),
-      sapply(i10_map_emp, class)
+      sapply(i10_map_emp, class),
+      sapply(i10_map_roc, class)
 )
 
 # col classes look good
@@ -44,6 +48,7 @@ rbind(
 
 # test binding of datasets
 head(rbind(ntab_s1, i10_map_emp))
+head(rbind(ntab_s1, i10_map_roc))
 head(rbind(ntab_s1, i10_map_min))
 head(rbind(ntab_s1, i10_map_max))
 head(rbind(etab_s1, i10_ecode))
@@ -54,6 +59,7 @@ devtools::use_data(
       i10_map_min,
       i10_map_max,
       i10_map_emp,
+      i10_map_roc,
       ntab_s1,
       etab_s1,
       i10_ecode,
@@ -63,8 +69,6 @@ devtools::use_data(
 # note: the empirical mapping requires that trailling letters on icd10 codes are stripped off.
 # Specifically, all characters after the first letter following the decimal should be dropped.
 head(i10_map_emp)
-# do I need to fix this?
-# strip off trailing letters on all i10 codes?
 
 # add prelim directory to r build ignore
 devtools::use_build_ignore("prelim")
