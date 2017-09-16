@@ -14,10 +14,10 @@
 #' @param df A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
 #'          Diagnosis codes should be character strings and may have a decimal or not.
 #'
-#' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, ect)
+#' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, etc.)
 #'
 #' @param calc_method ISS calculation method:
-#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6 assuming the person is dead.
+#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
 #'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #'
 #' @param icd10 A logical value indicating whether ICD-10 codes should be considered or ignored.
@@ -27,7 +27,7 @@
 #'
 #' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
 #'          \itemize{
-#'          \item "empirical" (default) Table derived empirically from National Trauma Database. Details are included in ICDPIC-R package help documentation.
+#'          \item "empirical" (default) Table derived empirically from The National Trauma Data Bank. Details are included in ICDPIC-R package help documentation.
 #'          \item "roc_max" Table derived empirically from National Trauma Database using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
