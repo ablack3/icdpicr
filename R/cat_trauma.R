@@ -97,7 +97,7 @@
 # icd10 <- T
 # i10_iss_method <- "empirical"
 
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "empirical"){
+cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max"){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -147,7 +147,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       #  Merge diagnosis code variables with N-Code reference table to obtain severity  #
       #  and ISS body region variables for each diagnosis code and add them to the data #
       #---------------------------------------------------------------------------------#
-      print("inserting severity and body_region columns")
+      message("inserting severity and body_region columns")
       for(i in dx_nums){
           # create column name
           dx_name <- paste0(dx_pre, i)
@@ -251,7 +251,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           names(temp) <- paste0(c("sev_","issbr_"), i)
 
           # add temp columns to dataframe
-          print(paste0('inserting columns for ', dx_name))
+          message(paste0('inserting columns for ', dx_name))
           df <- .insert_columns(df, dx_name, temp)
 
       }
@@ -260,7 +260,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # Create variables for maximum AIS/ISS body region.  #
       #----------------------------------------------------#
       # i=1
-      print("calc max ais for each body region")
+      message("calc max ais for each body region")
       # body regions are coded as text
       body_regions <- unique(i10_map_emp$issbr)
       # make usable for column names
@@ -412,7 +412,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           #  drop dx and n
           temp <- temp[,c("mechmaj", "mechmin", "intent")]
 
-          #rename columns
+          # rename columns
           names(temp) <- paste(c("mechmaj", "mechmin", "intent"), i, sep="")
 
           # add columns to dataframe

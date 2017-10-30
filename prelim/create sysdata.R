@@ -53,6 +53,7 @@ head(rbind(ntab_s1, i10_map_min))
 head(rbind(ntab_s1, i10_map_max))
 head(rbind(etab_s1, i10_ecode))
 
+# no errors
 
 # create internal data
 devtools::use_data(

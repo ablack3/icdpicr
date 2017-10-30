@@ -29,7 +29,7 @@ colClasses(rbind(etab_s1, i10_ecode))
 
 ###################### test help page ######################
 help(package="icdpicr")
-?trauma
+?icdpicr::cat_trauma
 
 
 # example
@@ -38,7 +38,7 @@ df_in <- read.table(header = T, text = "
       31416   800.1   959.9   E910.9
       31417   800.24  410.0   NA
 ")
-df_out <- trauma(df_in, "dx")
+df_out <- cat_trauma(df_in, "dx")
 df_out
 
 
@@ -47,8 +47,8 @@ ident    dx1     dx2     dx3
                     31416   800.1   959.9   E910.9
                     31417   800.24  410.0   NA
                     ")
-df_out <- trauma(df_in, "dx")
-
+df_out <- cat_trauma(df_in, "dx")
+df_out
 
 
 

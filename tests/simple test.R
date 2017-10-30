@@ -24,8 +24,10 @@ S06.360A     NA     NA
 S00.93XA     NA     NA
 S52.011A  S02.0XXB     NA
 ")
-library(dplyr)
-icdpicr::i10_ecode %>% head()
+
+head(icdpicr::i10_ecode)
+
+# table not exported
 df_out <- cat_trauma(df_in, "dx")
 
 

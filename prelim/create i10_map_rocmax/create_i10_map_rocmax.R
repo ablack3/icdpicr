@@ -1,12 +1,12 @@
 #############################################################################################
-# Dave worked out a second rocirical method for assigning icd10 to iss using the NTDB data
+# Dave worked out a second empirical method for assigning icd10 to iss using the NTDB data
 # the performance of this method seems to be better than the GEM method.
-# This method was created by maximizing the roc
+# This method was created by maximizing the roc and is referred to the rocmax method
 
 rm(list = ls())
 
 # He gave me the results in an xls file.
-roc <- read.csv("./prelim/create i10_map_rocmax/icd10ais_rocmax.csv", stringsAsFactors = F)
+roc <- readxl::read_excel("./prelim/create i10_map_rocmax/icd10ais_rocmax.xls")
 head(roc)
 
 # select only columns we use
@@ -17,7 +17,10 @@ sapply(roc, class)
 # target to match
 sapply(ntab_s1, class)
 
-# they match
+# change severity to integer
+roc$sev <- as.integer(roc$sev)
+
+# now they match
 
 # rename columns
 names(roc) <- c("dx", "severity", "issbr")
@@ -36,9 +39,12 @@ roc$dx <- sub("\\.", "", roc$dx)
 # note that body region is text in this table.
 unique(roc$issbr)
 
-# final check
+# final checks
+# should be 1 to 6
 unique(roc$severity)
+# should be char int char
 sapply(roc, class)
+
 head(roc)
 
 # save output table
