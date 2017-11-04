@@ -27,8 +27,7 @@
 #'
 #' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
 #'          \itemize{
-#'          \item "empirical" (default) Table derived empirically from The National Trauma Data Bank. Details are included in ICDPIC-R package help documentation.
-#'          \item "roc_max" Table derived empirically from National Trauma Database using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
+#'          \item "roc_max" (default) Table derived empirically from National Trauma Data Bank using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
@@ -129,9 +128,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       if(icd10){
             etab <- rbind(etab_s1, i10_ecode)
 
-            if(i10_iss_method == "empirical"){
-                  ntab <- rbind(ntab_s1, i10_map_emp)
-            } else if(i10_iss_method == "roc_max"){
+            if(i10_iss_method == "roc_max"){
                   ntab <- rbind(ntab_s1, i10_map_roc)
             } else if(i10_iss_method == "gem_max"){
                   ntab <- rbind(ntab_s1, i10_map_max)
@@ -191,10 +188,10 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           # and also requires that the codes have a decimal point in the fourth position and the
           # letter “A” in the eighth position (indicating an initial encounter).
 
-          # we only need to do this processing for the empirical method
+          # we only need to do this processing for the roc_max method
           # if using the Gem then the code validation is automatically handled through the merge just like in
           # the icd9 case
-          if(icd10 == TRUE & i10_iss_method == "empirical"){
+          if(icd10 == TRUE & i10_iss_method == "roc_max"){
 
               i9_valid <- c("8","9","E")
               i10_valid <- c("S","T","U","V","W","X","Y")

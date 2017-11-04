@@ -51,7 +51,7 @@
 #' and the letter "A" in the eighth position (indicating an initial encounter).
 #' Mapping of ICD-10-CM codes to AIS severity is performed in two ways, as described below.
 #'
-#' \strong{"Empirical" mapping method for ICD-10-CM codes:}
+#' \strong{Empirical "roc_max" mapping method for ICD-10-CM codes:}
 #'       For NTDB data coded using ICD-10-CM, we eliminated the eighth digit (encounter type) and any other
 #'       trailing alphabetical characters to obtain the parent ICD-10 code.  We determined whether subjects
 #'       had died during hospitalization (as recorded either in the Emergency Department file or in the
