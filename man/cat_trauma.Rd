@@ -5,7 +5,7 @@
 \title{Categorize trauma by adding AIS and ISS to a dataframe}
 \usage{
 cat_trauma(df, dx_pre, calc_method = 1, icd10 = TRUE,
-  i10_iss_method = "empirical")
+  i10_iss_method = "roc_max")
 }
 \arguments{
 \item{df}{A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
@@ -24,8 +24,7 @@ If FALSE then ICD-10 codes are ignored.}
 
 \item{i10_iss_method}{Method for calculating ISS from ICD10-CM codes. Must be one of:
 \itemize{
-\item "empirical" (default) Table derived empirically from The National Trauma Data Bank. Details are included in ICDPIC-R package help documentation.
-\item "roc_max" Table derived empirically from National Trauma Database using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
+\item "roc_max" (default) Table derived empirically from National Trauma Data Bank using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
 \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
        using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.

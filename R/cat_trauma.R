@@ -158,11 +158,12 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           # strip out decimal in all codes
           df_ss[ , dx_name] <- sub("\\.", "", df_ss[ , dx_name])
 
-          # For ICD 9 codes we do not neet to check the format since only valid codes will be matched
+          # For ICD 9 codes we do not need to check the format since only valid codes will be matched
           # when we merge in the ISS from the lookup tables
           # Note that this assumes that no ICD 10 codes will inadvertently be matched to ICD 9 codes
           # I think this is true but am not 100% sure yet.
-          # OK... V codes are a problem. V12 is both a valid I9 and I10 code for example
+          # OK...I did some checking and V codes are a problem.
+          # V12 is both a valid I9 and I10 code for example
           # E codes are also a problem if we strip the decimal. E800 after decimal stripping
           # is in both I9 and I10 (E80.0).
 
@@ -175,7 +176,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           # I10 start with "U" "V" "W" "X" "Y"
           # I9 start with "E"
 
-          # is it possible that an I9 V code gets classified as I10?
+          # Is it possible that an I9 V code gets classified as I10?
           # Yep seems so. V20 will be matched with I10 even though it could be an I9 code.
 
           # The same is not true of the ICD 10 codes since there are placeholder "X" characters
@@ -188,9 +189,10 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           # and also requires that the codes have a decimal point in the fourth position and the
           # letter “A” in the eighth position (indicating an initial encounter).
 
-          # we only need to do this processing for the roc_max method
-          # if using the Gem then the code validation is automatically handled through the merge just like in
-          # the icd9 case
+          # We only need to do this processing for the roc_max method.
+          # If user is using the GEM then the code validation is automatically handled
+          # through the merge just like in the icd9 case.
+
           if(icd10 == TRUE & i10_iss_method == "roc_max"){
 
               i9_valid <- c("8","9","E")
@@ -423,5 +425,4 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # return dataframe
       df
 }
-
 

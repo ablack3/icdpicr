@@ -60,36 +60,34 @@ of injury severity from ICD-10, and also requires that the codes have a decimal 
 and the letter "A" in the eighth position (indicating an initial encounter).
 Mapping of ICD-10-CM codes to AIS severity is performed in two ways, as described below.
 
-\strong{"Empirical" mapping method for ICD-10-CM codes:}
-      For NTDB data coded using ICD-10-CM, we eliminated the eighth digit (encounter type) and any other
-      trailing alphabetical characters to obtain the parent ICD-10 code.  We determined whether subjects
-      had died during hospitalization (as recorded either in the Emergency Department file or in the
-      Discharge file).  We then calculated hospital mortality for each ICD-10 code, both when it was the
-      principal diagnosis (HMP) and when it was any diagnosis recorded for a given subject (HMA).
+\strong{“ROCmax” mapping method for ICD-10-CM codes:}
+For each NTDB subject k with 1 to Nk valid ICD-10 codes,
+each code was given a score of 0 if the subject survived and a score of 1/Nk
+if the subject died (as recorded either in the Emergency Department file or in the Discharge file).
+A fractional hospital mortality (HMF) was derived as the average score for each subject with a given
+ICD-10 code.  Different cutpoints were investigated to assign each ICD-10 code to an AIS severity
+based on HMF.  Body regions were assigned using the proposed CDC classification.
+For each combination of cutpoints, the discrimination of the resulting ISS for predicting
+mortality was determined using a C-statistic.
+Among the combinations resulting in a maximum C-statistic (to two decimal places), the
+combination was chosen that most closely approximated the ISS that had been calculated by
+hospital trauma registrars (ISSAIS).
 
-ICD-10 codes were assigned to an ISS body region using the proposed CDC classification.  We defined a
-weighted hospital mortality
-HMW = w*HMP + (1-w)*HMA,
-where w is between 0 and 1.  For various values of w, we investigated different cutpoints that would
-allocate HMW for a given ICD-10 code to an AIS severity.  We determined the combination of w and cutpoints
-that minimized the mean squared error between the ISS that had been calculated from AIS codes submitted to
-NTDB by hospital trauma registrars (ISSAIS) and the ISS calculated after assigning AIS severities as above.
-The “Empirical” mapping method may be preferable when injuries have been coded using ICD-10 and subjects are
-similar to those in NTDB.  It may be more generalizable to countries not using the U.S. version of ICD-10-CM.
-It is the default mapping method for ICD-10 data in ICDPIC-R.
 
 \strong{"GEM" mapping method for ICD-10-CM codes:}
-      ICD-10-CM codes are first mapped to ICD-9-CM codes using the General Equivalency Mapping (GEM) tables
-      provided by the Centers for Medicare and Medicaid Services (CMS), and then those ICD-9-CM codes are
-      mapped to AIS using the table inherited from the Stata version of ICDPIC.
+ICD-10-CM codes are first mapped to ICD-9-CM codes using the General Equivalency Mapping (GEM)
+tables provided by the Centers for Medicare and Medicaid Services (CMS), and then those ICD-9-CM
+codes are mapped to AIS using the table inherited from the Stata version of ICDPIC.
+The user is given the option to ignore ICD-10-CM codes if desired.  Otherwise, if the GEM maps an
+ ICD-10-CM code to two or more ICD-9-CM codes associated with different severities, the user
+ is given the option whether to assign the greater or lesser of these severities
+ (“GEMmax” or “GEMmin”).  When the GEM maps an ICD-10-CM code to two or more ICD-9-CM codes
+ associated with different AIS body regions, the verbal description of the ICD-10-CM code in the
+ GEM table is used to assign a body region.
 
-The user is given the option to ignore ICD-10-CM codes if desired.  Otherwise, if the GEM maps an ICD-10-CM
-code to two or more ICD-9-CM codes associated with different severities, the user is given the option whether
-to assign the greater or lesser of these severities.  When the GEM maps an ICD-10-CM code to two or more
-ICD-9-CM codes associated with different AIS body regions, the verbal description of the ICD-10-CM code
-in the GEM table is used to assign a body region.
-The "GEM" mapping method is necessary when injuries have been coded with ICD-9-CM codes only, and may be
-preferable when they have been coded with a mix of ICD-9-CM and ICD-10-CM.
+The GEM mapping method is necessary when injuries have been coded with ICD-9-CM codes only,
+and may be preferable when they have been coded with a mix of ICD-9-CM and ICD-10-CM.
+
 
 
 For any of the ICD-9 or ICD-10 mapping methods in ICDPIC-R, the maximum AIS Severity for each AIS body region
