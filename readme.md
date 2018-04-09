@@ -1,5 +1,3 @@
-# UNDER CONSTRUCTION
-
 # ICDPICR 
 
 International Classification of Diseases Programs for Injury Categorization in R
@@ -7,6 +5,10 @@ International Classification of Diseases Programs for Injury Categorization in R
 The ICDPICR package is an implementation of the STATA program ICDPIC version 3
 in R. ICDPIC is a collection of Stata programs for injury categorization
 and is available online at http://ideas.repec.org/c/boc/bocode/s457028.html
+
+A paper with a full description of ICDPIC-R can be found here: https://rdcu.be/KZM7 
+
+A web application version of ICDPIC-R which does not require any installation can be found here: https://ablack3.shinyapps.io/icdpicr_app/
 
 ## Getting started
 
