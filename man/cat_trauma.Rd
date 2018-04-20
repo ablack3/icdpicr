@@ -83,4 +83,3 @@ ident    dx1     dx2     dx3
 df_out <- cat_trauma(df_in, "dx")
 
 }
-

@@ -73,6 +73,7 @@
 #' ")
 #' df_out <- cat_trauma(df_in, "dx")
 #'
+#' @importFrom stringr str_extract
 #' @export
 
 
@@ -144,7 +145,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       #  Merge diagnosis code variables with N-Code reference table to obtain severity  #
       #  and ISS body region variables for each diagnosis code and add them to the data #
       #---------------------------------------------------------------------------------#
-      message("inserting severity and body_region columns")
+      # message("inserting severity and body_region columns")
       for(i in dx_nums){
           # create column name
           dx_name <- paste0(dx_pre, i)
@@ -250,7 +251,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
           names(temp) <- paste0(c("sev_","issbr_"), i)
 
           # add temp columns to dataframe
-          message(paste0('inserting columns for ', dx_name))
+          # message(paste0('inserting columns for ', dx_name))
           df <- .insert_columns(df, dx_name, temp)
 
       }
@@ -259,7 +260,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # Create variables for maximum AIS/ISS body region.  #
       #----------------------------------------------------#
       # i=1
-      message("calc max ais for each body region")
+      # message("calc max ais for each body region")
       # body regions are coded as text
       body_regions <- unique(i10_map_emp$issbr)
       # make usable for column names

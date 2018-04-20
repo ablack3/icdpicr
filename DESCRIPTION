@@ -7,5 +7,5 @@ Maintainer: Adam Black <ablack3@gmail.com>
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes
 License: MIT
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Imports: stringr (>= 1.0.0)
