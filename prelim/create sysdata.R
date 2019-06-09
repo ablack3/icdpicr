@@ -2,7 +2,7 @@
 # read in lookup tables from the lookup tables folder and save add them to the package sysdata object
 
 library(dplyr)
-rm(list = ls())
+
 list.files("./lookup_tables")
 
 sev_cc <- c("character", "integer", "character")
@@ -26,6 +26,14 @@ i10_ecode <- read.csv("./lookup_tables/i10_ecode.csv", stringsAsFactors = F, col
 
 # Original ecode mapping changed to text instead of numeric codes
 etab_s1 <- read.csv("./lookup_tables/etab_s1.csv", stringsAsFactors = F, colClasses = "character")
+
+# check frequencies of issbr
+library(purrr)
+library(dplyr)
+l <- lst(i10_map_emp, i10_map_roc, i10_map_max, i10_map_min, ntab_s1)
+n <- names(l)
+map2(l, n, ~count(.x, issbr, name = .y)) %>%
+      reduce(full_join, by = "issbr")
 
 
 # check col classes. These must ultimately be the same so they can be combined with rbind().
@@ -56,7 +64,7 @@ head(rbind(etab_s1, i10_ecode))
 # no errors
 
 # create internal data
-devtools::use_data(
+usethis::use_data(
       i10_map_min,
       i10_map_max,
       i10_map_emp,
@@ -72,5 +80,5 @@ devtools::use_data(
 head(i10_map_emp)
 
 # add prelim directory to r build ignore
-devtools::use_build_ignore("prelim")
+usethis::use_build_ignore("prelim")
 

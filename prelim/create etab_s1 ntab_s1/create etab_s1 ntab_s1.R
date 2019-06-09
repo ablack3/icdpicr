@@ -18,10 +18,14 @@ ntab_s1[which(ntab_s1$dx == 85011), "severity"] <- 2
 ntab_s1[which(ntab_s1$dx == 8628), "severity"] <- 5
 
 # convert issbr to character : make sure map_issbr function is loaded.
-ntab_s1 <- ntab_s1 %>% rowwise() %>% mutate(issbr2 = map_issbr(issbr))
+ntab_s1 <-
+      ntab_s1 %>%
+      rowwise() %>%
+      mutate(issbr2 = map_issbr(issbr)) %>%
+      ungroup()
 
 # check conversion
-ntab_s1 %>% select(starts_with("issbr")) %>% unique()
+count(ntab_s1, issbr, issbr2)
 
 # drop original and convert to dataframe (not tibble)
 ntab_s1 <- ntab_s1 %>% select(-issbr) %>% rename(issbr = issbr2) %>%  as.data.frame()

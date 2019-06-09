@@ -95,7 +95,7 @@ gemconflicts <- gem2 %>%
 # how many i10 codes do we need to map manually?
 length(unique(gemconflicts$i10))
 # 47 codes
-
+# now looks like 123 codes... Not sure why that changed.
 
 
 # manually assign body region when there is a comflict using this rule:
@@ -113,7 +113,8 @@ map_br <- function(desc){
       else if(grepl(" ear| eye",desc)){ br <- 2}
       else if(grepl("thorax", desc)){ br <- 3}
       else if(grepl("pelvis|lower limb|thigh|knee|lower leg|ankle|foot|toe|upper limb|upper arm|elbow|forearm|wrist|hand|palm|finger|thumb", desc)){ br <- 5}
-      br
+      # map_issbr is defined in the mapping functions R script. It maps the numeric code to a text description.
+      map_issbr(br)
 }
 
 # test mapping function
@@ -127,6 +128,7 @@ gem2 <- left_join(gem2, gemconflicts[ , c("i10", "new_br")], by = "i10")
 
 sum(!is.na(gem2$new_br))
 # 373 rows in the GEM have non-missing new body region values
+# June 2019 update - 1057 rows now.
 
 # just check that there are only 47 codes with non missing new body region
 gem2 %>%
@@ -134,7 +136,7 @@ gem2 %>%
       .[["i10"]] %>%
       unique() %>%
       length()
-
+# June 2019 - 123 codes
 
 # only use new body region if there is a conflict
 gem2 <- gem2 %>% mutate(new_br2 = ifelse(is.na(new_br), issbr, new_br))
@@ -225,6 +227,10 @@ gem3_min$severity <- ifelse(gem3_min$severity == 9, NA, gem3_min$severity)
 # check
 unique(gem3_max$severity)
 unique(gem3_min$severity)
+
+# check iss body region distribution
+count(gem3_max, issbr)
+count(gem3_min, issbr)
 
 # output
 write_csv(gem3_min, "./lookup_tables/i10_map_min.csv")

@@ -57,7 +57,8 @@ map_issbr <- function(i){
       else if(i==2) "Face"
       else if(i==3) "Chest"
       else if(i==4) "Abdomen"
-      else if(i %in% c(5,6)) "General"
+      else if(i==5) "Extremities"
+      else if(i==6) "General"
       else "Unknown"
 }
 
