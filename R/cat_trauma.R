@@ -186,10 +186,9 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
 
           # The National Trauma Data Standard used by NTDB considers valid ICD-10-CM injury
           # codes to be those in the ranges S00-S99, T07, T14, T20-T28, and T30-32.
-          # ICDPIC-R recognizes only these codes in the calculation of injury severity from ICD-10,
+          # ICDPIC-R recognizes only these codes in the calculation of injury severity from ICD-10
           # and also requires that the codes have a decimal point in the fourth position and the
-          # letter “A” in the eighth position (indicating an initial encounter).
-
+          # letter 'A' in the eighth position (indicating an initial encounter).
           # We only need to do this processing for the roc_max method.
           # If user is using the GEM then the code validation is automatically handled
           # through the merge just like in the icd9 case.
@@ -215,20 +214,29 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
                   stopifnot(is.character(s) | is.na(s))
                   ret_val <- NA
                   s <- sub("\\.", "", s)
-                  if(!substr(s,1,1) %in% c("S","T","U","V","W","X","Y")) ret_val <- s
-                  else if(nchar(s) != 7) ret_val <- ""
-                  else if(substr(s,7,7) != "A") ret_val <- ""
-                  else if(substr(s,5,5) == "X") ret_val <- substr(s,1,4)
-                  else if(substr(s,6,6) == "X") ret_val <- substr(s,1,5)
-                  else ret_val <- substr(s,1,6)
+                  if(!substr(s,1,1) %in% c("S","T","U","V","W","X","Y")) {
+                     ret_val <- s
+                  } else if(nchar(s) < 7 & !grepl("X", substr(s, 2, nchar(s)))) {
+                     ret_val <- s
+                  } else if(nchar(s) != 7) {
+                     ret_val <- ""
+                  } else if(substr(s,7,7) != "A") {
+                     ret_val <- ""
+                  } else if(substr(s,5,5) == "X") {
+                     ret_val <- substr(s,1,4)
+                  } else if(substr(s,6,6) == "X") {
+                     ret_val <- substr(s,1,5)
+                  } else {
+                     ret_val <- substr(s,1,6)
+                  }
                   return(ret_val)
               }
 
               # process the codes
               df_ss[ , dx_name] <- sapply(df_ss[ , dx_name], process_i10)
-
               # tst$dx12 <- sapply(tst$dx1, process_i10)
               # process_i10("S80.812A")
+              # process_i10("S0189")
               # unique(substr(i10_map_emp$dx,1,3))
               # unique(substr(i10_map_max$dx,1,3))
           }
