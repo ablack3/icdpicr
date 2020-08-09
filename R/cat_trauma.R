@@ -20,14 +20,21 @@
 #'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
 #'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #'
-#' @param icd10 A logical value indicating whether ICD-10 codes should be considered or ignored.
-#'          If TRUE (default) then ICD-10 codes are handled based on the i10_iss_method argument
-#'          and ICD-10 mechanism codes will be included in E-code calculation.
-#'          If FALSE then ICD-10 codes are ignored.
-#'
-#' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
+#' @param icd10 Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
-#'          \item "roc_max" (default) Table derived empirically from National Trauma Data Bank using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
+#'          \item TRUE (default) ICD10CM codes will be processed by the program
+#'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data then they will be ignored.
+#'          \item "cm" - ICD10CM codes will be processed by the program
+#'          \item "base" - ICD10 (international) codes will be processed by cat_trauma()
+#'          }
+#'          If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.
+#'
+#' @param i10_iss_method Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
+#'          \itemize{
+#'          \item "roc_max_NIS" (default) Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
+#'          \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
+#'          \item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
+#'          \item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
@@ -85,9 +92,15 @@
 # n <- 5
 # df <- data.frame(dx1 = sample(ntab_s1$dx, n),
 #                  dx2 = sample(ntab_s1$dx, n),
-#                  dx3 = sample(i10_map_emp$dx, n),
-#                  dx4 = sample(etab_s1$dx, n),
-#                  dx5 = sample(i10_ecode$dx, n))
+#                  dx3 = sample(i10_map_min$dx, n),
+#                  dx4 = sample(i10_map_max$dx, n),
+#                  dx5 = sample(etab_s1$dx, n),
+#                  dx6 = sample(i10_ecode$dx, n),
+#                  dx7 = sample(i10_map_max$dx, n),
+#                  dx8 = sample(.select_i10_data("NIS", "cm")$dx, n),
+#                  dx9 = sample(.select_i10_data("NIS", "base")$dx, n),
+#                  dx10 = sample(.select_i10_data("TQIP", "cm")$dx, n),
+#                  dx11 = sample(.select_i10_data("TQIP", "base")$dx, n))
 #
 # result <- cat_trauma(df,"dx")
 #
@@ -97,17 +110,18 @@
 # icd10 <- T
 # i10_iss_method <- "empirical"
 
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max"){
+cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max_NIS"){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
-      if(NROW(df) == 0) stop("Data contains no observations.")
+      if(NROW(df) == 0) stop("Data contains no observations. It must contain at least one row.")
       if(!is.character(dx_pre)) stop("Second argument must be a character string")
       # ensure dx_pre is a valid variable name
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
-      if(!(icd10 %in% c(T, F))) stop("icd10 must be TRUE or FALSE")
-      if(!(i10_iss_method %in% c("empirical","roc_max","gem_max","gem_min"))) stop("i10_iss_menthod must be empirical, roc_max, gem_max, or gem_min")
+      if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
+      if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
+      if(!(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
@@ -121,21 +135,24 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # make sure df is not a tibble and if it is convert back to regular dataframe
       df <- data.frame(df)
 
-      # add i10 codes to lookup tables
+      # Treat icd==T the same as icd=="cm"
+      if(isTRUE(icd10)) icd10 <- "cm"
+
+      # If ICD10 codes are requested then add ICD10 codes to the lookup tables
       # The i10 mappings  for n codes were created by using both CMS general equivalence mappings
       # and Dave's empirical method
-      # The i10 maapings for e codes (mechanism) were created using CDC injury mechanism grid
+      # The i10 mapings for e codes (mechanism) were created using CDC injury mechanism grid
       # See documentation and prelim directory for details
-      if(icd10){
+      if(icd10 %in% c("base", "cm")){
             etab <- rbind(etab_s1, i10_ecode)
 
-            if(i10_iss_method == "roc_max"){
-                  ntab <- rbind(ntab_s1, i10_map_roc)
-            } else if(i10_iss_method == "gem_max"){
-                  ntab <- rbind(ntab_s1, i10_map_max)
-            } else if(i10_iss_method == "gem_min"){
-                  ntab <- rbind(ntab_s1, i10_map_min)
-            }
+            ntab <- switch(i10_iss_method,
+                           roc_max_NIS = rbind(ntab_s1, .select_i10_data("NIS", icd10)),
+                           roc_max_TQIP = rbind(ntab_s1, .select_i10_data("TQIP", icd10)),
+                           roc_max_NIS_only = rbind(ntab_s1, .select_i10_data("NIS_pnly", icd10)),
+                           roc_max_TQIP_only = rbind(ntab_s1, .select_i10_data("TQIP_only", icd10)),
+                           gem_max = rbind(ntab_s1, i10_map_max),
+                           gem_min = rbind(ntab_s1, i10_map_min))
       } else {
             ntab <- ntab_s1
             etab <- etab_s1
@@ -270,7 +287,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # i=1
       # message("calc max ais for each body region")
       # body regions are coded as text
-      body_regions <- unique(i10_map_emp$issbr)
+      body_regions <- unique(i10_map_max$issbr)
       # make usable for column names
       issbr_names <- gsub("/", "_", body_regions)
 

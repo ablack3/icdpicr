@@ -14,3 +14,21 @@
     }
     df_out
 }
+
+# select columns from one of the icd 10 lookup tables
+# prefix = "NIS"
+# i10_type = "cm"
+.select_i10_data <- function(prefix, i10_type) {
+    stopifnot(i10_type %in% c("cm", "base"))
+    stopifnot(prefix %in% c("NIS", "TQIP", "NIS_only", "TQIP_only"))
+    prefix <- paste0(prefix, "_")
+
+    if(i10_type == "cm") {
+        df <- i10cm_map_roc
+    } else if(i10_type == "base") {
+        df <- i10base_map_roc
+    }
+    df <- df[ , c("dx", paste0(prefix, c("severity", "issbr")))]
+    colnames(df) <- c("dx", "severity", "issbr")
+    df
+}
