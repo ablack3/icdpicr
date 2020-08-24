@@ -73,7 +73,7 @@
 #'       \item 9 = Unknown
 #'}
 #'
-#' @examples df_in <- read.table(header = T, text = "
+#' @examples df_in <- read.table(header = TRUE, text = "
 #' ident    dx1     dx2     dx3
 #' 31416   800.1   959.9   E910.9
 #' 31417   800.24  410.0   NA
@@ -81,35 +81,8 @@
 #' df_out <- cat_trauma(df_in, "dx")
 #'
 #' @importFrom stringr str_extract
+#' @importFrom stats na.omit
 #' @export
-
-
-
-
-# for debuging...
-# set.seed(1)
-# codes <- c()
-# n <- 5
-# df <- data.frame(dx1 = sample(ntab_s1$dx, n),
-#                  dx2 = sample(ntab_s1$dx, n),
-#                  dx3 = sample(i10_map_min$dx, n),
-#                  dx4 = sample(i10_map_max$dx, n),
-#                  dx5 = sample(etab_s1$dx, n),
-#                  dx6 = sample(i10_ecode$dx, n),
-#                  dx7 = sample(i10_map_max$dx, n),
-#                  dx8 = sample(.select_i10_data("NIS", "cm")$dx, n),
-#                  dx9 = sample(.select_i10_data("NIS", "base")$dx, n),
-#                  dx10 = sample(.select_i10_data("TQIP", "cm")$dx, n),
-#                  dx11 = sample(.select_i10_data("TQIP", "base")$dx, n))
-#
-# result <- cat_trauma(df,"dx")
-#
-# df
-# dx_pre="dx"
-# calc_method = 1
-# icd10 <- T
-# i10_iss_method <- "empirical"
-
 cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max_NIS"){
 
       # Verify input #

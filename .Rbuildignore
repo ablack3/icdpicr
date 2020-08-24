@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^prelim$
+^LICENSE\.md$
+^readme\.md$
+^lookup_tables/*

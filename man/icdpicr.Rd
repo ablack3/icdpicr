@@ -3,7 +3,6 @@
 \docType{package}
 \name{icdpicr}
 \alias{icdpicr}
-\alias{icdpicr-package}
 \title{ICDPICR}
 \description{
 International Classification of Diseases Programs for Injury Categorization.
