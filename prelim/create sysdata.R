@@ -103,3 +103,10 @@ usethis::use_data(
 # add prelim directory to r build ignore
 # usethis::use_build_ignore("prelim")
 
+# add example data used for tests and examples
+injury <- readr::read_csv("prelim/create_example_data/sample_data.csv",
+                          col_types = paste(c(rep("c", 10), "i"), collapse = ""))
+
+
+usethis::use_data(injury, overwrite = T)
+
