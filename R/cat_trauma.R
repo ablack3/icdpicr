@@ -40,6 +40,8 @@
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 #'          }
 #'
+#' @param verbose Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.
+#'
 #' @return A dataframe identical to the dataframe passed to the function with the following additional variables
 #'          added:
 #'          \itemize{
@@ -48,11 +50,13 @@
 #'          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
 #'          \item maxais: maximum AIS severity over all ISS body regions
 #'          \item riss: computed injury severity score
+#'          \item niss: new injury severity score
 #'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
 #'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
 #'          \item intent1-intent4: intent for each E-Code captured
 #'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+#'          \item mortality_prediction: The model predicted probability of mortaility. (only added if using ICD 10 codes with roc_max method)
 #'          }
 #'
 #' @details  Data should be in wide format:
@@ -83,7 +87,7 @@
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
 #' @export
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max_NIS"){
+cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max_NIS", verbose = F){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -122,7 +126,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
             ntab <- switch(i10_iss_method,
                            roc_max_NIS = rbind(ntab_s1, .select_i10_data("NIS", icd10)),
                            roc_max_TQIP = rbind(ntab_s1, .select_i10_data("TQIP", icd10)),
-                           roc_max_NIS_only = rbind(ntab_s1, .select_i10_data("NIS_pnly", icd10)),
+                           roc_max_NIS_only = rbind(ntab_s1, .select_i10_data("NIS_only", icd10)),
                            roc_max_TQIP_only = rbind(ntab_s1, .select_i10_data("TQIP_only", icd10)),
                            gem_max = rbind(ntab_s1, i10_map_max),
                            gem_min = rbind(ntab_s1, i10_map_min))
@@ -451,7 +455,29 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       #---------------------------------------------#
       # Add mortality prediction if possible        #
       #---------------------------------------------#
+      if(stringr::str_detect(i10_iss_method, "NIS|TQIP") && icd10 %in% c("cm", "base")) {
+            if(verbose) print("Calculating mortality prediction")
 
+            coef_df <- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, "NIS|TQIP"), icd10)
+            stopifnot(max(coef_df$intercept, na.rm = T) == min(coef_df$intercept, na.rm = T))
+            intercept <- max(coef_df$intercept, na.rm = T)
+
+            # create hash table
+            coef_df <- coef_df[!is.na(coef_df$effect), ]
+            effect_hash <- coef_df$effect
+            names(effect_hash) <- coef_df$dx
+            calc_mortality_prediction <- function(dx){
+               # dx is a character vector of diagnosis codes for one person
+               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = T) + intercept
+               1/(1+exp(-x))
+            }
+
+            mat <- as.matrix(df[,grepl(paste0("^", dx_pre), names(df))])
+            df$mortality_prediction <- apply(mat, 1, calc_mortality_prediction)
+
+      }
+
+      # comorbid_ahrq(patients_icd9)[, 1:8]
 
 
 

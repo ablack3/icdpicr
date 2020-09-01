@@ -1,6 +1,6 @@
 #' ICD10CM injury codes
 #'
-#' A dataset containing ICD-10-CM injury codes for use in examples and tests
+#' A dataset containing a sample of trauma registry for use in examples and tests.
 #'
 #' @format A data frame with 100,477 rows and 11 variables:
 #' \describe{

@@ -9,7 +9,8 @@ cat_trauma(
   dx_pre,
   calc_method = 1,
   icd10 = TRUE,
-  i10_iss_method = "roc_max_NIS"
+  i10_iss_method = "roc_max_NIS",
+  verbose = F
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ If the icd10 argument is not set to FALSE then the method used to map ICD 10 cod
        using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 }}
+
+\item{verbose}{Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.}
 }
 \value{
 A dataframe identical to the dataframe passed to the function with the following additional variables
@@ -51,11 +54,13 @@ A dataframe identical to the dataframe passed to the function with the following
          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
          \item maxais: maximum AIS severity over all ISS body regions
          \item riss: computed injury severity score
+         \item niss: new injury severity score
          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
          \item intent1-intent4: intent for each E-Code captured
          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+         \item mortality_prediction: The model predicted probability of mortaility. (only added if using ICD 10 codes with roc_max method)
          }
 }
 \description{
