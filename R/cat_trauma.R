@@ -345,13 +345,12 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
             # for some reason apply is converting these to char. We will convert them back to numeric
             # also convert 9s to 0
             temp <- as.numeric(c9to0(temp))
-
             # Take the three highest, square them, and sum the result
             # print(temp[order(-temp)[1:3]])
-            sum(temp[order(-temp)[1:3]]^2)
             # what if there are only two?
             # In that case this code will sum the squares of the highest two
             # Is this what we want?
+            sum(temp[order(-temp)[1:3]]^2)
       })
 
       # Replace ISS value with 75 if maximum severity is 6. This implies that the person is dead.
@@ -371,17 +370,11 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       df$niss <- apply(df, 1, function(row){
          # select the max ais variables for a given row
          temp <- row[grepl("^sev_", names(row))]
-
-         # for some reason apply is converting these to char. We will convert them back to numeric
-         # also convert 9s to 0
-         temp <- as.numeric(c9to0(temp))
-
+         # convert NA to 0
+         temp <- as.numeric(temp)
+         temp <- ifelse(is.na(temp) | temp == 9, 0, temp)
          # Take the three highest, square them, and sum the result
-         # print(temp[order(-temp)[1:3]])
          sum(temp[order(-temp)[1:3]]^2)
-         # what if there are only two?
-         # In that case this code will sum the squares of the highest two
-         # Is this what we want?
       })
 
       # Replace ISS value with 75 if maximum severity is 6. This implies that the person is dead.
