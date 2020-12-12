@@ -18,6 +18,12 @@ head(roc_base1)
 head(roc_cm1)
 
 
+roc_cm1 %>%
+   filter(icdcm %in% c(dx1 = "S00.81XA",
+                       dx2 = "S22.081A", dx3 = "S22.41XA", dx4 = "S30.811A", dx5 = "S32.2XXA",
+                       dx6 = "S42.251A", dx7 = "S42.291A", dx8 = "S82.231A", dx9 = "S82.491A"))
+
+
 # is there any overlap in icd10 base and icd10cm?
 codes_in_both <- intersect(roc_base1$icdbase, roc_cm1$icdcm)
 # A small number of codes are in both tables
@@ -35,12 +41,12 @@ roc_base <- roc_base1 %>%
       select(dx,
              TQIP_severity = TQIPais_mod,
              TQIP_issbr = TQIPbr_mod,
-             NIS_severity = TQIPais_mod,
-             NIS_issbr = TQIPbr_mod,
+             NIS_severity = NISais_mod,
+             NIS_issbr = NISbr_mod,
              TQIP_only_severity = TQIPais,
              TQIP_only_issbr = TQIPbr,
-             NIS_only_severity = TQIPais,
-             NIS_only_issbr = TQIPbr,
+             NIS_only_severity = NISais,
+             NIS_only_issbr = NISbr,
              TQIP_effect = TQIPeffect,
              TQIP_intercept = TQIPint,
              NIS_effect = NISeffect,
@@ -55,12 +61,12 @@ roc_cm <- roc_cm1 %>%
       select(dx,
              TQIP_severity = TQIPais_mod,
              TQIP_issbr = TQIPbr_mod,
-             NIS_severity = TQIPais_mod,
-             NIS_issbr = TQIPbr_mod,
+             NIS_severity = NISais_mod,
+             NIS_issbr = NISbr_mod,
              TQIP_only_severity = TQIPais,
              TQIP_only_issbr = TQIPbr,
-             NIS_only_severity = TQIPais,
-             NIS_only_issbr = TQIPbr,
+             NIS_only_severity = NISais,
+             NIS_only_issbr = NISbr,
              TQIP_effect = TQIPeffect,
              TQIP_intercept = TQIPint,
              NIS_effect = NISeffect,
@@ -117,5 +123,7 @@ roc_cm %>%
 # save output table
 write.csv(roc_cm, "./lookup_tables/i10cm_map_roc.csv", row.names = F)
 write.csv(roc_base, "./lookup_tables/i10base_map_roc.csv", row.names = F)
+
+
 
 
