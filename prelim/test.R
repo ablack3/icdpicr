@@ -50,5 +50,14 @@ ident    dx1     dx2     dx3
 df_out <- cat_trauma(df_in, "dx")
 df_out
 
+library(icdpicr)
+library(dplyr)
+data.in <- injury %>%
+      head(8) %>%
+      # select(matches("dx")) %>%
+      mutate_all(substr, 1, 5)
 
+cat_trauma(data.in, "dx", icd10 = "base", i10_iss_method = "roc_max_NIS")
 
+df = data.in
+dx_pre =  "dx"; icd10 = "base"; i10_iss_method = "roc_max_NIS"; calc_method = 1

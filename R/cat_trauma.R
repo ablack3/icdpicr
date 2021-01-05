@@ -87,7 +87,7 @@
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
 #' @export
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max_NIS", verbose = F){
+cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = default_i10_iss_method(), verbose = F){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -98,7 +98,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
       if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
       if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
-      if(!(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
+      if(icd10 && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data

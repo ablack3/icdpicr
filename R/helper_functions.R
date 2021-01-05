@@ -48,3 +48,34 @@
     colnames(df) <- c("dx", "effect", "intercept")
     df
 }
+
+#' The default ICD 10 ISS method
+#'
+#' This function looks up the i10_iss_method environment variable which may be set by adding `i10_iss_method=roc_max_NIS` to
+#' the .Rprofile file. The function also informs the user of the difference between the methods so an informed choice can be made.
+#'
+#' @return The default ICD 10 ISS method to be used as a character string.
+#' @export
+default_i10_iss_method <- function() {
+
+    i10_methods <- c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min")
+    if(Sys.getenv("i10_iss_method") != "") {
+        if(Sys.getenv("i10_iss_method") %in% i10_methods) {
+            return(Sys.getenv("i10_iss_method"))
+        } else {
+            stop(paste0("The environment variable i10_iss_method is set to `",
+                        Sys.getenv("i10_iss_method"),
+                        "` but must be unset or one of",
+                        paste(i10_methods, collapse = ", ")))
+        }
+    }
+
+    rlang::inform(paste("Consider setting reference database for the ICD 10 injury mapping as it can make a difference",
+                        "Use TQIP if your data is more similar to a registry and NIS if your data is administrative.",
+                        "You can also set the environment variable i10_iss_method to override the default method.",
+                        collapse = "/n"),
+                  .frequency = "once",
+                  .frequency_id = "i10_method_message")
+
+    return("roc_max_NIS") # the default method
+}

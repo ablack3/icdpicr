@@ -12,8 +12,8 @@ library(dplyr)
 
 # The base table can be used for international ICD 10 codes
 # The cm table can be used for US based ICD 10 CM codes
-roc_base1 <- readr::read_csv("./prelim/create i10_map_rocmax/TQIP_NIS_ais_base.csv")
-roc_cm1 <- readr::read_csv("./prelim/create i10_map_rocmax/TQIP_NIS_ais_cm.csv")
+roc_base1 <- readr::read_csv("./prelim/create i10_map_rocmax/TQIP_NIS_ais_base_2021.csv")
+roc_cm1 <-     readr::read_csv("./prelim/create i10_map_rocmax/TQIP_NIS_ais_cm_2021.csv")
 head(roc_base1)
 head(roc_cm1)
 
@@ -29,7 +29,7 @@ codes_in_both <- intersect(roc_base1$icdbase, roc_cm1$icdcm)
 # A small number of codes are in both tables
 
 # look at distribution of code lengths
-table(nchar(roc_bas1e$icdbase)) # mostly 5 digits
+table(nchar(roc_base1$icdbase)) # mostly 5 digits
 table(nchar(roc_cm1$icdcm)) # mostly 8 digits
 
 
@@ -91,6 +91,7 @@ roc_cm %>%
 # then do the variable mapping on the fly when the program runs
 
 
+devtools::load_all()
 
 # look at column types
 sapply(roc_base, class)
