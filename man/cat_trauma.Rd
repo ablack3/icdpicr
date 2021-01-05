@@ -9,7 +9,7 @@ cat_trauma(
   dx_pre,
   calc_method = 1,
   icd10 = TRUE,
-  i10_iss_method = "roc_max_NIS",
+  i10_iss_method = default_i10_iss_method(),
   verbose = F
 )
 }
