@@ -9,8 +9,7 @@ License: MIT + file LICENSE
 LazyData: TRUE
 Encoding: UTF-8
 RoxygenNote: 7.1.1
-Imports: stringr (>= 1.0.0),
-      rlang
+Imports: stringr (>= 1.0.0)
 Depends: 
     R (>= 2.10)
 Suggests: 

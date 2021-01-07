@@ -16,13 +16,10 @@
 #'
 #' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, etc.)
 #'
-#' @param calc_method ISS calculation method:
-#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
-#'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #'
 #' @param icd10 Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
-#'          \item TRUE (default) ICD10CM codes will be processed by the program
+#'          \item TRUE ICD10CM codes will be processed by the program
 #'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data then they will be ignored.
 #'          \item "cm" - ICD10CM codes will be processed by the program
 #'          \item "base" - ICD10 (international) codes will be processed by cat_trauma()
@@ -31,7 +28,7 @@
 #'
 #' @param i10_iss_method Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
 #'          \itemize{
-#'          \item "roc_max_NIS" (default) Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
+#'          \item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
 #'          \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
 #'          \item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
 #'          \item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
@@ -39,6 +36,10 @@
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 #'          }
+#'
+#' @param calc_method ISS calculation method:
+#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
+#'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #'
 #' @param verbose Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.
 #'
@@ -87,7 +88,7 @@
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
 #' @export
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = default_i10_iss_method(), verbose = F){
+cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -98,7 +99,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
       if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
       if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
-      if(icd10 && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
+      if((icd10 != F) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
@@ -469,10 +470,6 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
             df$mortality_prediction <- apply(mat, 1, calc_mortality_prediction)
 
       }
-
-      # comorbid_ahrq(patients_icd9)[, 1:8]
-
-
 
       # set rownames
       rownames(df) <- 1:nrow(df)

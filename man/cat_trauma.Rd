@@ -4,14 +4,7 @@
 \alias{cat_trauma}
 \title{Categorize trauma by adding AIS and ISS to a dataframe}
 \usage{
-cat_trauma(
-  df,
-  dx_pre,
-  calc_method = 1,
-  icd10 = TRUE,
-  i10_iss_method = default_i10_iss_method(),
-  verbose = F
-)
+cat_trauma(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F)
 }
 \arguments{
 \item{df}{A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
@@ -19,13 +12,9 @@ Diagnosis codes should be character strings and may have a decimal or not.}
 
 \item{dx_pre}{Prefix for diagnosis code column names (example: dx1, dx2, etc.)}
 
-\item{calc_method}{ISS calculation method:
-Method 1 (default) will assign an ISS of 75 if any AIS is 6.
-Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
-
 \item{icd10}{Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 \itemize{
-\item TRUE (default) ICD10CM codes will be processed by the program
+\item TRUE ICD10CM codes will be processed by the program
 \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data then they will be ignored.
 \item "cm" - ICD10CM codes will be processed by the program
 \item "base" - ICD10 (international) codes will be processed by cat_trauma()
@@ -34,7 +23,7 @@ If the icd10 argument is not set to FALSE then the method used to map ICD 10 cod
 
 \item{i10_iss_method}{Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
 \itemize{
-\item "roc_max_NIS" (default) Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
+\item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
 \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
 \item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
 \item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
@@ -42,6 +31,10 @@ If the icd10 argument is not set to FALSE then the method used to map ICD 10 cod
        using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 }}
+
+\item{calc_method}{ISS calculation method:
+Method 1 (default) will assign an ISS of 75 if any AIS is 6.
+Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
 
 \item{verbose}{Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.}
 }
