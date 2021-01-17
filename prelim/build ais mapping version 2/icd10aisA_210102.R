@@ -7,7 +7,12 @@
 #      PART A: EXTRACT DATA
 #
 #           This part mostly translated from Stata used in earlier version
-#           David Clark, 2019-2020
+#           David Clark, 2019-2021
+#
+#           Version from 200402 modified to not distinguish open fractures
+#              in ICD10base table
+#           Version from 210102 modifed to create unique identifier
+#              for NIS data
 #                     
 ##########################################################################
 
@@ -32,6 +37,13 @@ require(ggplot2)
 #Import 2017 TQIP data and identify ER or inpatient mortality  
   d0<-read_csv("Y:/Data_Event/NTDB/Original_Source/PUF AY 2017/CSV/PUF_TRAUMA.csv")  
   d1<-rename(d0,INC_KEY=inc_key,ISSAIS=ISS_05)
+  
+#Demonstrate that INC_KEY is unique identifier
+  d1<-group_by(d1,INC_KEY)
+  d1<-mutate(d1,seq=row_number())
+  d1<-ungroup(d1)
+  tabyl(d1,seq)
+  
 #Note "DEATHINED" means no Vital Signs on ED admission, but some do survive
   tabyl(d1,HOSPDISCHARGEDISPOSITION,DEATHINED)
   tabyl(d1,HOSPDISCHARGEDISPOSITION_BIU,DEATHINED)
@@ -73,23 +85,31 @@ require(ggplot2)
   
 #2b  
 #GET NIS DATA
-
+  
 #Import previously extracted 2016 NIS cases with any diagnosis starting with S or T
-#This pre-extraction was done using Stata, but is surely possible in R as well  
+  #This pre-extraction was done using Stata, but is surely possible in R as well  
   d0<-read_csv("y:/Data_Event/HCUP_NIS/Converted_Files/core2016ST.csv")
   
-#Note curious fact that only New England states use odd numbers for KEY_NIS
-  d0<-mutate(d0,odd=KEY_NIS%%2)
-  tabyl(d0,odd,HOSP_DIVISION)
+#See if KEY_NIS is unique
+  d0<-group_by(d0,KEY_NIS)
+  d0<-mutate(d0,seq=row_number())
+  d0<-ungroup(d0)
+  tabyl(d0,seq)
+#It is NOT, so create a new unique identifying number  
+  d0<-mutate(d0,INC_KEY=10000000+row_number())
+  d0<-group_by(d0,INC_KEY)
+  d0<-mutate(d0,seq=row_number())
+  d0<-ungroup(d0)
+  tabyl(d0,seq)
   
 #Include only admissions that were not elective and originated in Emergency Department
-  tabyl(d0,ELECTIVE,HCUP_ED
+  tabyl(d0,ELECTIVE,HCUP_ED)
   d0<-filter(d0,ELECTIVE==0,HCUP_ED!=0)
   tabyl(d0,ELECTIVE,HCUP_ED)
   
 #Restrict to variables of interest
 #Rename mechanism of injury variables   
-  d1<-select(d0,KEY_NIS,DIED,I10_DX1,I10_DX2,I10_DX3,I10_DX4,I10_DX5,I10_DX6,
+  d1<-select(d0,INC_KEY,DIED,I10_DX1,I10_DX2,I10_DX3,I10_DX4,I10_DX5,I10_DX6,
              I10_DX7,I10_DX8,I10_DX9,I10_DX10,I10_DX10,I10_DX12,I10_DX13,I10_DX14,
              I10_DX15,I10_DX16,I10_DX17,I10_DX18,I10_DX19,I10_DX20,I10_DX21,I10_DX22,
              I10_DX23,I10_DX24,I10_DX25,I10_DX26,I10_DX27,I10_DX28,I10_DX29,I10_DX30,  
@@ -111,7 +131,6 @@ require(ggplot2)
   d3<-mutate(d2,dxpart1=str_sub(rawdx,1,3))
   d3<-mutate(d3,dxpart2=str_sub(rawdx,4,7))
   d3<-mutate(d3,icdcm=str_c(dxpart1,".",dxpart2))
-  d3<-rename(d3,INC_KEY=KEY_NIS)
   d3<-rename(d3,died=DIED)
   
 #Identify duplicates
@@ -255,15 +274,8 @@ tabyl(d10,issbr)
   
   d2<-mutate(d1,icdbase=str_sub(icdcm,1,5))
 
-  #Identify and add extra digit to denote open fractures
-  d2<-mutate(d2,icdbase=case_when(
-       str_sub(icdcm,8,8)=="B" ~ str_c(icdbase,"1",sep=""),
-       str_sub(icdcm,8,8)=="C" ~ str_c(icdbase,"1",sep=""),
-       TRUE ~ icdbase
-       ) )
-  d2test<-mutate(d2,test=if_else(str_sub(icdbase,6,6)==1,1,0))
-  d2test<-filter(d2test,test==1)
-  
+#(Earlier version added extra digit to denote open fractures. Not done here.)
+ 
 #Identfy duplicates created by collapsing diagnoses above
   d3<-group_by(d2,INC_KEY,icdbase)
   d3<-mutate(d3,dxseq=row_number())
@@ -280,7 +292,7 @@ tabyl(d10,issbr)
   
 #Drop temporary analytic variables, and save result  
   d4<-select(d4,-icdcm,-dxseq,-dxrep)
-  #write_csv(d4,"tqip2017base.csv")
+ # write_csv(d4,"tqip2017base.csv")
   write_csv(d4,"nis2016base.csv")
   
 

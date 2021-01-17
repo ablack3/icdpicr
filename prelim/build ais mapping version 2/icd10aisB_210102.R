@@ -5,7 +5,7 @@
 #           AND ANALYZE ROCMAX OPTIONS FOR ICDPIC-R
 #
 #      PART B: USING RIDGE REGRESSION, RANK INJURY SEVERITY
-#           David Clark, March-April 2020
+#           David Clark, January 2021
 #                     
 ########################################################################
 
@@ -32,13 +32,13 @@ require(glmnet)
 #d0<-read_csv("tqip2017cm.csv")
 d0<-read_csv("nis2016cm.csv")
 d0<-rename(d0,dx=icdcm)
+
 #d0<-read_csv("tqip2017base.csv")
 #d0<-read_csv("nis2016base.csv")
 #d0<-rename(d0,dx=icdbase)
 
 #################################################################
 #For tqipcm or niscm have to split up data in the following steps.
-#Note: In NIS, only New England states (HOSP_DIV=1) use odd numbers for INC_KEY
 modno=9
 #Create dummy observation with all diagnoses
 # (so all pieces have the same columns)
@@ -55,8 +55,10 @@ dmod<-bind_rows(ddummy,dmod)
 dmod<-arrange(dmod,INC_KEY,dx)
 ################################################################
 
-#For basic ICD10 (not ICD10CM) do not have to do the above
+################################################################
+#For basic ICD10 (not ICD10CM) just do the following
 #dmod<-arrange(d0,INC_KEY,dx)
+################################################################
 
 #Convert mortality data to a vector with one observation per person
 dmort<-group_by(dmod,INC_KEY)
@@ -227,6 +229,8 @@ head(d3)
 d4<-full_join(d0,d3,"dx")
 d4<-group_by(d4,INC_KEY)
 d4<-mutate(d4,idseq=row_number())
+#Added following line 201002
+d4<-mutate(d4,x=if_else(is.na(x),0,x))
 d4<-mutate(d4,totridge=sum(x))
 d4<-ungroup(d4)
 d4<-mutate(d4,ridge_int=intercept)
@@ -285,8 +289,11 @@ d5<-ungroup(d5)
 d6<-select(d5,-dxseq,-i,-j,-a0,-c0,-e0,-f0,-h0,-s0)
 
 write_csv(d6,"tqip2017cm_effects.csv")
+
 write_csv(d6,"nis2016cm_effects.csv")
+
 write_csv(d6,"tqip2017base_effects.csv")
+
 write_csv(d6,"nis2016base_effects.csv")
 
 

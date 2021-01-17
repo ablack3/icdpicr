@@ -6,7 +6,7 @@
 #
 #      PART C: FROM EFFECTS OF INJURY SEVERITY, ASSIGN OPTIMAL AIS CUTOFFS
 #              CREATE TABLE TO USE IN ICDPIC-R
-#              David Clark, March-April 2020
+#              David Clark, January 2021
 #                     
 ########################################################################
 
@@ -64,10 +64,10 @@ d4<-d3
 sink("x200225.txt",split=T)
 starttime=Sys.time()
 
-cut12=.162
-cut23=.331
-cut34=.752
-cut45=1.32
+cut12=-0.0795
+cut23=.157
+cut34=.501
+cut45=.75
 bestroc=.5
 i=0
 
@@ -175,18 +175,18 @@ sink(NULL)
 
 
 #Best for TQIPcm: .165, .335, .750, 1.26:  R-squared Sum Squares = .8560, ISS = .8567
-#Best for NIScm: -.0638, .102, .400, .817; R-squared sum squares = .7472, ISS = .7479
+#Best for NIScm: -.0694, .119, .418, .877; R-squared sum squares = .7505, ISS = .7510
 #Best for TQIPbase: .241, .423, .766, 1.25; R-squared sum squares = .8445, ISS = .8403
-#Best for NISbase:  .0266, .207, .449, .891; R-squared sum squares = .7275, ISS = .7279
+#Best for NISbase:  -.0817, .162, .502, .75; R-squared sum squares = .7320, ISS = .7325
 
 
 #3
 #FOR EACH DATABASE, VERIFY SUM OF SQUARES AND CALCULATE ISS
 
-cut12=-.0638
-cut23=.102
-cut34=.4
-cut45=.817
+cut12=-.0694
+cut23=.119
+cut34=.418
+cut45=.877
 
 
 d5<-mutate(d3,a=case_when(
@@ -314,7 +314,7 @@ t8
 #  Use optimal AIS cutpoints for each source, as determined above
 
 rm(list=ls())
-# d1<-read_csv("tqip2017cm_effects.csv")
+#  d1<-read_csv("tqip2017cm_effects.csv")
   d1<-read_csv("nis2016cm_effects.csv")
 #  d1<-read_csv("tqip2017base_effects.csv")
 #  d1<-read_csv("nis2016base_effects.csv")
@@ -333,14 +333,16 @@ d3<-select(d3,dx,issbr,effect,ridge_int,dxrep)
 #  ENTER APPROPRIATE CUTPOINTS AND ASSIGN AIS VALUES
 ####################################################
 
+
+
 #Best for TQIPcm: .165, .335, .750, 1.26:  R-squared Sum Squares = .8560, ISS = .8567
-#Best for NIScm: -.0638, .102, .400, .817; R-squared sum squares = .7472, ISS = .7479
+#Best for NIScm: -.0694, .119, .418, .877; R-squared sum squares = .7505, ISS = .7510
 #Best for TQIPbase: .241, .423, .766, 1.25; R-squared sum squares = .8445, ISS = .8403
-#Best for NISbase:  .0266, .207, .449, .891; R-squared sum squares = .7275, ISS = .7279
-cut12=-.0638
-cut23=0.102
-cut34=0.400
-cut45=0.817
+#Best for NISbase:  -.0817, .162, .502, .75; R-squared sum squares = .7320, ISS = .7325
+cut12= -.0694
+cut23=0.119
+cut34=0.418
+cut45=0.877
 
 #Assign AIS values
 d4<-mutate(d3,ais=case_when(
@@ -359,6 +361,7 @@ d4<-mutate(d3,ais=case_when(
 
 #Rename diagnosis code type as appropriate and save results
 
+#####FOR TQIP CM
 d5<-rename(d4,icdcm=dx)
 d5<-rename(d5,TQIPeffect=effect)
 d5<-rename(d5,TQIPint=ridge_int)
@@ -374,10 +377,12 @@ d5temp678<-bind_rows(list(d5temp6,d5temp7,d5temp8))
 d6<-bind_rows(list(d5,d5temp678))
 write_csv(d6,"tqip2017cm_ais.csv")
 
+#####FOR NIS CM
 d5<-rename(d4,icdcm=dx)
 d5<-rename(d5,NISeffect=effect)
 d5<-rename(d5,NISint=ridge_int)
 d5<-rename(d5,NISais=ais)
+d5<-rename(d5,NISn=dxrep)
 d5<-rename(d5,NISbr=issbr)
 #Add back codes that prematurely specify mortality outcome
 #Use results from codes modified in Section A3a above
@@ -389,6 +394,7 @@ d5temp678<-bind_rows(list(d5temp6,d5temp7,d5temp8))
 d6<-bind_rows(list(d5,d5temp678))
 write_csv(d6,"nis2016cm_ais.csv")
 
+#####FOR TQIP BASE
 d5<-rename(d4,icdbase=dx)
 d5<-rename(d5,TQIPeffect=effect)
 d5<-rename(d5,TQIPint=ridge_int)
@@ -397,6 +403,7 @@ d5<-rename(d5,TQIPn=dxrep)
 d5<-rename(d5,TQIPbr=issbr)
 write_csv(d5,"tqip2017base_ais.csv")
 
+#####FOR NIS BASE
 d5<-rename(d4,icdbase=dx)
 d5<-rename(d5,NISeffect=effect)
 d5<-rename(d5,NISint=ridge_int)
@@ -415,9 +422,11 @@ d1<-read_csv("tqip2017cm_ais.csv")
 d2<-read_csv("nis2016cm_ais.csv")
 d3<-full_join(d1,d2,by="icdcm")  
 
+rm(list=ls())
 d1<-read_csv("tqip2017base_ais.csv")
 d2<-read_csv("nis2016base_ais.csv")
 d3<-full_join(d1,d2,by="icdbase")  
+
 
 #Compare TQIP and NIS results - quite different!
 tabyl(d3,TQIPais,NISais)
@@ -458,10 +467,12 @@ write_csv(d4,"TQIP_NIS_ais_base.csv")
 # d1<-read_csv("Y:/Data_Event/NTDB/Analytic_Steps/tqip2017base_effects.csv")
   d1<-read_csv("Y:/Data_Event/NTDB/Analytic_Steps/nis2016base_effects.csv")
 
-d2<-read_csv("TQIP_NIS_ais_cm.csv")
+d2<-read_csv("TQIP_NIS_ais_cm.csv") 
+
+d2<-read_csv("TQIP_NIS_ais_base.csv")
 
 #Specify whether the data are ICD-10-CM or basic ICD-10
-d2<-rename(d2,dx=icdcm)
+#d2<-rename(d2,dx=icdcm)
 d2<-rename(d2,dx=icdbase)
 
 d3<-full_join(d1,d2,by="dx")  
@@ -539,7 +550,7 @@ d7<-mutate(d7,sumeff=sum(Peff))
 d7<-ungroup(d7)
 d7<-filter(d7,idseq==1)
 d7<-mutate(d7,xb=sumeff+Pint)
-d7<-mutate(d7,Pmort=1/(1+exp(xb)))
+d7<-mutate(d7,Pmort=1/(1+exp(-xb)))
 
 roc(d7$died,d7$Pmort)
 
