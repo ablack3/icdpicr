@@ -1,9 +1,10 @@
 Package: icdpicr
 Type: Package
-Title: ICDPIC In R
+Title: International Classification of Diseases Programs for Injury Categorization in R
 Version: 1.0.0
-Author: Adam Black
-Maintainer: Adam Black <ablack3@gmail.com>
+Authors@R: c(
+    person("Adam", "Black", email = "ablack3@gmail.com", role = c("aut", "cre")),
+    person("David", "Clark", role = c("aut")))
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes.
 License: MIT + file LICENSE
 LazyData: TRUE

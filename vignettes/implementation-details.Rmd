@@ -2,7 +2,7 @@
 title: "Implementation Details"
 output: rmarkdown::html_vignette
 vignette: >
- %\VignetteIndexEntry{implemenataion-details}
+ %\VignetteIndexEntry{Implementation Details}
  %\VignetteEngine{knitr::rmarkdown}
  %\VignetteEncoding{UTF-8}
 ---
