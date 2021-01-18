@@ -1,7 +1,6 @@
 ## Test environments
 * local Windows 10 install, R 4.02
-* local Ubuntu 12.04, R 3.1.2
-* local Mac OS X, R 4 
+* local Mac OS 10.15, R 4.02 
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs.
