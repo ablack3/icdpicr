@@ -1,7 +1,7 @@
 Package: icdpicr
 Type: Package
 Title: ICDPIC In R
-Version: 0.1.0
+Version: 1.0.0
 Author: Adam Black
 Maintainer: Adam Black <ablack3@gmail.com>
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes.
@@ -13,4 +13,7 @@ Imports: stringr (>= 1.0.0)
 Depends: 
     R (>= 2.10)
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

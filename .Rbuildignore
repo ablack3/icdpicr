@@ -4,3 +4,6 @@
 ^LICENSE\.md$
 ^readme\.md$
 ^lookup_tables/*
+^doc$
+^Meta$
+^work$
