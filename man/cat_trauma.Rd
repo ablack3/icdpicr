@@ -53,7 +53,7 @@ A dataframe identical to the dataframe passed to the function with the following
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
          \item intent1-intent4: intent for each E-Code captured
          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-         \item mortality_prediction: The model predicted probability of mortaility. (only added if using ICD 10 codes with roc_max method)
+         \item mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)
          }
 }
 \description{
