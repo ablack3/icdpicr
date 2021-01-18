@@ -4,8 +4,7 @@
 \alias{cat_trauma}
 \title{Categorize trauma by adding AIS and ISS to a dataframe}
 \usage{
-cat_trauma(df, dx_pre, calc_method = 1, icd10 = TRUE,
-  i10_iss_method = "roc_max")
+cat_trauma(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F)
 }
 \arguments{
 \item{df}{A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
@@ -13,22 +12,31 @@ Diagnosis codes should be character strings and may have a decimal or not.}
 
 \item{dx_pre}{Prefix for diagnosis code column names (example: dx1, dx2, etc.)}
 
-\item{calc_method}{ISS calculation method:
-Method 1 (default) will assign an ISS of 75 if any AIS is 6.
-Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
-
-\item{icd10}{A logical value indicating whether ICD-10 codes should be considered or ignored.
-If TRUE (default) then ICD-10 codes are handled based on the i10_iss_method argument
-and ICD-10 mechanism codes will be included in E-code calculation.
-If FALSE then ICD-10 codes are ignored.}
-
-\item{i10_iss_method}{Method for calculating ISS from ICD10-CM codes. Must be one of:
+\item{icd10}{Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 \itemize{
-\item "roc_max" (default) Table derived empirically from National Trauma Data Bank using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
+\item TRUE ICD10CM codes will be processed by the program
+\item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
+\item "cm" - ICD10CM codes will be processed by the program
+\item "base" - ICD10 (international) codes will be processed by cat_trauma()
+}
+If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.}
+
+\item{i10_iss_method}{Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
+\itemize{
+\item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
+\item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
+\item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
+\item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
 \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
        using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 }}
+
+\item{calc_method}{ISS calculation method:
+Method 1 (default) will assign an ISS of 75 if any AIS is 6.
+Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.}
+
+\item{verbose}{Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.}
 }
 \value{
 A dataframe identical to the dataframe passed to the function with the following additional variables
@@ -39,11 +47,13 @@ A dataframe identical to the dataframe passed to the function with the following
          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
          \item maxais: maximum AIS severity over all ISS body regions
          \item riss: computed injury severity score
+         \item niss: new injury severity score
          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
          \item intent1-intent4: intent for each E-Code captured
          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+         \item mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)
          }
 }
 \description{
@@ -75,11 +85,11 @@ Codes for AIS severity:
 }
 }
 \examples{
-df_in <- read.table(header = T, text = "
-ident    dx1     dx2     dx3
-31416   800.1   959.9   E910.9
-31417   800.24  410.0   NA
+df_in <- read.table(header = TRUE, text = "
+    ident    dx1     dx2     dx3
+    31416   800.1   959.9   E910.9
+    31417   800.24  410.0   NA
 ")
-df_out <- cat_trauma(df_in, "dx")
+df_out <- cat_trauma(df_in, "dx", icd10 = FALSE)
 
 }

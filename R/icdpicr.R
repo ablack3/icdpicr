@@ -12,7 +12,7 @@
 #' only the most useful elements of the original ICDPIC program. ICDPICR is
 #' designed to work with both ICD-9 and ICD-10 codes. ICDPICR is open
 #' source and all code and documentation can be found at
-#' \url{http://github.com/ablack3/icdpicr}.
+#' \url{https://github.com/ablack3/icdpicr}.
 #'
 #'
 #'
@@ -30,7 +30,7 @@
 #' Division of Trauma and Surgical Critical Care and Center for Outcomes Research and Evaluation.
 #' The authors are grateful for this support and would also appreciate
 #' suggestions or corrections from any user of the software. Bug reports or feature requests
-#' may be submitted at \url{http://github.com/ablack3/icdpicr/issues}.
+#' may be submitted at \url{https://github.com/ablack3/icdpicr/issues}.
 #' Publications of studies in which these programs or tables are used should cite the authors.
 #'
 #' @section Methods:

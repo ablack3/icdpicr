@@ -32,16 +32,21 @@ Access package help by running
 ```R
 help(package = "icdpicr")
 ```
+Categorize trauma ICD codes in your data by first saving your data in CSV format. The data should be in *wide* format with one row per observation and one column per ICD code. ICD code columns need to have a common prefix (e.g. "dx1", "dx2", "dx3", etc.)
 
-Run the trauma module on your data by first saving your data in CSV format.
+
+
 Then run the lines
 ```R
 df <- read.csv("C:/path/to/file.csv", stringsAsFactors = FALSE)
-df_out <- cat_trauma(df, "DX")
+df_out <- cat_trauma(df, dx_pre = "dx", icd10 = FALSE) # use only ICD-9 codes
 ```                           
 Save your output data with
 ```R
 write.csv(df_out, "C:/path/to/output.csv", row.names = FALSE)
 ```
+
+If your data has ICD-10-CM codes please read over the package documentation to choose the correct settings for your data.
+
 Submit issues at http://github.com/ablack3/icdpicr/issues
 

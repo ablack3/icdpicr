@@ -1,3 +1,13 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^prelim$
+^LICENSE\.md$
+^readme\.md$
+^lookup_tables/*
+^doc$
+^Meta$
+^work$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^cran-comments.md$

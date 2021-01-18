@@ -23,11 +23,10 @@ less than one severity code the maximum severity is used.
 **i10_etab.csv**
 This table maps ICD 10 external cause of injury codes (e-codes) to major mechanism, minor mechanism and intent. This table was generated from the file icd_transcode.pdf published by the CDC. It is the ICD 10 analog to etab_s1 table.
 
-**i10_map_emp.csv**
-This table maps ICD-10-CM diagnosis codes to severity and body region using a prediction model trained on the National Trauma Data Bank.
+**i10_map_roc_nis.csv**
+This table maps  ICD-10  and ICD-10-CM diagnosis codes to severity and body region using a prediction model trained on the National Trauma Data Bank. The objective function was maximizing the area under the ROC curve. It is referred to as the roc_max method.
 
-**i10_map_roc.csv**
+**i10_map_roc_tqip.csv**
 This table maps ICD-10-CM diagnosis codes to severity and body region using a prediction model trained on the National Trauma Data Bank. The objective function was maximizing the area under the ROC curve. It is referred to as the roc_max method.
-
 
 

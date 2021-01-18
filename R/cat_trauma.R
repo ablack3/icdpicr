@@ -16,22 +16,32 @@
 #'
 #' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, etc.)
 #'
-#' @param calc_method ISS calculation method:
-#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
-#'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
 #'
-#' @param icd10 A logical value indicating whether ICD-10 codes should be considered or ignored.
-#'          If TRUE (default) then ICD-10 codes are handled based on the i10_iss_method argument
-#'          and ICD-10 mechanism codes will be included in E-code calculation.
-#'          If FALSE then ICD-10 codes are ignored.
-#'
-#' @param i10_iss_method Method for calculating ISS from ICD10-CM codes. Must be one of:
+#' @param icd10 Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
-#'          \item "roc_max" (default) Table derived empirically from National Trauma Data Bank using ROC c-stat as objective. Details are included in ICDPIC-R package help documentation.
+#'          \item TRUE ICD10CM codes will be processed by the program
+#'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
+#'          \item "cm" - ICD10CM codes will be processed by the program
+#'          \item "base" - ICD10 (international) codes will be processed by cat_trauma()
+#'          }
+#'          If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.
+#'
+#' @param i10_iss_method Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
+#'          \itemize{
+#'          \item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
+#'          \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
+#'          \item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
+#'          \item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
 #'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
 #'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
 #'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
 #'          }
+#'
+#' @param calc_method ISS calculation method:
+#'          Method 1 (default) will assign an ISS of 75 if any AIS is 6.
+#'          Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.
+#'
+#' @param verbose Should updates be printed to the console? TRUE or FALSE (default). This can be helpful for long running computations.
 #'
 #' @return A dataframe identical to the dataframe passed to the function with the following additional variables
 #'          added:
@@ -41,11 +51,13 @@
 #'          \item mxaisbr1-mxaisbr6: maximum AIS severity for each of the 6 ISS body regions
 #'          \item maxais: maximum AIS severity over all ISS body regions
 #'          \item riss: computed injury severity score
+#'          \item niss: new injury severity score
 #'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
 #'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
 #'          \item intent1-intent4: intent for each E-Code captured
 #'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
+#'          \item mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)
 #'          }
 #'
 #' @details  Data should be in wide format:
@@ -66,48 +78,30 @@
 #'       \item 9 = Unknown
 #'}
 #'
-#' @examples df_in <- read.table(header = T, text = "
-#' ident    dx1     dx2     dx3
-#' 31416   800.1   959.9   E910.9
-#' 31417   800.24  410.0   NA
+#' @examples
+#' df_in <- read.table(header = TRUE, text = "
+#'     ident    dx1     dx2     dx3
+#'     31416   800.1   959.9   E910.9
+#'     31417   800.24  410.0   NA
 #' ")
-#' df_out <- cat_trauma(df_in, "dx")
+#' df_out <- cat_trauma(df_in, "dx", icd10 = FALSE)
 #'
 #' @importFrom stringr str_extract
+#' @importFrom stats na.omit
 #' @export
-
-
-
-
-# for debuging...
-# set.seed(1)
-# codes <- c()
-# n <- 5
-# df <- data.frame(dx1 = sample(ntab_s1$dx, n),
-#                  dx2 = sample(ntab_s1$dx, n),
-#                  dx3 = sample(i10_map_emp$dx, n),
-#                  dx4 = sample(etab_s1$dx, n),
-#                  dx5 = sample(i10_ecode$dx, n))
-#
-# result <- cat_trauma(df,"dx")
-#
-# df
-# dx_pre="dx"
-# calc_method = 1
-# icd10 <- T
-# i10_iss_method <- "empirical"
-
-cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method = "roc_max"){
+cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
-      if(NROW(df) == 0) stop("Data contains no observations.")
+      if(NROW(df) == 0) stop("Data contains no observations. It must contain at least one row.")
       if(!is.character(dx_pre)) stop("Second argument must be a character string")
       # ensure dx_pre is a valid variable name
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
-      if(!(icd10 %in% c(T, F))) stop("icd10 must be TRUE or FALSE")
-      if(!(i10_iss_method %in% c("empirical","roc_max","gem_max","gem_min"))) stop("i10_iss_menthod must be empirical, roc_max, gem_max, or gem_min")
+      if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
+      if(icd10 == F) i10_iss_method <- ""
+      if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
+      if((icd10 != F) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
@@ -121,21 +115,24 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # make sure df is not a tibble and if it is convert back to regular dataframe
       df <- data.frame(df)
 
-      # add i10 codes to lookup tables
+      # Treat icd==T the same as icd=="cm"
+      if(isTRUE(icd10)) icd10 <- "cm"
+
+      # If ICD10 codes are requested then add ICD10 codes to the lookup tables
       # The i10 mappings  for n codes were created by using both CMS general equivalence mappings
       # and Dave's empirical method
-      # The i10 maapings for e codes (mechanism) were created using CDC injury mechanism grid
+      # The i10 mapings for e codes (mechanism) were created using CDC injury mechanism grid
       # See documentation and prelim directory for details
-      if(icd10){
+      if(icd10 %in% c("base", "cm")){
             etab <- rbind(etab_s1, i10_ecode)
 
-            if(i10_iss_method == "roc_max"){
-                  ntab <- rbind(ntab_s1, i10_map_roc)
-            } else if(i10_iss_method == "gem_max"){
-                  ntab <- rbind(ntab_s1, i10_map_max)
-            } else if(i10_iss_method == "gem_min"){
-                  ntab <- rbind(ntab_s1, i10_map_min)
-            }
+            ntab <- switch(i10_iss_method,
+                           roc_max_NIS = rbind(ntab_s1, .select_i10_data("NIS", icd10)),
+                           roc_max_TQIP = rbind(ntab_s1, .select_i10_data("TQIP", icd10)),
+                           roc_max_NIS_only = rbind(ntab_s1, .select_i10_data("NIS_only", icd10)),
+                           roc_max_TQIP_only = rbind(ntab_s1, .select_i10_data("TQIP_only", icd10)),
+                           gem_max = rbind(ntab_s1, i10_map_max),
+                           gem_min = rbind(ntab_s1, i10_map_min))
       } else {
             ntab <- ntab_s1
             etab <- etab_s1
@@ -270,7 +267,7 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # i=1
       # message("calc max ais for each body region")
       # body regions are coded as text
-      body_regions <- unique(i10_map_emp$issbr)
+      body_regions <- unique(i10_map_max$issbr)
       # make usable for column names
       issbr_names <- gsub("/", "_", body_regions)
 
@@ -351,13 +348,12 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
             # for some reason apply is converting these to char. We will convert them back to numeric
             # also convert 9s to 0
             temp <- as.numeric(c9to0(temp))
-
             # Take the three highest, square them, and sum the result
             # print(temp[order(-temp)[1:3]])
-            sum(temp[order(-temp)[1:3]]^2)
             # what if there are only two?
             # In that case this code will sum the squares of the highest two
             # Is this what we want?
+            sum(temp[order(-temp)[1:3]]^2)
       })
 
       # Replace ISS value with 75 if maximum severity is 6. This implies that the person is dead.
@@ -367,6 +363,30 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
       # Replace ISS value with NA if maximum severity is 9.
       # If maxais is 9 then it implies that there were only injuries of unknown severity
       df[df$maxais == 9, "riss"] <- NA
+
+      #------------------------------------------------#
+      # Calculate the New Injury Severity Score (NISS) #
+      #------------------------------------------------#
+
+      # ISS is calculated as the sum of the squared three highest ais varaiables for a given person.
+      # We need to exclude 9s in this calculation.
+      df$niss <- apply(df, 1, function(row){
+         # select the max ais variables for a given row
+         temp <- row[grepl("^sev_", names(row))]
+         # convert NA to 0
+         temp <- as.numeric(temp)
+         temp <- ifelse(is.na(temp) | temp == 9, 0, temp)
+         # Take the three highest, square them, and sum the result
+         sum(temp[order(-temp)[1:3]]^2)
+      })
+
+      # Replace ISS value with 75 if maximum severity is 6. This implies that the person is dead.
+      # 75 is the max ISS score 3(5^2) = 75
+      df[df$maxais == 6,"niss"] <- 75
+
+      # Replace ISS value with NA if maximum severity is 9.
+      # If maxais is 9 then it implies that there were only injuries of unknown severity
+      df[df$maxais == 9, "niss"] <- NA
 
 
       #---------------------------------------------------------------------#
@@ -425,6 +445,31 @@ cat_trauma <- function(df, dx_pre, calc_method = 1, icd10 = TRUE, i10_iss_method
 
           # add columns to dataframe
           df <- .insert_columns(df, col_name, temp)
+
+      }
+
+      #---------------------------------------------#
+      # Add mortality prediction if possible        #
+      #---------------------------------------------#
+      if(stringr::str_detect(i10_iss_method, "NIS|TQIP") && icd10 %in% c("cm", "base")) {
+            if(verbose) print("Calculating mortality prediction")
+
+            coef_df <- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, "NIS|TQIP"), icd10)
+            stopifnot(max(coef_df$intercept, na.rm = T) == min(coef_df$intercept, na.rm = T))
+            intercept <- max(coef_df$intercept, na.rm = T)
+
+            # create hash table
+            coef_df <- coef_df[!is.na(coef_df$effect), ]
+            effect_hash <- coef_df$effect
+            names(effect_hash) <- coef_df$dx
+            calc_mortality_prediction <- function(dx){
+               # dx is a character vector of diagnosis codes for one person
+               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = T) + intercept
+               1/(1+exp(-x))
+            }
+
+            mat <- as.matrix(df[,grepl(paste0("^", dx_pre), names(df))])
+            df$mortality_prediction <- apply(mat, 1, calc_mortality_prediction)
 
       }
 
