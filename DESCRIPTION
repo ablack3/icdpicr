@@ -3,8 +3,8 @@ Type: Package
 Title: International Classification of Diseases Programs for Injury Categorization in R
 Version: 1.0.0
 Authors@R: c(
-    person("Adam", "Black", email = "ablack3@gmail.com", role = c("aut", "cre")),
-    person("David", "Clark", role = c("aut")))
+    person("Adam", "Black", email = "ablack3@gmail.com", role = c("aut", "cre", "cph")),
+    person("David", "Clark", role = c("aut", "cph")))
 Description: Calculates Injury severy scores from ICD-9 or ICD-10 codes.
 License: MIT + file LICENSE
 LazyData: TRUE
