@@ -15,7 +15,7 @@ Diagnosis codes should be character strings and may have a decimal or not.}
 \item{icd10}{Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 \itemize{
 \item TRUE ICD10CM codes will be processed by the program
-\item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data then they will be ignored.
+\item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
 \item "cm" - ICD10CM codes will be processed by the program
 \item "base" - ICD10 (international) codes will be processed by cat_trauma()
 }
@@ -86,10 +86,10 @@ Codes for AIS severity:
 }
 \examples{
 df_in <- read.table(header = TRUE, text = "
-ident    dx1     dx2     dx3
-31416   800.1   959.9   E910.9
-31417   800.24  410.0   NA
+    ident    dx1     dx2     dx3
+    31416   800.1   959.9   E910.9
+    31417   800.24  410.0   NA
 ")
-df_out <- cat_trauma(df_in, "dx")
+df_out <- cat_trauma(df_in, "dx", icd10 = FALSE)
 
 }

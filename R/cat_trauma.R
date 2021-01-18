@@ -20,7 +20,7 @@
 #' @param icd10 Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
 #'          \item TRUE ICD10CM codes will be processed by the program
-#'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data then they will be ignored.
+#'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
 #'          \item "cm" - ICD10CM codes will be processed by the program
 #'          \item "base" - ICD10 (international) codes will be processed by cat_trauma()
 #'          }
@@ -78,12 +78,13 @@
 #'       \item 9 = Unknown
 #'}
 #'
-#' @examples df_in <- read.table(header = TRUE, text = "
-#' ident    dx1     dx2     dx3
-#' 31416   800.1   959.9   E910.9
-#' 31417   800.24  410.0   NA
+#' @examples
+#' df_in <- read.table(header = TRUE, text = "
+#'     ident    dx1     dx2     dx3
+#'     31416   800.1   959.9   E910.9
+#'     31417   800.24  410.0   NA
 #' ")
-#' df_out <- cat_trauma(df_in, "dx")
+#' df_out <- cat_trauma(df_in, "dx", icd10 = FALSE)
 #'
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
@@ -98,6 +99,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
       if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
+      if(icd10 == F) i10_iss_method <- ""
       if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
       if((icd10 != F) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
