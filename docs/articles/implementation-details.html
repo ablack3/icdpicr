@@ -472,18 +472,41 @@
 <a href="#suggested-options-for-different-types-of-data" class="anchor"></a>Suggested options for different types of data</h2>
 <p>The procedure cat_trauma, which calculates ISS, NISS, and Pmort in ICDPIC-R, will not run unless specific options have been selected. Default values are not provided because, in view of the above findings, results may differ significantly depending upon the kind of data being processed. Some guidelines for which options to specify are given below. Ultimately, the validation of ICDPIC-R will depend upon its performance using other independent data; one of the first of these is the study of Sebastião <em>et al,</em><sup>8</sup> who found that the GEMmin option seemed to function better than the GEMmax option for data coded with a mix of ICD-9-CM and ICD-10-CM. Experience from other countries will be of particular interest to see whether TQIP or NIS is a better reference database, and it may vary from one setting to another.</p>
 <p>Given the results so far, ICDPIC-R-2021 should function best for the following types of data with the given options:</p>
-<p>Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM</p>
-<p><code>icd10="TRUE", i10_iss_method="gem_min"</code></p>
-<p>Data from US trauma registries coded using only ICD-10-CM</p>
-<p><code>icd10="cm", i10_iss_method="roc_max_TQIP"</code></p>
-<p>Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM</p>
-<p><code>icd10="TRUE", i10_iss_method="gem_min"</code></p>
-<p>Data from US administrative sources coded using only ICD-10-CM</p>
-<p><code>icd10="cm", i10_iss_method="roc_max_NIS"</code></p>
-<p>Data from non-US sources coded using basic ICD-10</p>
-<p><code>icd10="base", i10_iss_method="roc_max_TQIP"</code></p>
-<p>OR</p>
-<p><code>icd10="base", i10_iss_method="roc_max_NIS"</code></p>
+<ol style="list-style-type: decimal">
+<li>Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM:</li>
+</ol>
+<p style="margin-left: 40px">
+<code>icd10="TRUE", i10_iss_method="gem_min"</code>
+</p>
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Data from US trauma registries coded using only ICD-10-CM :</li>
+</ol>
+<p style="margin-left: 40px">
+<code>icd10="cm", i10_iss_method="roc_max_TQIP"</code>
+</p>
+<p><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Data from US administrative sources coded using both ICD-9-CM and ICD-10-CM:</li>
+</ol>
+<p style="margin-left: 40px">
+<code>icd10="TRUE", i10_iss_method="gem_min"</code>
+</p>
+<p><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Data from US administrative sources coded using only ICD-10-CM:</li>
+</ol>
+<p style="margin-left: 40px">
+<code>icd10="cm", i10_iss_method="roc_max_NIS"</code>
+</p>
+<p><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Data from non-US sources coded using basic ICD-10:</li>
+</ol>
+<p style="margin-left: 40px">
+<code>icd10="base", i10_iss_method="roc_max_TQIP"</code> or <code>icd10="base", i10_iss_method="roc_max_NIS"</code>
+</p>
+<p><br></p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
