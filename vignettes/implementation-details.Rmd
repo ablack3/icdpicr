@@ -88,29 +88,25 @@ The procedure cat_trauma, which calculates ISS, NISS, and Pmort in ICDPIC-R, wil
 
 Given the results so far, ICDPIC-R-2021 should function best for the following types of data with the given options:
 
-Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM 
+1. Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM:
 
-`icd10="TRUE", i10_iss_method="gem_min"`
-		
-Data from US trauma registries coded using only ICD-10-CM 
+<p style="margin-left: 40px">`icd10="TRUE", i10_iss_method="gem_min"`</p><br>
 
-`icd10="cm", i10_iss_method="roc_max_TQIP"`
+2. Data from US trauma registries coded using only ICD-10-CM : 
 
-Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM 
+<p style="margin-left: 40px">`icd10="cm", i10_iss_method="roc_max_TQIP"`</p><br>
 
-`icd10="TRUE", i10_iss_method="gem_min"`
+3. Data from US administrative sources coded using both ICD-9-CM and ICD-10-CM:
 
-Data from US administrative sources coded using only ICD-10-CM 
+<p style="margin-left: 40px">`icd10="TRUE", i10_iss_method="gem_min"`</p><br>
 
-`icd10="cm", i10_iss_method="roc_max_NIS"`
+4. Data from US administrative sources coded using only ICD-10-CM:
 
-Data from non-US sources coded using basic ICD-10
+<p style="margin-left: 40px">`icd10="cm", i10_iss_method="roc_max_NIS"`</p><br>
 
-`icd10="base", i10_iss_method="roc_max_TQIP"`
+5. Data from non-US sources coded using basic ICD-10:
 
-OR
-
-`icd10="base", i10_iss_method="roc_max_NIS"`
+<p style="margin-left: 40px">`icd10="base", i10_iss_method="roc_max_TQIP"` or `icd10="base", i10_iss_method="roc_max_NIS"`</p><br>
 
 
    
@@ -121,6 +117,6 @@ OR
 3.	Committee on Medical Aspects of Automotive Safety, AMA. Rating the severity of tissue damage. I. The abbreviated scale. JAMA 1971; 215:277-280. 
 4.	Baker SP, O’Neill B, Haddon W Jr., Long WB. The injury severity score: A method for describing patients with multiple injuries and evaluating emergency care. J Trauma 1974; 14:187-196.
 5.	Osler T, Baker SP, Long WA. Modification of the injury severity score that both improves accuracy and simplifies scoring. J Trauma 1997; 43:922-925.
-6.	Annest JL, Hedegaard H, Chen L, Warner M, Smalls E. Proposed framework for presenting injury data using ICD-10-CM external cause of injury codes. 2014. http://www.cdc.gov/injury/wisqars/pdf/ICD-10-CM_External_Cause_Injury_Codes-a.pdf.
+6.	Annest JL, Hedegaard H, Chen L, Warner M, Smalls E. Proposed framework for presenting injury data using ICD-10-CM external cause of injury codes. 2014. https://www.cdc.gov/injury/wisqars/pdf/ICD-10-CM_External_Cause_Injury_Codes-a.pdf.
 7.	Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The injury severity score revisited. J Trauma 1988; 28:69-77.
 8.	Sebastião YV, Metzger GA, Chisolm DJ, Xiang H, Cooper JN. Impact of ICD-9-CM to ICD-10-CM coding transition on trauma hospitalization trends among young adults in 12 states. Inj Epidemiol 2021, in press

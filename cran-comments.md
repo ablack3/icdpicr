@@ -1,6 +1,7 @@
 ## Test environments
 * local Windows 10 install, R 4.02
 * local Mac OS 10.15 install, R 4.02 
+* Win builder, R devel
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs on either test environment.

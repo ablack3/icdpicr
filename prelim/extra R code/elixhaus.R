@@ -1,6 +1,6 @@
 # Revised 10/15/2010 #
-# Version 3.0 # 
-  
+# Version 3.0 #
+
 
 
 #-------------------------------------------------------------------------------------------------------------------#
@@ -17,7 +17,7 @@
 
 #-------------------------------------------------------------------------------------------------------------------#
 #  NOTE:  This program is a STATA interpretation of SAS software found on the Healthcare Cost and Utilization       #
-#  Project (HCUP) website:  http://www.hcup-us.ahrq.gov/toolssoftware/comorbidity/comorbidity.jsp#download.  It     #
+#  Project (HCUP) website:  https://www.hcup-us.ahrq.gov/toolssoftware/comorbidity/comorbidity.jsp#download.  It     #
 #  uses data on comorbidity categories, comorbidity diagnosis codes and DRG codes found on their website.  This     #
 #  data is valid through September 30, 2008.  This data may differ from that found in Elixhauser's original         #
 #  article.  Notably, Elixhauser's second comorbidity category of Cardiac Arrhythmias has been dropped.  Congest-   #
@@ -38,7 +38,7 @@
 #-------------------------------------------------------------------------------------------------------------------#
 
 
-elixhaus <- function(df, dx_pre, drg){  
+elixhaus <- function(df, dx_pre, drg){
 
       # Check if user entered a correct name for the Diagnosis Related Group variable. #
         stopifnot(drg %in% names(df))
@@ -52,7 +52,7 @@ elixhaus <- function(df, dx_pre, drg){
 
       # add variable for sorting on at the end
         df$.rec_no <- 1:nobs(df)
-        
+
       # Create Elixhauser comorbidity variables and number of Elixhasuer comorbidities present variable. #
 
       df2 <- data.frame(df, elix1=0, elix3=0, elix4=0, elix5=0, elix6=0, elix6A=0, elix6B=0, elix7=0, elix8=0, elix9=0, elix10=0, elix11=0, elix12=0, elix13=0, elix14=0,
@@ -71,14 +71,14 @@ elixhaus <- function(df, dx_pre, drg){
 
             # Generate name of current diagnosis code variable. #
             curr_dx <- paste(dx_pre, i, sep="")
-            
+
             # strip out . and -
             df3$.dx_temp <- gsub("[.]|[-]","",df3[,curr_dx])
- 
+
             # Merge with Elixhauser diagnosis code table. #
             df4 <- merge(df3, xtab_s1h, by.x=".dx_temp", by.y="dx", all.x=T, all.y=F, sort=F )
-            
-            
+
+
             # Delete the _merge variable created by the merge process. #
             df4 <- subset(df4, select= -.dx_temp)
 
@@ -86,7 +86,7 @@ elixhaus <- function(df, dx_pre, drg){
             df4$elix1 <- with(df4, pmax(exlix1, 1*(elixhaus == "1" | elixhaus == "6B2" | elixhaus == "6B6" | elixhaus == "6B8") ))
 
             # Check for valvular disease. #
-             df4$exlix3 <- pmax(df4$elix3, 1*(df4$elixhaus == "3")) 
+             df4$exlix3 <- pmax(df4$elix3, 1*(df4$elixhaus == "3"))
 
             # Check for pulmonary circulation disorders. #
              df4$elix4 <- pmax(df$elix4, 1*(df4$elixhaus == "4"))
@@ -102,7 +102,7 @@ elixhaus <- function(df, dx_pre, drg){
 
             # Generate temporary values for hypertension, complicated. #
              #df4$.temp_6B = real(substr(elixhaus, 3, 1)) if substr(elixhaus, 1, 2) == "6B"
-             df4[which(substr(df4$elixhaus, 1, 2) == "6B"),".temp_6B"] <- as.numeric(substr(df4$elixhaus, 3, 4)) 
+             df4[which(substr(df4$elixhaus, 1, 2) == "6B"),".temp_6B"] <- as.numeric(substr(df4$elixhaus, 3, 4))
 
             # Check for paralysis. #
              df4$elix7 <- pmax(df4$elix7, 1*(df4$elixhaus == "7"))
@@ -205,23 +205,23 @@ elixhaus <- function(df, dx_pre, drg){
       #-------------------------------------------------------------------------------------------------------#
       #  Begin update for hypertension, complicated, with hypertension or cardiac or renal DRG combinations.  #
       #-------------------------------------------------------------------------------------------------------#
-# 
+#
 #       # Hypertension, complicated, or pre-existing hypertension complicating pregnancy with hypertension, complicated, DRG.                                                                                 #
 #        #elix6B = 0 if (temp_6B == . | temp_6B == 0) & (drg_cat == "D" | drg_cat == "DF")
-#        
-# 
+#
+#
 #       # Hypertensive heart disease, with or without heart failure, with cardiac or hypertension, complicated, DRG's. #
 #       # elix6B = 0 if (temp_6B == 1 | temp_6B == 2) & (drg_cat == "A" | drg_cat == "D" | drg_cat == "DF")
-# 
+#
 #       # Hypertensive renal disease, with or without renal failure, with renal failure with kidney transplant or renal failure/dialysis or hypertension, complicated, DRG's.                                             #
 #        elix6B = 0 if (temp_6B == 3 | temp_6B == 4) & (drg_cat == "Z" | drg_cat == "KZ" | drg_cat == "LZ" | drg_cat == "QZ" | drg_cat == "D" | drg_cat == "DF")
-# 
+#
 #       # Hypertensive heart and renal disease, without heart or renal failure, or with heart failure only, or
 #       # with renal failure only, or with both heart and renal failure, or other hypertension in pregnancy with
 #       # cardiac or renal failure with kidney transplant or renal failure/dialysis or hypertension, complicated, DRG's. #
 #        elix6B = 0 if (temp_6B == 5 | temp_6B == 6 | temp_6B == 7 | temp_6B == 8 | temp_6B == 9) &
 #            (drg_cat == "A" | drg_cat == "Z" | drg_cat == "KZ" | drg_cat == "LZ" | drg_cat == "QZ" | drg_cat == "D" | drg_cat == "DF")
-# 
+#
 #       # Hypertensive renal disease with renal failure, hypertensive heart and renal disease with renal failure or
 #       #   hypertensive heart and renal disease, with heart and renal failure.                                       #
 #        elix13 = 0 if (temp_6B == 4 | temp_6B == 7 | temp_6B == 8) & (drg_cat == "Z" | drg_cat == "KZ" | drg_cat == "LZ" | drg_cat == "QZ")
@@ -233,7 +233,7 @@ elixhaus <- function(df, dx_pre, drg){
 
 
       # Update for paralysis with cerebrovascular DRG. #
-       df4[which(df4$drg_cat == "EF"), "elix7"] <- 0 
+       df4[which(df4$drg_cat == "EF"), "elix7"] <- 0
 
       # Update for other neurological disorders with nervous system DRG. #
        df4[with(df4, which(drg_cat == "DF" | drg_cat == "EF" | drg_cat == "F" | drg_cat == "FQ")), "elix8"] <- 0
@@ -254,7 +254,7 @@ elixhaus <- function(df, dx_pre, drg){
        df4[with(df4, which(drg_cat == "LZ" | drg_cat == "KZ")), "elix13"] <- 0
 
       # Update for liver disease with liver DRG. #
-       df4[with(df4, which(drg_cat == "M" | drg_cat == "MQ")), "elix14"] <- 0 
+       df4[with(df4, which(drg_cat == "M" | drg_cat == "MQ")), "elix14"] <- 0
 
       # Update for peptic ulcer disease, excluding bleeding, with GI hemorrhage or ulcer DRG. #
        df4[which(df4$drg_cat == "N"),"elix15"] <- 0
@@ -318,7 +318,7 @@ elixhaus <- function(df, dx_pre, drg){
 
       # Calculate number of Elixhauser comorbidities present. #
        df4$elix_cnt <- rowSums(df4[,paste("elix",c(1,3:30),sep="")])
-       
+
       # Sort table on num_rec variable. #
        df4 <- df4[order(df4$.rec_no),]
 
