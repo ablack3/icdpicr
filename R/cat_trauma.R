@@ -89,7 +89,7 @@
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
 #' @export
-cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F){
+cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = FALSE){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -98,15 +98,15 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
       # ensure dx_pre is a valid variable name
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
-      if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
-      if(icd10 == F) i10_iss_method <- ""
+      if(!(icd10 %in% c(TRUE, FALSE, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
+      if(icd10 == FALSE) i10_iss_method <- ""
       if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
-      if((icd10 != F) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
+      if((icd10 != FALSE) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
       regex_dx <- paste0("^", dx_pre, "([0-9]+)$")
-      dx_colnames <- grep(regex_dx, names(df), value = T)
+      dx_colnames <- grep(regex_dx, names(df), value = TRUE)
       # replace full column name with first capture group and convert to number
       dx_nums <- as.numeric(sub(regex_dx, "\\1", dx_colnames))
       num_dx <- length(dx_nums)
@@ -148,7 +148,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           dx_name <- paste0(dx_pre, i)
 
           # pull just the diagnosis code column of interest
-          df_ss <- df[ , dx_name, drop=F]
+          df_ss <- df[ , dx_name, drop = FALSE]
 
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
@@ -196,7 +196,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
               i10_valid <- c("S","T","U","V","W","X","Y")
 
               # get rid of codes that do not start with a valid character
-              df_ss[ , dx_name] <- ifelse(substr(df_ss[,dx_name],1,1) %in% c(i9_valid, i10_valid), df_ss[,dx_name], NA)
+              df_ss[ , dx_name] <- ifelse(substr(df_ss[,dx_name], 1, 1) %in% c(i9_valid, i10_valid), df_ss[,dx_name], NA)
 
               # any codes starting with V are assumed to be ICD 10
               # if the code is I9 (starts with 8, 9, or E) then leave it alone
@@ -239,7 +239,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           }
 
 
-          temp <- merge(df_ss, ntab, by.x=dx_name, by.y="dx", all.x=T, all.y=F, sort=F)
+          temp <- merge(df_ss, ntab, by.x = dx_name, by.y = "dx", all.x = TRUE, all.y = FALSE, sort = FALSE)
 
           # reorder rows after merge
           temp <- temp[order(temp$n), ]
@@ -249,7 +249,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
 
           if(calc_method == 2){
               # replace severity=6 with severity=5
-              temp[which(temp$severity==6), "severity"] <- 5
+              temp[which(temp$severity == 6), "severity"] <- 5
           }
 
           #rename columns
@@ -276,7 +276,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             # Get severity columns and multiply by 1 if they are for body region i and 0 otherwise
             # This uses element-wise multiplication of matricies
             # all severity columns as a matrix * Indicator matrix of body region columns (entries 1 or 0)
-            temp <- df[ , grepl("sev_", names(df)), drop=F] * (1*(df[ , grepl("issbr_", names(df))] == i))
+            temp <- df[ , grepl("sev_", names(df)), drop = FALSE] * (1*(df[ , grepl("issbr_", names(df))] == i))
 
             # convert all zeros to NA. zeros represent severity values not associated with body region i
             # temp <- data.frame(t(apply(temp, 1, function(x) ifelse(x==0, NA, x))))
@@ -288,14 +288,14 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             df[ , paste0("mxaisbr_", gsub("/","",i))] <- apply(temp, 1, function(row){
 
                   # convert all zeros to NA. zeros represent severity values not associated with body region i
-                  row <- ifelse(row==0, NA, row)
+                  row <- ifelse(row == 0, NA, row)
 
                   if(all(is.na(row))){
                         maxaisbr <- 0
-                  } else if(all(row == 9, na.rm = T)){
+                  } else if(all(row == 9, na.rm = TRUE)){
                         maxaisbr <- 9
                   } else {
-                        maxaisbr <- max(c(0, row[row != 9]), na.rm = T)
+                        maxaisbr <- max(c(0, row[row != 9]), na.rm = TRUE)
                   }
                   return(maxaisbr)
             })
@@ -306,7 +306,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
       #----------------------------------------------------------------------#
 
       # define function to convert 9 to 0
-      c9to0 <- function(x) ifelse(x==9, 0, x)
+      c9to0 <- function(x) ifelse(x == 9, 0, x)
 
       # df$maxais_ex9 <- pmax(c9to0(df$mxaisbr1),
       #                   c9to0(df$mxaisbr2),
@@ -326,10 +326,10 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             # if the max excluding 9 is zero then include 9 so that if there is a 9 then the max will be 9
             if(all(is.na(row))){
                   maxais <- as.numeric(NA)
-            } else if(max(c9to0(row), na.rm = T) == 0){
-                  maxais <- max(row, na.rm = T)
+            } else if(max(c9to0(row), na.rm = TRUE) == 0){
+                  maxais <- max(row, na.rm = TRUE)
             } else {
-                 maxais <- max(c9to0(row), na.rm = T)
+                 maxais <- max(c9to0(row), na.rm = TRUE)
             }
             return(maxais)
       })
@@ -423,7 +423,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           col_name <- paste("ecode_", i, sep="")
 
           # subset dataframe: pull just the diagnosis code column of interest
-          df_ss <- df[,col_name, drop=F]
+          df_ss <- df[,col_name, drop = FALSE]
 
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
@@ -432,7 +432,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           df_ss[,col_name] <- sub("\\.","", df_ss[,col_name])
 
           # merge in ecode variables
-          temp <- merge(df_ss, etab, by.x=col_name, by.y="dx", all.x=T, all.y=F, sort=F)
+          temp <- merge(df_ss, etab, by.x=col_name, by.y="dx", all.x = TRUE, all.y = FALSE, sort = FALSE)
 
           # reorder rows after merge
           temp <- temp[order(temp$n), ]
@@ -455,8 +455,8 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             if(verbose) print("Calculating mortality prediction")
 
             coef_df <- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, "NIS|TQIP"), icd10)
-            stopifnot(max(coef_df$intercept, na.rm = T) == min(coef_df$intercept, na.rm = T))
-            intercept <- max(coef_df$intercept, na.rm = T)
+            stopifnot(max(coef_df$intercept, na.rm = TRUE) == min(coef_df$intercept, na.rm = TRUE))
+            intercept <- max(coef_df$intercept, na.rm = TRUE)
 
             # create hash table
             coef_df <- coef_df[!is.na(coef_df$effect), ]
@@ -464,7 +464,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             names(effect_hash) <- coef_df$dx
             calc_mortality_prediction <- function(dx){
                # dx is a character vector of diagnosis codes for one person
-               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = T) + intercept
+               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = TRUE) + intercept
                1/(1+exp(-x))
             }
 
