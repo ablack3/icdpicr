@@ -4,7 +4,7 @@
 \alias{cat_trauma}
 \title{Categorize trauma by adding AIS and ISS to a dataframe}
 \usage{
-cat_trauma(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F)
+cat_trauma(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = FALSE)
 }
 \arguments{
 \item{df}{A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
