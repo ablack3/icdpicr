@@ -5,11 +5,11 @@ Version: 1.0.0
 Authors@R: c(
     person("Adam", "Black", email = "ablack3@gmail.com", role = c("aut", "cre", "cph")),
     person("David", "Clark", role = c("aut", "cph")))
-Description: 'icdpicr' contains programs for injury categorization using International
-    Classification of Diseases ('ICD') codes. Starting with ICD-8, 
+Description: This package contains a function for the categorization of injuries using International
+    Classification of Diseases ('ICD') codes. Starting with 'ICD-8', 
     methods have been described to map injury diagnosis codes to severity scores, especially the 
     Abbreviated Injury Scale ('AIS') and Injury Severity Score ('ISS'). 'ICDPIC' was originally developed 
-    for this purpose using Stata, and 'icdpicr' is an open-access update that accepts both ICD-9 and 
+    for this purpose using 'Stata', and 'icdpicr' is an open-access update that accepts both 'ICD-9' and 
     'ICD-10' codes. The ideal methods of injury categorization and injury severity scoring involve 
     trained personnel with access to injured persons or their medical records. 'ICDPIC-R' may be a 
     useful substitute when this ideal cannot be obtained.

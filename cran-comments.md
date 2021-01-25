@@ -1,7 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Shortened the DESCRIPTION title to title 45 characters.
+* Shortened the DESCRIPTION title to 45 characters.
 * Added more detail to the description field in the DESCRIPTION file.
 * Replaced T and F with TRUE and FALSE throughout the package code.
   
