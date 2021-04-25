@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Categorize trauma by adding AIS and ISS to a dataframe — cat_trauma • icdpicr</title>
+<title>Categorize trauma data — cat_trauma • icdpicr</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,13 @@
 
 
 
-<meta property="og:title" content="Categorize trauma by adding AIS and ISS to a dataframe — cat_trauma" />
-<meta property="og:description" content="For each observation this function will
-assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,
+<meta property="og:title" content="Categorize trauma data — cat_trauma" />
+<meta property="og:description" content="This function adds Abbreviated Injury Scores (AIS), Injury Severity Scores (ISS), and other descriptors of injury to a dataframe.
+For each observation this function will
+assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 trauma code,
 add variables for maximum severity of each body region,
-calculate ISS
-select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
+calculate ISS, &quot;New ISS&quot;, maximum AIS, and a regression-based mortality prediction,
+select first 4 e-codes/mechanism codes and categorize major mechanism, minor mechanism, and intent
 
 " />
 
@@ -78,7 +79,7 @@ select first 4 e-codes/mechanism codes along with major mechanism, minor mechani
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">icdpicr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -124,22 +125,23 @@ select first 4 e-codes/mechanism codes along with major mechanism, minor mechani
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Categorize trauma by adding AIS and ISS to a dataframe</h1>
+    <h1>Categorize trauma data</h1>
     
     <div class="hidden name"><code>cat_trauma.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>For each observation this function will</p><ol>
-<li><p>assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,</p></li>
+    <p>This function adds Abbreviated Injury Scores (AIS), Injury Severity Scores (ISS), and other descriptors of injury to a dataframe.
+For each observation this function will</p><ol>
+<li><p>assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 trauma code,</p></li>
 <li><p>add variables for maximum severity of each body region,</p></li>
-<li><p>calculate ISS</p></li>
-<li><p>select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent</p></li>
+<li><p>calculate ISS, "New ISS", maximum AIS, and a regression-based mortality prediction,</p></li>
+<li><p>select first 4 e-codes/mechanism codes and categorize major mechanism, minor mechanism, and intent</p></li>
 </ol>
 
     </div>
 
-    <pre class="usage"><span class='fu'>cat_trauma</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>dx_pre</span>, <span class='va'>icd10</span>, <span class='va'>i10_iss_method</span>, calc_method <span class='op'>=</span> <span class='fl'>1</span>, verbose <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cat_trauma</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>dx_pre</span>, <span class='va'>icd10</span>, <span class='va'>i10_iss_method</span>, calc_method <span class='op'>=</span> <span class='fl'>1</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,23 +157,22 @@ Diagnosis codes should be character strings and may have a decimal or not.</p></
     </tr>
     <tr>
       <th>icd10</th>
-      <td><p>Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".</p><ul>
-<li><p>TRUE ICD10CM codes will be processed by the program</p></li>
-<li><p>FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.</p></li>
-<li><p>"cm" - ICD10CM codes will be processed by the program</p></li>
-<li><p>"base" - ICD10 (international) codes will be processed by cat_trauma()</p></li>
-</ul><p>If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.</p></td>
+      <td><p>Should ICD-10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".</p><ul>
+<li><p>TRUE ICD-10 codes will be processed by the program</p></li>
+<li><p>FALSE - Any ICD-10 codes in the data will be ignored.</p></li>
+<li><p>"cm" - ICD-10-CM codes will be processed by the program</p></li>
+<li><p>"base" - Basic ICD-10 (international) codes will be processed by the program</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>i10_iss_method</th>
-      <td><p>Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:</p><ul>
-<li><p>"roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.</p></li>
-<li><p>"roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.</p></li>
-<li><p>"roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.</p></li>
-<li><p>"roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.</p></li>
-<li><p>"gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
-       using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.</p></li>
-<li><p>"gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.</p></li>
+      <td><p>Method for calculating ISS from ICD-10 codes. Ignored if icd10 = FALSE. Must be one of:</p><ul>
+<li><p>"roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) maximizing area under an ROC curve. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommended if the user's data are similar to NIS data.</p></li>
+<li><p>"roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program (TQIP) data maximizing area under an ROC curve. For ICD-10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data are similar to TQIP data.</p></li>
+<li><p>"roc_max_NIS_only" Table derived as for "roc_max_NIS", but injury ICD-10 codes not in the NIS dataset will be ignored</p></li>
+<li><p>"roc_max_TQIP_only" Table derived as for "roc_max_TQIP", but injury ICD-10 codes not in the TQIP dataset will be ignored.</p></li>
+<li><p>"gem_max" Table derived by mapping ICD-10-CM to ICD-9-CM using the CMS general equivalence mapping tables and then to AIS and ISS using the ICDPIC table inherited from the Stata version.  Mapping conflicts handled by taking the max AIS.</p></li>
+<li><p>"gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min AIS.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -196,20 +197,20 @@ Method 2 will change any AIS = 6 to 5 and then calculate ISS normally.</p></td>
 <li><p>maxais: maximum AIS severity over all ISS body regions</p></li>
 <li><p>riss: computed injury severity score</p></li>
 <li><p>niss: new injury severity score</p></li>
-<li><p>ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data</p></li>
+<li><p>ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD-10 if requested) found in each row of data</p></li>
 <li><p>mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured</p></li>
 <li><p>mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured</p></li>
 <li><p>intent1-intent4: intent for each E-Code captured</p></li>
 <li><p>lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured</p></li>
-<li><p>mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)</p></li>
+<li><p>Pmort: The model predicted probability of mortality. (only added if using ICD-10 codes with one of the roc_max methods)</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Data should be in wide format:</p><table class='table'>
-<tr><td>ID</td><td>dx1</td><td>dx2</td><td>dx3</td></tr>
-<tr><td>31416</td><td>800.1</td><td>959.9</td><td>E910.9</td></tr>
-<tr><td>31417</td><td>800.24</td><td>410.0</td><td></td></tr>
+<tr><td>ID</td><td>dx1</td><td>dx2</td><td>dx3</td><td>etc.</td></tr>
+<tr><td>31416</td><td>800.1</td><td>959.9</td><td>E910.9</td><td></td></tr>
+<tr><td>31417</td><td>800.24</td><td>410.0</td><td></td><td></td></tr>
 </table>
 
 

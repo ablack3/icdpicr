@@ -2,7 +2,7 @@
 % Please edit documentation in R/cat_trauma.R
 \name{cat_trauma}
 \alias{cat_trauma}
-\title{Categorize trauma by adding AIS and ISS to a dataframe}
+\title{Categorize trauma data}
 \usage{
 cat_trauma(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = FALSE)
 }
@@ -12,24 +12,22 @@ Diagnosis codes should be character strings and may have a decimal or not.}
 
 \item{dx_pre}{Prefix for diagnosis code column names (example: dx1, dx2, etc.)}
 
-\item{icd10}{Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
+\item{icd10}{Should ICD-10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 \itemize{
-\item TRUE ICD10CM codes will be processed by the program
-\item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
-\item "cm" - ICD10CM codes will be processed by the program
-\item "base" - ICD10 (international) codes will be processed by cat_trauma()
-}
-If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.}
+\item TRUE ICD-10 codes will be processed by the program
+\item FALSE - Any ICD-10 codes in the data will be ignored.
+\item "cm" - ICD-10-CM codes will be processed by the program
+\item "base" - Basic ICD-10 (international) codes will be processed by the program
+}}
 
-\item{i10_iss_method}{Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
+\item{i10_iss_method}{Method for calculating ISS from ICD-10 codes. Ignored if icd10 = FALSE. Must be one of:
 \itemize{
-\item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
-\item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
-\item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
-\item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
-\item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
-       using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
-\item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
+\item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) maximizing area under an ROC curve. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommended if the user's data are similar to NIS data.
+\item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program (TQIP) data maximizing area under an ROC curve. For ICD-10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data are similar to TQIP data.
+\item "roc_max_NIS_only" Table derived as for "roc_max_NIS", but injury ICD-10 codes not in the NIS dataset will be ignored
+\item "roc_max_TQIP_only" Table derived as for "roc_max_TQIP", but injury ICD-10 codes not in the TQIP dataset will be ignored.
+\item "gem_max" Table derived by mapping ICD-10-CM to ICD-9-CM using the CMS general equivalence mapping tables and then to AIS and ISS using the ICDPIC table inherited from the Stata version.  Mapping conflicts handled by taking the max AIS.
+\item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min AIS.
 }}
 
 \item{calc_method}{ISS calculation method:
@@ -48,29 +46,30 @@ A dataframe identical to the dataframe passed to the function with the following
          \item maxais: maximum AIS severity over all ISS body regions
          \item riss: computed injury severity score
          \item niss: new injury severity score
-         \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
+         \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD-10 if requested) found in each row of data
          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
          \item intent1-intent4: intent for each E-Code captured
          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-         \item mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)
+         \item Pmort: The model predicted probability of mortality. (only added if using ICD-10 codes with one of the roc_max methods)
          }
 }
 \description{
+This function adds Abbreviated Injury Scores (AIS), Injury Severity Scores (ISS), and other descriptors of injury to a dataframe.
 For each observation this function will
 \enumerate{
-   \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,
+   \item assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 trauma code,
    \item add variables for maximum severity of each body region,
-   \item calculate ISS
-   \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
+   \item calculate ISS, "New ISS", maximum AIS, and a regression-based mortality prediction,
+   \item select first 4 e-codes/mechanism codes and categorize major mechanism, minor mechanism, and intent
 }
 }
 \details{
 Data should be in wide format:
-\tabular{rrrr}{
-ID  \tab  dx1 \tab  dx2 \tab dx3 \cr
-31416 \tab   800.1 \tab   959.9 \tab   E910.9 \cr
-31417  \tab 800.24  \tab 410.0 \tab
+\tabular{rrrrr}{
+ID    \tab dx1    \tab dx2   \tab dx3    \tab etc. \cr
+31416 \tab 800.1  \tab 959.9 \tab E910.9 \tab      \cr
+31417 \tab 800.24 \tab 410.0 \tab        \tab
 }
 
 Codes for AIS severity:
