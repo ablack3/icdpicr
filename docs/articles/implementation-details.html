@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">icdpicr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="implementation-details_files/header-attrs-2.3/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementation Details</h1>
@@ -85,18 +85,57 @@
 
     
     
-<p>Programs for Injury Categorization using diagnosis codes of the International Classification of Diseases, Version 9 Clinical Modification (ICD-9-CM) were originally developed using Stata statistical software (Statacorp, College Station, Texas). After the introduction of ICD-10-CM in 2015, an update to accommodate this change was developed using R statistical software (R Project, Vienna, Austria). The context for ICDPIC and ICDPIC-R, along with a general history of injury severity scoring, has been presented in a previous publication.<sup>1</sup></p>
-<p>The accompanying programs, ICDPIC-R-2021, are a further update in response to numerous inquiries and suggestions. The most important changes are as follows:</p>
-<p>ICDPIC and the initial version of ICDPIC-R had been designed to use data coded with ICD-9-CM or ICD-10-CM (US Clinical Modification), which limited its value for international users.<sup>2</sup> ICDPIC-R-2021 allows the user to specify whether data are in ICD-10-CM or basic ICD-10 format.</p>
-<p>The default “ROCmax” option for calculating Abbreviated Injury Scores<sup>3</sup> in ICDPIC-R was based upon mortality data in the American College of Surgeons (ACS) National Trauma Data Bank (NTDB), using an <em>ad hoc</em> algorithm to quantify the relative severity of each individual diagnosis code. The ROCmax option in ICDPIC-R-2021 allows the user to use either the ACS Trauma Quality Improvement Project (TQIP, the successor to NTDB) or the Health Care Utilization Project (HCUP) National Inpatient Survey (NIS) as the reference database. Furthermore, the original <em>ad hoc</em> algorithm has been replaced by the well-established methodology of ridge regression to estimate the independent effect of each injury diagnosis.</p>
+<p>Programs for Injury Categorization using diagnosis codes of the International Classification of Diseases, Version 9 Clinical Modification (ICD-9-CM) were originally developed using Stata statistical software (Statacorp, College Station, Texas). After the introduction of ICD-10-CM to US hospitals in 2015, an update to accommodate this change was developed using R statistical software (R Project, Vienna, Austria). The context for ICDPIC and ICDPICR, along with a general history of injury severity scoring, has been presented in a previous publication.<sup>1</sup></p>
+<p>Initial development of the ICDPIC Stata programs occurred as part of research projects funded by the National Center for Injury Prevention and Control through the Harvard Injury Control Research Center (CDC R49/CCR 115279) and by the Maine Medical Center Research Strategic Plan. The translation of ICDPIC to R was supported by funding from the Maine Medical Center Division of Trauma and Surgical Critical Care and Center for Outcomes Research and Evaluation. The authors are grateful for this support.</p>
+<p>ICDPICR Version 1.0.0 is a further update in response to numerous inquiries and suggestions. The most important changes are as follows:</p>
+<p>ICDPIC and the initial version of ICDPICR had been designed to use data coded with ICD-9-CM or ICD-10-CM (US Clinical Modification), which limited its value for international users.<sup>2</sup> ICDPICR Version 1.0.0 allows the user to specify whether data are in ICD-10-CM or basic ICD-10 format.</p>
+<p>The default “ROCmax” option for calculating Abbreviated Injury Scores<sup>3</sup> in ICDPICR Version 0.1.0 was based upon mortality data in the American College of Surgeons (ACS) National Trauma Data Bank (NTDB), using an <em>ad hoc</em> algorithm to quantify the relative severity of each individual diagnosis code. The ROCmax option in ICDPICR Version 1.0.0 allows the user to choose either the ACS Trauma Quality Improvement Project (TQIP, the successor to NTDB) or the Health Care Utilization Project (HCUP) National Inpatient Survey (NIS) as the reference database. Furthermore, the original <em>ad hoc</em> algorithm has been replaced by the well-established methodology of ridge regression to estimate the independent effect of each injury diagnosis.</p>
 <p>If the ROCmax option is chosen, a prediction of mortality for each subject (Pmort) is provided directly from the ridge regression, as well as the estimated Injury Severity Score<sup>4</sup> (ISS). As in the earlier Stata version of ICDPIC, a “New Injury Severity Score”<sup>5</sup> (NISS) is now also calculated for all options.</p>
-<div id="programs-used-to-derive-rocmax-reference-table" class="section level2">
+<div id="programs-to-derive-severity-scores" class="section level2">
 <h2 class="hasAnchor">
-<a href="#programs-used-to-derive-rocmax-reference-table" class="anchor"></a>Programs used to derive ROCmax reference table</h2>
-<p><strong>icdaisA</strong> – Reads in raw data from the 2017 TQIP Research Data Set or the 2016 NIS. Identifies cases with at least one injury diagnosis specified by an ICD-10-CM code, and classifies the diagnoses by body regions required for calculation of the Injury Severity Score (ISS).<sup>4</sup> The National Trauma Data Standard used by TQIP considers valid ICD-10-CM injury codes to be those in the ranges S00-S99, T07, T14, T20-T28, and T30-T32, so <strong>icdaisA</strong> recognizes only these codes in the calculation of injury severity. ICDPIC-R also requires that injury codes conclude with the letter “A” (indicating an initial encounter), except for codes indicating a fracture, where codes concluding with the letters “B” or “C” indicate an initial encounter with an open fracture. ICD-10-CM codes that explicitly state that the subject lived or died (S06.##6A, S06.##7A, or S06.##8A) are converted to S06.##9A, which does not specify the outcome. <strong>icdaisA</strong> also creates an additional data set for each data source by truncating ICD-10-CM codes to the underlying basic ICD-10 code (format ###.#) and removes basic ICD-10 codes that are duplicated within an individual subject as a result. Prepares data for regression analysis.</p>
+<a href="#programs-to-derive-severity-scores" class="anchor"></a>Programs to derive severity scores</h2>
+<p><strong>icdaisA</strong> – Reads in raw data from the 2017 TQIP Research Data Set or the 2016 NIS. Identifies cases with at least one injury diagnosis specified by an ICD-10-CM code, and classifies the diagnoses by body regions required for calculation of the Injury Severity Score (ISS).<sup>4</sup> The National Trauma Data Standard used by TQIP considers valid ICD-10-CM injury codes to be those in the ranges S00-S99, T07, T14, T20-T28, and T30-T32, so <strong>icdaisA</strong> recognizes only these codes in the calculation of injury severity. ICDPICR also requires that injury codes conclude with the letter “A” (indicating an initial encounter), except for codes indicating a fracture, where codes concluding with the letters “B” or “C” indicate an initial encounter with an open fracture. ICD-10-CM codes that explicitly state that the subject lived or died (S06.##6A, S06.##7A, or S06.##8A) are converted to S06.##9A, which does not specify the outcome. <strong>icdaisA</strong> also creates an additional data set for each data source by truncating ICD-10-CM codes to the underlying basic ICD-10 code (format ###.#) and removes basic ICD-10 codes that are duplicated within an individual subject as a result. Prepares data for regression analysis.</p>
 <p><strong>icdaisB</strong> – Reads in each of the data sets prepared by <strong>icdaisA</strong>, transforms them into matrices, and performs logistic ridge regression using R package <strong>glmnet</strong>, which is described in detail in the documentation for that package. For each reference dataset (TQIP or NIS) and each format (ICD-10-CM or basic ICD-10), the logistic ridge regression results in an independent estimate of effect (log odds ratio) for each diagnosis code. These are tabulated and can be combined with the estimated model intercept to estimate the probability of mortality for individual subjects. <strong>icdaisB</strong> also determines the largest effect estimate in each body region for each subject, which will subsequently be stratified into Abbreviated Injury Scores (AIS)<sup>3</sup> in order to estimate ISS.</p>
-<p><strong>icdaisC</strong> – Reads in the tabulated effect estimates for each diagnosis code produced by <strong>icdaisB</strong>. For each reference dataset and format, initializes cutpoints categorizing the effect estimates into AIS scores of 1, 2, 3, 4, or 5, and calculates the resulting ISS and NISS.<sup>4,5</sup> Uses a “greedy algorithm” to determine the cutpoints for which the c-statistic (area under a Receiver Operator Characteristic curve) for ISS to predict mortality is maximized. For each diagnosis, reference dataset, and format, tabulates the optimal AIS estimates along with the effect estimates and intercepts from ridge regression. These are summarized in the tables <strong>TQIP_NIS_ais_cm.csv</strong> and <strong>TQIP_NIS_ais_base.csv</strong>.</p>
-<p><strong>cat_trauma</strong> – Reads in user data in the specified format and, depending upon the options selected by the user, either the table <strong>TQIP_NIS_ais_cm.csv</strong> or the table <strong>TQIP_NIS_ais_base.csv</strong>. If the user has specified option “ROCmax”, calculates ISS and NISS from the data in these tables. If the user has specified option “GEMmax” or “GEMmin”, converts ICD-10-CM codes to ICD-9-CM codes using a General Equivalence Mapping table published by the US CMS, and then calculates ISS from the table previously used in the Stata version of ICDPIC. Also categorizes ICD-10 codes that specify injury mechanism according to a table published by the US CDC.<sup>6</sup></p>
+<p><strong>icdaisC</strong> – Reads in the tabulated effect estimates for each diagnosis code produced by <strong>icdaisB</strong>. For each reference dataset and format, initializes cutpoints categorizing the largest effect estimate for each body region into an AIS score of 1, 2, 3, 4, or 5, and calculates the resulting ISS and NISS.<sup>4,5</sup> Uses a “greedy algorithm” to determine the cutpoints for which the c-statistic (area under a Receiver Operator Characteristic curve) for ISS to predict mortality is maximized. For each diagnosis, reference dataset, and format, tabulates the optimal AIS estimates along with the effect estimates and intercepts from ridge regression. These are summarized in the tables <strong>TQIP_NIS_ais_cm.csv</strong> and <strong>TQIP_NIS_ais_base.csv</strong>.</p>
+<p>Programs icdaisA, icdaisB, and icdaisC can be found at <a href="https://github.com/ablack3/icdpicr/tree/master/prelim/build%20ais%20mapping%20version%202" class="uri">https://github.com/ablack3/icdpicr/tree/master/prelim/build%20ais%20mapping%20version%202</a> or downloaded using the following links:</p>
+<ul>
+<li><p><a href="https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisA_210102.R">icdaisA.R</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisB_210102.R">icdaisB.R</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisC_210102.R">icdaisC.R</a></p></li>
+</ul>
+</div>
+<div id="tables-used-in-calculating-severity-scores" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tables-used-in-calculating-severity-scores" class="anchor"></a>Tables used in calculating severity scores</h2>
+<ul>
+<li><p>i10cm_map_roc: This is the table created by icdaisC with optimal AIS and effect estimates for ICD-10-CM diagnosis codes.</p></li>
+<li><p>i10base_map_roc: This is the table created by icdaisC with optimal AIS and effect estimates for basic ICD-10 diagnosis codes.</p></li>
+<li><p>i10_map_max: This is a table based on the General Equivalence Mappings published by the US Centers for Medicare and Medicaid Services (CMS). If GEM has mapped an ICD-10-CM code to two or more ICD-9-CM codes, the code with maximum severity has been selected.</p></li>
+<li><p>i10_map_min: This is a table based on the General Equivalence Mappings published by the US Centers for Medicare and Medicaid Services (CMS). If GEM has mapped an ICD-10-CM code to two or more ICD-9-CM codes, the code with minimum severity has been selected.</p></li>
+<li><p>ntab_s1: This is the table inherited from the Stata version of ICDPIC, assigning an AIS body region and severity to each ICD-9-CM nature of injury code.</p></li>
+<li><p>etab_s1: This is the table inherited from the Stata version of ICDPIC, assigning CDC mechanism categories to each ICD-9 external cause of injury code (E-code).</p></li>
+<li><p>i10_ecode: This is derived from a CDC proposed table assigning mechanism categories to each ICD-10 external cause of injury code (starting with letters U, V, W, X, or Y).</p></li>
+</ul>
+<p>These tables may be accessed within R by the command <code>icdpicr:::table_name</code></p>
+</div>
+<div id="program-cat_trauma" class="section level2">
+<h2 class="hasAnchor">
+<a href="#program-cat_trauma" class="anchor"></a>Program cat_trauma</h2>
+<p><strong>cat_trauma</strong> – Reads in user data in the specified format and, depending upon the options selected by the user, either the table <code>i10cm_map_roc</code> or the table <code>i10base_map_roc</code>. If the user has specified option “ROCmax”, calculates ISS and NISS from the data in these tables. If the user has specified option “GEMmax” or “GEMmin”, converts ICD-10-CM codes to ICD-9-CM codes using <code>i10_map_max</code> or <code>i10_map_min</code>, and then calculates ISS from the table <code>ntab_s1</code>. <code>cat_trauma</code> also categorizes ICD-10 codes that specify injury mechanism according to a table published by the US CDC.<sup>6</sup> Further details about the options available in <code>cat_trauma</code> are provided in the help file.</p>
+</div>
+<div id="testing-different-methods-of-scoring" class="section level2">
+<h2 class="hasAnchor">
+<a href="#testing-different-methods-of-scoring" class="anchor"></a>Testing different methods of scoring</h2>
+<p>Four datasets were used to compare the results of different options for cat_trauma:</p>
+<ul>
+<li><p>A 20% sample of 2017 TQIP data coded using ICD-10-CM</p></li>
+<li><p>A 20% sample of 2017 TQIP data coded using basic ICD-10</p></li>
+<li><p>A 20% sample of 2016 NIS data coded using ICD-10-CM</p></li>
+<li>
+<p>A 20% sample of 2016 NIS data coded using basic ICD-10.</p>
+<p>Each of the sample data sets was processed using all relevant options for procedure cat_trauma. C-statistics (areas under a Receiver-Operator Characteristic curve) were calculated for the prediction of mortality by the approximated ISS (designated RISS) and the approximated NISS. If the ROCmax method was used, a c-statistic was also calculated for the mortality prediction obtained directly from ridge regression (Pmort). For TQIP data, a c-statistic was also calculated for the ISS that had been reported by trauma registrars (designated TISS). The results of these determinations are shown in Table 1.</p>
+</li>
+</ul>
 <div id="table-1-c-statistics-for-prediction-of-mortality" class="section level3">
 <h3 class="hasAnchor">
 <a href="#table-1-c-statistics-for-prediction-of-mortality" class="anchor"></a>Table 1: C-statistics for prediction of mortality</h3>
@@ -471,56 +510,62 @@
 <h2 class="hasAnchor">
 <a href="#suggested-options-for-different-types-of-data" class="anchor"></a>Suggested options for different types of data</h2>
 <p>The procedure cat_trauma, which calculates ISS, NISS, and Pmort in ICDPIC-R, will not run unless specific options have been selected. Default values are not provided because, in view of the above findings, results may differ significantly depending upon the kind of data being processed. Some guidelines for which options to specify are given below. Ultimately, the validation of ICDPIC-R will depend upon its performance using other independent data; one of the first of these is the study of Sebastião <em>et al,</em><sup>8</sup> who found that the GEMmin option seemed to function better than the GEMmax option for data coded with a mix of ICD-9-CM and ICD-10-CM. Experience from other countries will be of particular interest to see whether TQIP or NIS is a better reference database, and it may vary from one setting to another.</p>
-<p>Given the results so far, ICDPIC-R-2021 should function best for the following types of data with the given options:</p>
+<p>Given the results so far, ICDPICR version 1.0.0 should function best for the following types of data with the given options:</p>
 <ol style="list-style-type: decimal">
 <li>Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM:</li>
 </ol>
 <p style="margin-left: 40px">
-<code>icd10="TRUE", i10_iss_method="gem_min"</code>
 </p>
+<p><code>icd10="TRUE", i10_iss_method="gem_min"</code></p>
+
 <p><br></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Data from US trauma registries coded using only ICD-10-CM :</li>
 </ol>
 <p style="margin-left: 40px">
-<code>icd10="cm", i10_iss_method="roc_max_TQIP"</code>
 </p>
+<p><code>icd10="cm", i10_iss_method="roc_max_TQIP"</code></p>
+
 <p><br></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Data from US administrative sources coded using both ICD-9-CM and ICD-10-CM:</li>
 </ol>
 <p style="margin-left: 40px">
-<code>icd10="TRUE", i10_iss_method="gem_min"</code>
 </p>
+<p><code>icd10="TRUE", i10_iss_method="gem_min"</code></p>
+
 <p><br></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Data from US administrative sources coded using only ICD-10-CM:</li>
 </ol>
 <p style="margin-left: 40px">
-<code>icd10="cm", i10_iss_method="roc_max_NIS"</code>
 </p>
+<p><code>icd10="cm", i10_iss_method="roc_max_NIS"</code></p>
+
 <p><br></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Data from non-US sources coded using basic ICD-10:</li>
 </ol>
 <p style="margin-left: 40px">
-<code>icd10="base", i10_iss_method="roc_max_TQIP"</code> or <code>icd10="base", i10_iss_method="roc_max_NIS"</code>
 </p>
+<p><code>icd10="base", i10_iss_method="roc_max_TQIP"</code> or <code>icd10="base", i10_iss_method="roc_max_NIS"</code></p>
+
 <p><br></p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h2>
 <ol style="list-style-type: decimal">
-<li>Clark DE, Black AW, Skavdahl DH, Hallagan LD. Open-access programs for injury categorization using ICD-9 or ICD-10. Injury Epidemiology 2018; 5:11.</li>
+<li>Clark DE, Black AW, Skavdahl DH, Hallagan LD. Open-access programs for injury categorization using ICD-9 or ICD-10. Inj Epidemiol 2018; 5:11.</li>
 <li>Airaksinen NK, Heinänen MT, Handolin LE. The reliability of the ICD-AIS map in identifying serious road traffic injuries from the Helsinki Trauma Registry. Injury 2019; 50:1545-1551.</li>
 <li>Committee on Medical Aspects of Automotive Safety, AMA. Rating the severity of tissue damage. I. The abbreviated scale. JAMA 1971; 215:277-280.</li>
 <li>Baker SP, O’Neill B, Haddon W Jr., Long WB. The injury severity score: A method for describing patients with multiple injuries and evaluating emergency care. J Trauma 1974; 14:187-196.</li>
 <li>Osler T, Baker SP, Long WA. Modification of the injury severity score that both improves accuracy and simplifies scoring. J Trauma 1997; 43:922-925.</li>
 <li>Annest JL, Hedegaard H, Chen L, Warner M, Smalls E. Proposed framework for presenting injury data using ICD-10-CM external cause of injury codes. 2014. <a href="https://www.cdc.gov/injury/wisqars/pdf/ICD-10-CM_External_Cause_Injury_Codes-a.pdf" class="uri">https://www.cdc.gov/injury/wisqars/pdf/ICD-10-CM_External_Cause_Injury_Codes-a.pdf</a>.</li>
 <li>Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The injury severity score revisited. J Trauma 1988; 28:69-77.</li>
-<li>Sebastião YV, Metzger GA, Chisolm DJ, Xiang H, Cooper JN. Impact of ICD-9-CM to ICD-10-CM coding transition on trauma hospitalization trends among young adults in 12 states. Inj Epidemiol 2021, in press</li>
+<li>Sebastião YV, Metzger GA, Chisolm DJ, Xiang H, Cooper JN. Impact of ICD-9-CM to ICD-10-CM coding transition on trauma hospitalization trends among young adults in 12 states. Inj Epidemiol 2021; 8:4</li>
 </ol>
+<p><br></p>
 </div>
   </div>
 

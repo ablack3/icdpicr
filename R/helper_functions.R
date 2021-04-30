@@ -8,9 +8,9 @@
     target <- which(names(df) == colname)[1]
 
     if(target == ncol(df)){
-        df_out <- cbind(df[,1:target,drop=F], df_to_insert)
+        df_out <- cbind(df[ , 1:target, drop = FALSE], df_to_insert)
     } else {
-        df_out <- cbind(df[,1:target,drop=F], df_to_insert, df[,(target+1):ncol(df),drop=F])
+        df_out <- cbind(df[ , 1:target, drop = FALSE], df_to_insert, df[ , (target+1):ncol(df), drop = FALSE])
     }
     df_out
 }

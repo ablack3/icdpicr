@@ -1,40 +1,39 @@
-#' Categorize trauma by adding AIS and ISS to a dataframe
+#' Categorize trauma data
 #'
+#' This function adds Abbreviated Injury Scores (AIS), Injury Severity Scores (ISS), and other descriptors of injury to a dataframe.
 #' For each observation this function will
 #' \enumerate{
-#'    \item assign a severity (AIS) and ISS body region values to each valid ICD-9-CM or ICD-10-CM trauma code,
+#'    \item assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 trauma code,
 #'    \item add variables for maximum severity of each body region,
-#'    \item calculate ISS
-#'    \item select first 4 e-codes/mechanism codes along with major mechanism, minor mechanism, and intent
+#'    \item calculate ISS, "New ISS", maximum AIS, and a regression-based mortality prediction,
+#'    \item select first 4 e-codes/mechanism codes and categorize major mechanism, minor mechanism, and intent
 #'}
 #'
 #'
 #'
 #'
 #' @param df A dataframe in wide format containing ICD-9 and/or ICD-10 diagnosis codes with a common column name prefix.
-#'          Diagnosis codes should be character strings and may have a decimal or not.
+#'           Diagnosis codes should be character strings and may have a decimal or not.
 #'
 #' @param dx_pre Prefix for diagnosis code column names (example: dx1, dx2, etc.)
 #'
 #'
-#' @param icd10 Should ICD 10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
+#' @param icd10 Should ICD-10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
-#'          \item TRUE ICD10CM codes will be processed by the program
-#'          \item FALSE - No ICD codes will be considered by cat_trauma(). Any ICD10 codes in the data will be ignored.
-#'          \item "cm" - ICD10CM codes will be processed by the program
-#'          \item "base" - ICD10 (international) codes will be processed by cat_trauma()
+#'          \item TRUE ICD-10 codes will be processed by the program
+#'          \item FALSE - Any ICD-10 codes in the data will be ignored.
+#'          \item "cm" - ICD-10-CM codes will be processed by the program
+#'          \item "base" - Basic ICD-10 (international) codes will be processed by the program
 #'          }
-#'          If the icd10 argument is not set to FALSE then the method used to map ICD 10 codes to AIS is determined by the i10_iss_method argument.
 #'
-#' @param i10_iss_method Method for calculating ISS from ICD10 codes. Ignored if icd10 = FALSE. Must be one of:
+#' @param i10_iss_method Method for calculating ISS from ICD-10 codes. Ignored if icd10 = FALSE. Must be one of:
 #'          \itemize{
-#'          \item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) using ROC c-stat as the objective. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommeded if the users data is similar to NIS data. Details of the mapping algorithm included in ICDPIC-R package help documentation.
-#'          \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program data using ROC c-stat as the objective. For ICD10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data is similar to the TQIP data.
-#'          \item "roc_max_NIS_only" Table derived empirically from National Inpatient Sample using ROC c-stat as the objective. Injury ICD10 codes not in the NIS dataset will be ignored.
-#'          \item "roc_max_TQIP_only" Table derived empirically from Trauma Quality Improvement Program data using ROC c-stat as the objective. Injury ICD10 codes not in the TQIP dataset will be ignored.
-#'          \item "gem_max" Table derived by mapping ICD 10 to ICD 9 using the CMS general equivalence mapping tables and then to ISS
-#'                 using the original ICDPIC table. Mapping conflicts handled by taking the max ISS.
-#'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min ISS.
+#'          \item "roc_max_NIS" Table derived empirically from National Inpatient Sample (NIS) maximizing area under an ROC curve. For ICD10 codes not in NIS the mapping based on TQIP data will be used as a backup. This option is recommended if the user's data are similar to NIS data.
+#'          \item "roc_max_TQIP" Table derived empirically from the Trauma Quality Improvement Program (TQIP) data maximizing area under an ROC curve. For ICD-10 codes not in TQIP the mapping based on NIS data will be used as a backup. This option is recommended if the user's data are similar to TQIP data.
+#'          \item "roc_max_NIS_only" Table derived as for "roc_max_NIS", but injury ICD-10 codes not in the NIS dataset will be ignored
+#'          \item "roc_max_TQIP_only" Table derived as for "roc_max_TQIP", but injury ICD-10 codes not in the TQIP dataset will be ignored.
+#'          \item "gem_max" Table derived by mapping ICD-10-CM to ICD-9-CM using the CMS general equivalence mapping tables and then to AIS and ISS using the ICDPIC table inherited from the Stata version.  Mapping conflicts handled by taking the max AIS.
+#'          \item "gem_min" Same as "gem_max" except that mapping conflicts are handled by taking the min AIS.
 #'          }
 #'
 #' @param calc_method ISS calculation method:
@@ -52,19 +51,19 @@
 #'          \item maxais: maximum AIS severity over all ISS body regions
 #'          \item riss: computed injury severity score
 #'          \item niss: new injury severity score
-#'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD10 if requested) found in each row of data
+#'          \item ecode_1-ecode_4: first 4 mechanism/E-Codes (including ICD-10 if requested) found in each row of data
 #'          \item mechmaj1-mechmaj4: CDC external cause of injury major mechanism for each E-Code captured
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
 #'          \item intent1-intent4: intent for each E-Code captured
 #'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-#'          \item mortality_prediction: The model predicted probability of mortality. (only added if using ICD 10 codes with roc_max method)
+#'          \item Pmort: The model predicted probability of mortality. (only added if using ICD-10 codes with one of the roc_max methods)
 #'          }
 #'
 #' @details  Data should be in wide format:
-#' \tabular{rrrr}{
-#' ID  \tab  dx1 \tab  dx2 \tab dx3 \cr
-#' 31416 \tab   800.1 \tab   959.9 \tab   E910.9 \cr
-#' 31417  \tab 800.24  \tab 410.0 \tab
+#' \tabular{rrrrr}{
+#' ID    \tab dx1    \tab dx2   \tab dx3    \tab etc. \cr
+#' 31416 \tab 800.1  \tab 959.9 \tab E910.9 \tab      \cr
+#' 31417 \tab 800.24 \tab 410.0 \tab        \tab
 #' }
 #'
 #' Codes for AIS severity:
@@ -89,7 +88,7 @@
 #' @importFrom stringr str_extract
 #' @importFrom stats na.omit
 #' @export
-cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = F){
+cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbose = FALSE){
 
       # Verify input #
       if(!is.data.frame(df)) stop("First argument must be a dataframe")
@@ -98,15 +97,15 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
       # ensure dx_pre is a valid variable name
       if(make.names(dx_pre) != dx_pre) stop("Second argument must be a valid variable name in R")
       if(!(calc_method %in% c(1,2))) stop("calc_method must be either 1 or 2")
-      if(!(icd10 %in% c(T, F, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
-      if(icd10 == F) i10_iss_method <- ""
+      if(!(icd10 %in% c(TRUE, FALSE, "cm", "base"))) stop("icd10 must be TRUE, FALSE, 'cm', or 'base'")
+      if(icd10 == FALSE) i10_iss_method <- ""
       if(i10_iss_method == "roc_max") stop("The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.")
-      if((icd10 != F) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
+      if((icd10 != FALSE) && !(i10_iss_method %in% c("roc_max_NIS", "roc_max_TQIP", "roc_max_NIS_only", "roc_max_TQIP_only" ,"gem_max", "gem_min"))) stop("i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.")
 
       # Check if user entered a correct prefix for the diagnosis code variables in the input file
       # Determine how many diagnosis code variables there are in the data
       regex_dx <- paste0("^", dx_pre, "([0-9]+)$")
-      dx_colnames <- grep(regex_dx, names(df), value = T)
+      dx_colnames <- grep(regex_dx, names(df), value = TRUE)
       # replace full column name with first capture group and convert to number
       dx_nums <- as.numeric(sub(regex_dx, "\\1", dx_colnames))
       num_dx <- length(dx_nums)
@@ -148,7 +147,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           dx_name <- paste0(dx_pre, i)
 
           # pull just the diagnosis code column of interest
-          df_ss <- df[ , dx_name, drop=F]
+          df_ss <- df[ , dx_name, drop = FALSE]
 
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
@@ -196,7 +195,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
               i10_valid <- c("S","T","U","V","W","X","Y")
 
               # get rid of codes that do not start with a valid character
-              df_ss[ , dx_name] <- ifelse(substr(df_ss[,dx_name],1,1) %in% c(i9_valid, i10_valid), df_ss[,dx_name], NA)
+              df_ss[ , dx_name] <- ifelse(substr(df_ss[,dx_name], 1, 1) %in% c(i9_valid, i10_valid), df_ss[,dx_name], NA)
 
               # any codes starting with V are assumed to be ICD 10
               # if the code is I9 (starts with 8, 9, or E) then leave it alone
@@ -239,7 +238,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           }
 
 
-          temp <- merge(df_ss, ntab, by.x=dx_name, by.y="dx", all.x=T, all.y=F, sort=F)
+          temp <- merge(df_ss, ntab, by.x = dx_name, by.y = "dx", all.x = TRUE, all.y = FALSE, sort = FALSE)
 
           # reorder rows after merge
           temp <- temp[order(temp$n), ]
@@ -249,7 +248,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
 
           if(calc_method == 2){
               # replace severity=6 with severity=5
-              temp[which(temp$severity==6), "severity"] <- 5
+              temp[which(temp$severity == 6), "severity"] <- 5
           }
 
           #rename columns
@@ -276,7 +275,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             # Get severity columns and multiply by 1 if they are for body region i and 0 otherwise
             # This uses element-wise multiplication of matricies
             # all severity columns as a matrix * Indicator matrix of body region columns (entries 1 or 0)
-            temp <- df[ , grepl("sev_", names(df)), drop=F] * (1*(df[ , grepl("issbr_", names(df))] == i))
+            temp <- df[ , grepl("sev_", names(df)), drop = FALSE] * (1*(df[ , grepl("issbr_", names(df))] == i))
 
             # convert all zeros to NA. zeros represent severity values not associated with body region i
             # temp <- data.frame(t(apply(temp, 1, function(x) ifelse(x==0, NA, x))))
@@ -288,14 +287,14 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             df[ , paste0("mxaisbr_", gsub("/","",i))] <- apply(temp, 1, function(row){
 
                   # convert all zeros to NA. zeros represent severity values not associated with body region i
-                  row <- ifelse(row==0, NA, row)
+                  row <- ifelse(row == 0, NA, row)
 
                   if(all(is.na(row))){
                         maxaisbr <- 0
-                  } else if(all(row == 9, na.rm = T)){
+                  } else if(all(row == 9, na.rm = TRUE)){
                         maxaisbr <- 9
                   } else {
-                        maxaisbr <- max(c(0, row[row != 9]), na.rm = T)
+                        maxaisbr <- max(c(0, row[row != 9]), na.rm = TRUE)
                   }
                   return(maxaisbr)
             })
@@ -306,7 +305,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
       #----------------------------------------------------------------------#
 
       # define function to convert 9 to 0
-      c9to0 <- function(x) ifelse(x==9, 0, x)
+      c9to0 <- function(x) ifelse(x == 9, 0, x)
 
       # df$maxais_ex9 <- pmax(c9to0(df$mxaisbr1),
       #                   c9to0(df$mxaisbr2),
@@ -326,10 +325,10 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             # if the max excluding 9 is zero then include 9 so that if there is a 9 then the max will be 9
             if(all(is.na(row))){
                   maxais <- as.numeric(NA)
-            } else if(max(c9to0(row), na.rm = T) == 0){
-                  maxais <- max(row, na.rm = T)
+            } else if(max(c9to0(row), na.rm = TRUE) == 0){
+                  maxais <- max(row, na.rm = TRUE)
             } else {
-                 maxais <- max(c9to0(row), na.rm = T)
+                 maxais <- max(c9to0(row), na.rm = TRUE)
             }
             return(maxais)
       })
@@ -423,7 +422,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           col_name <- paste("ecode_", i, sep="")
 
           # subset dataframe: pull just the diagnosis code column of interest
-          df_ss <- df[,col_name, drop=F]
+          df_ss <- df[,col_name, drop = FALSE]
 
           # add row variable for sorting back to original order
           df_ss$n <- 1:NROW(df_ss)
@@ -432,7 +431,7 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
           df_ss[,col_name] <- sub("\\.","", df_ss[,col_name])
 
           # merge in ecode variables
-          temp <- merge(df_ss, etab, by.x=col_name, by.y="dx", all.x=T, all.y=F, sort=F)
+          temp <- merge(df_ss, etab, by.x=col_name, by.y="dx", all.x = TRUE, all.y = FALSE, sort = FALSE)
 
           # reorder rows after merge
           temp <- temp[order(temp$n), ]
@@ -455,8 +454,8 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             if(verbose) print("Calculating mortality prediction")
 
             coef_df <- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, "NIS|TQIP"), icd10)
-            stopifnot(max(coef_df$intercept, na.rm = T) == min(coef_df$intercept, na.rm = T))
-            intercept <- max(coef_df$intercept, na.rm = T)
+            stopifnot(max(coef_df$intercept, na.rm = TRUE) == min(coef_df$intercept, na.rm = TRUE))
+            intercept <- max(coef_df$intercept, na.rm = TRUE)
 
             # create hash table
             coef_df <- coef_df[!is.na(coef_df$effect), ]
@@ -464,12 +463,12 @@ cat_trauma <- function(df, dx_pre, icd10, i10_iss_method, calc_method = 1, verbo
             names(effect_hash) <- coef_df$dx
             calc_mortality_prediction <- function(dx){
                # dx is a character vector of diagnosis codes for one person
-               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = T) + intercept
+               x <- sum(effect_hash[sub("\\.", "", dx)], na.rm = TRUE) + intercept
                1/(1+exp(-x))
             }
 
             mat <- as.matrix(df[,grepl(paste0("^", dx_pre), names(df))])
-            df$mortality_prediction <- apply(mat, 1, calc_mortality_prediction)
+            df$Pmort <- apply(mat, 1, calc_mortality_prediction)
 
       }
 
