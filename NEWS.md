@@ -1,6 +1,6 @@
 # icdpicr 1.0.1
 
-Documentation updates
+Documentation updates. Rename mortality prediction in `cat_trauma()` output to `Pmort`.
 
 # icdpicr 1.0.0
 

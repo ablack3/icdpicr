@@ -58,7 +58,7 @@ A dataframe identical to the dataframe passed to the function with the following
 This function adds Abbreviated Injury Scores (AIS), Injury Severity Scores (ISS), and other descriptors of injury to a dataframe.
 For each observation this function will
 \enumerate{
-   \item assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 trauma code,
+   \item assign a severity (AIS) and ISS body region values to each valid ICD-9 or ICD-10 injury diagnosis code,
    \item add variables for maximum severity of each body region,
    \item calculate ISS, "New ISS", maximum AIS, and a regression-based mortality prediction,
    \item select first 4 e-codes/mechanism codes and categorize major mechanism, minor mechanism, and intent
