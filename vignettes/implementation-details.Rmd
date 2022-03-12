@@ -1,6 +1,8 @@
 ---
 title: "Implementation Details"
-output: rmarkdown::html_vignette
+output: 
+      rmarkdown::html_vignette:
+            toc: true
 vignette: >
  %\VignetteIndexEntry{Implementation Details}
  %\VignetteEngine{knitr::rmarkdown}
@@ -18,11 +20,11 @@ Programs for Injury Categorization using diagnosis codes of the International Cl
 
 Initial development of the ICDPIC Stata programs occurred as part of research projects funded by the National Center for Injury Prevention and Control through the Harvard Injury Control Research Center (CDC R49/CCR 115279) and by the Maine Medical Center Research Strategic Plan. The translation of ICDPIC to R was supported by funding from the Maine Medical Center Division of Trauma and Surgical Critical Care and Center for Outcomes Research and Evaluation. The authors are grateful for this support.
 
-ICDPICR Version 1.0.0 is a further update in response to numerous inquiries and suggestions. The most important changes are as follows:
+ICDPICR Version 1.0 is a further update in response to numerous inquiries and suggestions. The most important changes are as follows:
 
-ICDPIC and the initial version of ICDPICR had been designed to use data coded with ICD-9-CM or ICD-10-CM (US Clinical Modification), which limited its value for international users.^2^ ICDPICR Version 1.0.0 allows the user to specify whether data are in ICD-10-CM or basic ICD-10 format.
+ICDPIC and the initial version of ICDPICR had been designed to use data coded with ICD-9-CM or ICD-10-CM (US Clinical Modification), which limited its value for international users.^2^ ICDPICR Version 1.0 allows the user to specify whether data are in ICD-10-CM or basic ICD-10 format.
 
-The default "ROCmax" option for calculating Abbreviated Injury Scores^3^ in ICDPICR Version 0.1.0 was based upon mortality data in the American College of Surgeons (ACS) National Trauma Data Bank (NTDB), using an *ad hoc* algorithm to quantify the relative severity of each individual diagnosis code. The ROCmax option in ICDPICR Version 1.0.0 allows the user to choose either the ACS Trauma Quality Improvement Project (TQIP, the successor to NTDB) or the Health Care Utilization Project (HCUP) National Inpatient Survey (NIS) as the reference database. Furthermore, the original *ad hoc* algorithm has been replaced by the well-established methodology of ridge regression to estimate the independent effect of each injury diagnosis.
+The default "ROCmax" option for calculating Abbreviated Injury Scores^3^ in ICDPICR Version 0.1.0 was based upon mortality data in the American College of Surgeons (ACS) National Trauma Data Bank (NTDB), using an *ad hoc* algorithm to quantify the relative severity of each individual diagnosis code. The ROCmax option in ICDPICR Version 1.0 allows the user to choose either the ACS Trauma Quality Improvement Project (TQIP, the successor to NTDB) or the Health Care Utilization Project (HCUP) National Inpatient Survey (NIS) as the reference database. Furthermore, the original *ad hoc* algorithm has been replaced by the well-established methodology of ridge regression to estimate the independent effect of each injury diagnosis.
 
 If the ROCmax option is chosen, a prediction of mortality for each subject (Pmort) is provided directly from the ridge regression, as well as the estimated Injury Severity Score^4^ (ISS). As in the earlier Stata version of ICDPIC, a "New Injury Severity Score"^5^ (NISS) is now also calculated for all options.
 
@@ -30,17 +32,17 @@ If the ROCmax option is chosen, a prediction of mortality for each subject (Pmor
 
 **icdaisA** -- Reads in raw data from the 2017 TQIP Research Data Set or the 2016 NIS. Identifies cases with at least one injury diagnosis specified by an ICD-10-CM code, and classifies the diagnoses by body regions required for calculation of the Injury Severity Score (ISS).^4^ The National Trauma Data Standard used by TQIP considers valid ICD-10-CM injury codes to be those in the ranges S00-S99, T07, T14, T20-T28, and T30-T32, so **icdaisA** recognizes only these codes in the calculation of injury severity. ICDPICR also requires that injury codes conclude with the letter "A" (indicating an initial encounter), except for codes indicating a fracture, where codes concluding with the letters "B" or "C" indicate an initial encounter with an open fracture. ICD-10-CM codes that explicitly state that the subject lived or died (S06.\#\#6A, S06.\#\#7A, or S06.\#\#8A) are converted to S06.\#\#9A, which does not specify the outcome. **icdaisA** also creates an additional data set for each data source by truncating ICD-10-CM codes to the underlying basic ICD-10 code (format \#\#\#.\#) and removes basic ICD-10 codes that are duplicated within an individual subject as a result. Prepares data for regression analysis.
 
-**icdaisB** -- Reads in each of the data sets prepared by **icdaisA**, transforms them into matrices, and performs logistic ridge regression using R package **glmnet**, which is described in detail in the documentation for that package. For each reference dataset (TQIP or NIS) and each format (ICD-10-CM or basic ICD-10), the logistic ridge regression results in an independent estimate of effect (log odds ratio) for each diagnosis code. These are tabulated and can be combined with the estimated model intercept to estimate the probability of mortality for individual subjects. **icdaisB** also determines the largest effect estimate in each body region for each subject, which will subsequently be stratified into Abbreviated Injury Scores (AIS)^3^ in order to estimate ISS.
+**icdaisB** -- Reads in each of the data sets prepared by **icdaisA**, transforms them into matrices, and performs logistic ridge regression using the R package **glmnet**, which is described in detail in the documentation for that package. For each reference dataset (TQIP or NIS) and each format (ICD-10-CM or basic ICD-10), the logistic ridge regression results in an independent estimate of effect (log odds ratio) for each diagnosis code. These are tabulated and can be combined with the estimated model intercept to estimate the probability of mortality for individual subjects. **icdaisB** also determines the largest effect estimate in each body region for each subject, which will subsequently be stratified into Abbreviated Injury Scores (AIS)^3^ in order to estimate ISS.
 
 **icdaisC** -- Reads in the tabulated effect estimates for each diagnosis code produced by **icdaisB**. For each reference dataset and format, initializes cutpoints categorizing the largest effect estimate for each body region into an AIS score of 1, 2, 3, 4, or 5, and calculates the resulting ISS and NISS.^4,5^ Uses a "greedy algorithm" to determine the cutpoints for which the c-statistic (area under a Receiver Operator Characteristic curve) for ISS to predict mortality is maximized. For each diagnosis, reference dataset, and format, tabulates the optimal AIS estimates along with the effect estimates and intercepts from ridge regression. These are summarized in the tables **TQIP_NIS_ais_cm.csv** and **TQIP_NIS_ais_base.csv**.
 
 Programs icdaisA, icdaisB, and icdaisC can be found at <https://github.com/ablack3/icdpicr/tree/master/prelim/build%20ais%20mapping%20version%202> or downloaded using the following links:
 
--   [icdaisA.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisA_210102.R)
+-   [icdaisA.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build ais mapping version 2/icd10aisA_210102.R)
 
--   [icdaisB.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisB_210102.R)
+-   [icdaisB.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build ais mapping version 2/icd10aisB_210102.R)
 
--   [icdaisC.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build%20ais%20mapping%20version%202/icd10aisC_210102.R)
+-   [icdaisC.R](https://raw.githubusercontent.com/ablack3/icdpicr/master/prelim/build ais mapping version 2/icd10aisC_210102.R)
 
 ## Tables used in calculating severity scores
 
@@ -128,7 +130,7 @@ For each data source and method, ISS was also categorized as recommended by Cope
 
 The procedure cat_trauma, which calculates ISS, NISS, and Pmort in ICDPIC-R, will not run unless specific options have been selected. Default values are not provided because, in view of the above findings, results may differ significantly depending upon the kind of data being processed. Some guidelines for which options to specify are given below. Ultimately, the validation of ICDPIC-R will depend upon its performance using other independent data; one of the first of these is the study of Sebastião *et al,*^8^ who found that the GEMmin option seemed to function better than the GEMmax option for data coded with a mix of ICD-9-CM and ICD-10-CM. Experience from other countries will be of particular interest to see whether TQIP or NIS is a better reference database, and it may vary from one setting to another.
 
-Given the results so far, ICDPICR version 1.0.0 should function best for the following types of data with the given options:
+Given the results so far, ICDPICR version 1.0 should function best for the following types of data with the given options:
 
 1.  Data from US trauma registries coded using both ICD-9-CM and ICD-10-CM:
 
@@ -174,7 +176,9 @@ Given the results so far, ICDPICR version 1.0.0 should function best for the fol
 
 <p style="margin-left: 40px">
 
-`icd10="base", i10_iss_method="roc_max_TQIP"` or `icd10="base", i10_iss_method="roc_max_NIS"`
+`icd10="base", i10_iss_method="roc_max_TQIP"` 
+<br>or<br>
+`icd10="base", i10_iss_method="roc_max_NIS"`
 
 </p>
 
