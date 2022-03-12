@@ -20,7 +20,7 @@
 #'
 #' @param icd10 Should ICD-10 codes be included? Must be one of: TRUE, FALSE, "cm", or "base".
 #'          \itemize{
-#'          \item TRUE ICD-10 codes will be processed by the program
+#'          \item TRUE - ICD-10 codes will be processed by the program
 #'          \item FALSE - Any ICD-10 codes in the data will be ignored.
 #'          \item "cm" - ICD-10-CM codes will be processed by the program
 #'          \item "base" - Basic ICD-10 (international) codes will be processed by the program
@@ -56,7 +56,7 @@
 #'          \item mechmin1-mechmin4: CDC external cause of injury minor mechanism for each E-Code captured
 #'          \item intent1-intent4: intent for each E-Code captured
 #'          \item lowmech: lowest CDC external cause of injury major mechanism for all E-Codes captured
-#'          \item Pmort: The model predicted probability of mortality. (only added if using ICD-10 codes with one of the roc_max methods)
+#'          \item Pmort: The model predicted probability of mortality (only added if using ICD-10 codes with one of the roc_max methods)
 #'          }
 #'
 #' @details  Data should be in wide format:

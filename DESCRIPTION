@@ -14,7 +14,7 @@ Description: Categorization and scoring of injury severity typically involves
 License: MIT + file LICENSE
 LazyData: TRUE
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: stringr (>= 1.0.0)
 Depends: 
     R (>= 2.10)

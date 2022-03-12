@@ -11,14 +11,15 @@
 #' especially to accommodate both ICD-9 and ICD-10 diagnosis codes. Some of the
 #' functionality of the original Stata program was reduced in the interest of providing updates for
 #' only the most useful elements of the original ICDPIC program, and some of this functionality
-#' has been restored along with other features in the current ICDPICR Version 1.0.0.
+#' has been restored along with other features in the current ICDPICR Version 1.0.
 #' ICDPICR is open source and all code is availble at \url{https://github.com/ablack3/icdpicr}.
 #' Documentation can be found online at \url{https://ablack3.github.io/icdpicr}.
 #'
 #'
 #'
 #' @section Description:
-#' ICDPICR is an R package currently consisting of a single function "cat_trauma" that performs
+#' ICDPICR (International Classification of Diseases Programs for Injury Categorization in R)
+#' is an R package currently consisting of a single function "cat_trauma" that performs
 #' the same task that the "trauma" program does in the Stata version of ICDPIC.
 #' The intention of these programs is to provide inexpensive methods for translating International
 #' Classification of Diseases (ICD) diagnosis codes into standard injury
@@ -47,11 +48,11 @@
 #' Mapping of ICD-10-CM codes to AIS severity may be performed in several ways, as described below.
 #'
 #' \strong{"ROCmax" mapping method for ICD-10-CM codes or basic ICD-10 codes:}
-#' The ROCmax option in ICDPICR Version 1.0.0 allows the user to choose either TQIP or
+#' The ROCmax option in ICDPICR Version 1.0 allows the user to choose either TQIP or
 #' National Inpatient Survey (NIS) as the reference database.  Ridge regression is used to
 #' estimate the independent effect of each injury diagnosis on mortality.  If one of the ROCmax
 #' options is chosen, a prediction of mortality for each subject (Pmort) is provided directly from
-#' the regression, as well as an estimated Injury Severity Score4 (ISS). As in the earlier Stata
+#' the regression, as well as an estimated Injury Severity Score (ISS). As in the earlier Stata
 #' version of ICDPIC, a "New Injury Severity Score" (NISS) is now also calculated for all options.
 #'
 #'
