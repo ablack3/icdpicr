@@ -22,5 +22,6 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    rcmdcheck
 VignetteBuilder: knitr

@@ -1,5 +1,6 @@
+This is a patch release that updates the documentation for the icdpicr package.
+
 ## Test environments
-* local Windows 10 install, R 4.0.5
 * github actions, ubuntu-20.04, R release
 * github actions, ubuntu-20.04, R devel
 * github actions, macOS-latest, R release

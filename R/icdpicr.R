@@ -13,7 +13,7 @@
 #' only the most useful elements of the original ICDPIC program, and some of this functionality
 #' has been restored along with other features in the current ICDPICR Version 1.0.
 #' ICDPICR is open source and all code is availble at \url{https://github.com/ablack3/icdpicr}.
-#' Documentation can be found online at \url{https://ablack3.github.io/icdpicr}.
+#' Documentation can be found online at \url{https://ablack3.github.io/icdpicr/}.
 #'
 #'
 #'
